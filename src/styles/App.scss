@@ -1,0 +1,17 @@
+@import 'tables';
+$main-backgound: #121212;
+$main-color: #999;
+html, body {
+    background-color: $main-backgound;
+    color: $main-color;
+}
+.home__page {
+    .top_streamers {
+        display: flex;
+        flex-flow: row wrap;
+        a {
+            margin: 0 10px;
+        }
+    }    
+}
+
