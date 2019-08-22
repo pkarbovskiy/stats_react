@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '../logo.svg';
 import { topStreamers } from '../interfaces/interfaces'
-import TopStreamers from '../component/TopSteamers';
-import Table from '../component/Table';
+import TopStreamers from '../components/TopSteamers';
+import Table from '../components/Table';
 import '../styles/App.scss';
 
 const HomePage: React.FC = () => {
