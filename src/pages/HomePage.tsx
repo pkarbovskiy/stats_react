@@ -9,23 +9,23 @@ const HomePage: React.FC = () => {
     const topStreamers: topStreamers = {
         "Symfuhny": {
             id: 3372,
-            src: "http://streamsnipers.com:8000/static/images/streamers/Symfuhnyf.png"
+            src: "http://streamsnipers.com/static/images/streamers/Symfuhny.png"
         },
         "Nickmercs": {
             id: 3337,
-            src: "http://streamsnipers.com:8000/static/images/streamers/Nickmercsf.png"
+            src: "http://streamsnipers.com/static/images/streamers/Nickmercs.png"
         },
         "Dakotaz": {
             id: 3426,
-            src: "http://streamsnipers.com:8000/static/images/streamers/Dakotazf.png"
+            src: "http://streamsnipers.com/static/images/streamers/Dakotaz.png"
         },
         "Ninja": {
             id: 3150,
-            src: "http://streamsnipers.com:8000/static/images/streamers/Ninjaf.png"
+            src: "http://streamsnipers.com/static/images/streamers/Ninja.png"
         },
         "Myth": {
             id: 3429,
-            src: "http://streamsnipers.com:8000/static/images/streamers/Mythf.png"
+            src: "http://streamsnipers.com/static/images/streamers/Myth.png"
         }
     }
     return (
