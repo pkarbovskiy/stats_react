@@ -6,27 +6,12 @@ import Table from '../components/Table';
 import '../styles/App.scss';
 
 const HomePage: React.FC = () => {
-    const topStreamers: topStreamers = {
-        "Symfuhny": {
-            id: 3372,
-            src: "http://streamsnipers.com/static/images/streamers/Symfuhny.png"
-        },
-        "Nickmercs": {
-            id: 3337,
-            src: "http://streamsnipers.com/static/images/streamers/Nickmercs.png"
-        },
-        "Dakotaz": {
-            id: 3426,
-            src: "http://streamsnipers.com/static/images/streamers/Dakotaz.png"
-        },
-        "Ninja": {
-            id: 3150,
-            src: "http://streamsnipers.com/static/images/streamers/Ninja.png"
-        },
-        "Myth": {
-            id: 3429,
-            src: "http://streamsnipers.com/static/images/streamers/Myth.png"
-        }
+    const topStreamers = {
+        "Symfuhny": 3372,
+        "Nickmercs": 3337,
+        "Dakotaz": 3426,
+        "Ninja": 3150,
+        "Myth": 3429
     }
     return (
         <div className="home__page">

@@ -1,3 +1,3 @@
-export interface topStreamers {
-    [streamerName: string]: { id: number, src: string }
+export type topStreamers = {
+    [streamerName: string]: number
 }

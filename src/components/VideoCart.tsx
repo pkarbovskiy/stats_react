@@ -1,13 +1,30 @@
 import React from 'react';
-
-const VideoCart: React.FC = (props) => {
+import { Link } from 'react-router-dom';
+interface videoCartProps {
+    streamer: {
+        id: number | string;
+        name: string;
+    },
+    player: {
+        id: number | string;
+        name: string;
+    },
+    action: string;
+    views: number;
+    image: string;
+}
+const VideoCart: React.FC<videoCartProps> = (props) => {
     return (
         <div className="video_cart">
-            <img src="https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g" />
+            <img className="video_cart--image" src={props.image} />
             <div>
-                <a><h4>Ninja</h4></a> Eliminated By <a>NinjaSucks4</a>
+                <span>
+                    <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`}>Ninja</Link>
+                    {props.action}
+                    <Link to={`/player/${props.player.id}/${props.player.name.toLowerCase()}`}>NinjaSucks</Link>
+                </span>
+                <span>views: <span>{props.views}</span></span>
             </div>
-            <span>views: <span>0</span></span>
         </div>
     );
 }

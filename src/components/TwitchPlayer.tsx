@@ -2,40 +2,48 @@ import React, { PureComponent } from 'react';
 declare global {
     interface Window { Twitch: any; }
 }
+interface options {
+    video: number;
+    videoTime: number;
+    width?: number | string;
+    height?: number | string;
+    targetElementId?: string;
+    autoplay?: boolean;
+}
 const EMBED_URL = 'https://player.twitch.tv/js/embed/v1.js';
-export class TwitchPlayer extends PureComponent<any, {}> {
-    options = {
-        width: 840,
-        height: 470,
-        video: 464060196,
-        targetElementId: 'player',
-        videoTime: 11488,
-        autoplay: true
-    };
-
-    player: any = null;
-    createEmbedAddListeners(targetElementId: string, props: any): void {
-        this.player = new window.Twitch.Player(targetElementId, { ...props });
-        this.player.setVideo(`v${props.video}`, props.videoTime);
-        this.addEventListeners(props);
+export class TwitchPlayer extends PureComponent<{
+    options?: options
+}, {}> {
+    state = {
+        options: {
+            width: '100%',
+            height: '100%',
+            targetElementId: 'player',
+            autoplay: true
+        } as options
     }
-    addEventListeners(props: any): void {
-        // this.player.addEventListener(window.Twitch.Player.PLAY, () => {
-        // })
+    player: any = null;
+    createEmbedAddListeners(): void {
+        this.player = new window.Twitch.Player(this.state.options.targetElementId, { ...this.state.options });
+        this.player.setVideo(`v${this.state.options.video}`, this.state.options.videoTime);
+        this.addEventListeners();
+    }
+    addEventListeners(): void {
         this.player.addEventListener(window.Twitch.Player.READY, () => {
-            this.player.seek(props.videoTime);
+            this.player.seek(this.state.options.videoTime);
             this.player.play();
         })
     }
     componentDidMount() {
+        this.setState({ options: Object.assign({}, this.state.options, this.props.options) });
         if (window.Twitch && window.Twitch.Player) {
-            this.createEmbedAddListeners(this.options.targetElementId, this.options);
+            this.createEmbedAddListeners();
             return;
         }
         const script = document.createElement('script');
         script.setAttribute('src', EMBED_URL);
         script.addEventListener('load', () => {
-            this.createEmbedAddListeners(this.options.targetElementId, this.options);
+            this.createEmbedAddListeners();
         });
 
         document.body.appendChild(script);
@@ -43,7 +51,7 @@ export class TwitchPlayer extends PureComponent<any, {}> {
     render() {
         return (
             <>
-                <div id="player" className="player"></div>
+                <div id={this.state.options.targetElementId} className="player"></div>
             </>
         );
     };

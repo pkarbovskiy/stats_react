@@ -1,6 +1,6 @@
 import React from 'react';
 import HomePage from './pages/HomePage';
-import { VideoPage } from './pages/VideoPage';
+import VideoPage from './pages/VideoPage';
 import Header from './common/header';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 

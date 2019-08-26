@@ -1,7 +1,19 @@
 .table {
+    &.side {
+        .video_cart {
+            display: flex;
+            flex-direction: row;
+            img {
+                width: 192px;
+            }
+        }
+    }
     display: flex;
     flex-flow: row wrap;
     .video_cart {
         margin: 10px;
+        img {
+            padding: 0;
+        }
     }
 }
