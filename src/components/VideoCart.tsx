@@ -17,11 +17,11 @@ const VideoCart: React.FC<videoCartProps> = (props) => {
     return (
         <div className="video_cart">
             <img className="video_cart--image" src={props.image} />
-            <div>
-                <span>
-                    <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`}>Ninja</Link>
+            <div className="video_cart__info">
+                <span className="video_cart__info__description">
+                    <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`}>{props.streamer.name}</Link>
                     {props.action}
-                    <Link to={`/player/${props.player.id}/${props.player.name.toLowerCase()}`}>NinjaSucks</Link>
+                    <Link to={`/player/${props.player.id}/${props.player.name.toLowerCase()}`}>{props.player.name}</Link>
                 </span>
                 <span>views: <span>{props.views}</span></span>
             </div>
