@@ -13,7 +13,7 @@ interface videoCartProps {
     views: number;
     image: string;
 }
-const VideoCart: React.FC<videoCartProps> = (props) => {
+const VideoCart: React.FC<videoCartProps> = (props: videoCartProps) => {
     return (
         <div className="video_cart">
             <img className="video_cart--image" src={props.image} />

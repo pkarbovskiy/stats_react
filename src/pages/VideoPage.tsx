@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TwitchPlayer } from '../components/TwitchPlayer';
 import Table from '../components/Table';
 
