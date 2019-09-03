@@ -2,6 +2,7 @@
 @import 'upDownVote';
 $main-backgound: #121212;
 $main-color: #999;
+$main-yellow:  rgb(185, 182, 11);
 html, body {
     background-color: $main-backgound;
     color: $main-color;
@@ -18,7 +19,7 @@ html, body {
 header {
     .logo {
         svg {
-            fill: rgb(185, 182, 11);
+            fill: $main-yellow;
             height: 30px;
         }
     }
