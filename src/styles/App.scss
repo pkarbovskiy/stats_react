@@ -1,4 +1,5 @@
 @import 'tables';
+@import 'upDownVote';
 $main-backgound: #121212;
 $main-color: #999;
 html, body {
@@ -13,5 +14,13 @@ html, body {
             margin: 0 10px;
         }
     }    
+}
+header {
+    .logo {
+        svg {
+            fill: rgb(185, 182, 11);
+            height: 30px;
+        }
+    }
 }
 

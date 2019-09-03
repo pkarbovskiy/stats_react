@@ -71,7 +71,7 @@ const Table: React.FC<{ class?: string }> = (props) => {
     ];
     return (
         <div className={`table ${props.class}`}>
-            {a.map(value => (<VideoCart {...value} />))}
+            {a.map((value, indx) => (<VideoCart key={indx} {...value} />))}
         </div>
     );
 }
