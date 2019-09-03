@@ -16,7 +16,7 @@ interface videoCartProps {
 const VideoCart: React.FC<videoCartProps> = (props: videoCartProps) => {
     return (
         <div className="video_cart">
-            <img className="video_cart--image" src={props.image} />
+            <img className="video_cart--image" src={props.image} alt={`${props.streamer.name.toLowerCase()} ${props.action} ${props.player.name.toLowerCase()}`} />
             <div className="video_cart__info">
                 <span className="video_cart__info__description">
                     <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`}>{props.streamer.name}</Link>

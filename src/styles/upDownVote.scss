@@ -1,0 +1,18 @@
+$main-yellow:  rgb(185, 182, 11);
+.up_down_vote {
+  &__arrows {
+    &__up,
+    &__down {
+      width: 20px;
+      svg {
+        fill: #afaeaf;
+        &:hover {
+          fill: #a1a1a1;
+        }
+      }
+      &.active svg {
+        fill: $main-yellow;
+      }
+    }
+  }
+}

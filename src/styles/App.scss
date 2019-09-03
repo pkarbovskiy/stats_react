@@ -1,6 +1,8 @@
 @import 'tables';
+@import 'upDownVote';
 $main-backgound: #121212;
 $main-color: #999;
+$main-yellow:  #D7CA25;
 html, body {
     background-color: $main-backgound;
     color: $main-color;
@@ -15,21 +17,27 @@ html, body {
     }    
 }
 .header {
+    .logo {
+        svg {
+            fill: $main-yellow;
+            height: 30px;
+        }
+    }
     &__query {
         padding: 15px 0 15px 20px;
-        color: #fff !important;
+        color: #fff;
         width: 81%;
         font-size: 24px;
         border-width: 0;
         background: 0;
-        border-bottom: 2px solid #FFF821;
+        border-bottom: 2px solid $main-yellow;
     }
     &__submit {
         height: 60px;
-        background: #D7CA25;
+        background: $main-yellow;
         font-size: 2rem;
         position: absolute;
-        border: 1px solid #D7CA25;
+        border: 1px solid $main-yellow;
         transition: 0.1s;
         font-weight: bold;
         margin-left: 30px;
@@ -38,3 +46,5 @@ html, body {
         cursor: pointer;
     }
 }
+
+
