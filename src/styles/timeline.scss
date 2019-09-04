@@ -1,0 +1,8 @@
+.timeline__event {
+    margin: 2px;
+    height: 50px;
+    width: 50px;
+    &.eleminatedBy{
+        background: tomato;
+    }
+}

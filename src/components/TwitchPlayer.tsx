@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 declare global {
     interface Window { Twitch: any; }
 }
-interface options {
+export interface TwitchPlayerOptions {
     video: number;
     videoTime: number;
+    setVideoHandler: (player: any) => void;
     width?: number | string;
     height?: number | string;
     targetElementId?: string;
@@ -12,7 +13,7 @@ interface options {
 }
 const EMBED_URL = 'https://player.twitch.tv/js/embed/v1.js';
 export class TwitchPlayer extends PureComponent<{
-    options?: options
+    options: TwitchPlayerOptions
 }, {}> {
     state = {
         options: {
@@ -20,7 +21,7 @@ export class TwitchPlayer extends PureComponent<{
             height: '100%',
             targetElementId: 'player',
             autoplay: true
-        } as options
+        } as TwitchPlayerOptions
     }
     player: any = null;
     createEmbedAddListeners(): void {
@@ -29,6 +30,7 @@ export class TwitchPlayer extends PureComponent<{
         this.addEventListeners();
     }
     addEventListeners(): void {
+        this.props.options.setVideoHandler(this.player);
         this.player.addEventListener(window.Twitch.Player.READY, () => {
             this.player.seek(this.state.options.videoTime);
             this.player.play();
