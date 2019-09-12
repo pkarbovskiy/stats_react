@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-interface videoCartProps {
+export interface videoCartProps {
     streamer: {
         id: number | string;
         name: string;
@@ -9,6 +9,7 @@ interface videoCartProps {
         id: number | string;
         name: string;
     },
+    streamStart: number;
     action: string;
     views: number;
     image: string;

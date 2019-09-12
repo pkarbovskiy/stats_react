@@ -1,11 +1,11 @@
 import React from 'react';
-import VideoCart from './VideoCart';
+import VideoCart, { videoCartProps } from './VideoCart';
 
-const Table: React.FC<{ class?: string, videos: any }> = (props) => {
+const Table: React.FC<{ videos: any; class?: string }> = (props) => {
 
     return (
         <div className={`table ${props.class}`}>
-            {props.videos.map((value, indx) => (<VideoCart key={indx} {...value} />))}
+            {props.videos.map((value: videoCartProps, indx: number) => (<VideoCart key={indx} {...value} />))}
         </div>
     );
 }

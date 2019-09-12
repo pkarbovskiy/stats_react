@@ -6,6 +6,7 @@ import Table from '../components/Table';
 import '../styles/App.scss';
 import { action } from '../actions'
 import { videosByDate } from '../selectors'
+import { State } from '../reducers/reducers'
 
 
 const HomePage: React.FC<{ videosByDate: any, videos: any; topStreamers: any }> = ({
@@ -21,17 +22,17 @@ const HomePage: React.FC<{ videosByDate: any, videos: any; topStreamers: any }> 
     );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosByDate: videosByDate(state),
-        videos: state.videos,
-        topStreamers: state.topStreamers
+        videos: state.mainReducer.videos,
+        topStreamers: state.mainReducer.topStreamers
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
-        onDelete: id => {
+        onDelete: (id: any) => {
             dispatch(action(id));
         }
     }

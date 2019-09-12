@@ -40,7 +40,7 @@ const VideoPage: React.FC = () => {
                 <Timeline {...videoPageData.timeline as any} videoHandler={videoHandler} />
             }
             <UpDownVote score={5} />
-            <Table class="side" />
+            <Table class="side" videos={[]} />
         </>
 
 

@@ -5,7 +5,13 @@ import Root from './routes';
 import { createStore } from 'redux'
 import rootReducer from './reducers'
 import * as serviceWorker from './serviceWorker';
-const store = createStore(rootReducer)
+declare global {
+    interface Window { __REDUX_DEVTOOLS_EXTENSION__: any; }
+}
+const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
