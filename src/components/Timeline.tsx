@@ -14,7 +14,7 @@ const Timeline: React.FC<Events> = (props: Events) => {
     return (
         <div className="timeline">
             {props.events.map(event => (
-                <div key={event.id} onClick={() => { props.videoHandler.seek(event.startTime); active = event.id; }} className={`timeline__event ${active == event.id ? 'active ' : ' '}${event.eventType}`}>
+                <div key={event.id} onClick={() => { props.videoHandler.seek(event.startTime); active = event.id; }} className={`timeline__event ${active === event.id ? 'active ' : ' '}${event.eventType}`}>
                 </div>
             ))}
         </div>

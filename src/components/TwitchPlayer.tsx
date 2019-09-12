@@ -6,8 +6,6 @@ export interface TwitchPlayerOptions {
     video: number;
     videoTime: number;
     setVideoHandler: (player: any) => void;
-    width?: number | string;
-    height?: number | string;
     targetElementId?: string;
     autoplay?: boolean;
 }
@@ -17,8 +15,6 @@ export class TwitchPlayer extends PureComponent<{
 }, {}> {
     state = {
         options: {
-            width: '100%',
-            height: '100%',
             targetElementId: 'player',
             autoplay: true
         } as TwitchPlayerOptions
