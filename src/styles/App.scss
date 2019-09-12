@@ -2,11 +2,11 @@
 @import 'upDownVote';
 @import 'timeline';
 $main-backgound: #121212;
-$main-color: #999;
-$main-yellow:  #D7CA25;
+$main-font-color: #999;
+$main-brand-color:  #D7CA25;
 html, body {
     background-color: $main-backgound;
-    color: $main-color;
+    color: $main-font-color;
 }
 .home__page {
     .top_streamers {
@@ -20,7 +20,7 @@ html, body {
 .header {
     .logo {
         svg {
-            fill: $main-yellow;
+            fill: $main-brand-color;
             height: 30px;
         }
     }
@@ -31,14 +31,14 @@ html, body {
         font-size: 24px;
         border-width: 0;
         background: 0;
-        border-bottom: 2px solid $main-yellow;
+        border-bottom: 2px solid $main-brand-color;
     }
     &__submit {
         height: 60px;
-        background: $main-yellow;
+        background: $main-brand-color;
         font-size: 2rem;
         position: absolute;
-        border: 1px solid $main-yellow;
+        border: 1px solid $main-brand-color;
         transition: 0.1s;
         font-weight: bold;
         margin-left: 30px;

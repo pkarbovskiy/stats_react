@@ -1,36 +1,44 @@
 import React from 'react';
-//import logo from '../logo.svg';
-import TopStreamers from '../components/TopSteamers';
+import {connect} from 'react-redux'
+//import logo from '../logo.svg'
+import TopStreamers from '../components/TopSteamers'
 import Table from '../components/Table';
 import '../styles/App.scss';
+import { action} from '../actions'
+import {videosByDate} from '../selectors'
 
-const HomePage: React.FC = () => {
-    const topStreamers = {
-        "Symfuhny": 3372,
-        "Nickmercs": 3337,
-        "Dakotaz": 3426,
-        "Ninja": 3150,
-        "Myth": 3429,
-        "SypherPk": 3372,
-        "Daequan": 3337,
-        "Bugha": 3426,
-        "Chap": 3150,
-        "Cloakzy": 3429,
-        "CDNThe3rd": 3372,
-        "DrLupo": 3337,
-        "MrFreshAsian": 3426,
-        "Aydan": 3150,
-        "BrookeAB": 3429,
-        "TSM_Hamlinz": 3429,
-        "Loeya": 3429,
-        "AlexRamiGaming": 3429,
-    }
+
+const HomePage: React.FC<{videosByDate:any, videos: any; topStreamers:any}> = ({
+    videosByDate,
+    videos,
+    topStreamers
+}) => {
     return (
         <div className="home__page">
             <TopStreamers topStreamers={topStreamers} />
-            <Table />
+            <Table videos={videos}/>
         </div>
     );
 }
 
-export default HomePage;
+const mapStateToProps = state => {
+    return {
+      videosByDate: videosByDate(state),
+      videos: state.videos,
+      topStreamers: state.topStreamers
+    }
+}
+  
+const mapDispatchToProps = (dispatch:(arg0:any) => {}) => {
+    return {
+        onDelete: id => {
+        dispatch(action(id));
+        }
+    }
+}
+  
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HomePage)
+
