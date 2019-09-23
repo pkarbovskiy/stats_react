@@ -4,6 +4,8 @@
 @import 'topStreamers';
 @import 'HamburgerMenu';
 @import 'DeathKill';
+@import 'StreamerVideo';
+
 $main-background: #121212;
 $header-background: #090909;
 $main-font-color: #999;
@@ -11,6 +13,7 @@ $main-brand-color:  #D7CA25;
 $font-size: 10px;
 $break-large: 1200px;
 $break-ipad: 500px;
+
 *, *:before, *:after {
     box-sizing: border-box;
 }

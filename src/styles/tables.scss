@@ -10,6 +10,14 @@ $break-ipad: 500px;
         @media screen and (max-width: 1024px) {
             width: 100vw;
         }
+        &.horisontal {
+            width: 100vw;
+            flex-wrap: nowrap;
+            overflow-x: scroll;
+            .video_cart {
+                flex-direction: column;
+            }
+        }
         .video_cart {
             display: flex;
             flex-direction: row;

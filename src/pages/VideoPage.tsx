@@ -16,7 +16,7 @@ const VideoPage: React.FC<{ videos: any; twitchPlayer: any; deathTimers: any[], 
         <div className="video_page">
             <TwitchPlayer options={{ ...twitchPlayer, setVideoHandler } as any} />
             <DeathKill videoHandler={videoHandler} deathTimers={deathTimers} killTimers={killTimers} currentDeath={'11028'} />
-            <Table class="side" videos={videos} />
+            <Table classNameProp="side" videos={videos} />
         </div>
     )
 }

@@ -14,7 +14,7 @@ const HomePage: React.FC<{ videosByDate: any, videos: any; topStreamers: any }> 
 }) => {
     return (
         <div className="home__page">
-            <Table videos={videos} />
+            <Table videos={videos} classNameProp={['side', 'horisontal']}/>
         </div>
     );
 }

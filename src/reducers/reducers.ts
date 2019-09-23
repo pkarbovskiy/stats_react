@@ -44,7 +44,7 @@ const DEFAULT_STATE = {
                 id: 3372,
                 name: "Symfuhny"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 22,
             streamStart: 1568165344
@@ -58,7 +58,7 @@ const DEFAULT_STATE = {
                 id: 3337,
                 name: "Nickmercs"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 17,
             streamStart: 1568165344
@@ -72,7 +72,7 @@ const DEFAULT_STATE = {
                 id: 3372,
                 name: "Symfuhny"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 22,
             streamStart: 1568165344
@@ -86,7 +86,7 @@ const DEFAULT_STATE = {
                 id: 3337,
                 name: "Nickmercs"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 17,
             streamStart: 1568165344
@@ -100,7 +100,7 @@ const DEFAULT_STATE = {
                 id: 3372,
                 name: "Symfuhny"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 22,
             streamStart: 1568165344
@@ -114,7 +114,7 @@ const DEFAULT_STATE = {
                 id: 3337,
                 name: "Nickmercs"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 17,
             streamStart: 1568165344
@@ -128,7 +128,7 @@ const DEFAULT_STATE = {
                 id: 3372,
                 name: "Symfuhny"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 22,
             streamStart: 1568165344
@@ -142,7 +142,7 @@ const DEFAULT_STATE = {
                 id: 3337,
                 name: "Nickmercs"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 17,
             streamStart: 1568165344
@@ -156,7 +156,7 @@ const DEFAULT_STATE = {
                 id: 3372,
                 name: "Symfuhny"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 22,
             streamStart: 1568165344
@@ -170,7 +170,7 @@ const DEFAULT_STATE = {
                 id: 3337,
                 name: "Nickmercs"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 17,
             streamStart: 1568165344
@@ -184,7 +184,7 @@ const DEFAULT_STATE = {
                 id: 3426,
                 name: "Dakotaz"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 5,
             streamStart: 1568165344
@@ -198,7 +198,7 @@ const DEFAULT_STATE = {
                 id: 3150,
                 name: "Ninja"
             },
-            action: "Elemenated by",
+            action: "Eliminated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 16,
             streamStart: 1568165344
