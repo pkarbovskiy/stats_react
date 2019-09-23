@@ -1,55 +1,112 @@
 @import 'tables';
 @import 'upDownVote';
 @import 'timeline';
-$main-backgound: #121212;
+@import 'topStreamers';
+@import 'HamburgerMenu';
+@import 'DeathKill';
+$main-background: #121212;
+$header-background: #090909;
 $main-font-color: #999;
 $main-brand-color:  #D7CA25;
+$font-size: 10px;
+$break-large: 1200px;
+$break-ipad: 500px;
+*, *:before, *:after {
+    box-sizing: border-box;
+}
 html, body {
-    background-color: $main-backgound;
+    background-color: $main-background;
+    color: $main-font-color;
+    font-size: $font-size;
+}
+a {
     color: $main-font-color;
 }
-.home__page {
-    .top_streamers {
-        display: flex;
-        flex-flow: row wrap;
-        a {
-            margin: 0 10px;
-        }
-    }    
+.hide {
+    display:none !important;
 }
 .header {
-    .logo {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 56px;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $header-background;
+    .site--logo {
+        img {
+            max-height: 20px;
+        }
+    }
+    &>svg {
+        width: 2rem;
+    }
+    .logo--link {
+        line-height: 26px;
+        display: flex;
         svg {
             fill: $main-brand-color;
+            height: 27px;
+        }
+        img {
             height: 30px;
         }
     }
-    &__query {
-        padding: 15px 0 15px 20px;
-        color: #fff;
-        width: 81%;
-        font-size: 24px;
-        border-width: 0;
-        background: 0;
-        border-bottom: 2px solid $main-brand-color;
-    }
-    &__submit {
-        height: 60px;
-        background: $main-brand-color;
-        font-size: 2rem;
-        position: absolute;
-        border: 1px solid $main-brand-color;
-        transition: 0.1s;
-        font-weight: bold;
-        margin-left: 30px;
-        border-radius: 3px;
-        padding: 0px 28px;
-        cursor: pointer;
+    .search {
+        display: flex;       
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+        flex: 1;
+        flex-basis: 0.000000001px;
+        flex-direction: row;
+
+        &__query {
+            width: 0;
+            height: 32px;
+            color: $main-font-color;
+            font-size: 1.5rem;
+            border-width: 0;
+            background: #1d1d1d;
+            padding: 2px 6px;
+            &.expanded {
+                width: 80%;
+            }
+            @media screen and (min-width: $break-ipad) {
+                width: 100%;
+                &.expanded {
+                    width: 100%;
+                }
+            }
+        }
+    
+        &__submit {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            svg {
+                fill: $main-brand-color;
+                width: 2rem;
+            }
+            @media screen and (min-width: $break-ipad) {
+                background-color: $main-brand-color;
+                width: 65px;
+                align-items: center;
+                svg {
+                    fill: #000;
+                }
+            }
+        }
     }
 }
 .player {
     position: relative;
     height: calc(100vw / 1.78) ;
+    @media screen and (min-width: $break-large) {
+        height: calc(60vw / 1.78);
+        width: 60vw;
+        margin: 0 auto;
+    }
     iframe {
         position: absolute;
         top:0;
@@ -58,6 +115,32 @@ html, body {
         right: 0%;
         width: 100%;
         height: 100%;        
+    }
+    
+}
+
+.video_page {
+    &__info {
+        display:flex;
+        margin: 5px;
+        h2 {
+            margin: 0 0 0 5px;
+        }
+    }
+    &__views {
+        display: flex;
+        svg {
+            height: 20px;
+            fill: white;
+            margin: 0 5px;
+        }
+        &--num {
+            font-size: 14px;
+        }
+    }
+    .text {
+        display: flex;
+        flex-direction: column;
     }
 }
 

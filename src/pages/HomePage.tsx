@@ -1,9 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
-//import logo from '../logo.svg'
-import TopStreamers from '../components/TopSteamers'
-import Table from '../components/Table';
-import '../styles/App.scss';
+import Table from '../components/Table'
+import '../styles/App.scss'
 import { action } from '../actions'
 import { videosByDate } from '../selectors'
 import { State } from '../reducers/reducers'
@@ -16,7 +14,6 @@ const HomePage: React.FC<{ videosByDate: any, videos: any; topStreamers: any }> 
 }) => {
     return (
         <div className="home__page">
-            <TopStreamers topStreamers={topStreamers} />
             <Table videos={videos} />
         </div>
     );
@@ -42,4 +39,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(HomePage)
-

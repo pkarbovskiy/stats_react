@@ -1,0 +1,97 @@
+$header-background: #090909;
+$main-brand-color:  #D7CA25;
+$main-font-color: #999;
+$break-large: 1200px;
+.main-nav {
+    display:flex;
+    flex-direction: row;
+    &__ham_menu {
+        width: 3rem;
+        border: none;
+        background: transparent;
+        z-index: 2;
+        & svg {
+            stroke: $main-brand-color;
+        }
+    }
+    &--links {
+        display: flex;
+        flex-flow: column nowrap;
+        position: absolute;
+        z-index:2;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        font-size: 2rem;
+        background-color: $header-background;
+        .close {
+            position: absolute;
+            border: none;
+            background: transparent;
+            top: 2px;
+            right: 4px;
+            z-index: 3;
+            width: 39px;
+            svg {
+                fill: white;
+            }
+        }
+        hr {
+            width: 100%;
+            border-color: $main-font-color;
+        }
+        a {
+            padding: 1rem 1rem;
+            text-decoration: none;
+            display: flex;
+            svg {
+                fill: white;
+                width: 25px
+            }
+            span {
+                padding-left: 15px;
+            }
+        }
+    }
+}
+@media screen and (min-width: $break-large) {
+    .main-nav {
+        &--links {
+            height: calc(100vh - 51px);
+            margin-top: 39px;
+            width: 250px; 
+            .logo--link {
+                display: none !important;
+            }
+            .link {
+                display: flex;               
+                font-size: 1.8rem;
+                align-content: center;
+                width: 100%;
+            }
+            .policy {
+                display: none;
+            }
+            hr {
+                display:none;
+            }
+            &.hide{
+                width: 51px;
+                display: flex !important;
+                .link {
+                    flex-flow: column nowrap;
+                    font-size: 1rem;
+                    span {
+                        text-align: center;
+                        margin-left: -6px;
+                        padding: 0;
+                    }
+                }
+            }
+            .close {
+                display: none;
+            }
+        }
+    }
+}

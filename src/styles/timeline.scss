@@ -1,8 +1,27 @@
-.timeline__event {
-    margin: 2px;
-    height: 50px;
-    width: 50px;
-    &.eleminatedBy{
-        background: tomato;
+$main-brand-color:  #D7CA25;
+.timeline {
+    display: flex;
+    flex-flow: row nowrap;
+    width: calc(100% - 2rem);
+    overflow-x: scroll;
+    margin: 5px auto;
+    &__event {
+        margin: 2px;
+        height: 50px;
+        width: 50px;
+        padding: 7px;
+        svg {
+            fill: white;
+            width: 34px;
+        }
+        &.eleminatedBy {
+            background: tomato;
+        }
+        &.active {
+            opacity: .8;
+            svg {
+                fill: #D7CA25;
+            }
+        }
     }
 }

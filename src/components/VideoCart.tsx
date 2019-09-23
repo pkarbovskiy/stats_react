@@ -19,12 +19,14 @@ const VideoCart: React.FC<videoCartProps> = (props: videoCartProps) => {
         <div className="video_cart">
             <img className="video_cart--image" src={props.image} alt={`${props.streamer.name.toLowerCase()} ${props.action} ${props.player.name.toLowerCase()}`} />
             <div className="video_cart__info">
+                <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`} className="video_cart__info__streamer--pic">
+                    <img src={`http://streamsnipers.com/static/images/streamers/${props.streamer.name}.png`} alt="top streamer" />
+                </Link>
                 <span className="video_cart__info__description">
-                    <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`}>{props.streamer.name}</Link>
-                    {props.action}
+                    {props.streamer.name}
+                    {` ${props.action}`}
                     <Link to={`/player/${props.player.id}/${props.player.name.toLowerCase()}`}>{props.player.name}</Link>
                 </span>
-                <span>views: <span>{props.views}</span></span>
             </div>
         </div>
     );

@@ -1,20 +1,32 @@
 import { handleActions } from 'redux-actions'
 import { action } from '../actions'
 const DEFAULT_STATE = {
+    killTimers: [
+        { id: '11035', startTime: 14340 },
+        { id: '11033', startTime: 11503 },
+        { id: '11032', startTime: 8807 },
+        { id: '11031', startTime: 8453 },
+        { id: '11030', startTime: 6255 },
+        { id: '11029', startTime: 5809 },
+        { id: '11027', startTime: 5315 },
+        { id: '11026', startTime: 4065 },
+        { id: '11025', startTime: 3595 },
+        { id: '11024', startTime: 1197 }
+    ],
+    deathTimers: [
+        { id: '11035', startTime: 14340 },
+        { id: '11033', startTime: 11503 },
+        { id: '11032', startTime: 8807 },
+        { id: '11031', startTime: 8453 },
+        { id: '11030', startTime: 6255 },
+        { id: '11029', startTime: 5809 },
+        { id: '11028', startTime: 5473 },
+        { id: '11027', startTime: 5315 },
+        { id: '11026', startTime: 4065 },
+        { id: '11025', startTime: 3595 },
+        { id: '11024', startTime: 1197 }
+    ],
     timeline: {
-        events: [
-            { id: '11035', startTime: 14340, eventType: 'eleminatedBy' },
-            { id: '11033', startTime: 11503, eventType: 'eleminatedBy' },
-            { id: '11032', startTime: 8807, eventType: 'eleminatedBy' },
-            { id: '11031', startTime: 8453, eventType: 'eleminatedBy' },
-            { id: '11030', startTime: 6255, eventType: 'eleminatedBy' },
-            { id: '11029', startTime: 5809, eventType: 'eleminatedBy' },
-            { id: '11028', startTime: 5473, eventType: 'eleminatedBy' },
-            { id: '11027', startTime: 5315, eventType: 'eleminatedBy' },
-            { id: '11026', startTime: 4065, eventType: 'eleminatedBy' },
-            { id: '11025', startTime: 3595, eventType: 'eleminatedBy' },
-            { id: '11024', startTime: 1197, eventType: 'eleminatedBy' }
-        ],
         activeEvent: '11028',
         videoHandler: false
     },
@@ -23,6 +35,118 @@ const DEFAULT_STATE = {
         videoTime: 11488
     },
     videos: [
+        {
+            streamer: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            player: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 22,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            player: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 17,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            player: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 22,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            player: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 17,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            player: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 22,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            player: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 17,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            player: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 22,
+            streamStart: 1568165344
+        },
+        {
+            streamer: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            player: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            action: "Elemenated by",
+            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            views: 17,
+            streamStart: 1568165344
+        },
         {
             streamer: {
                 id: 3372,
@@ -77,20 +201,6 @@ const DEFAULT_STATE = {
             action: "Elemenated by",
             image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
             views: 16,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3429,
-                name: "Myth"
-            },
-            player: {
-                id: 3429,
-                name: "Myth"
-            },
-            action: "Elemenated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
-            views: 233,
             streamStart: 1568165344
         }
     ],

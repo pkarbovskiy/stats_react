@@ -1,8 +1,21 @@
+$break-ipad: 500px;
 .table {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     &.side {
+        width: 60vw;
+        margin: 10px auto;
+        justify-content: space-between;
+        @media screen and (max-width: 1024px) {
+            width: 100vw;
+        }
         .video_cart {
             display: flex;
             flex-direction: row;
+            @media screen and (min-width: $break-ipad) {
+                flex-direction: column;
+            }
             &--image {
                 width: 192px;
             }
@@ -10,6 +23,9 @@
                 display: flex;
                 flex-direction: column;
                 padding: 0 10px;
+                &__streamer--pic {
+                    display:none;
+                }
                 &__description {
                     display: flex;
                     flex-direction: column;
@@ -19,16 +35,45 @@
                         font-weight: 700;
                     }
                 }
-
             }
         }
     }
-    display: flex;
-    flex-flow: row wrap;
     .video_cart {
-        margin: 10px;
-        img {
+        margin: 5px;
+        position: relative;
+        &--image {
             padding: 0;
+            width: 100vw;
+            @media screen and (min-width: $break-ipad) {
+                width: 210px;
+            }
+        }
+        &__info {
+            display: flex;
+            flex-direction: row;
+            font-size: 1.4rem;
+            width: 100%;
+            background-color: #121212;
+            opacity: 0.8;
+            padding: 10px;
+            &__streamer--pic {
+                display:block;
+                width: 40px;
+                height: 40px;
+                margin-right:12px;
+                img {
+                    width: 100%;
+                }
+            }
+            &__description {
+                display: flex;
+                flex-direction: column;
+                a {
+                    color: #a0a0a0;
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+            }
         }
     }
 }
