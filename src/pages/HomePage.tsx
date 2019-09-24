@@ -1,20 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Table from '../components/Table'
+import StreamerVideos from '../components/StreamerVideos'
 import '../styles/App.scss'
 import { action } from '../actions'
 import { videosByDate } from '../selectors'
 import { State } from '../reducers/reducers'
 
 
-const HomePage: React.FC<{ videosByDate: any, videos: any; topStreamers: any }> = ({
+const HomePage: React.FC<{ videosByDate: any, streamers: any }> = ({
     videosByDate,
-    videos,
-    topStreamers
+    streamers
 }) => {
     return (
         <div className="home__page">
-            <Table videos={videos} classNameProp={['side', 'horisontal']}/>
+            {streamers.map((streamer: any) => (<StreamerVideos {...streamer} />))}
         </div>
     );
 }
@@ -22,8 +21,7 @@ const HomePage: React.FC<{ videosByDate: any, videos: any; topStreamers: any }> 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosByDate: videosByDate(state),
-        videos: state.mainReducer.videos,
-        topStreamers: state.mainReducer.topStreamers
+        streamers: state.mainReducer.streamers
     }
 }
 

@@ -34,6 +34,279 @@ const DEFAULT_STATE = {
         video: 464060196,
         videoTime: 11488
     },
+    streamers: [
+        {
+            streamer: {
+                id: 3372,
+                name: "Symfuhny"
+            },
+            videos: [
+                {
+                    streamer: {
+                        id: 3372,
+                        name: "Symfuhny"
+                    },
+                    player: {
+                        id: 3372,
+                        name: "Symfuhny"
+                    },
+                    action: "Eliminated by",
+                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                    views: 22,
+                    streamStart: 1568165344
+                },
+                {
+                    streamer: {
+                        id: 3337,
+                        name: "Nickmercs"
+                    },
+                    player: {
+                        id: 3337,
+                        name: "Nickmercs"
+                    },
+                    action: "Eliminated by",
+                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                    views: 17,
+                    streamStart: 1568165344
+                },
+                {
+                    streamer: {
+                        id: 3337,
+                        name: "Nickmercs"
+                    },
+                    player: {
+                        id: 3337,
+                        name: "Nickmercs"
+                    },
+                    action: "Eliminated by",
+                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                    views: 17,
+                    streamStart: 1568165344
+                },
+                {
+                    streamer: {
+                        id: 3372,
+                        name: "Symfuhny"
+                    },
+                    player: {
+                        id: 3372,
+                        name: "Symfuhny"
+                    },
+                    action: "Eliminated by",
+                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                    views: 22,
+                    streamStart: 1568165344
+                },
+                {
+                    streamer: {
+                        id: 3337,
+                        name: "Nickmercs"
+                    },
+                    player: {
+                        id: 3337,
+                        name: "Nickmercs"
+                    },
+                    action: "Eliminated by",
+                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                    views: 17,
+                    streamStart: 1568165344
+                },
+                {
+                    streamer: {
+                        id: 3372,
+                        name: "Symfuhny"
+                    },
+                    player: {
+                        id: 3372,
+                        name: "Symfuhny"
+                    },
+                    action: "Eliminated by",
+                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                    views: 22,
+                    streamStart: 1568165344
+                }]
+        },
+        {
+            streamer: {
+                id: 3337,
+                name: "Nickmercs"
+            },
+            videos: [{
+                streamer: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                player: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 22,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                player: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 17,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                player: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 22,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                player: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 17,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                player: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 17,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                player: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 22,
+                streamStart: 1568165344
+            }]
+        },
+        {
+            streamer: {
+                id: 3426,
+                name: "Dakotaz"
+            },
+            videos: [{
+                streamer: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                player: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 22,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                player: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 17,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                player: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 17,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                player: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 22,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                player: {
+                    id: 3337,
+                    name: "Nickmercs"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 17,
+                streamStart: 1568165344
+            },
+            {
+                streamer: {
+                    id: 3426,
+                    name: "Dakotaz"
+                },
+                player: {
+                    id: 3372,
+                    name: "Symfuhny"
+                },
+                action: "Eliminated by",
+                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
+                views: 22,
+                streamStart: 1568165344
+            }]
+        },
+    ],
     videos: [
         {
             streamer: {
@@ -45,7 +318,7 @@ const DEFAULT_STATE = {
                 name: "Symfuhny"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 22,
             streamStart: 1568165344
         },
@@ -59,7 +332,7 @@ const DEFAULT_STATE = {
                 name: "Nickmercs"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 17,
             streamStart: 1568165344
         },
@@ -73,7 +346,7 @@ const DEFAULT_STATE = {
                 name: "Symfuhny"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 22,
             streamStart: 1568165344
         },
@@ -87,7 +360,7 @@ const DEFAULT_STATE = {
                 name: "Nickmercs"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 17,
             streamStart: 1568165344
         },
@@ -101,7 +374,7 @@ const DEFAULT_STATE = {
                 name: "Symfuhny"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 22,
             streamStart: 1568165344
         },
@@ -115,7 +388,7 @@ const DEFAULT_STATE = {
                 name: "Nickmercs"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 17,
             streamStart: 1568165344
         },
@@ -129,7 +402,7 @@ const DEFAULT_STATE = {
                 name: "Symfuhny"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 22,
             streamStart: 1568165344
         },
@@ -143,7 +416,7 @@ const DEFAULT_STATE = {
                 name: "Nickmercs"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 17,
             streamStart: 1568165344
         },
@@ -157,7 +430,7 @@ const DEFAULT_STATE = {
                 name: "Symfuhny"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 22,
             streamStart: 1568165344
         },
@@ -171,7 +444,7 @@ const DEFAULT_STATE = {
                 name: "Nickmercs"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 17,
             streamStart: 1568165344
         },
@@ -185,7 +458,7 @@ const DEFAULT_STATE = {
                 name: "Dakotaz"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 5,
             streamStart: 1568165344
         },
@@ -199,7 +472,7 @@ const DEFAULT_STATE = {
                 name: "Ninja"
             },
             action: "Eliminated by",
-            image: "https://i.ytimg.com/vi/tpLLst4-3fw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCa96p7hYxmvLj9e89oHrzzPVzN4g",
+            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 16,
             streamStart: 1568165344
         }
