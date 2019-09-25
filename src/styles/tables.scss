@@ -2,15 +2,22 @@ $break-ipad: 500px;
 .table-wrapper {
     position: relative;
 }
-.mover {
-    width: 196px;
-    transition: .5s;
+.wrapper {
+overflow: hidden;
+  position: relative;
+  background: #222;
+  z-index: 1;
 }
 .table {
     display: flex;
     position: relative;
     flex-flow: row wrap;
     justify-content: center;
+    top: 0;
+    left: 0;
+    &.shifting {
+        transition: left .2s ease-out;
+    }
     &__next,
     &__previous {
         display: flex;
@@ -59,6 +66,8 @@ $break-ipad: 500px;
         .video_cart {
             display: flex;
             flex-direction: row;
+            transition: all 1s;
+            position: relative;
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
             }
