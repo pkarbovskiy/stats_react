@@ -3,16 +3,19 @@ $break-ipad: 500px;
     position: relative;
 }
 .wrapper {
-overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden; 
+    /* overflow: -moz-scrollbars-none; 
+    scroll-snap-type: mandatory; */
   position: relative;
   background: #222;
   z-index: 1;
+  /* -ms-overflow-style: none; */
+  /* &::-webkit-scrollbar {height: 0 !important} */
 }
 .table {
     display: flex;
     position: relative;
-    flex-flow: row wrap;
-    justify-content: center;
     top: 0;
     left: 0;
     &.shifting {
@@ -29,7 +32,6 @@ overflow: hidden;
         border: none;
         border-radius: 50%;
         background-color: white;
-        vertical-align: middle;
         svg {
             height: 25px;
             fill:#1d1d1d;
@@ -52,12 +54,8 @@ overflow: hidden;
             width: 100vw;
         }
         &.horisontal {
-            width: 100vw;
-            flex-wrap: nowrap;
-            justify-content: left;
+
             @media screen and (max-width: 1024px) {
-                width: 79vw;
-                overflow: hidden;
             }
             .video_cart {
                 flex-direction: column;

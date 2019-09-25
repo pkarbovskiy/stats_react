@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, ReactNode} from 'react'
 
-const HamburgerMenu: React.FC = ({ children }) => {
+const HamburgerMenu = ({ children }: {children: ReactNode}) => {
     const [showMenu, toggleMenu] = useState(false)
     return (
         <nav className="main-nav">

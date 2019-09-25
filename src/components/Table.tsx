@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react'
-import ReactDom from 'react-dom'
 import VideoCart, { videoCartProps } from './VideoCart'
 
-const Table: React.FC<{ videos: any; classNameProp?: string | string[] }> = ({ videos, classNameProp = '' }) => {
+const Table = ({ videos, classNameProp = '' }: { videos: any; classNameProp?: string | string[] }) => {
     const items: any = useRef(false)
     let posX1 = 0,
         posX2 = 0,
         posInitial: number,
         posFinal: number,
-        threshold = 222,
+        threshold = 100,
         index = 0,
         slideSize = 222,
         allowShift = true
@@ -28,27 +27,29 @@ const Table: React.FC<{ videos: any; classNameProp?: string | string[] }> = ({ v
             items.current.removeEventListener('transitionend', checkIndex);
         }
     }, [])
-
-    function dragStart(e: any) {
-        e.preventDefault()
-        posInitial = items.current.offsetLeft
-
-        if (e.type == 'touchstart') {
-            posX1 = e.touches[0].clientX
-        } else {
-            posX1 = e.clientX
-            document.onmouseup = dragEnd
-            document.onmousemove = dragAction
-        }
-    }
-
+    
     function dragAction(e: any) {
-        const position = e.type == 'touchmove' ? e.touches[0].clientX : e.clientX
+        const position = Math.floor(e.type === 'touchmove' ? e.touches[0].clientX : e.clientX)
 
         posX2 = posX1 - position
         posX1 = position
 
         items.current.style.left = (items.current.offsetLeft - posX2) + "px"
+    }
+    
+    function dragStart(e: any) {
+        e.preventDefault()
+        posInitial = items.current.offsetLeft
+
+        if (e.type === 'touchstart') {
+            posX1 = Math.floor(e.touches[0].clientX)
+            return;
+        }
+
+        posX1 =  Math.floor(e.clientX)
+        document.onmouseup = dragEnd
+        document.onmousemove = dragAction
+        
     }
 
     function dragEnd(e: any) {
@@ -83,13 +84,13 @@ const Table: React.FC<{ videos: any; classNameProp?: string | string[] }> = ({ v
         items.current.classList.remove('shifting');
 
         if (index == -1) {
-            items.current.style.left = -(videos.length * slideSize) + "px";
-            index = videos.length - 1;
+            items.current.style.left = -(videos.length * slideSize) + "px"
+            index = 0
         }
 
         if (index == videos.length) {
-            items.current.style.left = -(1 * slideSize) + "px";
-            index = 0;
+            items.current.style.left = -(1 * slideSize) + "px"
+            index = videos.length - 1
         }
 
         allowShift = true;
