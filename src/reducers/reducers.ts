@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import { action } from '../actions'
 const DEFAULT_STATE = {
-    killDeathTimers: [
+    deathKillTimers: [
         {id:331880, startTime:  708, actionId: 2},
         {id:331958, startTime:  2266, actionId:  2},
         {id:332059, startTime:  5874, actionId:  3},
