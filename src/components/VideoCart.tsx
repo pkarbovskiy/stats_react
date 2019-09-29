@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-export interface videoCartProps {
+export type videoCartProps = {
     streamer: {
         id: number | string;
         name: string;
@@ -11,25 +11,27 @@ export interface videoCartProps {
     },
     streamStart: number;
     action: string;
-    views: number;
     image: string;
+    videoId: number;
+    clipId?: number;
 }
-const VideoCart: React.FC<videoCartProps> = (props: videoCartProps) => {
-    return (
-        <div className="video_cart">
-            <img className="video_cart--image" src={props.image} alt={`${props.streamer.name.toLowerCase()} ${props.action} ${props.player.name.toLowerCase()}`} />
-            <div className="video_cart__info">
-                <Link to={`/player/${props.streamer.id}/${props.streamer.name.toLowerCase()}`} className="video_cart__info__streamer--pic">
-                    <img src={`http://streamsnipers.com/static/images/streamers/${props.streamer.name}.png`} alt="top streamer" />
-                </Link>
-                <span className="video_cart__info__description">
-                    {props.streamer.name}
-                    {` ${props.action}`}
-                    <Link to={`/player/${props.player.id}/${props.player.name.toLowerCase()}`}>{props.player.name}</Link>
-                </span>
-            </div>
+const VideoCart = ({ streamer, player, streamStart, action, image, videoId, clipId }: videoCartProps) => (
+    <div className="video_cart">
+        <Link to={`/video/${videoId}/${clipId ? `clip/${clipId}/` : ''}`}>
+            <img className="video_cart--image" src={image} alt={`${streamer.name.toLowerCase()} ${action} ${player.name.toLowerCase()}`} />
+        </Link>
+        <div className="video_cart__info">
+            <Link to={`/player/${streamer.id}/${streamer.name.toLowerCase()}`} className="video_cart__info__streamer--pic">
+                <img src={`http://streamsnipers.com/static/images/streamers/${streamer.name}.png`} alt="top streamer" />
+            </Link>
+            <span className="video_cart__info__description">
+                {streamer.name}
+                {` ${action}`}
+                <Link to={`/player/${player.id}/${player.name.toLowerCase()}`}>{player.name}</Link>
+            </span>
         </div>
-    );
-}
+    </div>
+)
 
-export default VideoCart;
+
+export default VideoCart
