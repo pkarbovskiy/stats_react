@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Table from '../components/Table'
+import Slider from '../components/Slider'
 const StreamerVideos = ({ streamer, videos }: { streamer: { id: number, name: string }, videos: any }) => {
     return (
         <div className="streamer_video">
@@ -10,7 +10,7 @@ const StreamerVideos = ({ streamer, videos }: { streamer: { id: number, name: st
                 </Link>
                 <h2>{streamer.name}</h2>
             </div>
-            <Table videos={videos} classNameProp={['side', 'horisontal']} />
+            <Slider videos={videos} classNameProp={['side', 'horisontal']} />
         </div>
     )
 }
