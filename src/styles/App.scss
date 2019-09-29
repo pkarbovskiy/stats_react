@@ -25,13 +25,19 @@ html, body {
 a {
     color: $main-font-color;
 }
+.streamsnipers_app {
+    display: flex;
+    flex-wrap: wrap;
+}
 .hide {
     display:none !important;
 }
 .header {
     display: flex;
     flex-flow: row nowrap;
+    flex-shrink: 1;
     height: 56px;
+    width: 100vw;
     padding: 0 16px;
     justify-content: space-between;
     align-items: center;
