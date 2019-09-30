@@ -14,6 +14,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
         DEATH: 3,
         KILL: 2
     }
+    const timeBeforeAction = 15
     const currentDeathIndex: number = 0,
           currentKillIndex: number = 0
 
@@ -25,8 +26,12 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
 
     function findEvent(direction: 1 | 0, action: number, currentTime: number):timer {
         if (!processed) {
-            splitDeathKill[ACTIONS.DEATH] = deathKillTimers.filter(record => record.actionId === ACTIONS.DEATH)
-            splitDeathKill[ACTIONS.KILL] = deathKillTimers.filter(record => record.actionId === ACTIONS.KILL)
+            splitDeathKill[ACTIONS.DEATH] = deathKillTimers
+                                                .filter(record => record.actionId === ACTIONS.DEATH)
+                                                .map(item => Object.assign({}, item, {startTime: item.startTime - timeBeforeAction}))
+            splitDeathKill[ACTIONS.KILL] = deathKillTimers
+                                                .filter(record => record.actionId === ACTIONS.KILL)
+                                                .map(item => Object.assign({}, item, {startTime: item.startTime - timeBeforeAction}))
             processed = true
         }
         let timer: timer | void
