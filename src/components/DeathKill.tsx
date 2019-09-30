@@ -25,6 +25,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
     let processed: boolean = false
 
     function findEvent(direction: 1 | 0, action: number, currentTime: number):timer {
+        console.log(currentTime);
         if (!processed) {
             splitDeathKill[ACTIONS.DEATH] = deathKillTimers
                                                 .filter(record => record.actionId === ACTIONS.DEATH)
