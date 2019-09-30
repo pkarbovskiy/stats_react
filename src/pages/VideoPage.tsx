@@ -10,7 +10,7 @@ type VideoPage = {
     twitchPlayer: TwitchPlayerOptions;
 }
 
-const VideoPage: React.FC<{ videos: any; twitchPlayer: any; deathKillTimers: any[]}> = ({ twitchPlayer, videos, deathKillTimers }) => {
+const VideoPage = ({ twitchPlayer, videos, deathKillTimers }: { videos: any; twitchPlayer: any; deathKillTimers: any[] }) => {
     const [videoHandler, setVideoHandler] = useState(false);
     return (
         <div className="video_page">

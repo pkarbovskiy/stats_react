@@ -30,12 +30,11 @@ const VideoCart = ({ streamer, player, streamStart, action, image, videoId, titl
                 ''
             }
             <span className="video_cart__info__description">
-                {streamer.name}
-                {` ${action}`}
-                <Link to={`/player/${player.id}/${player.name.toLowerCase()}`}>{player.name}</Link>
+                {title ? title : [`${streamer.name} ${action} `, <Link to={`/player/${player.id}/${player.name.toLowerCase()}`}>{player.name}</Link>]}
             </span>
         </div>
     </div>
 )
+
 
 export default VideoCart
