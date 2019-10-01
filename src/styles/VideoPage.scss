@@ -1,0 +1,25 @@
+
+.video_page {
+    &__info {
+        display:flex;
+        margin: 5px;
+        h2 {
+            margin: 0 0 0 5px;
+        }
+    }
+    &__views {
+        display: flex;
+        svg {
+            height: 20px;
+            fill: white;
+            margin: 0 5px;
+        }
+        &--num {
+            font-size: 14px;
+        }
+    }
+    .text {
+        display: flex;
+        flex-direction: column;
+    }
+}

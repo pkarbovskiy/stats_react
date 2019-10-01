@@ -1,49 +1,8 @@
 $break-ipad: 500px;
-.table-wrapper {
-    position: relative;
-}
-.wrapper {
-overflow: hidden;
-  position: relative;
-  background: #222;
-  z-index: 1;
-}
 .table {
     display: flex;
-    position: relative;
     flex-flow: row wrap;
     justify-content: center;
-    top: 0;
-    left: 0;
-    &.shifting {
-        transition: left .2s ease-out;
-    }
-    &__next,
-    &__previous {
-        display: flex;
-        position: absolute;
-        z-index: 3;
-        width: 36px;
-        height: 36px;
-        top: 43px;
-        border: none;
-        border-radius: 50%;
-        background-color: white;
-        vertical-align: middle;
-        svg {
-            height: 25px;
-            fill:#1d1d1d;
-        }
-    }
-    &__next {
-        right:0;        
-    }
-    &__previous {
-        left: -11px;
-        svg {
-            transform: scaleX(-1);
-        }
-    }
     &.side {
         width: 60vw;
         margin: 10px auto;
@@ -51,23 +10,9 @@ overflow: hidden;
         @media screen and (max-width: 1024px) {
             width: 100vw;
         }
-        &.horisontal {
-            width: 100vw;
-            flex-wrap: nowrap;
-            justify-content: left;
-            @media screen and (max-width: 1024px) {
-                width: 79vw;
-                overflow: hidden;
-            }
-            .video_cart {
-                flex-direction: column;
-            }
-        }
         .video_cart {
             display: flex;
             flex-direction: row;
-            transition: all 1s;
-            position: relative;
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
             }

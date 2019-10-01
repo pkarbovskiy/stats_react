@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Table from '../components/Table'
-const StreamerVideos: React.FC<{ streamer: { id: number, name: string }, videos: any }> = ({ streamer, videos }) => {
+import Slider from '../components/Slider'
+const StreamerVideos = ({ streamer, videos }: { streamer: { id: number, name: string }, videos: any }) => {
     return (
         <div className="streamer_video">
             <div className="streamer_video__info">
@@ -10,7 +10,7 @@ const StreamerVideos: React.FC<{ streamer: { id: number, name: string }, videos:
                 </Link>
                 <h2>{streamer.name}</h2>
             </div>
-            <Table videos={videos} classNameProp={['side', 'horisontal']} />
+            <Slider videos={videos} classNameProp={['side', 'horisontal']} />
         </div>
     )
 }

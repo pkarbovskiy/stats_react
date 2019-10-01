@@ -1,43 +1,70 @@
 import React, {useState} from 'react'
-type DeathKillProps = {
-    deathTimers:any[];
-    killTimers:any[];
-    videoHandler:any;
-    currentDeath: string;
+type timer = {
+    id: number;
+    startTime: number;
+    actionId: number;
 }
-const DeathKill: React.FC<DeathKillProps> = ({deathTimers, killTimers, videoHandler, currentDeath}) => {
-    const [currentKillIndex, setCurrentKillIndex] = useState(0),
-        [currentDeathIndex, setCurrenDeathIndex] = useState(deathTimers.findIndex((timer: any) => timer.id === currentDeath))
-    function deathMove(direction: number): void {
-        if (
-            videoHandler
-            && (
-                currentDeathIndex + direction < 0
-                || currentDeathIndex + direction === deathTimers.length
-            )
-        ) {
+type DeathKillProps = {
+    deathKillTimers: timer[];
+    videoHandler: any;
+}
+
+const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
+    const ACTIONS = {
+        DEATH: 3,
+        KILL: 2
+    }
+    const timeBeforeAction = 15
+    const currentDeathIndex: number = 0,
+          currentKillIndex: number = 0
+
+    const splitDeathKill: {[action:number]: timer[]} = {
+        [ACTIONS.DEATH]: [],
+        [ACTIONS.KILL]: [] 
+    }
+    let processed: boolean = false
+
+    function findEvent(direction: 1 | 0, action: number, currentTime: number):timer {
+        console.log(currentTime);
+        if (!processed) {
+            splitDeathKill[ACTIONS.DEATH] = deathKillTimers
+                                                .filter(record => record.actionId === ACTIONS.DEATH)
+                                                .map(item => Object.assign({}, item, {startTime: item.startTime - timeBeforeAction}))
+            splitDeathKill[ACTIONS.KILL] = deathKillTimers
+                                                .filter(record => record.actionId === ACTIONS.KILL)
+                                                .map(item => Object.assign({}, item, {startTime: item.startTime - timeBeforeAction}))
+            processed = true
+        }
+        let timer: timer | void
+
+        if (direction) {
+            timer = splitDeathKill[action].find(
+                record => {
+                    return record.startTime >= currentTime
+                })
+        } else {
+            timer = [...splitDeathKill[action]].reverse().find(
+                record => {
+                    return record.startTime < currentTime
+                })
+        }
+        if (!timer) {
+            return splitDeathKill[action][!~direction? 0: splitDeathKill[action].length -1]
+        }
+        return timer
+    }
+    function move(direction: 1 | 0, action: number): void {
+        if (!videoHandler) {
             return
         }
-        setCurrenDeathIndex((currentValue: number) => currentValue + direction)
-        videoHandler.seek(deathTimers[currentDeathIndex].startTime)
+       
+        videoHandler.seek((findEvent(direction, action, videoHandler.getCurrentTime())).startTime)
     }
-    function killMove(direction: number): void {
-        if ( 
-            videoHandler
-            && (
-                currentKillIndex + direction < 0
-                || currentKillIndex + direction === killTimers.length
-            )
-        ) {
-            return
-        }
-        setCurrentKillIndex((currentValue: number) => currentValue + direction)
-        videoHandler.seek(killTimers[currentKillIndex].startTime)
-    }
+
     return (
         <div className="death_kill">
             <div className="death_kill__back">
-                <button className={`death_kill__back__death${currentDeathIndex === 0?' disabled':''}`} onClick={()=> deathMove(-1)} disabled={currentDeathIndex === 0}>
+                <button className={`death_kill__back__death${currentDeathIndex === 0?' disabled':''}`} onClick={()=> move(0, ACTIONS.DEATH)}>
                     <svg x="0px" y="0px" viewBox="0 0 512 512" >
                         <path d="M256,0C114.6,0,0,100.3,0,224c0,70.1,36.9,132.6,94.5,173.7c9.6,6.9,15.2,18.1,13.5,29.9l-9.4,66.2
                         c-1.4,9.6,6,18.2,15.7,18.2H192v-56c0-4.4,3.6-8,8-8h16c4.4,0,8,3.6,8,8v56h64v-56c0-4.4,3.6-8,8-8h16c4.4,0,8,3.6,8,8v56h77.7
@@ -46,7 +73,7 @@ const DeathKill: React.FC<DeathKillProps> = ({deathTimers, killTimers, videoHand
                         s64,28.7,64,64S441.3,317,406,317z"/>
                     </svg>
                 </button>
-                <button className={`death_kill__back__kill${currentKillIndex === 0 ? ' disabled' : ''}`} onClick={()=> killMove(-1)} disabled={currentKillIndex === 0}>
+                <button className={`death_kill__back__kill${currentKillIndex === 0 ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.KILL)}>
                     <svg viewBox="0 0 141 29">
                         <title>shotgun</title>
                         <path d="M2,12h5l16,2c2.3-4,5.8-7.1,10-9c2.3-0.3,4.7-0.6,7-1c2-0.3,4-0.6,6-1l85,1c0-1.1,0.4-2.1,1-3c0.3-0.4,0.6-0.7,1-1l1.3,1.1
@@ -59,7 +86,7 @@ const DeathKill: React.FC<DeathKillProps> = ({deathTimers, killTimers, videoHand
                 </button>
             </div>
             <div className="death_kill__next">
-                <button className="death_kill__next__death" onClick={()=> deathMove(1)} disabled={currentDeathIndex === deathTimers.length - 1}>
+                <button className="death_kill__next__death" onClick={()=> move(1, ACTIONS.DEATH)} disabled={currentDeathIndex === splitDeathKill[ACTIONS.DEATH].length - 1}>
                     <svg x="0px" y="0px" viewBox="0 0 512 512" >
                         <path d="M256,0C114.6,0,0,100.3,0,224c0,70.1,36.9,132.6,94.5,173.7c9.6,6.9,15.2,18.1,13.5,29.9l-9.4,66.2
                         c-1.4,9.6,6,18.2,15.7,18.2H192v-56c0-4.4,3.6-8,8-8h16c4.4,0,8,3.6,8,8v56h64v-56c0-4.4,3.6-8,8-8h16c4.4,0,8,3.6,8,8v56h77.7
@@ -68,7 +95,7 @@ const DeathKill: React.FC<DeathKillProps> = ({deathTimers, killTimers, videoHand
                         s64,28.7,64,64S441.3,317,406,317z"/>
                     </svg>
                 </button>
-                <button className="death_kill__next__kill" onClick={()=> killMove(1)} disabled={currentKillIndex === killTimers.length - 1}>
+                <button className="death_kill__next__kill"  onClick={()=> move(1, ACTIONS.KILL)} disabled={currentKillIndex === splitDeathKill[ACTIONS.KILL].length - 1}>
                     <svg viewBox="0 0 141 29">
                         <title>shotgun</title>
                         <path d="M2,12h5l16,2c2.3-4,5.8-7.1,10-9c2.3-0.3,4.7-0.6,7-1c2-0.3,4-0.6,6-1l85,1c0-1.1,0.4-2.1,1-3c0.3-0.4,0.6-0.7,1-1l1.3,1.1
