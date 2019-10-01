@@ -13,10 +13,11 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
     const ACTIONS = {
         DEATH: 3,
         KILL: 2
-    }
-    const timeBeforeAction = 15
-    const currentDeathIndex: number = 0,
-          currentKillIndex: number = 0
+    },
+    timeBeforeAction:number = 15
+
+    let currentDeathIndex: number = 0,
+        currentKillIndex: number = 0
 
     const splitDeathKill: {[action:number]: timer[]} = {
         [ACTIONS.DEATH]: [],
