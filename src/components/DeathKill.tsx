@@ -45,7 +45,10 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
         } else {
             timer = [...splitDeathKill[action]].reverse().find(
                 record => {
-                    return record.startTime < currentTime
+                    // Subtract timeBeforeAction from currentTime because otherwise 
+                    // skipping back would never work as long as the video was playing.
+                    // It would just keep skipping back to the latest event but never 
+                    return record.startTime < currentTime - timeBeforeAction
                 })
         }
         if (!timer) {
