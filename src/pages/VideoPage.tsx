@@ -4,6 +4,7 @@ import DeathKill from '../components/DeathKill'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
+import AutoSkip from '../components/AutoSkip'
 
 type VideoPage = {
     timeline: any;//Events;
@@ -16,6 +17,7 @@ const VideoPage = ({ twitchPlayer, videos, deathKillTimers }: { videos: any; twi
         <div className="video_page">
             <TwitchPlayer options={{ ...twitchPlayer, setVideoHandler } as any} />
             <DeathKill videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
+            <AutoSkip videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
             <Table classNameProp="side" videos={videos} />
         </div>
     )

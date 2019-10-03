@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 type timer = {
     id: number;
     startTime: number;
+    endTime: number;
     actionId: number;
 }
 type DeathKillProps = {
@@ -13,27 +14,25 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
     const ACTIONS = {
         DEATH: 3,
         KILL: 2
-    },
-    timeBeforeAction:number = 15
+    }
 
     let currentDeathIndex: number = 0,
         currentKillIndex: number = 0
 
-    const splitDeathKill: {[action:number]: timer[]} = {
+    let splitDeathKill: {[action:number]: timer[]} = {
         [ACTIONS.DEATH]: [],
         [ACTIONS.KILL]: [] 
     }
     let processed: boolean = false
 
     function findEvent(direction: 1 | 0, action: number, currentTime: number):timer {
-        console.log(currentTime);
         if (!processed) {
-            splitDeathKill[ACTIONS.DEATH] = deathKillTimers
-                                                .filter(record => record.actionId === ACTIONS.DEATH)
-                                                .map(item => Object.assign({}, item, {startTime: item.startTime - timeBeforeAction}))
-            splitDeathKill[ACTIONS.KILL] = deathKillTimers
-                                                .filter(record => record.actionId === ACTIONS.KILL)
-                                                .map(item => Object.assign({}, item, {startTime: item.startTime - timeBeforeAction}))
+            splitDeathKill = deathKillTimers.reduce((acc, record)=> {
+                if (acc[record.actionId]) {
+                    acc[record.actionId].push(record)
+                }
+                return acc
+            }, {[ACTIONS.DEATH]:[],[ACTIONS.KILL]:[]} as any)
             processed = true
         }
         let timer: timer | void
@@ -41,12 +40,12 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
         if (direction) {
             timer = splitDeathKill[action].find(
                 record => {
-                    return record.startTime >= currentTime
+                    return record.endTime >= currentTime
                 })
         } else {
             timer = [...splitDeathKill[action]].reverse().find(
                 record => {
-                    return record.startTime < currentTime
+                    return record.startTime < currentTime - 5
                 })
         }
         if (!timer) {
