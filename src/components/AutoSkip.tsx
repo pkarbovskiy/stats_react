@@ -15,40 +15,41 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
     let index: number = 0
     function checkAndMoveToNextEvent() {
         let currentTime: number = videoHandler.getCurrentTime()
-        if (index == null) {
+        // we are before the first event jump to it
+        if (index == null || currentTime < deathKillTimers[0].startTime) {
             index = 0
         }
+        // we are inside an event dont need to do nothing
+        if (currentTime > deathKillTimers[index].startTime && currentTime < deathKillTimers[index].endTime + 3) {
+            return
+        }
+        // we after the last event keep index as last event and pause the video
         if (currentTime > deathKillTimers[deathKillTimers.length - 1].endTime + 3) {
             index = deathKillTimers.length - 1
             videoHandler.pause()
             return
         }
-
-        if (index >= 0 && index !== deathKillTimers.length) {
-
-            if (currentTime < deathKillTimers[index].endTime - 3 && currentTime > deathKillTimers[index].startTime) {
-                return
-            }
-            if (currentTime > deathKillTimers[index].endTime + 3
-                && deathKillTimers[index + 1]
-                && currentTime > deathKillTimers[index + 1].endTime + 3
-            ) {
-                for (let i = index + 1; index < deathKillTimers.length; i++) {
-                    index = i
-                    if (deathKillTimers[i].endTime < currentTime) {
-                        continue
-                    }
-                    if (deathKillTimers[i].startTime > currentTime) {
-                        break
-                    }
+        // we hit end of the event got to next
+        if (currentTime >> 0 === deathKillTimers[index].endTime + 4) {
+            index++
+            videoHandler.seek(deathKillTimers[index].startTime)
+            return
+        }
+        // we are in between events we need to find right event
+        if (currentTime > deathKillTimers[index].endTime + 3) {
+            //let's find proper event if user is seeking manually
+            for (let i = index + 1; index < deathKillTimers.length; i++) {
+                index = i
+                if (deathKillTimers[i].endTime < currentTime) {
+                    continue
+                }
+                if (deathKillTimers[i].startTime > currentTime) {
+                    break
                 }
             }
-
-            if (currentTime > deathKillTimers[index].endTime + 3) {
-                index++
-            }
-            videoHandler.seek(deathKillTimers[index].startTime)
         }
+        videoHandler.seek(deathKillTimers[index].startTime)
+
     }
     useEffect(() => {
         if (!videoHandler) {
