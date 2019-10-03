@@ -20,7 +20,7 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
             index = 0
         }
         // we are inside an event dont need to do nothing
-        if (currentTime > deathKillTimers[index].startTime && currentTime < deathKillTimers[index].endTime + 3) {
+        if (currentTime >= deathKillTimers[index].startTime && currentTime <= deathKillTimers[index].endTime + 3) {
             return
         }
         // we after the last event keep index as last event and pause the video
