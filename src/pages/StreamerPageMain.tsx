@@ -8,14 +8,13 @@ import Slider from '../components/Slider'
 const StreamerPageMain = ({ streamer, videos, match }: any) => {
     return (
         <div className="streamer_page">
-            <div><Link to={`/player/${streamer.id}/videos`}>Videos</Link><Link to={`/player/${streamer.id}/clips`}>Clips</Link></div>
             <div className="streamer_page__avatar">
                 <img src={`http://streamsnipers.com/static/images/streamers/${streamer.name}.png`} alt={`${streamer.name} avatar`} />
                 <h1>{streamer.name}</h1>
             </div>
-            <h3>Recent one category</h3><Link to={`/player/${streamer.id}/videos`}>View All ></Link>
+            <h3>Recent one category</h3><Link to={`/player/${streamer.id}/${streamer.slug}/videos`}>View All ></Link>
             <Slider classNameProp="side" videos={videos} />
-            <h3>Recent other category</h3><Link to={`/player/${streamer.id}/clips`}>View All ></Link>
+            <h3>Recent other category</h3><Link to={`/player/${streamer.id}/${streamer.slug}/clips`}>View All ></Link>
             <Slider classNameProp="side" videos={videos} />
         </div>
     )

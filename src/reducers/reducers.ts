@@ -66,7 +66,8 @@ const DEFAULT_STATE = {
         {
             streamer: {
                 id: 3372,
-                name: "Symfuhny"
+                name: "Symfuhny",
+                slug: "symfuhny"
             },
             videos: [
                 {

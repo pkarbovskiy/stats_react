@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import HomePage from './pages/HomePage'
 
 import VideoPage from './pages/VideoPage'
-import StreamerPage from './pages/StreamerPageMain'
+import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
 import VideoListPage from './pages/VideoListPage'
 import Header from './common/header'
@@ -90,7 +90,7 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                     <Route exact path="/random_video" component={VideoPage} />
                     <Route exact path="/video/:videoId" component={VideoPage} />
                     <Route exact path="/video/:videoId/clip/:clipId" component={VideoPage} />
-                    <Route path="/player/:playerId" component={StreamerPage} />
+                    <Route path="/player/:playerId/:slug" component={StreamerPage} />
                     <Route exact path="/random_streamer" component={StreamerPage} />
                     <Route exact path="/featured_streamers" component={StreamerPage} />
                     <Route exact path="/search" component={SearchPage} />

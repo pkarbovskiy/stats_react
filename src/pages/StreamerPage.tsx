@@ -1,16 +1,21 @@
 import React from 'react'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import StreamerPageMain from './StreamerPageMain'
 import VideoListPage from './VideoListPage'
 //TODO: figure out proper type
 const StreamerPage = ({ streamer, videos, match }: any) => {
     return (
         <div className="streamer_page">
-            <Route exact path="/:slug" component={StreamerPageMain} />
-            <Route path="/:slug/clips" component={VideoListPage} />
-            <Route path="/:slug/videos" component={VideoListPage} />
+            <div>
+                <Link to={`/player/${streamer.id}/${match.params.slug}`}>Main</Link>
+                <Link to={`/player/${streamer.id}/${match.params.slug}/videos`}>Videos</Link>
+                <Link to={`/player/${streamer.id}/${match.params.slug}/clips`}>Clips</Link>
+            </div>
+            <Route exact path={match.path} component={StreamerPageMain} />
+            <Route path={`${match.path}/clips`} component={VideoListPage} />
+            <Route path={`${match.path}/videos`} component={VideoListPage} />
         </div>
     )
 }
