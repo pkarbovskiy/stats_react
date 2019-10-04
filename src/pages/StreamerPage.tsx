@@ -9,7 +9,7 @@ const StreamerPage = ({ streamer, videos, match }: any) => {
     return (
         <div className="streamer_page">
             <div>
-                <Link to={`/player/${streamer.id}/${match.params.slug}`}>Main</Link>
+                <Link to={`/player/${streamer.id}/${match.params.slug}`}>Home</Link>
                 <Link to={`/player/${streamer.id}/${match.params.slug}/videos`}>Videos</Link>
                 <Link to={`/player/${streamer.id}/${match.params.slug}/clips`}>Clips</Link>
             </div>

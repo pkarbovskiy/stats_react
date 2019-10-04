@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type timer = {
     id: number;
@@ -13,6 +13,8 @@ type DeathKillProps = {
 
 const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
     let index: number = 0
+    let id: any = 0
+    const [checkBoxStatus, onChangeStatus] = useState(false)
     function checkAndMoveToNextEvent() {
         let currentTime: number = videoHandler.getCurrentTime()
         // we are before the first event jump to it
@@ -55,17 +57,26 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
         if (!videoHandler) {
             return
         }
+        if (!checkBoxStatus) {
+            if (!id) {
+                return
+            }
+            clearInterval(id)
+        }
 
-        let id = setInterval(checkAndMoveToNextEvent, 1000)
+        id = setInterval(checkAndMoveToNextEvent, 1000)
 
         return () => {
             clearInterval(id)
+            id = 0
         }
-    }, [videoHandler])
+    }, [videoHandler, checkBoxStatus])
 
     return (
-        <>
-        </>
+        <div>
+            <input type="checkbox" id="autoskip" onChange={() => onChangeStatus(oldState => !oldState)} />
+            <label htmlFor="autoskip">Autoskip</label>
+        </div>
     )
 }
 
