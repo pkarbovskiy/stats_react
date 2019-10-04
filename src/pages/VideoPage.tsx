@@ -18,6 +18,7 @@ const VideoPage = ({ twitchPlayer, videos, deathKillTimers }: { videos: any; twi
             <TwitchPlayer options={{ ...twitchPlayer, setVideoHandler } as any} />
             <DeathKill videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
             <AutoSkip videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
+            <h3>Other broacats</h3>
             <Table classNameProp="side" videos={videos} />
         </div>
     )
