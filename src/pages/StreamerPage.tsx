@@ -1,33 +1,32 @@
 import React from 'react'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import Table from '../components/Table'
-
+import { Route } from 'react-router-dom'
+import StreamerPageMain from './StreamerPageMain'
+import VideoListPage from './VideoListPage'
 //TODO: figure out proper type
-const StreamerPage = ({streamer, videos, match}:any) => {
-  return (
-    <div className="streamer_page">
-        <div className="streamer_page__avatar">
-          <img src={`http://streamsnipers.com/static/images/streamers/${streamer.name}.png`} alt={`${streamer.name} avatar`} />
-          <h1>{streamer.name}</h1>
+const StreamerPage = ({ streamer, videos, match }: any) => {
+    return (
+        <div className="streamer_page">
+            <Route exact path="/:slug" component={StreamerPageMain} />
+            <Route path="/:slug/clips" component={VideoListPage} />
+            <Route path="/:slug/videos" component={VideoListPage} />
         </div>
-        <Table classNameProp="side" videos={videos} />
-    </div>
-  )
+    )
 }
 
 const mapStateToProps = (state: { mainReducer: State }) => {
-  return {
-      videos: state.mainReducer.videos,
-      streamer: state.mainReducer.streamers[0]
-  }
+    return {
+        videos: state.mainReducer.videos,
+        streamer: state.mainReducer.streamers[0].streamer
+    }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
-  return {}
+    return {}
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(StreamerPage)

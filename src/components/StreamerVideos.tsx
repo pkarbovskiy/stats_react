@@ -8,7 +8,7 @@ const StreamerVideos = ({ streamer, videos }: { streamer: { id: number, name: st
                 <Link to={`/player/${streamer.id}/${streamer.name.toLowerCase()}`} className="streamer_video__info--pic">
                     <img src={`http://streamsnipers.com/static/images/streamers/${streamer.name}.png`} alt="top streamer" />
                 </Link>
-                <h2>{streamer.name}</h2>
+                <h2>{streamer.name}</h2><Link to="">View All > </Link>
             </div>
             <Slider videos={videos} classNameProp={['side', 'horisontal']} />
         </div>
