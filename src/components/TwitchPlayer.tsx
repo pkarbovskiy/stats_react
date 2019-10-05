@@ -53,16 +53,11 @@ const TwitchPlayer = ({ targetElementId, autoplay, video, videoTime, deathKillTi
         }
     }, [player])
 
-
     return (
         <>
             <div id={targetElementId} className="player"></div>
-            {player &&
-                <>
-                    <DeathKill videoHandler={player} deathKillTimers={deathKillTimers} />
-                    <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
-                </>
-            }
+            <DeathKill videoHandler={player} deathKillTimers={deathKillTimers} />
+            <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
         </>
     )
 }

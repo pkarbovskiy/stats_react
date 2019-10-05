@@ -13,8 +13,8 @@ type DeathKillProps = {
 
 const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
     let index: number = 0
-    let id: any = 0
     const [checkBoxStatus, onChangeStatus] = useState(false)
+    const [id, setId] = useState()
     function checkAndMoveToNextEvent() {
         let currentTime: number = videoHandler.getCurrentTime()
         // we are before the first event jump to it
@@ -28,7 +28,7 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
         // we after the last event keep index as last event and pause the video
         if (currentTime > deathKillTimers[deathKillTimers.length - 1].endTime + 3) {
             index = deathKillTimers.length - 1
-            videoHandler.pause()
+            //videoHandler.pause()
             return
         }
         // we hit end of the event got to next
@@ -64,11 +64,11 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
             clearInterval(id)
         }
 
-        id = setInterval(checkAndMoveToNextEvent, 1000)
+        setId(setInterval(checkAndMoveToNextEvent, 1000))
 
         return () => {
             clearInterval(id)
-            id = 0
+            setId(0)
         }
     }, [videoHandler, checkBoxStatus])
 

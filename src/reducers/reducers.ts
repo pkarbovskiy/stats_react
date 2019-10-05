@@ -83,7 +83,7 @@ const DEFAULT_STATE = {
         targetElementId: 'twitchPlayer',
         autoplay: true,
         video: 486266736,
-        videoTime: 0
+        videoTime: 1566
     },
     streamers: [
         {
