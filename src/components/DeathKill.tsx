@@ -40,7 +40,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
         if (direction) {
             timer = splitDeathKill[action].find(
                 record => {
-                    return record.endTime >= currentTime
+                    return record.startTime >= currentTime
                 })
         } else {
             timer = [...splitDeathKill[action]].reverse().find(
