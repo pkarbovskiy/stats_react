@@ -1,7 +1,15 @@
-import {createActions} from 'redux-actions'
+import { createActions } from 'redux-actions'
 
 export const {
-  action
+    addVideosById,
+    addClipsById,
+    addVideosSorted,
+    addClipsSorted,
+    addPlayersById
 } = createActions({
-  ACTION: (value:any) => ({value})
+    ADD_VIDEOS_BY_ID: (objects: any) => objects,
+    ADD_CLIPS_BY_ID: (objects: any) => objects,
+    ADD_VIDEOS_SORTED: (objects: any) => objects,
+    ADD_CLIPS_SORTED: (objects: any) => objects,
+    ADD_PLAYERS_BY_ID: (objects: any) => objects
 })

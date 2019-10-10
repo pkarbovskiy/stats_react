@@ -10,7 +10,7 @@ const StreamerVideos = ({ streamer, videos }: { streamer: { id: number, name: st
                 </Link>
                 <h2>{streamer.name}</h2><Link to={`/player/${streamer.id}/${streamer.slug}/videos`}>View All > </Link>
             </div>
-            <Slider videos={videos} classNameProp={['side', 'horisontal']} />
+            {/* <Slider videos={videos} classNameProp={['side', 'horisontal']} /> */}
         </div>
     )
 }

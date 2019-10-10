@@ -1,27 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import StreamerVideos from '../components/StreamerVideos'
-import '../styles/App.scss'
 import { addVideosById } from '../actions'
 import { videosByDate } from '../selectors'
 import { State } from '../reducers/reducers'
+import Table from '../components/Table'
 
-
-const HomePage: React.FC<{ videosByDate: any, streamers: any }> = ({
-    videosByDate,
-    streamers
-}) => {
+const VideoListPage = ({ playersById, clipsById, clipsSorted, match }: any) => {
     return (
-        <div className="home__page">
-            {streamers.map((streamer: any) => (<StreamerVideos {...streamer} />))}
+        <div className="video_list__page">
+            <h2>Title</h2>
+            <Table classNameProp="side" mediaSorted={clipsSorted} mediaById={clipsById} playersById={playersById} />
         </div>
     );
 }
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        videosByDate: videosByDate(state),
-        streamers: state.mainReducer.streamers
+        clipsSorted: state.mainReducer.clipsSorted.slice(0, 30),
+        clipsById: state.mainReducer.clipsById,
+        playersById: state.mainReducer.playersById
     }
 }
 
@@ -36,4 +33,4 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(HomePage)
+)(VideoListPage)

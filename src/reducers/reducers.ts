@@ -1,5 +1,11 @@
 import { handleActions } from 'redux-actions'
-import { action } from '../actions'
+import {
+    addVideosById,
+    addClipsById,
+    addVideosSorted,
+    addClipsSorted,
+    addPlayersById
+} from '../actions'
 const DEFAULT_STATE = {
     deathKillTimers: [
         { id: 327983, endTime: 1396, startTime: 1380, actionId: 2 },
@@ -183,187 +189,6 @@ const DEFAULT_STATE = {
                     views: 22,
                     streamStart: 1568165344
                 }]
-        },
-        {
-            streamer: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            videos: [
-                {
-                    streamer: {
-                        id: 3372,
-                        name: "Symfuhny"
-                    },
-                    player: {
-                        id: 3372,
-                        name: "Symfuhny"
-                    },
-                    action: "Eliminated by",
-                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                    views: 22,
-                    streamStart: 1568165344
-                },
-                {
-                    streamer: {
-                        id: 3337,
-                        name: "Nickmercs"
-                    },
-                    player: {
-                        id: 3337,
-                        name: "DrLupo"
-                    },
-                    action: "Eliminated by",
-                    image: "https://d38ev7kpu49one.cloudfront.net/242053.png",
-                    views: 17,
-                    streamStart: 1568165344
-                },
-                {
-                    streamer: {
-                        id: 3337,
-                        name: "Nickmercs"
-                    },
-                    player: {
-                        id: 3337,
-                        name: "Bugha"
-                    },
-                    action: "Eliminated by",
-                    image: "https://d38ev7kpu49one.cloudfront.net/242618.png",
-                    views: 17,
-                    streamStart: 1568165344
-                },
-                {
-                    streamer: {
-                        id: 3372,
-                        name: "Symfuhny"
-                    },
-                    player: {
-                        id: 3372,
-                        name: "dakotaz"
-                    },
-                    action: "Eliminated by",
-                    image: "https://d38ev7kpu49one.cloudfront.net/175228.png",
-                    views: 22,
-                    streamStart: 1568165344
-                },
-                {
-                    streamer: {
-                        id: 3337,
-                        name: "Nickmercs"
-                    },
-                    player: {
-                        id: 3337,
-                        name: "Chap"
-                    },
-                    action: "Eliminated by",
-                    image: "https://d38ev7kpu49one.cloudfront.net/195852.png",
-                    views: 17,
-                    streamStart: 1568165344
-                },
-                {
-                    streamer: {
-                        id: 3372,
-                        name: "Symfuhny"
-                    },
-                    player: {
-                        id: 3372,
-                        name: "Symfuhny"
-                    },
-                    action: "Eliminated by",
-                    image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                    views: 22,
-                    streamStart: 1568165344
-                }]
-        },
-        {
-            streamer: {
-                id: 3426,
-                name: "Dakotaz"
-            },
-            videos: [{
-                streamer: {
-                    id: 3372,
-                    name: "Symfuhny"
-                },
-                player: {
-                    id: 3372,
-                    name: "Symfuhny"
-                },
-                action: "Eliminated by",
-                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                views: 22,
-                streamStart: 1568165344
-            },
-            {
-                streamer: {
-                    id: 3337,
-                    name: "Nickmercs"
-                },
-                player: {
-                    id: 3337,
-                    name: "Nickmercs"
-                },
-                action: "Eliminated by",
-                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                views: 17,
-                streamStart: 1568165344
-            },
-            {
-                streamer: {
-                    id: 3337,
-                    name: "Nickmercs"
-                },
-                player: {
-                    id: 3337,
-                    name: "Nickmercs"
-                },
-                action: "Eliminated by",
-                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                views: 17,
-                streamStart: 1568165344
-            },
-            {
-                streamer: {
-                    id: 3372,
-                    name: "Symfuhny"
-                },
-                player: {
-                    id: 3372,
-                    name: "Symfuhny"
-                },
-                action: "Eliminated by",
-                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                views: 22,
-                streamStart: 1568165344
-            },
-            {
-                streamer: {
-                    id: 3337,
-                    name: "Nickmercs"
-                },
-                player: {
-                    id: 3337,
-                    name: "Nickmercs"
-                },
-                action: "Eliminated by",
-                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                views: 17,
-                streamStart: 1568165344
-            },
-            {
-                streamer: {
-                    id: 3426,
-                    name: "Dakotaz"
-                },
-                player: {
-                    id: 3372,
-                    name: "Symfuhny"
-                },
-                action: "Eliminated by",
-                image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-                views: 22,
-                streamStart: 1568165344
-            }]
         }
     ],
     videos: [
@@ -379,160 +204,6 @@ const DEFAULT_STATE = {
             action: "Eliminated by",
             image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
             views: 22,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            player: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 17,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            player: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 22,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            player: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 17,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            player: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 22,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            player: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 17,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            player: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 22,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            player: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 17,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            player: {
-                id: 3372,
-                name: "Symfuhny"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 22,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            player: {
-                id: 3337,
-                name: "Nickmercs"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 17,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3426,
-                name: "Dakotaz"
-            },
-            player: {
-                id: 3426,
-                name: "Dakotaz"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 5,
-            streamStart: 1568165344
-        },
-        {
-            streamer: {
-                id: 3150,
-                name: "Ninja"
-            },
-            player: {
-                id: 3150,
-                name: "Ninja"
-            },
-            action: "Eliminated by",
-            image: "https://d38ev7kpu49one.cloudfront.net/287050.png",
-            views: 16,
             streamStart: 1568165344
         }
     ],
@@ -555,14 +226,51 @@ const DEFAULT_STATE = {
         "TSM_Hamlinz": 3429,
         "Loeya": 3429,
         "AlexRamiGaming": 3429,
-    }
+    },
+    playersById: {},
+    videosById: {},
+    clipsById: {},
+    videosSorted: [],
+    clipsSorted: []
 }
 export type State = typeof DEFAULT_STATE
 
-const reducer = (state: State, action: { payload: any }): State => Object.assign({}, state, action.payload)
+const addVideosByIdReducer = (state: State, addVideos: { payload: any }): State => {
+    const newState = Object.assign({}, state)
+    newState.videosById = addVideos.payload
+    return newState
+}
+
+const addClipsByIdReducer = (state: State, addClips: { payload: any }): State => {
+    const newState = Object.assign({}, state)
+    newState.clipsById = addClips.payload
+    return newState
+}
+
+const addVideosSortedReducer = (state: State, addVideosSorted: { payload: any }): State => {
+    const newState = Object.assign({}, state)
+    newState.videosSorted = addVideosSorted.payload
+    return newState
+}
+
+const addClipsSortedReducer = (state: State, addClipsSorted: { payload: any }): State => {
+    const newState = Object.assign({}, state)
+    newState.clipsSorted = addClipsSorted.payload
+    return newState
+}
+
+const addPlayersByIdReducer = (state: State, addPlayersById: { payload: any }): State => {
+    const newState = Object.assign({}, state)
+    newState.playersById = addPlayersById.payload
+    return newState
+}
 
 export const mainReducer = handleActions({
-    [action as any]: reducer
+    [addVideosById as any]: addVideosByIdReducer,
+    [addClipsById as any]: addClipsByIdReducer,
+    [addVideosSorted as any]: addVideosSortedReducer,
+    [addClipsSorted as any]: addClipsSortedReducer,
+    [addPlayersById as any]: addPlayersByIdReducer
 },
     DEFAULT_STATE
 )

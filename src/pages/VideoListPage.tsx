@@ -1,32 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { action } from '../actions'
+import { addVideosById } from '../actions'
 import { videosByDate } from '../selectors'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
 
-const VideoListPage: React.FC<{ videosByDate: any, streamers: any }> = ({
-    videosByDate
-}) => {
+const VideoListPage = ({ playersById, videosById, videosSorted, match }: any) => {
     return (
         <div className="video_list__page">
             <h2>Title</h2>
-            <Table classNameProp="side" videos={videosByDate} />
+            <Table classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} playersById={playersById} />
         </div>
     );
 }
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        videosByDate: videosByDate(state),
-        streamers: state.mainReducer.streamers
+        videosById: state.mainReducer.videosById,
+        videosSorted: state.mainReducer.videosSorted.slice(0, 30),
+        playersById: state.mainReducer.playersById
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
         onDelete: (id: any) => {
-            dispatch(action(id));
+            dispatch(addVideosById(id));
         }
     }
 }
