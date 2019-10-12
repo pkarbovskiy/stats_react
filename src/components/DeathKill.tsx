@@ -1,51 +1,40 @@
 import React from 'react'
-type timer = {
-    id: number;
-    startTime: number;
-    endTime: number;
-    actionId: number;
-}
+type timer = number[]
 type DeathKillProps = {
-    deathKillTimers: timer[];
+    deathKillTimers: any;
     videoHandler: any;
 }
 
 const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
     const ACTIONS = {
-        DEATH: 3,
-        KILL: 2
+        DEATH: "eliminatedby",
+        KILL: "eliminated"
     }
 
     let currentDeathIndex: number = 0,
         currentKillIndex: number = 0
 
-    let splitDeathKill: {[action:number]: timer[]} = {
+    let splitDeathKill: {[action:string]: timer[]} = {
         [ACTIONS.DEATH]: [],
         [ACTIONS.KILL]: [] 
     }
-    let processed: boolean = false
 
-    function findEvent(direction: 1 | 0, action: number, currentTime: number):timer {
-        if (!processed) {
-            splitDeathKill = deathKillTimers.reduce((acc, record)=> {
-                if (acc[record.actionId]) {
-                    acc[record.actionId].push(record)
-                }
-                return acc
-            }, {[ACTIONS.DEATH]:[],[ACTIONS.KILL]:[]} as any)
-            processed = true
-        }
+    function findEvent(direction: 1 | 0, action: string, currentTime: number):timer {
+       if (deathKillTimers) {
+        splitDeathKill[ACTIONS.DEATH] = deathKillTimers[ACTIONS.DEATH]
+        splitDeathKill[ACTIONS.KILL] = deathKillTimers[ACTIONS.KILL]
+       }
         let timer: timer | void
 
         if (direction) {
             timer = splitDeathKill[action].find(
                 record => {
-                    return record.startTime >= currentTime
+                    return record[0] >= currentTime
                 })
         } else {
             timer = [...splitDeathKill[action]].reverse().find(
                 record => {
-                    return record.startTime < currentTime - 5
+                    return record[0] < currentTime - 5
                 })
         }
         if (!timer) {
@@ -53,12 +42,12 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
         }
         return timer
     }
-    function move(direction: 1 | 0, action: number): void {
+    function move(direction: 1 | 0, action: string): void {
         if (!videoHandler) {
             return
         }
        
-        videoHandler.seek((findEvent(direction, action, videoHandler.getCurrentTime())).startTime)
+        videoHandler.seek((findEvent(direction, action, videoHandler.getCurrentTime()))[0])
     }
 
     return (

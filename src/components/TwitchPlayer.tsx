@@ -5,7 +5,7 @@ declare global {
     interface Window { Twitch: any; }
 }
 export type Props = {
-    video: number;
+    videoId: number;
     videoTime: number;
     targetElementId?: string;
     autoplay?: boolean;
@@ -13,7 +13,7 @@ export type Props = {
 }
 const EMBED_URL = 'https://player.twitch.tv/js/embed/v1.js';
 
-const TwitchPlayer = ({ targetElementId, autoplay, video, videoTime, deathKillTimers }: Props) => {
+const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, deathKillTimers }: Props) => {
     const [player, setPlayer] = useState()
     useEffect(() => {
         if (window.Twitch && window.Twitch.Player) {
@@ -29,7 +29,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, video, videoTime, deathKillTi
         document.body.appendChild(script);
 
         function createEmbedAddListeners() {
-            setPlayer(new window.Twitch.Player(targetElementId, { autoplay, video, videoTime }))
+            setPlayer(new window.Twitch.Player(targetElementId, { autoplay, videoId, videoTime }))
         }
     }, [])
     useEffect(() => {
@@ -42,7 +42,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, video, videoTime, deathKillTi
         }
 
         if (player) {
-            player.setVideo(`v${video}`, videoTime)
+            player.setVideo(`v${videoId}`, videoTime)
             player.addEventListener(window.Twitch.Player.READY, seekAndPlay)
         }
         return () => {

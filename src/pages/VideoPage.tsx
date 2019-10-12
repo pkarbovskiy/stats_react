@@ -1,23 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import TwitchPlayer from '../components/TwitchPlayer'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
 
-const VideoPage = ({ twitchPlayer, videos, deathKillTimers, match }: { videos: any; twitchPlayer: any; deathKillTimers: any[], match: any }) => {
-
+const VideoPage = ({ match }: { videos: any; twitchPlayer: any; match: any }) => {
+    const [timeline, setTimeline] = useState()
+    const [video, setVideo] = useState()
     useEffect(() => {
         fetch(`http://192.168.232.129:8000/api/video/${match.params.videoId}`)
             .then(data => data.json())
             .then(data => {
-                console.log(data)
+                setTimeline(data['timeline'])
+                setVideo(data['video'])
             })
     }, [])
     return (
         <div className="video_page">
-            <TwitchPlayer {...twitchPlayer} deathKillTimers={deathKillTimers} />
+            {video &&
+                <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} />
+            }
             <h3>Other broacats</h3>
-            <Table classNameProp="side" videos={videos} />
+            {/* <Table classNameProp="side" videos={video} /> */}
         </div>
     )
 }
