@@ -89,7 +89,7 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                     <Route exact path="/all_videos" component={VideoListPage} />
                     <Route exact path="/random_video" component={VideoPage} />
                     <Route exact path="/video/:videoId" component={VideoPage} />
-                    <Route exact path="/video/:videoId/clip/:clipId" component={VideoPage} />
+                    <Route exact path="/video/:videoId/timer/:timer" component={VideoPage} />
                     <Route path="/player/:playerId/:slug" component={StreamerPage} />
                     <Route exact path="/random_streamer" component={StreamerPage} />
                     <Route exact path="/featured_streamers" component={StreamerPage} />

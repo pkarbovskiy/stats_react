@@ -4,7 +4,7 @@ import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
 
-const VideoPage = ({ match }: { videos: any; twitchPlayer: any; match: any }) => {
+const VideoPage = ({ match }: { match: any }) => {
     const [timeline, setTimeline] = useState()
     const [video, setVideo] = useState()
     useEffect(() => {
@@ -18,7 +18,7 @@ const VideoPage = ({ match }: { videos: any; twitchPlayer: any; match: any }) =>
     return (
         <div className="video_page">
             {video &&
-                <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} />
+                <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />
             }
             <h3>Other broacats</h3>
             {/* <Table classNameProp="side" videos={video} /> */}

@@ -13,20 +13,20 @@ export type videoCartProps = {
         slug: string;
     },
     streamStart: number;
-    action_id: string;
+    action: string;
     videoId?: number;
-    clipId: number | '';
+    timestamp: number | '';
     includeAvatar: boolean;
     title: string;
+    imageId: number;
 }
 const VideoCart = (props: videoCartProps) => {
-    const { id, streamer, player, streamStart, action_id, videoId, title = '', clipId = '', includeAvatar = false } = props
-    console.log(props)
+    let { id, streamer, player, streamStart, action, videoId, imageId = '', title = '', timestamp = '', includeAvatar = false } = props
+    videoId = videoId || id
     return (
         <div className="video_cart">
-            <Link to={`/video/${videoId}/${clipId ? `clip/${clipId}/` : ''}`}>
-                {/* <img className="video_cart--image" src={image} alt={title ? title : `${streamer.name} ${action} ${player.name}`} /> */}
-                <img className="video_cart--image" src={`https://d38ev7kpu49one.cloudfront.net/${id}.png`} />
+            <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`}>
+                <img className="video_cart--image" src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} alt={title ? title : `${streamer.name} ${action} ${player.name}`} />
             </Link>
             <div className="video_cart__info">
                 {includeAvatar ?
@@ -36,8 +36,7 @@ const VideoCart = (props: videoCartProps) => {
                     ''
                 }
                 <span className="video_cart__info__description">
-                    {/* {title ? title : [`${streamer.name} ${action} `, <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link>]} */}
-                    {title}
+                    {title ? title : [`${streamer.name} ${action} `, <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link>]}
                 </span>
             </div>
         </div>

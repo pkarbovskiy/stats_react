@@ -5,11 +5,11 @@ import { videosByDate } from '../selectors'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
 
-const VideoListPage = ({ playersById, videosById, videosSorted, match }: any) => {
+const VideoListPage = ({ videosById, videosSorted, match }: any) => {
     return (
         <div className="video_list__page">
             <h2>Title</h2>
-            <Table classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} playersById={playersById} />
+            <Table classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} />
         </div>
     );
 }
@@ -17,8 +17,7 @@ const VideoListPage = ({ playersById, videosById, videosSorted, match }: any) =>
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosById: state.mainReducer.videosById,
-        videosSorted: state.mainReducer.videosSorted.slice(0, 30),
-        playersById: state.mainReducer.playersById
+        videosSorted: state.mainReducer.videosSorted.slice(0, 30)
     }
 }
 

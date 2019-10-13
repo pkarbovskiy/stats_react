@@ -18,11 +18,12 @@ const StreamerPage = ({ playersById, match, onData }: any) => {
     useEffect(() => {
         fetch(`http://192.168.232.129:8000/api/player/${match.params.playerId}`)
             .then(data => data.json())
-            .then(data => onData(data))
-    }, [])
-    useEffect(() => {
-        setStreamer({ ...playersById[match.params.playerId] })
-    }, [playersById[match.params.playerId]])
+            .then(data => {
+                onData(data)
+                setStreamer(data.videosById[data.videosSorted[0]].streamer)
+            })
+
+    }, [match.params.playerId])
     return (
         <div className="streamer_page">
             {!streamer && <span>LOOOOOAAAADDDDIIIIINNNNGGGGG....</span>}
@@ -61,9 +62,6 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
             }
             if (data.videosSorted) {
                 dispatch(addVideosSorted(data.videosSorted))
-            }
-            if (data.playersById) {
-                dispatch(addPlayersById(data.playersById))
             }
         }
     }

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import VideoCart, { videoCartProps } from './VideoCart'
 
-const Slider = ({ mediaSorted, mediaById, playersById, classNameProp = '' }: { mediaSorted: any; mediaById: any; playersById: any; classNameProp?: string | string[] }) => {
+const Slider = ({ mediaSorted, mediaById, classNameProp = '' }: { mediaSorted: any; mediaById: any; classNameProp?: string | string[] }) => {
     const item = 202 // cart size TODO: may be calculate dynamically 
     const items: any = useRef(false)
     function scroll(direction: 1 | -1) {
@@ -14,9 +14,7 @@ const Slider = ({ mediaSorted, mediaById, playersById, classNameProp = '' }: { m
         <div className="slider-wrapper">
             <div className={`slider ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
                 {mediaSorted.map((value: any, indx: number) => {
-                    const video: videoCartProps = Object.assign({}, mediaById[value])
-                    video.streamer = playersById[mediaById[value].streamer_id]
-                    return <VideoCart key={video.id} {...video} />
+                    return <VideoCart key={mediaById[value].id} {...mediaById[value]} />
                 })}
             </div>
             <button className="slider__previous" onClick={() => scroll(-1)}>
