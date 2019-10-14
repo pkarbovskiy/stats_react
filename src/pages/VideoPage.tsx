@@ -7,13 +7,26 @@ import Table from '../components/Table'
 const VideoPage = ({ match }: { match: any }) => {
     const [timeline, setTimeline] = useState()
     const [video, setVideo] = useState()
+    const url = 'http://192.168.232.129:8000'
     useEffect(() => {
-        fetch(`http://192.168.232.129:8000/api/video/${match.params.videoId}`)
-            .then(data => data.json())
-            .then(data => {
-                setTimeline(data['timeline'])
-                setVideo(data['video'])
-            })
+        function getVideoInfo(videoId: number) {
+            fetch(`${url}/api/video/${videoId}`)
+                .then(data => data.json())
+                .then(data => {
+                    setTimeline(data['timeline'])
+                    setVideo(data['video'])
+                })
+        }
+        if (match.path === '/random_video') {
+            fetch(`${url}/api/video/random`)
+                .then(data => data.json())
+                .then(data => {
+                    getVideoInfo(data.video_id)
+                })
+        } else {
+            getVideoInfo(match.params.videoId | 0)
+        }
+
     }, [])
     return (
         <div className="video_page">

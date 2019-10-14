@@ -4,7 +4,8 @@ import {
     addClipsById,
     addVideosSorted,
     addClipsSorted,
-    addPlayersById
+    addPlayersById,
+    setCurrentPlayer
 } from '../actions'
 const DEFAULT_STATE = {
     deathKillTimers: [
@@ -91,6 +92,7 @@ const DEFAULT_STATE = {
         video: 486266736,
         videoTime: 1566
     },
+    currentPlayer: {},
     streamers: [
         {
             streamer: {
@@ -265,12 +267,18 @@ const addPlayersByIdReducer = (state: State, addPlayersById: { payload: any }): 
     return newState
 }
 
+const setCurrentPlayerReducer = (state: State, currentPlayer: { payload: any }): State => {
+    const newState = Object.assign({}, state)
+    newState.currentPlayer = currentPlayer.payload
+    return newState
+}
 export const mainReducer = handleActions({
     [addVideosById as any]: addVideosByIdReducer,
     [addClipsById as any]: addClipsByIdReducer,
     [addVideosSorted as any]: addVideosSortedReducer,
     [addClipsSorted as any]: addClipsSortedReducer,
-    [addPlayersById as any]: addPlayersByIdReducer
+    [addPlayersById as any]: addPlayersByIdReducer,
+    [setCurrentPlayer as any]: setCurrentPlayerReducer
 },
     DEFAULT_STATE
 )

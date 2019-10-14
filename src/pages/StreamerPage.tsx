@@ -10,18 +10,32 @@ import {
     addClipsById,
     addVideosSorted,
     addClipsSorted,
-    addPlayersById
+    setCurrentPlayer
 } from '../actions'
 //TODO: figure out proper type
-const StreamerPage = ({ playersById, match, onData }: any) => {
+const StreamerPage = ({ match, onData }: any) => {
     const [streamer, setStreamer] = useState()
+    const url = 'http://192.168.232.129:8000'
     useEffect(() => {
-        fetch(`http://192.168.232.129:8000/api/player/${match.params.playerId}`)
-            .then(data => data.json())
-            .then(data => {
-                onData(data)
-                setStreamer(data.videosById[data.videosSorted[0]].streamer)
-            })
+        function getPlayer(playerId: number) {
+            fetch(`${url}/api/player/${playerId | 0}`)
+                .then(data => data.json())
+                .then(data => {
+                    onData(data)
+                    setStreamer(data.player)
+                })
+        }
+        setStreamer(false)
+        if (match.path === '/random_streamer') {
+            fetch(`${url}/api/player/random`)
+                .then(data => data.json())
+                .then(data => {
+                    getPlayer(data.streamer_id)
+                })
+        } else {
+            getPlayer(match.params.playerId | 0)
+        }
+
 
     }, [match.params.playerId])
     return (
@@ -31,12 +45,16 @@ const StreamerPage = ({ playersById, match, onData }: any) => {
                 <>
                     <div>
                         <Link to={`/player/${streamer.id}/${streamer.slug}`}>Home</Link>
-                        <Link to={`/player/${streamer.id}/${streamer.slug}/videos`}>Videos</Link>
+                        {streamer.streamer &&
+                            <Link to={`/player/${streamer.id}/${streamer.slug}/videos`}>Videos</Link>
+                        }
                         <Link to={`/player/${streamer.id}/${streamer.slug}/clips`}>Clips</Link>
                     </div>
                     <Route exact path={match.path} component={StreamerPageMain} />
                     <Route path={`${match.path}/clips`} component={ClipListPage} />
-                    <Route path={`${match.path}/videos`} component={VideoListPage} />
+                    {streamer.streamerd &&
+                        <Route path={`${match.path}/videos`} component={VideoListPage} />
+                    }
                 </>
             }
         </div>
@@ -62,6 +80,9 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
             }
             if (data.videosSorted) {
                 dispatch(addVideosSorted(data.videosSorted))
+            }
+            if (data.player) {
+                dispatch(setCurrentPlayer(data.player))
             }
         }
     }
