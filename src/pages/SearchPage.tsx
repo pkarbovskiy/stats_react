@@ -1,27 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import StreamerVideos from '../components/StreamerVideos'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import { setCurrentSearch } from '../actions'
 
-const SearchPage = ({ match, streamers, streamersById, onData }: { streamersById: any; match: any, streamers: any; onData: any }) => {
-    const url = 'http://192.168.232.129:8000'
+const SearchPage = ({ match, location, streamers, streamersById, onData }: { location: any; streamersById: any; match: any, streamers: any; onData: any }) => {
+    const [search, setSearch] = useState()
+    const searchString = location.search.replace('?', '').split('=')
+    const url = ''//'http://192.168.232.129:8000'
     useEffect(() => {
-        fetch(`${url}/api/search?q=${encodeURI(match.location.query.q)}`)
+        fetch(`${url}/api/search?q=${encodeURI(searchString[1])}`)
             .then(data => data.json())
             .then(data => {
                 onData(data)
+                setSearch(data)
             })
     }, [])
     return (
         <div className="search_page">
-            {/* {streamers.map(({ streamer, videos }) =>
+            {search && Object.keys(search.playersById).map(playerId =>
                 <StreamerVideos
-                    streamer={streamersById}
-                    mediaById={streamersById.videosById}
-                    mediaSorted={streamersById.videosSorted}
+                    streamer={search.playersById[playerId].player}
+                    mediaById={search.playersById[playerId].mediaById}
+                    mediaSorted={search.playersById[playerId].mediaSorted}
                 />
-            )} */}
+            )}
         </div>
     )
 }
@@ -29,7 +32,7 @@ const SearchPage = ({ match, streamers, streamersById, onData }: { streamersById
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        streamersById: state.mainReducer.streamersById,
+        search: state.mainReducer.streamersById,
         featuredStreamers: state.mainReducer.featuredStreamers
     }
 }

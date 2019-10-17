@@ -8,7 +8,7 @@ import { State } from '../reducers/reducers'
 
 const HomePage = ({ streamersById, featuredStreamers, onData }: { videosByDate: any, streamersById: any; featuredStreamers: number[]; onData: any }) => {
 
-    const url = 'http://192.168.232.129:8000'
+    const url = ''//'http://192.168.232.129:8000'
     useEffect(() => {
         fetch(`${url}/api/player/featured_streamers?ids=3429,3406,3337,10654`)
             .then(data => data.json())

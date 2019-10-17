@@ -15,7 +15,7 @@ import {
 //TODO: figure out proper type
 const StreamerPage = ({ match, onData }: any) => {
     const [streamer, setStreamer] = useState()
-    const url = 'http://192.168.232.129:8000'
+    const url = ''//'http://192.168.232.129:8000'
     useEffect(() => {
         function getPlayer(playerId: number) {
             fetch(`${url}/api/player/${playerId | 0}`)
