@@ -20,14 +20,29 @@ const DEFAULT_STATE = {
         3429,
         3406,
         3337,
-        10654
+        10654,
+        3485,
+        5010,
+        3372,
+        3476,
+        3603,
+        3150,
+        3426,
+        3524,
+        3316,
+        3473,
+        3365,
+        3306,
+        3591,
+        8370,
+        3510
     ],
     playersById: {},
     videosById: {},
     clipsById: {},
     videosSorted: [],
     clipsSorted: [],
-    search: {}
+    search: {} as {[key:string]:any}
 }
 export type State = typeof DEFAULT_STATE
 
@@ -73,9 +88,9 @@ const setCurrentPlayerReducer = (state: State, currentPlayer: { payload: any }):
     return newState
 }
 
-const setCurrentSearchReducer = (state: State, search: { payload: any }): State => {
+const setCurrentSearchReducer = (state: State, action: { payload: any }): State => {
     const newState = Object.assign({}, state)
-    newState.search = search.payload
+    newState.search[action.payload.query] = action.payload.data
     return newState
 }
 export const mainReducer = handleActions({

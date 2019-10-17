@@ -3,11 +3,10 @@ import TwitchPlayer from '../components/TwitchPlayer'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
-
+import url from '../constants'
 const VideoPage = ({ match }: { match: any }) => {
     const [timeline, setTimeline] = useState()
     const [video, setVideo] = useState()
-    const url = ''//'http://192.168.232.129:8000'
     useEffect(() => {
         function getVideoInfo(videoId: number) {
             fetch(`${url}/api/video/${videoId}`)

@@ -3,26 +3,32 @@ import StreamerVideos from '../components/StreamerVideos'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import { setCurrentSearch } from '../actions'
+import url from '../constants'
 
-const SearchPage = ({ match, location, streamers, streamersById, onData }: { location: any; streamersById: any; match: any, streamers: any; onData: any }) => {
+const SearchPage = ({ location, searchFromCache, onData }: { location: any; searchFromCache: any; onData: any }) => {
     const [search, setSearch] = useState()
+    // TODO: may be make it protected
     const searchString = location.search.replace('?', '').split('=')
-    const url = ''//'http://192.168.232.129:8000'
     useEffect(() => {
-        fetch(`${url}/api/search?q=${encodeURI(searchString[1])}`)
-            .then(data => data.json())
-            .then(data => {
-                onData(data)
-                setSearch(data)
-            })
+        const queryString = encodeURI(searchString[1])
+        if (searchFromCache[queryString]) {
+            setSearch(searchFromCache[queryString])
+        } else {
+            fetch(`${url}/api/search?q=${searchString[1]}`)
+                .then(data => data.json())
+                .then(data => {
+                    onData(data, searchString[1])
+                    setSearch(data)
+                })
+        }
     }, [])
     return (
         <div className="search_page">
-            {search && Object.keys(search.playersById).map(playerId =>
+            {search && Object.keys(search).map(playerId =>
                 <StreamerVideos
-                    streamer={search.playersById[playerId].player}
-                    mediaById={search.playersById[playerId].mediaById}
-                    mediaSorted={search.playersById[playerId].mediaSorted}
+                    streamer={search[playerId].streamer}
+                    mediaById={search[playerId].videosById}
+                    mediaSorted={search[playerId].videosSorted}
                 />
             )}
         </div>
@@ -32,15 +38,14 @@ const SearchPage = ({ match, location, streamers, streamersById, onData }: { loc
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        search: state.mainReducer.streamersById,
-        featuredStreamers: state.mainReducer.featuredStreamers
+        searchFromCache: state.mainReducer.search
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
-        onData: (data: any) => {
-            dispatch(setCurrentSearch(data))
+        onData: (data: any, query:string) => {
+            dispatch(setCurrentSearch(data, query))
         }
 
     }
