@@ -26,7 +26,7 @@ const VideoCart = (props: videoCartProps) => {
     return (
         <div className="video_cart">
             <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`}>
-                <img className="video_cart--image" src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} alt={title ? title : `${streamer.name} ${action} ${player.name}`} />
+                <img className="video_cart--image" src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} alt={title ? title : `${player.name}`} />
             </Link>
             <div className="video_cart__info">
                 {includeAvatar ?
@@ -36,7 +36,7 @@ const VideoCart = (props: videoCartProps) => {
                     ''
                 }
                 <span className="video_cart__info__description">
-                    {title ? title : [`${streamer.name} ${action} `, <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link>]}
+                    {title ? title : <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link>}
                 </span>
             </div>
         </div>
