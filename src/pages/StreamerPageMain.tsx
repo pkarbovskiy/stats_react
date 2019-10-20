@@ -11,17 +11,25 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
         <>
             {player &&
                 <div className="streamer_page">
+                    <h1>
                     <div className="streamer_page__avatar">
                         <img src={`http://streamsnipers.com/static/images/streamers/${player.name}.png`} alt={`${player.name} avatar`} />
-                        <h1>{player.name}</h1>
+                        {player.name}
                     </div>
+                    </h1>
                     {videosSorted.length > 0 &&
                         <>
-                            <h3>Recent one category</h3> <Link to={`/player/${player.id}/${player.slug}/videos`}>View All ></Link>
+                            <h3>
+                                Recent broadcasts
+                                <a className="small_link" href={`/player/${player.id}/${player.slug}/videos`}>view all</a>
+                                </h3>
                             <Slider classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} />
                         </>
                     }
-                    <h3>Recent other category</h3><Link to={`/player/${player.id}/${player.slug}/clips`}>View All ></Link>
+                    <h3>
+                        Recent reactions
+                        <a className="small_link" href={`/player/${player.id}/${player.slug}/clips`}>view all</a>
+                    </h3>
                     <Slider classNameProp="side" mediaSorted={clipsSorted} mediaById={clipsById} />
                 </div>
             }
@@ -32,8 +40,8 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosById: state.mainReducer.videosById,
-        videosSorted: state.mainReducer.videosSorted.slice(0, 6),
-        clipsSorted: state.mainReducer.clipsSorted.slice(0, 6),
+        videosSorted: state.mainReducer.videosSorted.slice(0, 5),
+        clipsSorted: state.mainReducer.clipsSorted.slice(0, 5),
         clipsById: state.mainReducer.clipsById,
         player: state.mainReducer.currentPlayer
     }

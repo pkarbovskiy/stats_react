@@ -9,7 +9,7 @@ import url from '../constants'
 const HomePage = ({ streamersById, featuredStreamers, onData }: { videosByDate: any, streamersById: any; featuredStreamers: number[]; onData: any }) => {
 
     useEffect(() => {
-        fetch(`${url}/api/player/featured_streamers?ids=3429,3406,3337,10654,3485,5010,3372,3476,3603,3150,3426,3524,3316,3473,3365,3306,3591,8370,3510`)
+        fetch(`${url}/api/player/featured_streamers?ids=3429,3337,10654,3485,5010,3372,3476,3603,3150,3426,3524,3316,3473,3365,3306,3591,8370,3510`)
             .then(data => data.json())
             .then(data => {
                 onData(data)
