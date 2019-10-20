@@ -32,7 +32,7 @@ const VideoPage = ({ match }: { match: any }) => {
             {video &&
                 <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />
             }
-            <h3>Other broacats</h3>
+            <h3>Other broadcasts</h3>
             {/* <Table classNameProp="side" videos={video} /> */}
         </div>
     )
