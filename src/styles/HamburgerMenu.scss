@@ -6,13 +6,19 @@ $break-large: 1200px;
     display:flex;
     flex-direction: row;
     &__ham_menu {
+        display: flex;
         outline: none;
-        width: 3rem;
         border: none;
         background: transparent;
+        margin: 0.8rem;
         z-index: 2;
         & svg {
+            height: 2rem;
             stroke: $main-brand-color;
+            margin-right: 1rem;
+        }
+        .logo {
+            height: 2rem;
         }
     }
     &--links {
@@ -58,6 +64,9 @@ $break-large: 1200px;
 }
 @media screen and (min-width: $break-large) {
     .main-nav {
+        &__ham_menu {
+            display:none;
+        }
         &--links {
             height: calc(100vh - 51px);
             margin-top: 39px;
