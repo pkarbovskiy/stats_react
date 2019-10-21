@@ -53,6 +53,10 @@ a {
     justify-content: space-between;
     align-items: center;
     background-color: $header-background;
+    .main-nav__ham_menu {
+        margin: 0;
+        display:inline;
+    }
     .site--logo {
         img {
             max-height: 20px;
