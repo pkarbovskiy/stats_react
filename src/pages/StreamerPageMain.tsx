@@ -11,24 +11,23 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
         <>
             {player &&
                 <div className="streamer_page">
-                    <h1>
                     <div className="streamer_page__avatar">
                         <img src={`http://streamsnipers.com/static/images/streamers/${player.name}.png`} alt={`${player.name} avatar`} />
-                        {player.name}
                     </div>
-                    </h1>
+                    <h1>{player.name}</h1>
+
                     {videosSorted.length > 0 &&
                         <>
                             <h3>
                                 Recent broadcasts
-                                <a className="small_link" href={`/player/${player.id}/${player.slug}/videos`}>view all</a>
+                                <Link to={`/player/${player.id}/${player.slug}/videos`} className="small_link">view all</Link>
                                 </h3>
                             <Slider classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} />
                         </>
                     }
                     <h3>
                         Recent reactions
-                        <a className="small_link" href={`/player/${player.id}/${player.slug}/clips`}>view all</a>
+                        <Link to={`/player/${player.id}/${player.slug}/clips`} className="small_link">view all</Link>
                     </h3>
                     <Slider classNameProp="side" mediaSorted={clipsSorted} mediaById={clipsById} />
                 </div>
