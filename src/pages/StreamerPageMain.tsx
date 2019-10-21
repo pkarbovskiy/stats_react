@@ -18,11 +18,11 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                     {videosSorted.length > 0 &&
                         <>
                             <h3>Recent one category</h3> <Link to={`/player/${player.id}/${player.slug}/videos`}>View All ></Link>
-                            <Slider classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} />
+                            <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} />
                         </>
                     }
                     <h3>Recent other category</h3><Link to={`/player/${player.id}/${player.slug}/clips`}>View All ></Link>
-                    <Slider classNameProp="side" mediaSorted={clipsSorted} mediaById={clipsById} />
+                    <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} />
                 </div>
             }
         </>
