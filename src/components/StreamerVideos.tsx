@@ -6,7 +6,7 @@ const StreamerVideos = ({ streamer, mediaById, mediaSorted }: { streamer: { id: 
         <div className="streamer_video">
             <div className="streamer_video__info">
                 <Link to={`/player/${streamer.id}/${streamer.slug}`} className="streamer_video__info--pic">
-                    <img src={`http://streamsnipers.com/static/images/streamers/${streamer.name}.png`} alt="top streamer" />
+                    <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${streamer.id}.png`} alt="top streamer" />
                 </Link>
                 <h2>{streamer.name}</h2><Link to={`/player/${streamer.id}/${streamer.slug}/videos`} className="streamer_video__info__name">View All > </Link>
             </div>
