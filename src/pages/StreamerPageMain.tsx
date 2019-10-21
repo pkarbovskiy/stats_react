@@ -12,7 +12,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
             {player &&
                 <div className="streamer_page">
                     <div className="streamer_page__avatar">
-                        <img src={`http://streamsnipers.com/static/images/streamers/${player.name}.png`} alt={`${player.name} avatar`} />
+                        <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} />
                         <h1>{player.name}</h1>
                     </div>
                     {videosSorted.length > 0 &&
