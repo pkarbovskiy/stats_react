@@ -79,11 +79,14 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                         <span>Instagram</span>
                     </a>
                     <hr />
-                    <Link to="/policy" className="link policy">
+                    <Link to="/privacy" className="link policy">
                         <span>Privacy Policy</span>
                     </Link>
                     <Link to="/terms_of_service" className="link policy">
                         <span>Terms Of Service</span>
+                    </Link>
+                    <Link to="/about_us" className="link policy">
+                        <span>About Us</span>
                     </Link>
                 </HamburgerMenu>
                 <main>

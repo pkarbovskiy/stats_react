@@ -1,0 +1,23 @@
+.latest_video {
+    width: 70vw;;
+    margin: 0 auto;
+  &__info {
+    display: flex;
+    align-items: center;
+    color: violet;
+    &--pic {
+        img {
+            width: 30px;
+        }
+    }
+    h2 {
+        margin: 0 0 0 10px;
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: 2rem;
+    }
+    h3 {
+      color: violet;
+    }
+  }
+}

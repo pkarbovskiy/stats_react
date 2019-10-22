@@ -6,7 +6,6 @@ import Slider from '../components/Slider'
 
 //TODO: figure out proper type
 const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSorted }: any) => {
-
     return (
         <>
             {player &&
@@ -15,10 +14,12 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} />
                         <h1>{player.name}</h1>
                     </div>
+                    <h1>{player.name}</h1>
+
                     {videosSorted.length > 0 &&
                         <>
                             <div className="streamer_page__category">
-                                <h3>Recent Broadcats  <span className="streamer_page__category--direction">-></span></h3>
+                                <h3>Recent Broadcasts  <span className="streamer_page__category--direction">-></span></h3>
                                 <Link to={`/player/${player.id}/${player.slug}/videos`}>View All Videos></Link>
                             </div>
                             <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} />
@@ -38,8 +39,8 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosById: state.mainReducer.videosById,
-        videosSorted: state.mainReducer.videosSorted.slice(0, 6),
-        clipsSorted: state.mainReducer.clipsSorted.slice(0, 6),
+        videosSorted: state.mainReducer.videosSorted.slice(0, 5),
+        clipsSorted: state.mainReducer.clipsSorted.slice(0, 5),
         clipsById: state.mainReducer.clipsById,
         player: state.mainReducer.currentPlayer
     }

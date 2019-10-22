@@ -9,12 +9,15 @@
 @import 'VideoPage';
 @import 'TwitchPlayer';
 @import 'StreamerPage';
+@import 'LatestVideo';
 
 $main-background: #121212;
 $header-background: #090909;
 $main-font-color: #999;
 $main-brand-color:  #D7CA25;
 $font-size: 10px;
+$font-size-h3: 20px;
+// $color-h3: rgb(175, 185, 30);  // Category headers such as for "other broadcasts"
 $break-large: 1200px;
 $break-ipad: 500px;
 
@@ -25,6 +28,11 @@ html, body {
     background-color: $main-background;
     color: $main-font-color;
     font-size: $font-size;
+    h3 {
+        font-size: $font-size-h3;
+        // color: $color-h3;
+        color: $main-font-color
+    }
 }
 a {
     color: $main-font-color;
@@ -118,6 +126,12 @@ a {
         }
     }
 }
-
-
-
+.streamer_page__avatar img {
+    height: 50px;
+    margin-right: 20px;
+}
+.small_link {
+    font-size: 11px;
+    margin: 12px;
+    text-decoration: underline;
+}
