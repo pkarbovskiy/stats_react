@@ -6,7 +6,6 @@ import Slider from '../components/Slider'
 
 //TODO: figure out proper type
 const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSorted }: any) => {
-
     return (
         <>
             {player &&
@@ -19,22 +18,8 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
 
                     {videosSorted.length > 0 &&
                         <>
-<<<<<<< HEAD
-                            <h3>
-                                Recent broadcasts
-                                <Link to={`/player/${player.id}/${player.slug}/videos`} className="small_link">view all</Link>
-                                </h3>
-                            <Slider classNameProp="side" mediaSorted={videosSorted} mediaById={videosById} />
-                        </>
-                    }
-                    <h3>
-                        Recent reactions
-                        <Link to={`/player/${player.id}/${player.slug}/clips`} className="small_link">view all</Link>
-                    </h3>
-                    <Slider classNameProp="side" mediaSorted={clipsSorted} mediaById={clipsById} />
-=======
                             <div className="streamer_page__category">
-                                <h3>Recent Broadcats  <span className="streamer_page__category--direction">-></span></h3>
+                                <h3>Recent Broadcasts  <span className="streamer_page__category--direction">-></span></h3>
                                 <Link to={`/player/${player.id}/${player.slug}/videos`}>View All Videos></Link>
                             </div>
                             <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} />
@@ -45,7 +30,6 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         <Link to={`/player/${player.id}/${player.slug}/clips`}>View All Clips ></Link>
                     </div>
                     <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} />
->>>>>>> 1117c8771a09a94f17d68b0b947d98d6cfc37f26
                 </div>
             }
         </>
