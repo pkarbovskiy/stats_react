@@ -1,0 +1,33 @@
+
+$main-brand-color:  #D7CA25;
+.streamer_page {
+    &__nav {
+        display: flex;
+        flex-flow: row nowrap;
+        flex-shrink: 1;
+        height: 56px;
+        width: 100vw;
+        padding: 0 16px;
+        justify-content: center;
+        align-items: center;
+        background-color: #090909;
+        &--link {
+            &.active {
+                color: $main-brand-color;
+                transition: color all .5s;
+                div {                    
+                    padding-top: .5rem;
+                    border-bottom:2px solid $main-brand-color;
+                }
+            }
+            div {
+                padding-top: .5rem;
+            }
+            text-decoration: none;
+            font-size: 2rem;
+            margin-right: .5rem;
+        }
+    }
+}
+
+    

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 import StreamerPageMain from './StreamerPageMain'
 import VideoListPage from './VideoListPage'
 import ClipListPage from './ClipListPage'
@@ -43,13 +43,13 @@ const StreamerPage = ({ match, onData }: any) => {
             {!streamer && <span>LOOOOOAAAADDDDIIIIINNNNGGGGG....</span>}
             {streamer &&
                 <>
-                    <div>
-                        <Link to={`/player/${streamer.id}/${streamer.slug}`}>Home</Link>
+                    <nav className="streamer_page__nav">
+                        <NavLink exact to={`/player/${streamer.id}/${streamer.slug}`} activeClassName={"active"} className="streamer_page__nav--link">Home<div></div></NavLink>
                         {streamer.streamer &&
-                            <Link to={`/player/${streamer.id}/${streamer.slug}/videos`}>Videos</Link>
+                            <NavLink to={`/player/${streamer.id}/${streamer.slug}/videos`} className="streamer_page__nav--link">Videos<div></div></NavLink>
                         }
-                        <Link to={`/player/${streamer.id}/${streamer.slug}/clips`}>Clips</Link>
-                    </div>
+                        <NavLink to={`/player/${streamer.id}/${streamer.slug}/clips`} className="streamer_page__nav--link">Clips<div></div></NavLink>
+                    </nav>
                     <Route exact path={match.path} component={StreamerPageMain} />
                     <Route path={`${match.path}/clips`} component={ClipListPage} />
                     {streamer.streamerd &&
