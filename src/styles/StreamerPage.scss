@@ -19,6 +19,9 @@ $main-brand-color:  #D7CA25;
     &__category {
         display: flex;
         align-items: center;
+        &--direction {
+            color:$main-brand-color;
+        }
         a {
             margin-left: 1rem;
         }
