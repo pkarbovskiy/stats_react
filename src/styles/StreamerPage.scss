@@ -1,6 +1,10 @@
 
 $main-brand-color:  #D7CA25;
 .streamer_page {
+    &__player{
+        width: 70vw;
+        margin: 0 auto;
+    }
     &__nav {
         display: flex;
         flex-flow: row nowrap;

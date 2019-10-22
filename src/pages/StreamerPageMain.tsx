@@ -10,7 +10,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
     return (
         <>
             {player &&
-                <div className="streamer_page">
+                <div className="streamer_page__player">
                     <div className="streamer_page__avatar">
                         <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} />
                         <h1>{player.name}</h1>
