@@ -2,8 +2,26 @@
 $main-brand-color:  #D7CA25;
 .streamer_page {
     &__player{
+        display: flex;
+        flex-direction: column;
         width: 70vw;
-        margin: 0 auto;
+        margin: 1rem 0 0 3rem;
+    }
+    &__avatar {
+        display: flex;
+        img {
+            width: 5rem;
+        }
+        h1 {
+            margin-left: 1rem;
+        }
+    }
+    &__category {
+        display: flex;
+        align-items: center;
+        a {
+            margin-left: 1rem;
+        }
     }
     &__nav {
         display: flex;
