@@ -6,8 +6,15 @@ $break-ipad: 769px;
 .slider {
     display: flex;
     position: relative;
+    width: 93vw;
     top: 0;
     left: 0;
+    overflow-y: hidden;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &__next,
     &__previous {
         display:none;
@@ -40,21 +47,12 @@ $break-ipad: 769px;
         }
     }
     &.side {
-        width: 60vw;
-        margin: 10px auto;
+        margin: 0 auto;
         justify-content: space-between;
         &.horisontal {
             flex-wrap: nowrap;
             justify-content: left;
-            @media screen and (max-width: 1024px) {
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-                width: 79vw;
-                overflow-y: hidden;
-                scrollbar-width: none; 
-                -ms-overflow-style: none; 
-            }
+           
             .video_cart {
                 flex-direction: column;
             }

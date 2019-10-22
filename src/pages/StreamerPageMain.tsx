@@ -10,7 +10,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
     return (
         <>
             {player &&
-                <div className="streamer_page">
+                <div className="streamer_page__player">
                     <div className="streamer_page__avatar">
                         <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} />
                         <h1>{player.name}</h1>
@@ -19,6 +19,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
 
                     {videosSorted.length > 0 &&
                         <>
+<<<<<<< HEAD
                             <h3>
                                 Recent broadcasts
                                 <Link to={`/player/${player.id}/${player.slug}/videos`} className="small_link">view all</Link>
@@ -31,6 +32,20 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         <Link to={`/player/${player.id}/${player.slug}/clips`} className="small_link">view all</Link>
                     </h3>
                     <Slider classNameProp="side" mediaSorted={clipsSorted} mediaById={clipsById} />
+=======
+                            <div className="streamer_page__category">
+                                <h3>Recent Broadcats  <span className="streamer_page__category--direction">-></span></h3>
+                                <Link to={`/player/${player.id}/${player.slug}/videos`}>View All Videos></Link>
+                            </div>
+                            <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} />
+                        </>
+                    }
+                    <div className="streamer_page__category">
+                        <h3>Recent Highlights  <span className="streamer_page__category--direction">-></span></h3>
+                        <Link to={`/player/${player.id}/${player.slug}/clips`}>View All Clips ></Link>
+                    </div>
+                    <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} />
+>>>>>>> 1117c8771a09a94f17d68b0b947d98d6cfc37f26
                 </div>
             }
         </>
