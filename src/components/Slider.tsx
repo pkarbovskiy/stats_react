@@ -13,7 +13,7 @@ const Slider = ({ mediaSorted, mediaById, classNameProp = '' }: { mediaSorted: a
     return (
         <div className="slider-wrapper">
             <div className={`slider ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
-                {mediaSorted.map((value: any, indx: number) => {
+                {mediaSorted.map((value: any) => {
                     return <VideoCart key={mediaById[value].id} {...mediaById[value]} />
                 })}
             </div>
