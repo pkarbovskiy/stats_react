@@ -8,7 +8,6 @@ export const {
     addPlayersById,
     setCurrentPlayer,
     addStreamersById,
-    addLatestVideosById,
     addLatestVideos,
     setCurrentSearch
 } = createActions({
@@ -19,7 +18,6 @@ export const {
     ADD_PLAYERS_BY_ID: (data: any) => data,
     SET_CURRENT_PLAYER: (data: any) => data,
     ADD_STREAMERS_BY_ID: (data: any) => data,
-    ADD_LATEST_VIDEOS_BY_ID: (data: any) => data,
     ADD_LATEST_VIDEOS: (data: any) => data,
     SET_CURRENT_SEARCH: (data: any, query: string) => ({data, query})
 })
