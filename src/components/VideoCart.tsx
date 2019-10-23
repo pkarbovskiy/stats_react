@@ -36,7 +36,7 @@ const VideoCart = (props: videoCartProps) => {
                     ''
                 }
                 <span className="video_cart__info__description">
-                    {title ? title : <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link>}
+                    {title ? title.slice(0, 27) + "..." : <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link>}
                 </span>
             </div>
         </div>
