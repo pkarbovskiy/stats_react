@@ -22,14 +22,14 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                                 <h3>Recent Broadcasts  <span className="streamer_page__category--direction">-></span></h3>
                                 <Link to={`/player/${player.id}/${player.slug}/videos`}>View All Videos></Link>
                             </div>
-                            <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} />
+                            <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} includeStreamerName={false}/>
                         </>
                     }
                     <div className="streamer_page__category">
                         <h3>Recent Highlights  <span className="streamer_page__category--direction">-></span></h3>
                         <Link to={`/player/${player.id}/${player.slug}/clips`}>View All Clips ></Link>
                     </div>
-                    <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} />
+                    <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false}/>
                 </div>
             }
         </>
