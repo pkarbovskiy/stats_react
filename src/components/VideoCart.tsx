@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { bool } from 'prop-types';
 export type videoCartProps = {
     id: number;
     streamer: {
@@ -23,15 +22,9 @@ export type videoCartProps = {
     imageId: number;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false } = props
+    let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName=false } = props
     videoId = videoId || id
-    var newTitle
-    // if (includeStreamerName && (typeof streamer != 'undefined')) {
-    //     newTitle = streamer.name + ": " + title
-    // }
-    // else {
-    //     newTitle = title
-    // }
+    let newTitle = includeStreamerName && streamer != null ? `${streamer.name}:${title}` : title
     return (
         <div className="video_cart">
             <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`}>
@@ -45,7 +38,7 @@ const VideoCart = (props: videoCartProps) => {
                     ''
                 }
                 <span className="video_cart__info__description">
-                    {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : title}
+                    {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : newTitle}
                 </span>
             </div>
         </div>
