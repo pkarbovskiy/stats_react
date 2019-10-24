@@ -55,7 +55,6 @@ $break-ipad: 500px;
             width: 100%;
             background-color: #121212;
             opacity: 0.8;
-            padding: 10px;
             &__streamer--pic {
                 display:block;
                 width: 40px;
@@ -68,7 +67,7 @@ $break-ipad: 500px;
             &__description {
                 display: flex;
                 flex-direction: column;
-                width: 197px;
+                width: 19rem;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;

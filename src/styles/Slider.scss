@@ -71,13 +71,14 @@ $break-ipad: 769px;
             &__info {
                 display: flex;
                 flex-direction: column;
-                padding: 0 10px;
                 &__streamer--pic {
                     display:none;
                 }
                 &__description {
-                    display: flex;
-                    flex-direction: column;
+                    width: 19rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     a {
                         color: #a0a0a0;
                         font-size: 15px;
@@ -104,7 +105,6 @@ $break-ipad: 769px;
             width: 100%;
             background-color: #121212;
             opacity: 0.8;
-            padding: 10px;
             &__streamer--pic {
                 display:block;
                 width: 40px;
@@ -115,8 +115,6 @@ $break-ipad: 769px;
                 }
             }
             &__description {
-                display: flex;
-                flex-direction: column;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;
