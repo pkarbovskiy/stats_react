@@ -35,9 +35,7 @@ const StreamerPage = ({ match, onData }: any) => {
         } else {
             getPlayer(match.params.playerId | 0)
         }
-
-
-    }, [])
+    }, [match.params.playerId])
     return (
         <div className="streamer_page">
             {!streamer && <span>LOOOOOAAAADDDDIIIIINNNNGGGGG....</span>}

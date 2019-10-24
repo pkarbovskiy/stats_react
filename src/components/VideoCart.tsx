@@ -21,7 +21,7 @@ export type videoCartProps = {
     imageId: number;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, player, streamStart, action, videoId, imageId = '', title = '', timestamp = '', includeAvatar = false } = props
+    let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false } = props
     videoId = videoId || id
     return (
         <div className="video_cart">
