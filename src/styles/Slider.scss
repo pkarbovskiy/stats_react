@@ -2,7 +2,6 @@ $break-ipad: 769px;
 .slider-wrapper {
     position: relative;
 }
-
 .slider {
     display: flex;
     position: relative;
@@ -17,32 +16,32 @@ $break-ipad: 769px;
     }
     &__next,
     &__previous {
-        display:none;
-    }
-    @media screen and (min-width: $break-ipad) {
-        &__next,
-        &__previous {
-            display: flex;
-            position: absolute;
-            z-index: 3;
-            width: 36px;
-            height: 36px;
-            top: 43px;
-            border: none;
-            border-radius: 50%;
-            background-color: white;
-            svg {
-                height: 25px;
-                fill:#1d1d1d;
+        display:none;    
+        @media screen and (min-width: $break-ipad) {
+            &__next,
+            &__previous {
+                display: flex;
+                position: absolute;
+                z-index: 3;
+                width: 36px;
+                height: 36px;
+                top: 43px;
+                border: none;
+                border-radius: 50%;
+                background-color: white;
+                svg {
+                    height: 25px;
+                    fill:#1d1d1d;
+                }
             }
-        }
-        &__next {
-            right:0;        
-        }
-        &__previous {
-            left: -11px;
-            svg {
-                transform: scaleX(-1);
+            &__next {
+                right:0;        
+            }
+            &__previous {
+                left: -11px;
+                svg {
+                    transform: scaleX(-1);
+                }
             }
         }
     }
@@ -82,7 +81,8 @@ $break-ipad: 769px;
                     a {
                         color: #a0a0a0;
                         font-size: 15px;
-                        font-weight: 700;
+                        font-weight: normal;
+                        text-decoration: none;
                     }
                 }
             }
@@ -119,7 +119,8 @@ $break-ipad: 769px;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;
-                    font-weight: 700;
+                    font-weight: normal;
+                    text-decoration: none;
                 }
             }
         }
