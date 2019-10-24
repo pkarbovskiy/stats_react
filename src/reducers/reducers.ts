@@ -6,7 +6,7 @@ import {
     addClipsSorted,
     addPlayersById,
     addStreamersById,
-    addLatestVideosById,
+    addLatestVideos,
     setCurrentPlayer,
     setCurrentSearch
 } from '../actions'
@@ -84,15 +84,10 @@ const addStreamersByIdReducer = (state: State, addStreamersById: { payload: any 
     return newState
 }
 
-const addLatestVideosByIdReducer = (state: State, addLatestVideosById: { payload: any }): State => {
-    const newState = Object.assign({}, state)
-    newState.latestVideosById = addLatestVideosById.payload
-    return newState
-}
-
 const addLatestVideosReducer = (state: State, addLatestVideos: { payload: any }): State => {
     const newState = Object.assign({}, state)
-    newState.latestVideos = addLatestVideos.payload
+    newState.latestVideosById = addLatestVideos.payload.latestVideosById
+    newState.latestVideos     = addLatestVideos.payload.latestVideos
     return newState
 }
 
@@ -116,7 +111,7 @@ export const mainReducer = handleActions({
     [setCurrentPlayer as any]: setCurrentPlayerReducer,
     [addStreamersById as any]: addStreamersByIdReducer,
     [setCurrentSearch as any]: setCurrentSearchReducer,
-    [addLatestVideosById as any]: addLatestVideosByIdReducer
+    [addLatestVideos as any]: addLatestVideosReducer,
 },
     DEFAULT_STATE
 )

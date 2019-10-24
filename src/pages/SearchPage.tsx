@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import StreamerVideos from '../components/StreamerVideos'
+import LatestVideos from '../components/LatestVideos'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import { setCurrentSearch } from '../actions'
+import { setCurrentSearch, addLatestVideos } from '../actions'
 import url from '../constants'
 
-const SearchPage = ({ location, searchFromCache, onData }: { location: any; searchFromCache: any; onData: any }) => {
+const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById, onData, onDataLatest }: 
+    { location: any; searchFromCache: any; latestVideos: number[], latestVideosById: any, onData: any; onDataLatest: any }) => {
     const [search, setSearch] = useState()
     // TODO: may be make it protected
     const searchString = location.search.replace('?', '').split('=')
@@ -21,6 +23,12 @@ const SearchPage = ({ location, searchFromCache, onData }: { location: any; sear
                     setSearch(data)
                 })
         }
+        // fetch latest videos
+        fetch(`${url}/api/video/latest_videos`)
+        .then(data => data.json())
+        .then(data => {
+            onDataLatest(data)
+        })
     }, [])
     return (
         <div className="search_page">
@@ -31,6 +39,10 @@ const SearchPage = ({ location, searchFromCache, onData }: { location: any; sear
                     mediaSorted={search[playerId].videosSorted}
                 />
             )}
+                {(<LatestVideos
+                    mediaSorted={latestVideos}
+                    mediaById={latestVideosById}
+            />)}
         </div>
     )
 }
@@ -38,7 +50,9 @@ const SearchPage = ({ location, searchFromCache, onData }: { location: any; sear
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        searchFromCache: state.mainReducer.search
+        searchFromCache: state.mainReducer.search,
+        latestVideosById: state.mainReducer.latestVideosById,
+        latestVideos: state.mainReducer.latestVideos.slice(0, 5)
     }
 }
 
@@ -46,10 +60,13 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
         onData: (data: any, query:string) => {
             dispatch(setCurrentSearch(data, query))
+        },
+        onDataLatest: (data: any) => {
+            dispatch(addLatestVideos(data))
         }
-
     }
 }
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps

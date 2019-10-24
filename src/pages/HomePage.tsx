@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
 import '../styles/App.scss'
-import { addStreamersById, addLatestVideosById } from '../actions'
+import { addStreamersById, addLatestVideos } from '../actions'
 import { State } from '../reducers/reducers'
 import url from '../constants'
 
@@ -18,7 +18,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
                 onDataFeatured(data)
             })
         // fetch latest videos
-        fetch('${url}/api/video/latest_videos')
+        fetch(`${url}/api/video/latest_videos`)
             .then(data => data.json())
             .then(data => {
                 onDataLatest(data)
@@ -52,7 +52,7 @@ const mapStateToProps = (state: { mainReducer: State }) => {
         streamersById: state.mainReducer.streamersById,
         featuredStreamers: state.mainReducer.featuredStreamers,
         latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos
+        latestVideos: state.mainReducer.latestVideos.slice(0, 5)
     }
 }
 
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
             dispatch(addStreamersById(data))
         },
         onDataLatest: (data: any) => {
-            dispatch(addLatestVideosById(data))
+            dispatch(addLatestVideos(data))
         }
     }
 }
