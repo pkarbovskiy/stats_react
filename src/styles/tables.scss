@@ -27,8 +27,10 @@ $break-ipad: 500px;
                     display:none;
                 }
                 &__description {
-                    display: flex;
-                    flex-direction: column;
+                    width: 18.2rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     a {
                         color: #a0a0a0;
                         font-size: 15px;
@@ -65,9 +67,10 @@ $break-ipad: 500px;
                 }
             }
             &__description {
-                display: flex;
-                flex-direction: column;
-                width: 19rem;
+                width: 18.2rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;

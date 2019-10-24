@@ -52,7 +52,7 @@ const StreamerPage = ({ match, onData }: any) => {
                     </nav>
                     <Route exact path={match.path} component={StreamerPageMain} />
                     <Route path={`${match.path}/clips`} component={ClipListPage} />
-                    {streamer.streamerd &&
+                    {streamer.id &&
                         <Route path={`${match.path}/videos`} component={VideoListPage} />
                     }
                 </>

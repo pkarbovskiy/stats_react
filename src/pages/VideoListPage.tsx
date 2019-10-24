@@ -1,7 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addVideosById } from '../actions'
-import { videosByDate } from '../selectors'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
 
@@ -21,15 +19,7 @@ const mapStateToProps = (state: { mainReducer: State }) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
-    return {
-        onDelete: (id: any) => {
-            dispatch(addVideosById(id));
-        }
-    }
-}
-
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {}
 )(VideoListPage)

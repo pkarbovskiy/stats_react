@@ -75,7 +75,7 @@ $break-ipad: 769px;
                     display:none;
                 }
                 &__description {
-                    width: 19rem;
+                    width: 18.2rem;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -115,6 +115,7 @@ $break-ipad: 769px;
                 }
             }
             &__description {
+                width: 18.2rem;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;

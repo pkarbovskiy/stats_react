@@ -6,6 +6,10 @@ $main-brand-color:  #D7CA25;
         flex-direction: column;
         width: 70vw;
         margin: 1rem 0 0 3rem;
+        @media screen and (min-width: $break-ipad) {
+            width: 70vw;
+            margin: 2rem auto;
+        }
     }
     &__avatar {
         display: flex;
