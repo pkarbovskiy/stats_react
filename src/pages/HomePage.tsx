@@ -27,6 +27,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
 
     return (
         <div className="home__page">
+            <h1>New: all videos have been indexed for your viewing pleasure. Enjoy!</h1>
             {(<LatestVideos
             mediaSorted={latestVideos}
             mediaById={latestVideosById}
@@ -52,7 +53,7 @@ const mapStateToProps = (state: { mainReducer: State }) => {
         streamersById: state.mainReducer.streamersById,
         featuredStreamers: state.mainReducer.featuredStreamers,
         latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos.slice(0, 5)
+        latestVideos: state.mainReducer.latestVideos.slice(0, 6)
     }
 }
 

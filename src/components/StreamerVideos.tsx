@@ -11,7 +11,7 @@ const StreamerVideos = ({ streamer, mediaById, mediaSorted }: { streamer: { id: 
                 </Link>
                 <h2>{streamer.name}</h2><Link to={`/player/${streamer.id}/${streamer.slug}/videos`} className="small_link">view all</Link>
             </div>
-            {<Slider mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} />}
+            {<Slider mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} includeStreamerName={false} />}
         </div>
     )
 }
