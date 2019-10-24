@@ -7,7 +7,7 @@ import { addStreamersById, addLatestVideos } from '../actions'
 import { State } from '../reducers/reducers'
 import url from '../constants'
 
-const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }: 
+const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
 
     useEffect(() => {
@@ -26,15 +26,15 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     }, [])
 
     return (
-        <div className="home__page">
+        <div className="home_page">
             <h1>New: all videos have been indexed for your viewing pleasure. Enjoy!</h1>
             {(<LatestVideos
-            mediaSorted={latestVideos}
-            mediaById={latestVideosById}
+                mediaSorted={latestVideos}
+                mediaById={latestVideosById}
             />)
             }
             {!!Object.keys(streamersById).length &&
-                featuredStreamers.map((id: number) =>  {
+                featuredStreamers.map((id: number) => {
                     if (!streamersById[id]) {
                         return (<></>)
                     }

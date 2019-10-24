@@ -14,22 +14,22 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} />
                         <h1>{player.name}</h1>
                     </div>
-                    <h1>{player.name}</h1>
+
 
                     {videosSorted.length > 0 &&
                         <>
                             <div className="streamer_page__category">
-                                <h3>Recent Broadcasts  <span className="streamer_page__category--direction">-></span></h3>
-                                <Link to={`/player/${player.id}/${player.slug}/videos`}>View All Videos></Link>
+                                <h3>Recent Twitch Broadcast  <span className="streamer_page__category--direction">-></span></h3>
+                                <Link to={`/player/${player.id}/${player.slug}/videos`}>View All ></Link>
                             </div>
-                            <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} includeStreamerName={false}/>
+                            <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} includeStreamerName={false} />
                         </>
                     }
                     <div className="streamer_page__category">
-                        <h3>Recent Highlights  <span className="streamer_page__category--direction">-></span></h3>
-                        <Link to={`/player/${player.id}/${player.slug}/clips`}>View All Clips ></Link>
+                        <h3>Eliminated By  <span className="streamer_page__category--direction">-></span></h3>
+                        <Link to={`/player/${player.id}/${player.slug}/clips`}>View All ></Link>
                     </div>
-                    <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false}/>
+                    <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false} />
                 </div>
             }
         </>

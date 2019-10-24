@@ -48,7 +48,7 @@ a {
     flex-flow: row nowrap;
     flex-shrink: 1;
     height: 56px;
-    width: 100vw;
+    width: 100%;
     padding: 0 16px;
     justify-content: space-between;
     align-items: center;
@@ -78,13 +78,14 @@ a {
         }
     }
     .search {
-        display: flex;       
+        display: flex;    
         width: 100%;
         max-width: 640px;
         margin: 0 auto;
         flex: 1;
         flex-basis: 0.000000001px;
         flex-direction: row;
+        
 
         &__query {
             width: 0;
@@ -129,17 +130,15 @@ a {
     margin-right: 20px;
 }
 .small_link {
-    font-size: 11px;
-    margin: 12px;
-    text-decoration: underline;
+    font-size: 1.6rem;
+    margin: 10px;
+    text-decoration: none;
+    color: $main-brand-color;
 }
-.home {
-    &__page {
-        h1 {
-            font-size: 2rem;
-            color: yellow;
-        }
-
+.home_page {
+    h1 {
+        font-size: 2rem;
+        color: $main-brand-color;
     }
 }
 .slider {
