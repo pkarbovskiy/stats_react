@@ -4,11 +4,13 @@ import LatestVideos from '../components/LatestVideos'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import { setCurrentSearch, addLatestVideos } from '../actions'
+import Loader from '../components/Loader'
 import url from '../constants'
 
 const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById, onData, onDataLatest }:
     { location: any; searchFromCache: any; latestVideos: number[], latestVideosById: any, onData: any; onDataLatest: any }) => {
     const [search, setSearch] = useState()
+    const [loaded, setLoaded] = useState(false)
     // TODO: may be make it protected
     const searchString = location.search.replace('?', '').split('=')
     useEffect(() => {
@@ -21,6 +23,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                 .then(data => {
                     onData(data, searchString[1])
                     setSearch(data)
+                    setLoaded(true)
                 })
         }
         // fetch latest videos
@@ -32,6 +35,8 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
     }, [])
     return (
         <div className="search_page">
+            {!loaded && <Loader />}
+            {loaded && (<h3> We found {Object.keys(search).length} results for your query: </h3>)}
             {search && Object.keys(search).map(playerId =>
                 <StreamerVideos
                     streamer={search[playerId].streamer}
@@ -39,11 +44,16 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                     mediaSorted={search[playerId].videosSorted.slice(0, 6)}
                 />
             )}
-            <h1>Also check out:</h1>
-            {(<LatestVideos
-                mediaSorted={latestVideos}
-                mediaById={latestVideosById}
-            />)}
+
+            {latestVideos.length > 0 && (
+                <>
+                    <h3>Also check out:</h3>
+                    <LatestVideos
+                        mediaSorted={latestVideos}
+                        mediaById={latestVideosById}
+                    />
+                </>
+            )}
         </div>
     )
 }
