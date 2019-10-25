@@ -12,7 +12,7 @@ $main-brand-color:  #D7CA25;
         display: flex;
         &__kill,
         &__death {
-            width: 100px;
+            width: 75px;
             height: 36px;
             user-select: none;
             outline: none;
@@ -48,7 +48,7 @@ $main-brand-color:  #D7CA25;
         }
         &__kill {
             svg {
-                width: 87px;
+                width: 70px;
             }
         }
     }

@@ -38,7 +38,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                     mediaById={search[playerId].videosById}
                     mediaSorted={search[playerId].videosSorted.slice(0, 6)}
                 />
-            )},
+            )}
             <h1>Also check out:</h1>
             {(<LatestVideos
                 mediaSorted={latestVideos}

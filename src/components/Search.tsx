@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-const Search: React.FC<{ mobile: boolean }> = ({ mobile }) => {
-    const [isOpened, setIsOpened] = useState(false)
+const Search = ({ mobile }: { mobile: boolean }) => {
+    const [isOpened, setIsOpened] = useState(true)
     const [searchQuery, setSearchQuery] = useState('')
     // TODO: set proper type
     function submit(e: any) {
-        if (isOpened && searchQuery) {
+        if (isOpened && searchQuery || navigator.userAgent.toLowerCase().match(/mobile/i)) {
             e.target.submit()
         }
         e.preventDefault()
