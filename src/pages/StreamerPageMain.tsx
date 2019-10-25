@@ -6,12 +6,15 @@ import Slider from '../components/Slider'
 
 //TODO: figure out proper type
 const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSorted }: any) => {
+    function error(event: any) {
+        event.target.src = "//d38ev7kpu49one.cloudfront.net/static/face.svg"
+    }
     return (
         <>
             {player &&
                 <div className="streamer_page__player">
                     <div className="streamer_page__avatar">
-                        <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} />
+                        <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} onError={error} />
                         <h1>{player.name}</h1>
                     </div>
 
