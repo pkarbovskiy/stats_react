@@ -6,7 +6,7 @@ import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
 import VideoListPage from './pages/VideoListPage'
 import Header from './common/header'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom'
 import HamburgerMenu from './components/HamburgerMenu'
 import HumbuergerLogo from './components/HamburgerLogo'
 
@@ -20,42 +20,42 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                 <Header toggleMenu={toggleMenu} />
                 <HamburgerMenu isMenuShown={isMenuShown} toggleMenu={toggleMenu}>
                     <HumbuergerLogo toggleMenu={toggleMenu} noHomeLink={true} />
-                    <Link to="/" className="link">
+                    <NavLink exact activeClassName={"active"} to="/" className="link">
                         <svg viewBox="0 0 576 512">
                             <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
                             </path>
                         </svg>
                         <span>Home</span>
-                    </Link>
+                    </NavLink>
                     <hr />
-                    <Link to="/all_videos" className="link">
+                    <NavLink activeClassName={"active"} to="/all_videos" className="link">
                         <svg viewBox="0 0 576 512"><path d="M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z">
                         </path>
                         </svg>
                         <span>All Videos</span>
-                    </Link>
-                    <Link to="/random_video" className="link">
+                    </NavLink>
+                    <NavLink activeClassName={"active"} to="/random_video" className="link">
                         <svg viewBox="0 0 512 512">
                             <path d="M504.971 359.029c9.373 9.373 9.373 24.569 0 33.941l-80 79.984c-15.01 15.01-40.971 4.49-40.971-16.971V416h-58.785a12.004 12.004 0 0 1-8.773-3.812l-70.556-75.596 53.333-57.143L352 336h32v-39.981c0-21.438 25.943-31.998 40.971-16.971l80 79.981zM12 176h84l52.781 56.551 53.333-57.143-70.556-75.596A11.999 11.999 0 0 0 122.785 96H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12zm372 0v39.984c0 21.46 25.961 31.98 40.971 16.971l80-79.984c9.373-9.373 9.373-24.569 0-33.941l-80-79.981C409.943 24.021 384 34.582 384 56.019V96h-58.785a12.004 12.004 0 0 0-8.773 3.812L96 336H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h110.785c3.326 0 6.503-1.381 8.773-3.812L352 176h32z">
                             </path>
                         </svg>
                         <span>Random Video</span>
-                    </Link>
+                    </NavLink>
                     <hr />
-                    <Link to="/random_streamer" className="link">
+                    <NavLink activeClassName={"active"} to="/random_streamer" className="link">
                         <svg viewBox="0 0 448 512">
                             <path d="M383.9 308.3l23.9-62.6c4-10.5-3.7-21.7-15-21.7h-58.5c11-18.9 17.8-40.6 17.8-64v-.3c39.2-7.8 64-19.1 64-31.7 0-13.3-27.3-25.1-70.1-33-9.2-32.8-27-65.8-40.6-82.8-9.5-11.9-25.9-15.6-39.5-8.8l-27.6 13.8c-9 4.5-19.6 4.5-28.6 0L182.1 3.4c-13.6-6.8-30-3.1-39.5 8.8-13.5 17-31.4 50-40.6 82.8-42.7 7.9-70 19.7-70 33 0 12.6 24.8 23.9 64 31.7v.3c0 23.4 6.8 45.1 17.8 64H56.3c-11.5 0-19.2 11.7-14.7 22.3l25.8 60.2C27.3 329.8 0 372.7 0 422.4v44.8C0 491.9 20.1 512 44.8 512h358.4c24.7 0 44.8-20.1 44.8-44.8v-44.8c0-48.4-25.8-90.4-64.1-114.1zM176 480l-41.6-192 49.6 32 24 40-32 120zm96 0l-32-120 24-40 49.6-32L272 480zm41.7-298.5c-3.9 11.9-7 24.6-16.5 33.4-10.1 9.3-48 22.4-64-25-2.8-8.4-15.4-8.4-18.3 0-17 50.2-56 32.4-64 25-9.5-8.8-12.7-21.5-16.5-33.4-.8-2.5-6.3-5.7-6.3-5.8v-10.8c28.3 3.6 61 5.8 96 5.8s67.7-2.1 96-5.8v10.8c-.1.1-5.6 3.2-6.4 5.8z">
                             </path>
                         </svg>
                         <span>Random Streamers</span>
-                    </Link>
-                    <Link to="/featured_streamers" className="link">
+                    </NavLink>
+                    <NavLink activeClassName={"active"} to="/featured_streamers" className="link">
                         <svg viewBox="0 0 448 512">
                             <path d="M325.4 289.2L224 390.6 122.6 289.2C54 295.3 0 352.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-70.2-54-127.1-122.6-133.2zM32 192c27.3 0 51.8-11.5 69.2-29.7 15.1 53.9 64 93.7 122.8 93.7 70.7 0 128-57.3 128-128S294.7 0 224 0c-50.4 0-93.6 29.4-114.5 71.8C92.1 47.8 64 32 32 32c0 33.4 17.1 62.8 43.1 80-26 17.2-43.1 46.6-43.1 80zm144-96h96c17.7 0 32 14.3 32 32H144c0-17.7 14.3-32 32-32z">
                             </path>
                         </svg>
                         <span>Featured Streamers</span>
-                    </Link>
+                    </NavLink>
                     <hr />
                     <a href="https://twitter.com/streamsn1pers/" className="link" target="_blank" rel="noopener noreferrer nofollow">
                         <svg viewBox="0 0 512 512">

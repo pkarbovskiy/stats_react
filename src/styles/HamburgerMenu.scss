@@ -69,9 +69,10 @@ $break-large: 1200px;
             display:none;
         }
         &--links {
-            height: calc(100vh - 51px);
-            margin-top: 5.1rem;
+            height: 100%;
+            padding-top: 6.2rem;
             width: 25rem; 
+            position: fixed;
             .logo--link {
                 display: none !important;
             }
@@ -80,6 +81,19 @@ $break-large: 1200px;
                 font-size: 1.8rem;
                 align-content: center;
                 width: 100%;
+                &:hover {
+                    background-color: #525252;
+                }
+                &.active, &:hover {
+                    color: $main-brand-color;
+                    svg {
+                        fill: $main-brand-color;
+                    }
+                }
+                &.active:hover {
+                    background-color: #090909;
+                }
+                
             }
             .policy {
                 display: none;
