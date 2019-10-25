@@ -51,7 +51,6 @@ $break-ipad: 769px;
         &.horisontal {
             flex-wrap: nowrap;
             justify-content: left;
-           
             .video_cart {
                 flex-direction: column;
             }
@@ -66,6 +65,7 @@ $break-ipad: 769px;
             }
             &--image {
                 width: 192px;
+                height: 107px;
             }
             &__info {
                 display: flex;
@@ -90,6 +90,9 @@ $break-ipad: 769px;
     }
     .video_cart {
         margin: 5px;
+        &:first-child {
+            margin-left: 0;
+        }
         position: relative;
         &--image {
             padding: 0;

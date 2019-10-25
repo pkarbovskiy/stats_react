@@ -22,13 +22,16 @@ export type videoCartProps = {
     imageId: number;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName=false } = props
+    let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false } = props
     videoId = videoId || id
     let newTitle = includeStreamerName && streamer != null ? `${streamer.name}:${title}` : title
+    function error(event: any) {
+        event.target.src = "//d38ev7kpu49one.cloudfront.net/static/image.svg"
+    }
     return (
         <div className="video_cart">
             <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`}>
-                <img className="video_cart--image" src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} alt={title === void 0 ? `${player.name}` : title} />
+                <img className="video_cart--image" onError={error} src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} alt={title === void 0 ? `${player.name}` : title} />
             </Link>
             <div className="video_cart__info">
                 {includeAvatar ?
