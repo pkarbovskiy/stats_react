@@ -10,6 +10,7 @@
 @import 'TwitchPlayer';
 @import 'StreamerPage';
 @import 'LatestVideos';
+@import 'Loader';
 
 $main-background: #121212;
 $header-background: #090909;
@@ -139,6 +140,7 @@ a {
     &__about_us {
         font-family: Calibri;
     }
+    a {color:$main-brand-color}
 }    
 .streamer_page__avatar img {
     height: 50px;

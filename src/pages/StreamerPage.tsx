@@ -12,7 +12,9 @@ import {
     addClipsSorted,
     setCurrentPlayer
 } from '../actions'
+import Loader from '../components/Loader'
 import url from '../constants'
+
 //TODO: figure out proper type
 const StreamerPage = ({ match, onData }: any) => {
     const [streamer, setStreamer] = useState()
@@ -38,7 +40,7 @@ const StreamerPage = ({ match, onData }: any) => {
     }, [match.params.playerId])
     return (
         <div className="streamer_page">
-            {!streamer && <span>LOOOOOAAAADDDDIIIIINNNNGGGGG....</span>}
+            {!streamer && <Loader />}
             {streamer &&
                 <>
                     <nav className="streamer_page__nav">

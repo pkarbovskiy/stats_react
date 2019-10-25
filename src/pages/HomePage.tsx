@@ -4,6 +4,7 @@ import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
 import '../styles/App.scss'
 import { addStreamersById, addLatestVideos } from '../actions'
+import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
 import url from '../constants'
 
@@ -28,6 +29,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     return (
         <div className="home_page">
             <h1>New: all videos have been indexed for your viewing pleasure. Enjoy!</h1>
+            {latestVideos.length === 0 && <Loader />}
             {(<LatestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}

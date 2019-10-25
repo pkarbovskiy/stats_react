@@ -21,13 +21,18 @@ $main-brand-color:  #D7CA25;
         }
     }
     &__category {
+        font-size: 1.6rem;
         display: flex;
         align-items: center;
         &--direction {
             color:$main-brand-color;
+            
         }
         a {
             margin-left: 1rem;
+            margin: 10px;
+            text-decoration: none;
+            color: #D7CA25;
         }
     }
     &__nav {
@@ -58,5 +63,4 @@ $main-brand-color:  #D7CA25;
         }
     }
 }
-
     
