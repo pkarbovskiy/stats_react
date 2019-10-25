@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import HomePage from './pages/HomePage'
-
+import InfoPage from './pages/InfoPage'
 import VideoPage from './pages/VideoPage'
 import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
@@ -79,13 +79,13 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                         <span>Instagram</span>
                     </a>
                     <hr />
-                    <Link to="/privacy" className="link policy">
+                    <Link to="/privacy" className="info">
                         <span>Privacy Policy</span>
                     </Link>
-                    <Link to="/terms_of_service" className="link policy">
+                    <Link to="/terms_of_service" className="info">
                         <span>Terms Of Service</span>
                     </Link>
-                    <Link to="/about_us" className="link policy">
+                    <Link to="/about_us" className="info">
                         <span>About Us</span>
                     </Link>
                 </HamburgerMenu>
@@ -99,6 +99,9 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                     <Route exact path="/random_streamer" component={StreamerPage} />
                     <Route exact path="/featured_streamers" component={StreamerPage} />
                     <Route exact path="/search" component={SearchPage} />
+                    <Route exact path="/about_us" component={InfoPage} />
+                    <Route exact path="/privacy" component={InfoPage} />
+                    <Route exact path="/terms_of_service" component={InfoPage} />
                 </main>
             </Router>
         </Provider>
