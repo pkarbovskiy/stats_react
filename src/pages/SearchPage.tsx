@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { setCurrentSearch, addLatestVideos } from '../actions'
 import url from '../constants'
 
-const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById, onData, onDataLatest }: 
+const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById, onData, onDataLatest }:
     { location: any; searchFromCache: any; latestVideos: number[], latestVideosById: any, onData: any; onDataLatest: any }) => {
     const [search, setSearch] = useState()
     // TODO: may be make it protected
@@ -25,10 +25,10 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
         }
         // fetch latest videos
         fetch(`${url}/api/video/latest_videos`)
-        .then(data => data.json())
-        .then(data => {
-            onDataLatest(data)
-        })
+            .then(data => data.json())
+            .then(data => {
+                onDataLatest(data)
+            })
     }, [])
     return (
         <div className="search_page">
@@ -36,13 +36,13 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                 <StreamerVideos
                     streamer={search[playerId].streamer}
                     mediaById={search[playerId].videosById}
-                    mediaSorted={search[playerId].videosSorted}
+                    mediaSorted={search[playerId].videosSorted.slice(0, 6)}
                 />
             )},
             <h1>Also check out:</h1>
-                {(<LatestVideos
-                    mediaSorted={latestVideos}
-                    mediaById={latestVideosById}
+            {(<LatestVideos
+                mediaSorted={latestVideos}
+                mediaById={latestVideosById}
             />)}
         </div>
     )
@@ -53,13 +53,13 @@ const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         searchFromCache: state.mainReducer.search,
         latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos.slice(0, 5)
+        latestVideos: state.mainReducer.latestVideos.slice(0, 6)
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
-        onData: (data: any, query:string) => {
+        onData: (data: any, query: string) => {
             dispatch(setCurrentSearch(data, query))
         },
         onDataLatest: (data: any) => {
