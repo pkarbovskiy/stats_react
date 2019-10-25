@@ -58,43 +58,42 @@ const InfoPage = ({ match, onData }: any) => {
                 f. Performing other duties as required by law.
                 <br></br><br></br>
                 4. How Company Shares Information With Third Parties<br></br>
-                <br></br>
                 Company will not sell, rent, lease or otherwise transfer your Personal Information to any third parties and such Personal Information will only be used for communication between you, and Company, and in connection with your use of the Services. Company may disclose your personal information to its Owners, employees, and third party contractors for the purpose of understanding User behavior and using such information to improve the Services.
 
                 Company may disclose your Personal Information, without notice, if required to do so by law or in the good faith belief that such action is necessary to: (a) conform to the edicts of the law or comply with legal process served on Company; (b) protect and defend the rights or property of Company; and/or (c) act under exigent circumstances to protect the personal or economic safety of users of Company, or the public.
 
                 Notwithstanding the foregoing, Company may disclose your Personal Information to other third parties with your consent and direction to do so. When you broadcast information to third-party services, such information is no longer under the control of Company and is subject to the terms of use and privacy policies of such third parties.
-
-                Cookies and Do Not Track Signals
+                <br></br><br></br>
+                5. Cookies and Do Not Track Signals<br></br>
                 Company uses cookies to store and sometimes track information about your technology. A "cookie" is a small amount of data that is sent to your computer or device from a web server and stored thereon. Generally, Company uses cookies to collect additional service usage data, to improve the Services, and to personalize your experience. Using cookies helps ensure a safe experience; prevent spam, scammers, and phishing; and facilitate user-to-user interactions, such as chatting, posting and sharing content, and providing links to third-party services. However, Company does not share cookies with third parties, unless otherwise described herein.
 
                 Company may keep track of User behavior, within the Services to understand said behavior. This data is used to enhance the Services.
 
                 Company will not follow any browser, extension, or other application's Do Not Track signal or any other similar anti-tracking signals.
                 <br></br><br></br>
-                6. Third Party Links
+                6. Third Party Links<br></br>
                 The Services may contain links to other third party websites, which displays third party advertisements. Company is not responsible for the content or privacy practices of third party websites, applications, or software. We encourage our Users to be aware when they leave the Services and to read the privacy statements of any other site or application that collects personally identifiable information.
                 <br></br><br></br>
-                7. Security of your Personal Information
+                7. Security of your Personal Information<br></br>
                 Company will take reasonable and appropriate security measures to protect your Personal Information from unauthorized access, disclosure, alteration, or destruction. Unfortunately, no data transmission over the Internet or any mobile or wireless network is 100% secure. As a result, while we strive to protect your personal information, you agree and acknowledge that: (a) there are security and privacy limitations inherent to the Internet and wireless and mobile networks which are beyond our control; and (b) security, integrity, and privacy of any and all information and data exchanged between you and Company cannot be guaranteed.
 
                 Company recommends that you do your part in protecting your Personal Information. This includes guarding against unauthorized access to your Account, if applicable, by ensuring no one else uses your device or computer when you are logged in, by logging off from the Services when they are not in use, by keeping your password and other Personal Information confidential, and by taking precautionary steps to guard the physical safety and security of your device or computer.
                 <br></br><br></br>
-                8. How Long Will Your Information Be Stored
+                8. How Long Will Your Information Be Stored<br></br>
                 Company will store your Personal Information for as long as permitted by applicable laws and regulations.
                 <br></br><br></br>
-                9. Email Communications
+                9. Email Communications<br></br>
                 From time to time, Company may contact you via email for the purpose of providing announcements, promotional offers, alerts, confirmations, surveys, and/or other general communication regarding the Services. To improve the Services, we may receive a notification when you open an email from Company or click on a link therein.
 
                 If you would like to stop receiving such communications via email from Company, you may opt out of such communications by clicking on the UNSUBSCRIBE button and/or by emailing us at support@streamsnipers.com.
                 <br></br><br></br>
-                10. Changes to this Privacy Policy
+                10. Changes to this Privacy Policy<br></br>
                 Company reserves the right to change this Privacy Policy at any time in Company's sole discretion. We will provide you with notice of such a change. Notice of any changes to the Privacy Policy will be accomplished upon Company sending you an email to the address listed in your Account notifying you of such changes and Company announcing such changes through the Services. Such changes will go into effect immediately upon your access of the Services after you are given notice, as described herein. Your continued use of the Services following the notice of any changes to this Privacy Policy constitutes your acceptance of such changes. Any information collected by the Services will be dealt with in accordance with the version of this Privacy Policy that was in place at the time of collection.
                 <br></br><br></br>
-                11. Merger or Sale
+                11. Merger or Sale<br></br>
                 The information collected pursuant to this Privacy Policy, including Personal Information, is considered an asset of Company. In the event Company or some or all of the assets related to the Services are acquired by another entity through a sale, merger, or some other change of ownership transaction, Company reserves the right to transfer or assign the information, collected pursuant to this Privacy Policy, in that event.
                 <br></br><br></br>
-                12. Contact Information
+                12. Contact Information<br></br>
                 Company welcomes your questions or comments regarding this Privacy Policy. If you believe that Company has not adhered to this Privacy Policy, or if you have any other questions or concerns regarding this Privacy Policy please contact Company at support@streamsnipers.com.
 
                 The effective date of this Privacy Policy is July 23, 2019
