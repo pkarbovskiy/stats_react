@@ -6,7 +6,7 @@ $break-ipad: 500px;
     &.side {
         width: 60vw;
         margin: 10px auto;
-        justify-content: space-between;
+        justify-content: left;
         @media screen and (max-width: 1024px) {
             width: 100vw;
         }
