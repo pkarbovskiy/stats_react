@@ -127,6 +127,18 @@ a {
         }
     }
 }
+.info_block {
+    font-size: 1.75rem;
+    padding: 2rem;
+    color: rgb(180, 180, 180);
+    &__privacy {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.25rem;
+    }
+    &__about_us {
+        font-family: Calibri;
+    }
+}    
 .streamer_page__avatar img {
     height: 50px;
     margin-right: 20px;
