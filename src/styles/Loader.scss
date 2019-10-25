@@ -1,9 +1,14 @@
+$break-ipad: 758px;
 .loader_wrapper {
     position: absolute;
-    width: 11rem;
-    height: 11rem;
+    width: 6rem;
+    height: 6rem;
+    @media screen and (min-width: $break-ipad) {
+        width: 11rem;
+        height: 11rem;
+    }
     top: 50%;
-    left: 50%;
+    left: 45%;
 }
 .loader {
     font-size: 10px;
