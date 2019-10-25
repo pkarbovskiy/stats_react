@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DeathKill from './DeathKill'
 import AutoSkip from './AutoSkip'
+import Loader from '../components/Loader'
 declare global {
     interface Window { Twitch: any; }
 }
@@ -57,6 +58,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
 
     return (
         <>
+            {!player && <Loader />}
             <div id={targetElementId} className="player"></div>
             <DeathKill videoHandler={player} deathKillTimers={deathKillTimers} />
             <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
