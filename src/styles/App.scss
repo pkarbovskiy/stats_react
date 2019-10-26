@@ -16,6 +16,7 @@ $main-background: #121212;
 $header-background: #090909;
 $main-font-color: #999;
 $main-brand-color:  #D7CA25;
+$color-streamer-name: lightgrey;
 $font-size: 10px;
 $font-size-h3: 1.6rem;
 $break-large: 1200px;
@@ -100,7 +101,7 @@ a {
             width: 0;
             height: 32px;
             color: $main-font-color;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             border-width: 0;
             background: #1d1d1d;
             
@@ -166,13 +167,13 @@ a {
     color: $main-brand-color;
 }
 .home_page {
+    padding: 1rem;
     h1 {
         font-size: 2rem;
         color: $main-brand-color;
     }
     &__link {
         font-size: 1.6rem;
-        margin: 0px;
         text-decoration: none;
         color: $main-brand-color;
     }

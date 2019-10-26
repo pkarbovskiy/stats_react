@@ -3,8 +3,13 @@ import TwitchPlayer from '../components/TwitchPlayer'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
+import Loader from '../components/Loader'
 import url from '../constants'
-const VideoPage = ({ match }: { match: any }) => {
+import { addLatestVideos } from '../actions'
+import LatestVideos from '../components/LatestVideos'
+
+const VideoPage = ({ match, latestVideos, latestVideosById, onData }: 
+    { match: any; latestVideos: number[]; latestVideosById: any; onData: any }) => {
     const [timeline, setTimeline] = useState()
     const [video, setVideo] = useState()
     useEffect(() => {
@@ -25,6 +30,12 @@ const VideoPage = ({ match }: { match: any }) => {
         } else {
             getVideoInfo(match.params.videoId | 0)
         }
+        // fetch latest videos
+        fetch(`${url}/api/video/latest_videos`)
+        .then(data => data.json())
+        .then(data => {
+            onData(data)
+        })
 
     }, [])
     return (
@@ -32,8 +43,12 @@ const VideoPage = ({ match }: { match: any }) => {
             {video &&
                 <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />
             }
-            <h3>Other broadcasts</h3>
             {/* <Table classNameProp="side" videos={video} /> */}
+            {latestVideos.length === 0 && <Loader />}
+            {(<LatestVideos
+                mediaSorted={latestVideos}
+                mediaById={latestVideosById}
+            />)}
         </div>
     )
 }
@@ -42,12 +57,18 @@ const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videos: state.mainReducer.videos,
         deathKillTimers: state.mainReducer.deathKillTimers,
-        twitchPlayer: state.mainReducer.twitchPlayer
+        twitchPlayer: state.mainReducer.twitchPlayer,
+        latestVideosById: state.mainReducer.latestVideosById,
+        latestVideos: state.mainReducer.latestVideos.slice(0, 6)
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
-    return {}
+    return {
+        onData: (data: any) => {
+            dispatch(addLatestVideos(data))
+        }
+    }
 }
 
 export default connect(
