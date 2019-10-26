@@ -24,14 +24,20 @@ export type videoCartProps = {
 const VideoCart = (props: videoCartProps) => {
     let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false } = props
     videoId = videoId || id
-    let newTitle = includeStreamerName && streamer != null ? `${streamer.name}:${title}` : title
     function error(event: any) {
         event.target.src = "//d38ev7kpu49one.cloudfront.net/static/image.svg"
     }
     return (
         <div className="video_cart">
+            <div className="video_cart__streamername">
+                {includeStreamerName ? `${streamer.name}` : null}
+            </div>
             <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`}>
-                <img className="video_cart--image" onError={error} src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} alt={title === void 0 ? `${player.name}` : title} />
+                <img className="video_cart--image"
+                onError={error} 
+                src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`} 
+                alt={title === void 0 ? `${player.name}` : title} 
+                />
             </Link>
             <div className="video_cart__info">
                 {includeAvatar ?
@@ -41,7 +47,7 @@ const VideoCart = (props: videoCartProps) => {
                     ''
                 }
                 <span className="video_cart__info__description">
-                    {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : newTitle}
+                    {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : title}
                 </span>
             </div>
         </div>
