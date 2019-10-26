@@ -100,6 +100,7 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                     <Route exact path="/featured_streamers" component={StreamerPage} />
                     <Route exact path="/search" component={SearchPage} />
                     <Route exact path="/about_us" component={InfoPage} />
+                    <Route exact path="/info" component={InfoPage} />
                     <Route exact path="/privacy" component={InfoPage} />
                     <Route exact path="/terms_of_service" component={InfoPage} />
                 </main>

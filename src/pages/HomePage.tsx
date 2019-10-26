@@ -6,6 +6,7 @@ import '../styles/App.scss'
 import { addStreamersById, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
+import { Link } from 'react-router-dom'
 import url from '../constants'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
@@ -28,7 +29,9 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
 
     return (
         <div className="home_page">
-            <h1>New: all videos have been indexed for your viewing pleasure. Enjoy!</h1>
+            <Link to="/info" className="home_page__link">
+                <span>New to the site? Click here.</span>
+            </Link>
             {latestVideos.length === 0 && <Loader />}
             {(<LatestVideos
                 mediaSorted={latestVideos}

@@ -148,7 +148,12 @@ a {
     &__about_us {
         font-family: Calibri;
     }
-    a {color:$main-brand-color}
+    &__update {
+        padding: 1rem;
+    }
+    a {
+        color: $main-brand-color;
+    }
 }    
 .streamer_page__avatar img {
     height: 50px;
@@ -165,7 +170,16 @@ a {
         font-size: 2rem;
         color: $main-brand-color;
     }
+    &__link {
+        font-size: 1.6rem;
+        margin: 0px;
+        text-decoration: none;
+        color: $main-brand-color;
+    }
 }
 .slider {
     padding-bottom: 3em;
+}
+h2 {
+    color: rgb(211, 211, 211);
 }
