@@ -6,53 +6,67 @@ $main-brand-color:  #D7CA25;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
     margin: 10px auto 0;
     &__next,
     &__back {
         display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-top: 10px auto 0;
         &__kill,
         &__death {
-            width: 75px;
-            height: 36px;
-            user-select: none;
-            outline: none;
-            background-color: black;
-            border-radius: 5px;
-            border: 1px solid #6c6c6c;
-            padding: 3px;
-            svg {
-                width: 26px;
-                fill: white;
-            }
-            &:hover {
-                border: 1px solid $main-brand-color;
+            display: flex;
+            flex-direction: column;
+            &__button {
+                width: 76px;
+                height: 36px;
+                user-select: none;
+                outline: none;
+                background-color: black;
+                border-radius: 5px;
+                border: 1px solid #6c6c6c;
+                padding: 3px;
                 svg {
-                    fill: $main-brand-color;
-                }
-            }
-            &:focus, &:active {
-                border: 1px solid $main-brand-color;
-            }
-            &:disabled,
-            &[disabled] {
-                border: 1px solid white;
-                opacity: 0.5;
-                background-color: #aaa;
-                svg {
+                    width: 26px;
                     fill: white;
                 }
+                &:hover {
+                    border: 1px solid $main-brand-color;
+                    svg {
+                        fill: $main-brand-color;
+                    }
+                }
+                &:focus, &:active {
+                    border: 1px solid $main-brand-color;
+                }
+                &:disabled,
+                &[disabled] {
+                    border: 1px solid white;
+                    opacity: 0.5;
+                    background-color: #aaa;
+                    svg {
+                        fill: white;
+                    }
+                }
+            }
+            &__label {
+                width: 76px;
+                height: 15px;
+                color: white;
+                margin-left: 15px;
             }
         }
         button + button {
             margin-left: 7px;
         }
-        &__kill {
-            svg {
-                width: 70px;
-            }
-        }
     }
     &__back {
-        transform: scaleX(-1);
+        &__death,
+        &__kill {
+            &__button {
+                transform: scaleX(-1);
+            }
+        }
     }
 }
