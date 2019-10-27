@@ -37,13 +37,20 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
         <div className="search_page">
             {!loaded && <Loader />}
             {loaded && (<h3> We found {Object.keys(search).length} results for your query: </h3>)}
-            {search && Object.keys(search).map(playerId =>
-                <StreamerVideosNoHeader
-                    streamer={search[playerId].streamer}
-                    mediaById={search[playerId].videosById}
-                    mediaSorted={search[playerId].videosSorted.slice(0, 6)}
-                />
-            )}
+            {search && Object.keys(search).map(playerId => {
+                if (search[playerId].videosSorted && search[playerId].videosSorted.length > 0) {
+                    return (
+                        <StreamerVideosNoHeader
+                            streamer={search[playerId].streamer}
+                            mediaById={search[playerId].videosById}
+                            mediaSorted={search[playerId].videosSorted.slice(0, 6)}
+                        />
+                    )
+                } else {
+                    return (<></>)
+                }
+
+            })}
 
             {latestVideos.length > 0 && (
                 <>
