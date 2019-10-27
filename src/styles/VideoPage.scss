@@ -1,5 +1,6 @@
 
 .video_page {
+    position: relative;
     &__info {
         display:flex;
         margin: 5px;
@@ -19,6 +20,8 @@
         }
     }
     .AutoskipSwitch {
+        position: absolute;
+        right: 48px;
         display:flex; 
         flex-flow:column;
         width: 30px;
