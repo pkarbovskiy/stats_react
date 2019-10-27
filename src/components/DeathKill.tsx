@@ -13,21 +13,21 @@ const buttonsReducer = (state:any, action:any) => {
     const newState = Object.assign({}, state) 
     switch (action.type) {
         case 'INCREMENT':
-            if (state.timers[ACTIONS.KILL].length > 0) {
-                newState.isKillNextDisabled = newState.timers[ACTIONS.KILL][state.timers[ACTIONS.KILL].length - 1][0] < action.item.currentTime
+            if (newState.timers[ACTIONS.KILL].length > 0) {
+                newState.isKillNextDisabled = newState.timers[ACTIONS.KILL][newState.timers[ACTIONS.KILL].length - 1][0] < action.item.currentTime
                 newState.isKillPrevDisabled = false
             }
-            if (state.timers[ACTIONS.DEATH].length > 0) {
-                newState.isDeathNextDisabled = newState.timers[ACTIONS.DEATH][state.timers[ACTIONS.KILL].length - 1][0] < action.item.currentTime
+            if (newState.timers[ACTIONS.DEATH].length > 0) {
+                newState.isDeathNextDisabled = newState.timers[ACTIONS.DEATH][newState.timers[ACTIONS.DEATH].length - 1][0] < action.item.currentTime
                 newState.isDeathPrevDisabled = false
             }
             return newState
         case 'DECREMENT':        
-            if (state.timers[ACTIONS.KILL].length > 0) {
+            if (newState.timers[ACTIONS.KILL].length > 0) {
                 newState.isKillPrevDisabled = newState.timers[ACTIONS.KILL][0][1] >= action.item.currentTime
                 newState.isKillNextDisabled = false
             }
-            if (state.timers[ACTIONS.DEATH].length > 0) {
+            if (newState.timers[ACTIONS.DEATH].length > 0) {
                 newState.isDeathPrevDisabled = newState.timers[ACTIONS.DEATH][0][1] >= action.item.currentTime
                 newState.isDeathNextDisabled = false
             }
