@@ -24,11 +24,11 @@ const buttonsReducer = (state:any, action:any) => {
             return newState
         case 'DECREMENT':        
             if (newState.timers[ACTIONS.KILL].length > 0) {
-                newState.isKillPrevDisabled = newState.timers[ACTIONS.KILL][0][1] >= action.item.currentTime
+                newState.isKillPrevDisabled = newState.timers[ACTIONS.KILL][0][0] + 5 > action.item.currentTime
                 newState.isKillNextDisabled = false
             }
             if (newState.timers[ACTIONS.DEATH].length > 0) {
-                newState.isDeathPrevDisabled = newState.timers[ACTIONS.DEATH][0][1] >= action.item.currentTime
+                newState.isDeathPrevDisabled = newState.timers[ACTIONS.DEATH][0][0] + 5 > action.item.currentTime
                 newState.isDeathNextDisabled = false
             }
             return newState
@@ -70,6 +70,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
                 record => {
                     return record[0] < currentTime - 5
                 })
+                console.log(timer)
         }
         if (!timer) {
             return null

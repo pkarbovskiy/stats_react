@@ -20,7 +20,7 @@ $color-streamer-name: lightgrey;
 $font-size: 10px;
 $font-size-h3: 1.6rem;
 $break-large: 1200px;
-$break-ipad: 758px;
+$break-ipad: 769px;
 
 *, *:before, *:after {
     box-sizing: border-box;
@@ -58,10 +58,13 @@ a {
     background-color: $header-background;
     box-shadow: 0 1px 1px rgba(90, 90, 90, 0.1);
     z-index: 1;
-    max-width: 130rem;
     @media screen and (min-width: $break-ipad) {
         z-index: 6;
         padding: 0 16px;
+        .holder {
+            display: flex;
+            align-items: center;
+        }
     }
     .main-nav__ham_menu {
         margin: 0;
@@ -149,14 +152,27 @@ a {
             svg {
                 fill: $main-brand-color;
                 width: 2rem;
+                background: transparent;
             }
-            @media screen and (min-width: $break-ipad) {
-                background-color: black;
+            @media screen and (max-width: $break-ipad) {                
+                position: relative;
                 align-items: center;
-                margin-right: 10rem;
                 svg {
                     fill: $main-brand-color;
+                    
                 }
+            }
+            @media (min-width: $break-ipad) {
+                position: absolute;
+                right: 26vw;
+            }
+            @media (min-width: 1024px) and (max-width: 1440px) {
+                position: absolute;
+                right: 9vw;
+            }
+            @media (min-width: 1441px) {
+                position: absolute;
+                right: 23vw;
             }
         }
     }

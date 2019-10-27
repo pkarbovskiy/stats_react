@@ -8,7 +8,8 @@ const Header = ({ toggleMenu }: { toggleMenu: (arg0: any) => void }) => {
         <header className="header">
             <HumbuergerLogo toggleMenu={toggleMenu} />
             <Search mobile={false} />
-            <Info/>
+            <Info />
+
         </header>
     )
 }
