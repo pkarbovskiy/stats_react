@@ -24,13 +24,15 @@ $break-iphone-x: 824px;
         position: absolute;
         right: 140px;
         display:flex; 
-        flex-flow:column;
         width: 30px;
         flex-grow:1; 
-        .text {
-            font-size: 1.5rem;
-            margin-top: 3rem;
-        }    
+        &__text {
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+            margin-right: 0.5rem;
+            color: white;
+        }
+        &__animation {
         /* The switch - the box around the slider */
         .switch {
           position: absolute;
@@ -94,6 +96,7 @@ $break-iphone-x: 824px;
             border-radius: 50%;
           }
         }
+      }
     }
 }
       
