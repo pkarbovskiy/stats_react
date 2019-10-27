@@ -6,6 +6,7 @@ const InfoPage = ({ match, onData }: any) => {
     switch(match.path) {
         case "/about_us": {
             var text = <div className = "info_block__about_us">
+            <h2>About us</h2>
             StreamSnipers was created by a team of video game enthusiasts.
             Our mission is to build products and services that increase the number and quality of ways that streamers and fans connect. 
             We aim to make it easier for streamers to get more out of the material they put out, 
