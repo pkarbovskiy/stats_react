@@ -44,6 +44,8 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
                 <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />
             }
             {/* <Table classNameProp="side" videos={video} /> */}
+            <br></br><br></br><br></br><br></br><br></br>
+            <h3>Also check out latest broadcasts</h3>
             {latestVideos.length === 0 && <Loader />}
             {(<LatestVideos
                 mediaSorted={latestVideos}

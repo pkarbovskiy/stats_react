@@ -32,6 +32,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
             <Link to="/info" className="home_page__link">
                 <span>New to the site? Click here.</span>
             </Link>
+            <h3>Latest broadcasts</h3>
             {latestVideos.length === 0 && <Loader />}
             {(<LatestVideos
                 mediaSorted={latestVideos}

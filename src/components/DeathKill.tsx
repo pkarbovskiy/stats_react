@@ -55,7 +55,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
             <div className="death_kill__back">
                 <div className="death_kill__back__kill">
                     <button className={`death_kill__back__kill__button${currentDeathIndex === 0?' disabled':''}`} onClick={()=> move(0, ACTIONS.DEATH)}>
-                    <svg viewBox="0 0 141 29">
+                        <svg viewBox="0 0 141 29">
                             <title>previous kill</title>
                             <path d="M2,12h5l16,2c2.3-4,5.8-7.1,10-9c2.3-0.3,4.7-0.6,7-1c2-0.3,4-0.6,6-1l85,1c0-1.1,0.4-2.1,1-3c0.3-0.4,0.6-0.7,1-1l1.3,1.1
                                 l0.4,2.7l6.3-0.3v1.1l-1.5,0.4L141,6c0,0,0,4.9,0,6c-0.2,0.5,0,2.9,0,4c-1.9-0.3-42.1,0.8-44,0v3c1.3,0,2.5,0.8,3,2
