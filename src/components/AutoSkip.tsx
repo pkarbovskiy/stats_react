@@ -74,12 +74,12 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
     }, [videoHandler, checkBoxStatus])
 
     return (
-        <div>
+        <div className="AutoskipSwitch">
             <label className="switch">
                 <input type="checkbox" id="autoskip" onChange={() => onChangeStatus(oldState => !oldState)} />
                 <span className="autoskip round"></span>
-                <label htmlFor="autoskip">Autoskip</label>
             </label>
+            <label className="text" htmlFor="autoskip">Autoskip</label>
         </div>
     )
 }
