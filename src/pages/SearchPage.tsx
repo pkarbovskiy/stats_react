@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import StreamerVideos from '../components/StreamerVideos'
+import StreamerVideosNoHeader from '../components/StreamerVideosNoHeader'
 import LatestVideos from '../components/LatestVideos'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
@@ -38,7 +38,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
             {!loaded && <Loader />}
             {loaded && (<h3> We found {Object.keys(search).length} results for your query: </h3>)}
             {search && Object.keys(search).map(playerId =>
-                <StreamerVideos
+                <StreamerVideosNoHeader
                     streamer={search[playerId].streamer}
                     mediaById={search[playerId].videosById}
                     mediaSorted={search[playerId].videosSorted.slice(0, 6)}

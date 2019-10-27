@@ -1,9 +1,31 @@
+$main-brand-color:  #D7CA25;
 .streamer_video {
     width: 70vw;;
     margin: 0 auto;
   &__info {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    .up,.down {
+        width: 2rem;
+        height: 2rem;
+        svg { 
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .up {
+        svg {
+            margin-top: 7px;
+            fill: #999;
+        }
+    }
+    .down {
+        svg {
+            fill: $main-brand-color;
+            transform: scaleY(-1);
+        }
+    }
     &--pic {
         img {
             width: 30px;
@@ -11,6 +33,9 @@
     }
     h2 {
         margin: 0 0 0 10px;
+        &.no_header {
+            margin: 0;
+        }
         font-size: 1.8rem;
         font-weight: 500;
         line-height: 2rem;

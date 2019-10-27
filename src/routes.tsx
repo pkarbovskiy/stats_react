@@ -12,7 +12,7 @@ import HumbuergerLogo from './components/HamburgerLogo'
 
 import { Provider } from 'react-redux'
 
-const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
+const Root = ({ store }: { store: any }) => {
     const [isMenuShown, toggleMenu] = useState(false)
     return (
         <Provider store={store}>
@@ -28,12 +28,12 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                         <span>Home</span>
                     </NavLink>
                     <hr />
-                    <NavLink activeClassName={"active"} to="/all_videos" className="link">
+                    {/* <NavLink activeClassName={"active"} to="/all_videos" className="link">
                         <svg viewBox="0 0 576 512"><path d="M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z">
                         </path>
                         </svg>
                         <span>All Videos</span>
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink activeClassName={"active"} to="/random_video" className="link">
                         <svg viewBox="0 0 512 512">
                             <path d="M504.971 359.029c9.373 9.373 9.373 24.569 0 33.941l-80 79.984c-15.01 15.01-40.971 4.49-40.971-16.971V416h-58.785a12.004 12.004 0 0 1-8.773-3.812l-70.556-75.596 53.333-57.143L352 336h32v-39.981c0-21.438 25.943-31.998 40.971-16.971l80 79.981zM12 176h84l52.781 56.551 53.333-57.143-70.556-75.596A11.999 11.999 0 0 0 122.785 96H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12zm372 0v39.984c0 21.46 25.961 31.98 40.971 16.971l80-79.984c9.373-9.373 9.373-24.569 0-33.941l-80-79.981C409.943 24.021 384 34.582 384 56.019V96h-58.785a12.004 12.004 0 0 0-8.773 3.812L96 336H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h110.785c3.326 0 6.503-1.381 8.773-3.812L352 176h32z">
@@ -49,13 +49,13 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                         </svg>
                         <span>Random Streamers</span>
                     </NavLink>
-                    <NavLink activeClassName={"active"} to="/featured_streamers" className="link">
+                    {/* <NavLink activeClassName={"active"} to="/featured_streamers" className="link">
                         <svg viewBox="0 0 448 512">
                             <path d="M325.4 289.2L224 390.6 122.6 289.2C54 295.3 0 352.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-70.2-54-127.1-122.6-133.2zM32 192c27.3 0 51.8-11.5 69.2-29.7 15.1 53.9 64 93.7 122.8 93.7 70.7 0 128-57.3 128-128S294.7 0 224 0c-50.4 0-93.6 29.4-114.5 71.8C92.1 47.8 64 32 32 32c0 33.4 17.1 62.8 43.1 80-26 17.2-43.1 46.6-43.1 80zm144-96h96c17.7 0 32 14.3 32 32H144c0-17.7 14.3-32 32-32z">
                             </path>
                         </svg>
                         <span>Featured Streamers</span>
-                    </NavLink>
+                    </NavLink> */}
                     <hr />
                     <a href="https://twitter.com/streamsn1pers/" className="link" target="_blank" rel="noopener noreferrer nofollow">
                         <svg viewBox="0 0 512 512">
@@ -89,7 +89,7 @@ const Root: React.FC<{ store: any }> = ({ store }: { store: any }) => {
                         <span>About Us</span>
                     </Link>
                 </HamburgerMenu>
-                <main>
+                <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/all_videos" component={VideoListPage} />
                     <Route exact path="/random_video" component={VideoPage} />

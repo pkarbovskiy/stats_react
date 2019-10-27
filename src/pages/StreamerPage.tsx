@@ -45,14 +45,14 @@ const StreamerPage = ({ match, onData }: any) => {
                 <>
                     <nav className="streamer_page__nav">
                         <NavLink exact to={`/player/${streamer.id}/${streamer.slug}`} activeClassName={"active"} className="streamer_page__nav--link">Home<div></div></NavLink>
-                        {streamer.streamer &&
+                        {streamer.streamer > 0 &&
                             <NavLink to={`/player/${streamer.id}/${streamer.slug}/videos`} className="streamer_page__nav--link">Videos<div></div></NavLink>
                         }
                         <NavLink to={`/player/${streamer.id}/${streamer.slug}/clips`} className="streamer_page__nav--link">EliminatedBy<div></div></NavLink>
                     </nav>
                     <Route exact path={match.path} component={StreamerPageMain} />
                     <Route path={`${match.path}/clips`} component={ClipListPage} />
-                    {streamer.id &&
+                    {streamer.streamer > 0 &&
                         <Route path={`${match.path}/videos`} component={VideoListPage} />
                     }
                 </>
