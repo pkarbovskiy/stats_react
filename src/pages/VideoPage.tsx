@@ -8,11 +8,12 @@ import url from '../constants'
 import { addLatestVideos } from '../actions'
 import LatestVideos from '../components/LatestVideos'
 
-const VideoPage = ({ match, latestVideos, latestVideosById, onData }: 
+const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
     { match: any; latestVideos: number[]; latestVideosById: any; onData: any }) => {
     const [timeline, setTimeline] = useState()
     const [video, setVideo] = useState()
     useEffect(() => {
+        setVideo(false)
         function getVideoInfo(videoId: number) {
             fetch(`${url}/api/video/${videoId}`)
                 .then(data => data.json())
@@ -32,12 +33,12 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
         }
         // fetch latest videos
         fetch(`${url}/api/video/latest_videos`)
-        .then(data => data.json())
-        .then(data => {
-            onData(data)
-        })
+            .then(data => data.json())
+            .then(data => {
+                onData(data)
+            })
 
-    }, [])
+    }, [match.params.videoId])
     return (
         <div className="video_page">
             {video &&
