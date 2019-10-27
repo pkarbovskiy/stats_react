@@ -92,11 +92,11 @@ const Root = ({ store }: { store: any }) => {
                 <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/all_videos" component={VideoListPage} />
-                    <Route exact path="/random_video" component={VideoPage} />
+                    <Route exact path="/random_video" render={(props) => (<VideoPage {...props} key={Math.random()} />)} />
                     <Route exact path="/video/:videoId" component={VideoPage} />
                     <Route exact path="/video/:videoId/timer/:timer" component={VideoPage} />
                     <Route path="/player/:playerId/:slug" component={StreamerPage} />
-                    <Route exact path="/random_streamer" component={StreamerPage} />
+                    <Route exact path="/random_streamer" render={(props) => (<StreamerPage {...props} key={Math.random()} />)} />
                     <Route exact path="/featured_streamers" component={StreamerPage} />
                     <Route exact path="/search" component={SearchPage} />
                     <Route exact path="/about_us" component={InfoPage} />
