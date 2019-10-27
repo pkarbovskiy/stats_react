@@ -47,7 +47,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
 
             {latestVideos.length > 0 && (
                 <>
-                    <h3>Also check out:</h3>
+                    <h3>Also check out latest broadcasts:</h3>
                     <LatestVideos
                         mediaSorted={latestVideos}
                         mediaById={latestVideosById}

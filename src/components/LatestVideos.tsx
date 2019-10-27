@@ -5,9 +5,6 @@ const LatestVideos = ({mediaById, mediaSorted}: { mediaById: any; mediaSorted: a
 {
     return (
         <div className="latest_videos">
-            <div className="latest_videos__info">
-                <h3>Latest Broadcasts </h3>
-            </div>
             {<Slider mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} includeStreamerName={true}/>}
         </div>
     )
