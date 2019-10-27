@@ -23,16 +23,18 @@ $break-iphone-x: 824px;
     .AutoskipSwitch {
         position: absolute;
         right: 140px;
-        display:flex; 
+        display: flex; 
         width: 30px;
+        flex-flow: column;
         flex-grow:1; 
-        &__text {
-            font-size: 1.25rem;
-            margin-top: 0.25rem;
-            margin-right: 0.5rem;
-            color: white;
+        @media (min-width: 1024px) {
+            top: -27px;
+            right: 48px;
         }
-        &__animation {
+        .text {
+            font-size: 1.5rem;
+            margin-left: -7rem;
+        }  
         /* The switch - the box around the slider */
         .switch {
           position: absolute;
@@ -96,8 +98,7 @@ $break-iphone-x: 824px;
             border-radius: 50%;
           }
         }
-      }
-    }
+    }    
 }
       
 @media screen and (orientation:landscape) and (max-width: $break-iphone-x) { 
@@ -126,6 +127,10 @@ $break-iphone-x: 824px;
         .AutoskipSwitch {
             right: 65px;
             padding-top: 5px;
+            .text {
+                font-size: 1.5rem;
+                margin: 3rem 0 0 0;
+            }  
         }
     }
 }

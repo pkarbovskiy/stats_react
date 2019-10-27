@@ -1,1 +1,1 @@
-export default 'http://127.0.0.1:8000'
+export default ''//'http://192.168.232.129:8000'
