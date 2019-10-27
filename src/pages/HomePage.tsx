@@ -37,7 +37,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
             />)}
-            <h3>Broadcasts by streamer</h3>
+            <h3>Reactions by streamer</h3>
             {!!Object.keys(streamersById).length &&
                 featuredStreamers.map((id: number) => {
                     if (!streamersById[id]) {
