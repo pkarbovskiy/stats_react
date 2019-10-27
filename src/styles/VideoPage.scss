@@ -1,4 +1,5 @@
-
+$break-iphone-5: 568px;
+$break-iphone-x: 824px;
 .video_page {
     position: relative;
     &__info {
@@ -96,5 +97,32 @@
     }
 }
       
+@media screen and (orientation:landscape) and (max-width: $break-iphone-x) { 
+    .video_page {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        .player {
+            width: 85vw;
+            height: calc(87vw / 1.78);
+            @media (max-width: $break-iphone-5) {
+                width: 81vw;
+                height: calc(81vw / 1.78);
+            }
+        }
+        .death_kill {
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            margin-top: 59px;
+            &__back, &__next {
+                flex-direction: column;
+            }
+        }
 
-    
+        .AutoskipSwitch {
+            right: 65px;
+            padding-top: 5px;
+        }
+    }
+}
