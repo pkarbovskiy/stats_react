@@ -53,7 +53,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                 }
 
             })}
-
+            <br></br><br></br><br></br><br></br><br></br><br></br>
             {latestVideos.length > 0 && (
                 <>
                     <h3>Also check out latest broadcasts:</h3>
