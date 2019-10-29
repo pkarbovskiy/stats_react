@@ -106,8 +106,8 @@ a {
 
             &__query {
                 width: 40vw;
-                // width: 0;
                 margin-left:5px;
+                padding-left: .8rem;
                 height: 32px;
                 color: $main-font-color;
                 font-size: 1.3rem;
@@ -120,7 +120,6 @@ a {
                 }
                 @media screen and (min-width: $break-ipad) {
                     width: 100%;
-                    padding-left: .8rem;
                     &.expanded {
                         width: 100%;
                     }

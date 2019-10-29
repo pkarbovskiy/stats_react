@@ -4,6 +4,7 @@ $break-ipad: 500px;
     flex-flow: row wrap;
     justify-content: center;
     &.side {
+        padding: 5%;
         width: 60vw;
         margin: 10px auto;
         justify-content: left;
@@ -77,6 +78,11 @@ $break-ipad: 500px;
                     font-size: 15px;
                     font-weight: normal;
                     text-decoration: none;
+                }
+                @media screen and (max-width: $break-ipad) {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 150px;
                 }
             }
             &__name {
