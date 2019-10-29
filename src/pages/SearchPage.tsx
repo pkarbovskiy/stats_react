@@ -36,16 +36,16 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
     return (
         <div className="search_page">
             {!loaded && <Loader />}
-            {loaded && (Object.keys(search).length > 0 ? 
-                <h3> We found {Object.keys(search).length} results for your query: </h3> :
+            {loaded && (search.playerSorted.length > 0 ?
+                <h3> We found {search.playerSorted.length} results for your query: </h3> :
                 <h3> Sorry, we couldn't find any search results for your query. Check back again soon!</h3>)}
-            {search && Object.keys(search).map(playerId => {
-                if (search[playerId].videosSorted && search[playerId].videosSorted.length > 0) {
+            {loaded && search.playerSorted.length > 0 && search.playerSorted.map((playerId: number) => {
+                if (search.playersId[playerId].videosSorted && search.playersId[playerId].videosSorted.length > 0) {
                     return (
                         <StreamerVideosNoHeader
-                            streamer={search[playerId].streamer}
-                            mediaById={search[playerId].videosById}
-                            mediaSorted={search[playerId].videosSorted.slice(0, 6)}
+                            streamer={search.playersId[playerId].streamer}
+                            mediaById={search.playersId[playerId].videosById}
+                            mediaSorted={search.playersId[playerId].videosSorted.slice(0, 6)}
                         />
                     )
                 } else {

@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 
 const Search = ({ mobile }: { mobile: boolean }) => {
-    const [isOpened, setIsOpened] = useState(false)
+    const [isOpened, setIsOpened] = useState(true)
     const [searchQuery, setSearchQuery] = useState('')
     // TODO: set proper type
     function submit(e: any) {
-        if (isOpened && searchQuery || !navigator.userAgent.toLowerCase().match(/mobile/i)) {
+        if (searchQuery) {
             e.target.submit()
         }
         e.preventDefault()
-        setIsOpened(!isOpened)
     }
     return (
         <form action="/search" method="get" className="other__search">
