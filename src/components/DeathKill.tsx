@@ -95,7 +95,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
         <div className="death_kill">
             <div className="death_kill__back">
                 <div className="death_kill__back__kill">
-                    <button className={`death_kill__back__kill__button${state.isKillPrevDisabled ? ' disabled' : ''}`} onClick={()=> move(0, ACTIONS.DEATH)  } disabled={state.isKillPrevDisabled}>
+                    <button className={`death_kill__back__kill__button${state.isKillPrevDisabled ? ' disabled' : ''}`} onClick={()=> move(0, ACTIONS.KILL)  } disabled={state.isKillPrevDisabled}>
                         <svg viewBox="0 0 141 29">
                             <title>previous kill</title>
                             <path d="M2,12h5l16,2c2.3-4,5.8-7.1,10-9c2.3-0.3,4.7-0.6,7-1c2-0.3,4-0.6,6-1l85,1c0-1.1,0.4-2.1,1-3c0.3-0.4,0.6-0.7,1-1l1.3,1.1
@@ -111,7 +111,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
                     </div>
                 </div>
                 <div className="death_kill__back__death">
-                    <button className={`death_kill__back__death__button${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.KILL)} disabled={state.isDeathPrevDisabled}>
+                    <button className={`death_kill__back__death__button${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.DEATH)} disabled={state.isDeathPrevDisabled}>
                         <svg x="0px" y="0px" viewBox="0 0 512 512" >
                             <title>previous death</title>
                             <path d="M256,0C114.6,0,0,100.3,0,224c0,70.1,36.9,132.6,94.5,173.7c9.6,6.9,15.2,18.1,13.5,29.9l-9.4,66.2
