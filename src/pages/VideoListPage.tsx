@@ -24,7 +24,6 @@ const VideoListPage = ({ videosById, videosSorted, allMediaSorted, match }: any)
     }, [])
     return (
         <div className="video_list__page">
-            <h2>Content</h2>
             <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={videosById} />
         </div>
     );
