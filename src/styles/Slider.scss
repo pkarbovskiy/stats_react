@@ -73,9 +73,9 @@ $break-ipad: 769px;
                 &__streamer--pic {
                     display:none;
                 }
+                &__name,
                 &__description {
                     width: 18.2rem;
-                    white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     a {
@@ -84,6 +84,11 @@ $break-ipad: 769px;
                         font-weight: normal;
                         text-decoration: none;
                     }
+                }
+                &__name {
+                    font-family: Calibri;
+                    font-weight: bold;
+                    text-align: center;
                 }
             }
             &__streamername {
@@ -122,6 +127,7 @@ $break-ipad: 769px;
                     width: 100%;
                 }
             }
+            &__name,
             &__description {
                 width: 18.2rem;
                 a {
@@ -130,6 +136,11 @@ $break-ipad: 769px;
                     font-weight: normal;
                     text-decoration: none;
                 }
+            }
+            &__name {
+                font-family: Calibri;
+                font-weight: bold;
+                text-align: center;
             }
         }
     }

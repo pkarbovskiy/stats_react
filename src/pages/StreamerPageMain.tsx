@@ -29,7 +29,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         </>
                     }
                     <div className="streamer_page__category">
-                        <h3>Eliminated By </h3>
+                        <h3>Reactions </h3>
                         <Link to={`/player/${player.id}/${player.slug}/clips`} className="small_link">View All ></Link>
                     </div>
                     <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false} />
