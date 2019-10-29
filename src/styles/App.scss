@@ -18,7 +18,6 @@ $main-font-color: #999;
 $main-brand-color:  #D7CA25;
 $color-streamer-name: lightgrey;
 $font-size: 10px;
-$font-size-h3: 1.6rem;
 $break-large: 1200px;
 $break-ipad: 769px;
 
@@ -31,8 +30,9 @@ html, body {
     font-size: $font-size;
     overflow-x: hidden;
     h3 {
-        font-size: $font-size-h3;
-        color: $main-font-color
+        font-size: 2.0rem;
+        color: $main-font-color;
+        line-height: 2rem;
     }
 }
 a {

@@ -20,10 +20,10 @@ const DEFAULT_STATE = {
     latestVideos: [],
     videos: [],
     featuredStreamers: [
-        3429,
         3337,
         10654,
         3485,
+        3429,
         5010,
         3372,
         3476,

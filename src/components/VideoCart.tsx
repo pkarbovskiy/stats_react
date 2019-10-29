@@ -18,15 +18,17 @@ export type videoCartProps = {
     timestamp: number | '';
     includeAvatar: boolean;
     includeStreamerName: boolean;
+    match_on_player_id: boolean;
     title: string;
     imageId: number;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false } = props
+    let { id, streamer, match_on_player_id, player, streamStart, action, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false } = props
     videoId = videoId || id
     function error(event: any) {
         event.target.src = "//d38ev7kpu49one.cloudfront.net/static/image.svg"
     }
+    let killMsg = match_on_player_id ? `eliminated ` : `eliminated by `
     return (
         <div className="video_cart">
             <div className="video_cart__streamername">
@@ -46,9 +48,15 @@ const VideoCart = (props: videoCartProps) => {
                     </Link> :
                     ''
                 }
+            {includeStreamerName ?
                 <span className="video_cart__info__description">
                     {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : title}
                 </span>
+                :
+                <span className="video_cart__info__name">
+                    {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}> {killMsg} {player.name}</Link> : title}
+                </span>
+            }   
             </div>
         </div>
     )
