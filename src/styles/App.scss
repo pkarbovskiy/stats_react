@@ -224,3 +224,14 @@ a {
 h2 {
     color: rgb(211, 211, 211);
 }
+.since--date {
+    font-size: 1.3rem;
+    position: absolute;
+    text-decoration: none;
+    background-color:#121212;
+    opacity:.8;
+    top: 0;
+    left: 0;
+    color:#fff;
+    padding: .1rem .3rem;
+}
