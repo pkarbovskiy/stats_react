@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
@@ -6,12 +6,30 @@ import '../styles/App.scss'
 import { addStreamersById, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
-import { Link } from 'react-router-dom'
 import url from '../constants'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
+    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 4 
+    const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
+    console.log('featured', featuredStreamers.slice(0, elementsOnLoad))
+    useEffect(() => {
+        function scroll() {
+            if (
+                window.innerHeight + document.documentElement.scrollTop
+                === document.documentElement.offsetHeight
+            ) {
+                setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length - 1, state.length + 2)))
+            }
 
+            if (featuredStreamers.length === featuredStreamersArr.length) {
+                window.removeEventListener('scroll', scroll)
+            }
+        }
+        window.addEventListener('scroll', scroll)
+
+        return () => { window.removeEventListener('scroll', scroll) }
+    }, [])
     useEffect(() => {
         // fetch featured streamers
         fetch(`${url}/api/player/featured_streamers?ids=3337,10654,3485,3429,5010,3372,3476,3603,3150,3426,3524,3316,3473,3365,3306,3591,8370,3510`)
@@ -37,11 +55,11 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
             />)}
             <h3>Reactions by streamer</h3>
             {!!Object.keys(streamersById).length &&
-                featuredStreamers.map((id: number) => {
+                featuredStreamersArr.map((id: number) => {
                     if (!streamersById[id]) {
                         return (<></>)
                     }
-                    return (<StreamerVideos
+                    return (<StreamerVideos key={id}
                         streamer={streamersById[id].streamer}
                         mediaById={streamersById[id].videosById}
                         mediaSorted={streamersById[id].videosSorted}

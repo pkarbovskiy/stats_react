@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { State } from '../reducers/reducers'
-import { connect } from 'react-redux'
+import React from 'react'
 
-const InfoPage = ({ match, onData }: any) => {
+const InfoPage = ({ match }: any) => {
+    let text = <></>
     switch(match.path) {
-        case "/about_us": {
-            var text = <div className = "info_block__about_us">
+        case "/about_us": 
+            text = <div className = "info_block__about_us">
             <h2>About us</h2>
             StreamSnipers was created by a team of video game enthusiasts.
             Our mission is to build products and services that increase the number and quality of ways that streamers and fans connect. 
@@ -15,11 +14,10 @@ const InfoPage = ({ match, onData }: any) => {
             If you're a streamer and would be interested in collaborating, shoot us a note at <a href="mailto: collaborations@StreamSnipers.com">collaborations@StreamSnipers.com</a>.
             <br></br><br></br>
             If you're a developer with a passion for gaming and skilled in front-end design or back-end optimization contact us at <a href="mailto: work@StreamSnipers.com">work@StreamSnipers.com</a>.
-            </div>
-            }
-            break;
-        case "/privacy": {
-            var text = <div className = "info_block__privacy">
+            </div>            
+            break
+        case "/privacy": 
+            text = <div className = "info_block__privacy">
             Privacy Policy
             <br></br><br></br>
             General Information
@@ -97,11 +95,9 @@ const InfoPage = ({ match, onData }: any) => {
 
             The effective date of this Privacy Policy is July 23, 2019
             </div>
-            }
-            break;
-
-        case "/terms_of_service": {
-            var text = <div className = "info_block__privacy">
+            break
+        case "/terms_of_service": 
+            text = <div className = "info_block__privacy">
             Terms of Service<br></br><br></br>
             General Information<br></br><br></br>
             Welcome to Stream Snipers an online platform that allows gamers to access highlights of their performance and replay review in-game interactions with celebrity streamers. These Terms of Service (the "Terms") govern your access and the use of the Stream Snipers website and its subdomains (the "Site") our products, and any information, text, graphics, photos, or other materials uploaded to, downloaded from, or appearing on the Site. We refer to the Site and all related services throughout these Terms as the "Services." These Terms are a legally binding agreement between you and 1337, Inc. ("Company"). Read this agreement carefully before using the Services.
@@ -247,47 +243,40 @@ const InfoPage = ({ match, onData }: any) => {
             Questions and Feedback<br></br><br></br>
             If you have any questions or comments about these Terms or our Services, please contact us at: <a href="mailto: support@streamsnipers.com">support@streamsnipers.com</a>.
             </div>
-            }
-            break;
-
-        case "/info": {
+            break
+        case "/info": 
             text = <div className = "info_block__about_us">
-            <div className="info_block__update">
-                <h2>New to the site?</h2>
-                StreamSnipers shows you highlights of all the on-stream action from your favorite Fortnite players. 
-                Using our super duper navigation you can skip to the next kill or death on the stream, 
-                or use our Autoskip feature for an action-packed viewing experience.
-                Our "Search" feature also allows you to discover if you've eliminated any streamers and see their reactions. 
-                Try it out and <a href="https://www.reddit.com/r/StreamSn1pers/">let us know</a> what you find!
+                <div className="info_block__update">
+                    <h2>New to the site?</h2>
+                    StreamSnipers shows you highlights of all the on-stream action from your favorite Fortnite players. 
+                    Using our super duper navigation you can skip to the next kill or death on the stream, 
+                    or use our Autoskip feature for an action-packed viewing experience.
+                    Our "Search" feature also allows you to discover if you've eliminated any streamers and see their reactions. 
+                    Try it out and <a href="https://www.reddit.com/r/StreamSn1pers/">let us know</a> what you find!
 
-            </div>
-            <div className="info_block__update">
-                <h2>Update: Oct 26th, 2019</h2>
-                StreamSnipers has a new look with added functionality!<br></br><br></br>
-                Just like before, you can search for your Epic name to see if you've eliminated any streamers, 
-                by just typing it into the bar at the top of the page. But there's more!<br></br><br></br>
-                New Features:
-                <li>Quickly see all the action from any broadcast that we cover! 
-                    Cick on any video or reaction and use the handy navigation buttons to skip to all the kills / deaths.</li>
-                <li>Autoskip feature does the hard work for you. Just turn that bad boy on, lean back and enjoy the claps!</li>
-                <li>"Random Video" and "Random Streamer" features allow you to discover new goated streamers you may not have known about.</li>
-                <br></br><br></br>
-                We love to hear what you think and what else you'd like to see on the site! 
-                Let us know on our <a href="https://www.reddit.com/r/StreamSn1pers/" target="_blank">Reddit </a> 
-                or
-                <a href="https://twitter.com/streamsn1pers" target="_blank"> Twitter</a> pages.
                 </div>
-            </div>
-            }
-
-            break;
-
-        default: {
-            var text = <div className = "info_block">
+                <div className="info_block__update">
+                    <h2>Update: Oct 26th, 2019</h2>
+                    StreamSnipers has a new look with added functionality!<br></br><br></br>
+                    Just like before, you can search for your Epic name to see if you've eliminated any streamers, 
+                    by just typing it into the bar at the top of the page. But there's more!<br></br><br></br>
+                    New Features:
+                    <li>Quickly see all the action from any broadcast that we cover! 
+                        Cick on any video or reaction and use the handy navigation buttons to skip to all the kills / deaths.</li>
+                    <li>Autoskip feature does the hard work for you. Just turn that bad boy on, lean back and enjoy the claps!</li>
+                    <li>"Random Video" and "Random Streamer" features allow you to discover new goated streamers you may not have known about.</li>
+                    <br></br><br></br>
+                    We love to hear what you think and what else you'd like to see on the site! 
+                    Let us know on our <a href="https://www.reddit.com/r/StreamSn1pers/" target="_blank">Reddit </a> 
+                    or
+                    <a href="https://twitter.com/streamsn1pers" target="_blank"> Twitter</a> pages.
+                    </div>
+                </div>            
+            break
+        default: 
+            text = <div className = "info_block">
                 "Not About Us"
-                </div>
-            break;
-        }
+                </div>       
     }
     return (
         <div className = "info_block">
@@ -296,20 +285,4 @@ const InfoPage = ({ match, onData }: any) => {
     )
 }
 
-
-const mapStateToProps = (state: { mainReducer: State }) => {
-    return {
-    }
-}
-const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
-    return {
-        onData: (data: any) => {
-        }
-    }
-}
-
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(InfoPage)
+export default InfoPage
