@@ -10,16 +10,15 @@ import url from '../constants'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
-    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 4 
+    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 4
     const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
-    console.log('featured', featuredStreamers.slice(0, elementsOnLoad))
     useEffect(() => {
         function scroll() {
             if (
                 window.innerHeight + document.documentElement.scrollTop
                 === document.documentElement.offsetHeight
             ) {
-                setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length - 1, state.length + 2)))
+                setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
             }
 
             if (featuredStreamers.length === featuredStreamersArr.length) {
@@ -49,7 +48,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
         <div className="home_page">
             <h3>Latest broadcasts</h3>
             {latestVideos.length === 0 && <Loader />}
-            {(<LatestVideos
+            {latestVideos.length > 0 && (<LatestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
             />)}

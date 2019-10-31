@@ -1,42 +1,30 @@
 import React, { useRef, useEffect, useState } from 'react'
 import VideoCart from './VideoCart'
 
-const Slider = ({ mediaSorted, mediaById, classNameProp = '' , includeStreamerName = false}: 
-{ mediaSorted: any; mediaById: any; classNameProp?: string | string[]; includeStreamerName: boolean }) => {
-    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 6 
+const Slider = ({ mediaSorted, mediaById, classNameProp = '', includeStreamerName = false }:
+    { mediaSorted: any; mediaById: any; classNameProp?: string | string[]; includeStreamerName: boolean }) => {
+    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 6
     const [mediaSortedSlice, setMediaSorted] = useState(mediaSorted.slice(0, elementsOnLoad))
     const item = 202 // cart size TODO: may be calculate dynamically 
     const items: any = useRef(false)
-    useEffect(()=> {
-        function scrollHorisontalWheel(event:any) {
-            if (event.deltaY > 0) {
-                items.current.scrollLeft += 100
-            } else {
-                items.current.scrollLeft -= 100
-            }
-        }
+    useEffect(() => {
         function scrollAndAdd() {
             if (
-                window.innerHeight + document.documentElement.scrollTop
-                === document.documentElement.offsetHeight
+                items.current.scrollWidth - items.current.clientWidth - items.current.scrollLeft < 50
             ) {
-                console.log('executed')
-                setMediaSorted((state: any) => state.concat(mediaSortedSlice.slice(state.length - 1, state.length + 1)))
+                setMediaSorted((state: any) => state.concat(mediaSorted.slice(state.length, state.length + 2)))
             }
-
-            if (mediaSortedSlice.length === mediaSorted.lednth) {
+            if (mediaSortedSlice.length === mediaSorted.legnth) {
                 window.removeEventListener('scroll', scrollAndAdd)
             }
         }
         items.current.addEventListener('scroll', scrollAndAdd)
-        items.current.addEventListener('wheel', scrollHorisontalWheel)
         return () => {
-            items.current.removeEventListener('wheel', scrollHorisontalWheel)
             items.current.removeEventListener('scroll', scrollAndAdd)
         }
-    } ,[items])
+    }, [items])
     useEffect(() => {
-        
+
     }, [])
 
     function scroll(direction: 1 | -1) {
@@ -49,7 +37,7 @@ const Slider = ({ mediaSorted, mediaById, classNameProp = '' , includeStreamerNa
         <div className="slider-wrapper">
             <div className={`slider ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
                 {mediaSortedSlice.map((value: any) => {
-                    return <VideoCart key={mediaById[value].id} {...mediaById[value]} includeStreamerName={includeStreamerName}/>
+                    return <VideoCart key={mediaById[value].id} {...mediaById[value]} includeStreamerName={includeStreamerName} />
                 })}
             </div>
             <button className="slider__previous" onClick={() => scroll(-1)}>
