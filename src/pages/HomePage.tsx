@@ -9,8 +9,10 @@ import { State } from '../reducers/reducers'
 import url from '../constants'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
-    { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
-    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 4
+    { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {    
+    //TODO: refactor
+    // @ts-ignore
+    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) && ((navigator.userAgent.toLowerCase().match(/mobile/i) || {input:''}).input || '').indexOf('ipad') === -1 ? 2 : 4 
     const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
     useEffect(() => {
         function scroll() {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -17,8 +17,6 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} onError={error} />
                         <h1>{player.name}</h1>
                     </div>
-
-
                     {videosSorted.length > 0 &&
                         <>
                             <div className="streamer_page__category">

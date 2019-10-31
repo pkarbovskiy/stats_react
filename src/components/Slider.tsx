@@ -1,9 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react'
 import VideoCart from './VideoCart'
 
-const Slider = ({ mediaSorted, mediaById, classNameProp = '', includeStreamerName = false }:
-    { mediaSorted: any; mediaById: any; classNameProp?: string | string[]; includeStreamerName: boolean }) => {
-    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) ? 2 : 6
+const Slider = ({ mediaSorted, mediaById, classNameProp = '' , includeStreamerName = false}: 
+{ mediaSorted: any; mediaById: any; classNameProp?: string | string[]; includeStreamerName: boolean }) => {
+    //TODO: refactor
+    // @ts-ignore
+    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) && ((navigator.userAgent.toLowerCase().match(/mobile/i) || {}).input || '').indexOf('ipad') === -1
+    ? 2 : 6 
     const [mediaSortedSlice, setMediaSorted] = useState(mediaSorted.slice(0, elementsOnLoad))
     const item = 202 // cart size TODO: may be calculate dynamically 
     const items: any = useRef(false)
