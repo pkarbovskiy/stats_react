@@ -9,6 +9,7 @@ import Header from './common/header'
 import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom'
 import HamburgerMenu from './components/HamburgerMenu'
 import HumbuergerLogo from './components/HamburgerLogo'
+import CookieConsent from "react-cookie-consent";
 
 import { Provider } from 'react-redux'
 
@@ -89,6 +90,12 @@ const Root = ({ store }: { store: any }) => {
                         <span>About Us</span>
                     </Link>
                 </HamburgerMenu>
+                <CookieConsent location="bottom" style={{opacity: 0.75}} onAccept={() => {}}>
+                    <span style={{fontSize: "20px"}}>
+                        We use technical and analytics cookies to enhance your user experience. 
+                        For more info refer to our <a href="/privacy">Privacy Policy.</a>
+                    </span>
+                </CookieConsent>
                 <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/all_videos" component={VideoListPage} />
