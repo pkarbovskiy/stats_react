@@ -90,12 +90,6 @@ const Root = ({ store }: { store: any }) => {
                         <span>About Us</span>
                     </Link>
                 </HamburgerMenu>
-                <CookieConsent location="bottom" style={{opacity: 0.75}} onAccept={() => {}}>
-                    <span style={{fontSize: "20px"}}>
-                        We use technical and analytics cookies to enhance your user experience. 
-                        For more info refer to our <a href="/privacy">Privacy Policy.</a>
-                    </span>
-                </CookieConsent>
                 <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/all_videos" component={VideoListPage} />
@@ -111,6 +105,12 @@ const Root = ({ store }: { store: any }) => {
                     <Route exact path="/privacy" component={InfoPage} />
                     <Route exact path="/terms_of_service" component={InfoPage} />
                 </main>
+                <CookieConsent location="bottom" style={{ opacity: 0.9 }} onAccept={() => { }}>
+                    <span style={{ fontSize: "20px" }}>
+                        We use technical and analytics cookies to enhance your user experience.
+                        For more info refer to our <a href="/privacy">Privacy Policy.</a>
+                    </span>
+                </CookieConsent>
             </Router>
         </Provider>
     )
