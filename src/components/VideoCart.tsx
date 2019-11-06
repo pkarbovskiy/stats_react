@@ -30,7 +30,7 @@ const VideoCart = (props: videoCartProps) => {
     function error(event: any) {
         event.target.src = "//d38ev7kpu49one.cloudfront.net/static/image.svg"
     }
-    let killMsg = match_on_player_id ? `eliminated ` : `eliminated by `
+    let killMsg = match_on_player_id ? `eliminated` : `eliminated by`
     return (
         <div className="video_cart">
             <div className="video_cart__streamername">
@@ -57,7 +57,7 @@ const VideoCart = (props: videoCartProps) => {
                     </span>
                     :
                     <span className="video_cart__info__name">
-                        {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}> {killMsg} {player.name}</Link> : title}
+                        {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{`${killMsg} ${player.name}`}</Link> : title}
                     </span>
                 }
             </div>

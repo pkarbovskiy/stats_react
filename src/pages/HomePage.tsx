@@ -9,16 +9,15 @@ import { State } from '../reducers/reducers'
 import url from '../constants'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
-    { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {    
+    { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
     //TODO: refactor
     // @ts-ignore
-    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) && ((navigator.userAgent.toLowerCase().match(/mobile/i) || {input:''}).input || '').indexOf('ipad') === -1 ? 2 : 4 
+    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) && ((navigator.userAgent.toLowerCase().match(/mobile/i) || { input: '' }).input || '').indexOf('ipad') === -1 ? 2 : 4
     const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
     useEffect(() => {
         function scroll() {
             if (
-                window.innerHeight + document.documentElement.scrollTop
-                === document.documentElement.offsetHeight
+                document.documentElement.offsetHeight - window.innerHeight - document.documentElement.scrollTop < 50
             ) {
                 setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
             }

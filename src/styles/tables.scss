@@ -78,6 +78,11 @@ $break-ipad: 500px;
                     font-size: 15px;
                     font-weight: normal;
                     text-decoration: none;
+                    @media screen and (max-width: $break-ipad) {
+                        text-align: left;
+                        width: 11rem;
+                        word-wrap: break-word;
+                    }
                 }
                 @media screen and (max-width: $break-ipad) {
                     display: flex;
