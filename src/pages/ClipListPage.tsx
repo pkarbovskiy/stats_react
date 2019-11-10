@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addVideosById } from '../actions'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
+import { gaEvents } from '../common_function'
 declare global {
     interface Window { body: any; }
 }
@@ -17,6 +18,7 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
                 window.innerHeight + document.documentElement.scrollTop
                 === document.documentElement.offsetHeight
             ) {
+                gaEvents({ eventCategory: 'ClipList Page', eventAction: 'scroll', eventLabel: `${match.path}` })
                 setMediaSorted((state: any) => state.concat(allMediaSorted.slice(state.length - 1, state.length + 4)))
             }
 

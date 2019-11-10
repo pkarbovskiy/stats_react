@@ -8,6 +8,7 @@ import { addStreamersById, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
 import url from '../constants'
+import { gaEvents } from '../common_function'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
@@ -20,6 +21,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
             if (
                 document.documentElement.offsetHeight - window.innerHeight - document.documentElement.scrollTop < 50
             ) {
+                gaEvents({ eventCategory: 'Home Page', eventAction: 'scroll', eventLabel: 'pagescroll' })
                 setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
             }
 
