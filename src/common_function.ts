@@ -12,3 +12,14 @@ export const gaEvents = ({ eventCategory, eventAction, eventLabel }: { eventCate
         })
     }
 }
+
+export const getDocumentHeight = () => {
+    const body = document.body
+    const documentElement = document.documentElement
+
+    return Math.max(
+        body.scrollHeight, documentElement.scrollHeight,
+        body.offsetHeight, documentElement.offsetHeight,
+        body.clientHeight, documentElement.clientHeight
+    )
+}

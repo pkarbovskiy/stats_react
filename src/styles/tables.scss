@@ -72,6 +72,7 @@ $break-ipad: 500px;
             &__description {
                 width: 18.2rem;
                 overflow: hidden;
+                white-space: nowrap;
                 text-overflow: ellipsis;
                 a {
                     color: #a0a0a0;
@@ -91,7 +92,6 @@ $break-ipad: 500px;
                 }
             }
             &__name {
-                font-family: Calibri;
                 font-weight: bold;
                 text-align: center;
             }

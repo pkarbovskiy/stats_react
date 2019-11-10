@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
-import { gaEvents } from '../common_function'
+import { gaEvents, getDocumentHeight } from '../common_function'
 
 const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(videosSorted)
@@ -12,7 +12,7 @@ const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, mat
     useEffect(() => {
         function scroll() {
             if (
-                window.innerHeight + document.documentElement.scrollTop
+                getDocumentHeight() + document.documentElement.scrollTop
                 === document.documentElement.offsetHeight
             ) {
                 gaEvents({ eventCategory: 'Video List Page', eventAction: 'scroll', eventLabel: `${match.path}` })
@@ -34,7 +34,7 @@ const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, mat
                     <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${streamer.id}.png`} alt={`${streamer.name} avatar`} onError={error} />
                     <h1>{streamer.name}</h1>
                 </div>
-            <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={videosById} />
+                <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={videosById} />
             </div>
         </>
     );

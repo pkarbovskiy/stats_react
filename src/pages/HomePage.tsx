@@ -8,7 +8,7 @@ import { addStreamersById, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
 import url from '../constants'
-import { gaEvents } from '../common_function'
+import { gaEvents, getDocumentHeight } from '../common_function'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
@@ -19,7 +19,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     useEffect(() => {
         function scroll() {
             if (
-                document.documentElement.offsetHeight - window.innerHeight - document.documentElement.scrollTop < 50
+                getDocumentHeight() - window.innerHeight - document.documentElement.scrollTop < 50
             ) {
                 gaEvents({ eventCategory: 'Home Page', eventAction: 'scroll', eventLabel: 'pagescroll' })
                 setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
@@ -51,6 +51,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     return (
         <div className="home_page">
             <div className="home_page__info">
+                <svg viewBox="0 0 192 512"><path d="M176 432c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80zM25.26 25.199l13.6 272C39.499 309.972 50.041 320 62.83 320h66.34c12.789 0 23.331-10.028 23.97-22.801l13.6-272C167.425 11.49 156.496 0 142.77 0H49.23C35.504 0 24.575 11.49 25.26 25.199z"></path></svg>
                 How to use the site?<br></br>
                 - search your name above to see if you've killed a streamer OR<br></br>
                 - choose a video and toggle AutoSkip to see all the action (kills, deaths, wins)
