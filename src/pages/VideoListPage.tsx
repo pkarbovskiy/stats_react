@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
+import { gaEvents } from '../common_function'
 
 const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(videosSorted)
@@ -14,6 +15,7 @@ const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, mat
                 window.innerHeight + document.documentElement.scrollTop
                 === document.documentElement.offsetHeight
             ) {
+                gaEvents({ eventCategory: 'Video List Page', eventAction: 'scroll', eventLabel: `${match.path}` })
                 setMediaSorted((state: any) => state.concat(allMediaSorted.slice(state.length - 1, state.length + 10)))
             }
 

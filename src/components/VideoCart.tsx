@@ -1,6 +1,7 @@
 import React from 'react'
 import Since from './Since'
 import { Link } from 'react-router-dom'
+import { gaEvents } from '../common_function'
 export type videoCartProps = {
     id: number;
     streamer: {
@@ -36,7 +37,7 @@ const VideoCart = (props: videoCartProps) => {
             <div className="video_cart__streamername">
                 {includeStreamerName ? `${streamer.name}` : null}
             </div>
-            <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`} className="video_cart--link">
+            <Link to={`/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`} className="video_cart--link" onClick={() => gaEvents({ eventCategory: 'Slider', eventAction: 'click', eventLabel: `${videoId}` })}>
                 <img className="video_cart--image"
                     onError={error}
                     src={`https://d38ev7kpu49one.cloudfront.net/${imageId ? imageId : id}.png`}
