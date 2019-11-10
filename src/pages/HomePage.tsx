@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
 import '../styles/App.scss'
@@ -47,6 +48,11 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
 
     return (
         <div className="home_page">
+            <div className="home_page__link">
+                <Link to="/info/">
+                    <h1>NEW TO THE SITE? CLICK HERE!</h1>
+                </Link>
+            </div>
             <h3>Latest broadcasts</h3>
             {latestVideos.length === 0 && <Loader />}
             {latestVideos.length > 0 && (<LatestVideos

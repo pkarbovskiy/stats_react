@@ -216,6 +216,10 @@ a {
         font-size: 1.6rem;
         text-decoration: none;
         color: $main-brand-color;
+        
+        h1 {
+            text-align: center;
+        }
     }
 }
 h2 {
