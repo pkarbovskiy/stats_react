@@ -50,10 +50,10 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
 
     return (
         <div className="home_page">
-            <div className="home_page__link">
-                <Link to="/info/">
-                    <h1>NEW TO THE SITE? CLICK HERE!</h1>
-                </Link>
+            <div className="home_page__info">
+                How to use the site?<br></br>
+                - search your name above to see if you've killed a streamer OR<br></br>
+                - choose a video and toggle AutoSkip to see all the action (kills, deaths, wins)
             </div>
             <h3>Latest broadcasts</h3>
             {latestVideos.length === 0 && <Loader />}

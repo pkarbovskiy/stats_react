@@ -212,6 +212,17 @@ a {
         font-size: 2rem;
         color: $main-brand-color;
     }
+    &__info {
+        font-size: 1.6rem;
+        display: flex;
+        justify-content: left;
+        text-align: left;
+        font-weight: bold;
+        @media (max-width: $break-ipad) {
+            font-size: 1.2rem;
+        }
+
+    }
     &__link {
         font-size: 1.6rem;
         text-decoration: none;
