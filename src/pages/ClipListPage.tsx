@@ -6,8 +6,11 @@ import Table from '../components/Table'
 declare global {
     interface Window { body: any; }
 }
-const VideoListPage = ({ playersById, clipsById, clipsSorted, allMediaSorted, match }: any) => {
+const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(clipsSorted)
+    function error(event: any) {
+        event.target.src = "//d38ev7kpu49one.cloudfront.net/static/face.svg"
+    }
     useEffect(() => {
         function scroll() {
             if (
@@ -26,9 +29,15 @@ const VideoListPage = ({ playersById, clipsById, clipsSorted, allMediaSorted, ma
         return () => { window.removeEventListener('scroll', scroll) }
     }, [])
     return (
-        <div className="video_list__page">
-            <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={clipsById} playersById={playersById} />
-        </div>
+        <>
+            <div className="streamer_page__player">
+                <div className="streamer_page__avatar">
+                    <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} onError={error} />
+                    <h1>{player.name}</h1>
+                </div>
+                <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={clipsById} playersById={playersById} />
+            </div>
+        </>
     );
 }
 
@@ -37,7 +46,8 @@ const mapStateToProps = (state: { mainReducer: State }) => {
         clipsSorted: state.mainReducer.clipsSorted.slice(0, 30),
         allMediaSorted: state.mainReducer.clipsSorted,
         clipsById: state.mainReducer.clipsById,
-        playersById: state.mainReducer.playersById
+        playersById: state.mainReducer.playersById,
+        player: state.mainReducer.currentPlayer
     }
 }
 
