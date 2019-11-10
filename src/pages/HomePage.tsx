@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
 import '../styles/App.scss'
@@ -49,6 +50,11 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
 
     return (
         <div className="home_page">
+            <div className="home_page__info">
+                How to use the site?<br></br>
+                - search your name above to see if you've killed a streamer OR<br></br>
+                - choose a video and toggle AutoSkip to see all the action (kills, deaths, wins)
+            </div>
             <h3>Latest broadcasts</h3>
             {latestVideos.length === 0 && <Loader />}
             {latestVideos.length > 0 && (<LatestVideos
