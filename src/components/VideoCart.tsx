@@ -57,8 +57,8 @@ const VideoCart = (props: videoCartProps) => {
                         {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : title}
                     </span>
                     :
-                    <span className="video_cart__info__name">
-                        {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{`${killMsg} ${player.name}`}</Link> : title}
+                    <span className={`video_cart__info__name${title != null ? ' title' : ''}`}>
+                        {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{`${killMsg}`}<br />{`${player.name}`}</Link> : title}
                     </span>
                 }
             </div>

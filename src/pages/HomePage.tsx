@@ -19,7 +19,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     useEffect(() => {
         function scroll() {
             if (
-                getDocumentHeight() - window.innerHeight - document.documentElement.scrollTop < 50
+                getDocumentHeight() - window.innerHeight - document.documentElement.scrollTop < 100
             ) {
                 gaEvents({ eventCategory: 'Home Page', eventAction: 'scroll', eventLabel: 'pagescroll' })
                 setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))

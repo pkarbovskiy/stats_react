@@ -72,7 +72,9 @@ $break-ipad: 500px;
             &__description {
                 width: 18.2rem;
                 overflow: hidden;
-                white-space: nowrap;
+                &.title {
+                    white-space: nowrap;
+                }
                 text-overflow: ellipsis;
                 a {
                     color: #a0a0a0;
