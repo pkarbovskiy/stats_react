@@ -37,6 +37,7 @@ html, body {
 }
 a {
     color: $main-font-color;
+    text-decoration: none;
 }
 .app {
     display: flex;
@@ -230,6 +231,9 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    &--header {
+        margin: 3.5rem 0 2.5rem;
     }
 }
 h2 {

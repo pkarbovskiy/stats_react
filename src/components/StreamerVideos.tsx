@@ -12,7 +12,7 @@ const StreamerVideos = ({ streamer, mediaById, mediaSorted }: { streamer: { id: 
                 <Link to={`/player/${streamer.id}/${streamer.slug}`} className="streamer_video__info--pic">
                     <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${streamer.id}.png`} alt="top streamer" onError={error} />
                 </Link>
-                <h2>{streamer.name}</h2><Link to={`/player/${streamer.id}/${streamer.slug}/clips`} className="small_link">View All ></Link>
+                <Link to={`/player/${streamer.id}/${streamer.slug}`}><h2>{streamer.name}</h2></Link><Link to={`/player/${streamer.id}/${streamer.slug}`} className="small_link">View Profile ></Link>
             </div>
             {<Slider mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} includeStreamerName={false} />}
         </div>

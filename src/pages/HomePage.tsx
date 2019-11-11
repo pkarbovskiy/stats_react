@@ -51,7 +51,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     return (
         <div className="home_page">
             <div className="home_page__info">
-                How to use the site?<br></br>
+                How to use the site:<br></br>
                 - search your name above to see if you've killed a streamer OR<br></br>
                 - choose a video and toggle AutoSkip to see all the action (kills, deaths, wins)
             </div>
@@ -61,7 +61,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
             />)}
-            <h3>Broadcasts by streamer</h3>
+            <h3 className="home_page--header">Broadcasts by streamer</h3>
             {!!Object.keys(streamersById).length &&
                 featuredStreamersArr.map((id: number) => {
                     if (!streamersById[id]) {
