@@ -218,13 +218,9 @@ a {
         justify-content: left;
         text-align: left;
         font-weight: bold;
+        color: #ddd;
         @media (max-width: $break-ipad) {
             font-size: 1.2rem;
-        }
-        svg {
-            height: 6rem;
-            fill:#fff;
-            margin-right: .5rem;
         }
     }
     &__link {
