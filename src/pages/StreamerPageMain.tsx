@@ -12,11 +12,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
     return (
         <>
             {player &&
-                <div className="streamer_page__player">
-                    <div className="streamer_page__avatar">
-                        <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} onError={error} />
-                        <h1>{player.name}</h1>
-                    </div>
+                <>
                     {videosSorted.length > 0 &&
                         <>
                             <div className="streamer_page__category">
@@ -31,7 +27,7 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                         <Link to={`/player/${player.id}/${player.slug}/clips`} className="small_link">View All ></Link>
                     </div>
                     <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false} />
-                </div>
+                </>
             }
         </>
     )

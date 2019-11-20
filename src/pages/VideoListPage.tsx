@@ -2,25 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
-import { gaEvents, getDocumentHeight } from '../common_function'
+import { gaEvents, shouldLazyLoad, onErrorStreamerFace } from '../common_function'
 
 const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(videosSorted)
-    function error(event: any) {
-        event.target.src = "//d38ev7kpu49one.cloudfront.net/static/face.svg"
-    }
     useEffect(() => {
         function scroll() {
-            if (
-                getDocumentHeight() + document.documentElement.scrollTop
-                === document.documentElement.offsetHeight
-            ) {
-                gaEvents({ eventCategory: 'Video List Page', eventAction: 'scroll', eventLabel: `${match.path}` })
+            if (shouldLazyLoad()) {
+                gaEvents({ eventCategory: 'Video List Page', eventAction: 'scroll On LazyLoading', eventLabel: `${match.url}` })
                 setMediaSorted((state: any) => state.concat(allMediaSorted.slice(state.length - 1, state.length + 10)))
-            }
-
-            if (allMediaSorted.length === mediaSorted.lednth) {
-                window.removeEventListener('scroll', scroll)
             }
         }
         window.addEventListener('scroll', scroll)
@@ -30,10 +20,6 @@ const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, mat
     return (
         <>
             <div className="streamer_page__player">
-                <div className="streamer_page__avatar">
-                    <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${streamer.id}.png`} alt={`${streamer.name} avatar`} onError={error} />
-                    <h1>{streamer.name}</h1>
-                </div>
                 <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={videosById} />
             </div>
         </>

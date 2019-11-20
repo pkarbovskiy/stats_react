@@ -53,7 +53,7 @@ const VideoCart = (props: videoCartProps) => {
                     ''
                 }
                 {includeStreamerName ?
-                    <span className="video_cart__info__description">
+                    <span className={`video_cart__info__description${title != null ? ' title' : ''}`}>
                         {title === void 0 ? <Link to={`/player/${player.id}/${player.slug}`}>{player.name}</Link> : title}
                     </span>
                     :

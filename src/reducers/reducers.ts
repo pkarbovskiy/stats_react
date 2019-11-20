@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions'
+import { pic8bitFaces } from '../constants'
 import {
     addVideosById,
     addClipsById,
@@ -19,32 +20,13 @@ const DEFAULT_STATE = {
     latestVideosById: {},
     latestVideos: [],
     videos: [],
-    featuredStreamers: [
-        3337,
-        10654,
-        3485,
-        3429,
-        5010,
-        3372,
-        3476,
-        3603,
-        3150,
-        3426,
-        3524,
-        3316,
-        3473,
-        3365,
-        3306,
-        3591,
-        8370,
-        3510
-    ],
+    featuredStreamers: pic8bitFaces,
     playersById: {},
     videosById: {},
     clipsById: {},
     videosSorted: [],
     clipsSorted: [],
-    search: {} as {[key:string]:any}
+    search: {} as { [key: string]: any }
 }
 export type State = typeof DEFAULT_STATE
 
@@ -87,7 +69,7 @@ const addStreamersByIdReducer = (state: State, addStreamersById: { payload: any 
 const addLatestVideosReducer = (state: State, addLatestVideos: { payload: any }): State => {
     const newState = Object.assign({}, state)
     newState.latestVideosById = addLatestVideos.payload.latestVideosById
-    newState.latestVideos     = addLatestVideos.payload.latestVideos
+    newState.latestVideos = addLatestVideos.payload.latestVideos
     return newState
 }
 

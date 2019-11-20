@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Slider from '../components/Slider'
+import Avatar from '../components/Avatar'
 
 const StreamerVideos = ({ streamer, mediaById, mediaSorted }: { streamer: { id: number, name: string; slug: string }; mediaById: any; mediaSorted: any }) => {
     function error(event: any) {
@@ -10,7 +11,7 @@ const StreamerVideos = ({ streamer, mediaById, mediaSorted }: { streamer: { id: 
         <div className="streamer_video">
             <div className="streamer_video__info">
                 <Link to={`/player/${streamer.id}/${streamer.slug}`} className="streamer_video__info--pic">
-                    <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${streamer.id}.png`} alt="top streamer" onError={error} />
+                    <Avatar player={streamer} />
                 </Link>
                 <Link to={`/player/${streamer.id}/${streamer.slug}`}><h2>{streamer.name}</h2></Link><Link to={`/player/${streamer.id}/${streamer.slug}`} className="small_link">View Profile ></Link>
             </div>

@@ -8,7 +8,7 @@ import { addStreamersById, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
 import url from '../constants'
-import { gaEvents, getDocumentHeight } from '../common_function'
+import { gaEvents, shouldLazyLoad } from '../common_function'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
@@ -18,9 +18,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
     const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
     useEffect(() => {
         function scroll() {
-            if (
-                getDocumentHeight() - window.innerHeight - document.documentElement.scrollTop < 100
-            ) {
+            if (shouldLazyLoad()) {
                 gaEvents({ eventCategory: 'Home Page', eventAction: 'scroll', eventLabel: 'pagescroll' })
                 setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
             }

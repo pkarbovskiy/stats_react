@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const UpDownVote: React.FC<{ score?: number; }> = (props) => {
-    const [vote, setVote] = useState(0);
-    const score = props.score ? props.score : 0;
-    useEffect(() => {
-
-    });
+    const [vote, setVote] = useState(0)
+    const score = props.score ? props.score : 0
     return (
         <div className="up_down_vote">
             <p className={`up_down_vote__arrows__up ${vote === 1 ? 'active' : ''} `} onClick={() => setVote(1)}>
@@ -25,4 +22,4 @@ const UpDownVote: React.FC<{ score?: number; }> = (props) => {
     );
 }
 
-export default UpDownVote;
+export default UpDownVote

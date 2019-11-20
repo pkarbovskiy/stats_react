@@ -136,6 +136,11 @@ $break-ipad: 769px;
             &__name,
             &__description {
                 width: 18.2rem;
+                overflow: hidden;
+                &.title {
+                    white-space: nowrap;
+                }
+                text-overflow: ellipsis;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;

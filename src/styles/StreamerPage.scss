@@ -10,11 +10,41 @@ $main-brand-color:  #D7CA25;
             width: 70vw;
             margin: 2rem auto;
         }
+        &__filters {
+            display: flex;
+            button {
+                font-weight: bold;
+                border: none;
+                width: 11rem;
+                background-color: #222;
+                padding: 1rem;                
+                border-radius: 2rem;
+                color: #fff;
+                &:hover {
+                    background-color: #ccc;
+                }
+                &.active {
+                    background-color: $main-brand-color;
+                    color: #000;
+                    transition: background-color .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    transition: color .5s ease;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+            button + button {
+                margin-left: 0.9rem;
+            }
+        }
     }
     &__avatar {
         display: flex;
         img {
             width: 5rem;
+            &.avatar {
+                border-radius: 100%;
+            }
         }
         h1 {
             margin-left: 1rem;

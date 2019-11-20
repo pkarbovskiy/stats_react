@@ -5,6 +5,7 @@ import { Route, NavLink } from 'react-router-dom'
 import StreamerPageMain from './StreamerPageMain'
 import VideoListPage from './VideoListPage'
 import ClipListPage from './ClipListPage'
+import Avatar from '../components/Avatar'
 import {
     addVideosById,
     addClipsById,
@@ -50,11 +51,17 @@ const StreamerPage = ({ match, onData }: any) => {
                         }
                         <NavLink to={`/player/${streamer.id}/${streamer.slug}/clips`} className="streamer_page__nav--link">Reactions<div></div></NavLink>
                     </nav>
-                    <Route exact path={match.path} component={StreamerPageMain} />
-                    <Route path={`${match.path}/clips`} component={ClipListPage} />
-                    {streamer.streamer > 0 &&
-                        <Route path={`${match.path}/videos`} component={VideoListPage} />
-                    }
+                    <div className="streamer_page__player">
+                        <div className="streamer_page__avatar">
+                            <Avatar player={streamer} />
+                            <h1>{streamer.name}</h1>
+                        </div>
+                        <Route exact path={match.path} component={StreamerPageMain} />
+                        <Route path={`${match.path}/clips`} component={ClipListPage} />
+                        {streamer.streamer > 0 &&
+                            <Route path={`${match.path}/videos`} component={VideoListPage} />
+                        }
+                    </div>
                 </>
             }
         </div>

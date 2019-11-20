@@ -1,29 +1,61 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useRef } from 'react'
 import { connect } from 'react-redux'
 import { addVideosById } from '../actions'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
-import { gaEvents, getDocumentHeight } from '../common_function'
+import { gaEvents, shouldLazyLoad, onErrorStreamerFace } from '../common_function'
 declare global {
     interface Window { body: any; }
 }
 const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(clipsSorted)
-    function error(event: any) {
-        event.target.src = "//d38ev7kpu49one.cloudfront.net/static/face.svg"
+    const currAction: any = useRef('all')
+    /**
+     * split all events by action and keep them in the same order
+     * @param { entitySorted, entityById } entity which consists of just ids in array and dictionary
+     * @returns object like { [action: string]: number[] }
+     */
+    function splitByAction({ entitySorted, entityById }: { entitySorted: any; entityById: any }): { [action: string]: number[] } {
+        return entitySorted.reduce((acc: { [action: string]: number[] }, id: number) => {
+
+            if (!entityById[id]) {
+                return acc
+            }
+
+            if (!acc[entityById[id].action]) {
+                acc[entityById[id].action] = []
+            }
+
+            acc[entityById[id].action].push(id)
+            acc.all.push(id)
+
+            return acc
+        }, { all: [] })
+    }
+    // using memo to not to recalculate
+    // memo is used to momoize results, useCallback can be used as well
+    const idsForActions = useMemo(
+        () => splitByAction({ entitySorted: allMediaSorted, entityById: clipsById }),
+        [
+            allMediaSorted,
+            clipsById,
+            match.url
+        ]
+    )
+
+    function sortByAction(action: string): void {
+        currAction.current = action
+        // setting what actions we need to see
+        setMediaSorted((state: any) => idsForActions[action].slice(0, clipsSorted.length))
     }
     useEffect(() => {
         function scroll() {
-            if (
-                getDocumentHeight() + document.documentElement.scrollTop
-                === document.documentElement.offsetHeight
-            ) {
-                gaEvents({ eventCategory: 'ClipList Page', eventAction: 'scroll', eventLabel: `${match.path}` })
-                setMediaSorted((state: any) => state.concat(allMediaSorted.slice(state.length - 1, state.length + 4)))
-            }
-
-            if (allMediaSorted.length === mediaSorted.lednth) {
-                window.removeEventListener('scroll', scroll)
+            if (shouldLazyLoad()) {
+                gaEvents({ eventCategory: 'ClipList Page', eventAction: 'scroll', eventLabel: `${player.id}` })
+                setMediaSorted(
+                    (state: any) => {
+                        return state.concat(idsForActions[currAction.current].slice(state.length - 1, state.length + 4))
+                    })
             }
         }
         window.addEventListener('scroll', scroll)
@@ -33,9 +65,11 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
     return (
         <>
             <div className="streamer_page__player">
-                <div className="streamer_page__avatar">
-                    <img src={`//d38ev7kpu49one.cloudfront.net/featured_streamers/${player.id}.png`} alt={`${player.name} avatar`} onError={error} />
-                    <h1>{player.name}</h1>
+                <div className="streamer_page__player__filters">
+                    <button className={currAction.current === 'all' ? 'active' : ''} onClick={() => sortByAction('all')}>All</button>
+                    <button className={currAction.current === 'eliminatedby' ? 'active' : ''} onClick={() => sortByAction('eliminatedby')}>Elimianted By</button>
+                    <button className={currAction.current === 'eliminated' ? 'active' : ''} onClick={() => sortByAction('eliminated')}>Eliminated</button>
+                    <button className={currAction.current === 'victory' ? 'active' : ''} onClick={() => sortByAction('victory')}>Victory</button>
                 </div>
                 <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={clipsById} playersById={playersById} />
             </div>
@@ -60,8 +94,10 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
         }
     }
 }
-
+function areEqual(prevProps: any, nextProps: any) {
+    return prevProps.match.url === nextProps.match.url
+}
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(VideoListPage)
+)(React.memo(VideoListPage, areEqual))
