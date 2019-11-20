@@ -12,7 +12,9 @@ $main-brand-color:  #D7CA25;
         }
         &__filters {
             display: flex;
+            margin: -6rem  auto 0;
             button {
+                cursor: pointer;
                 font-weight: bold;
                 border: none;
                 width: 11rem;
