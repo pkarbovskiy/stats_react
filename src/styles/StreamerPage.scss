@@ -1,5 +1,6 @@
 
 $main-brand-color:  #D7CA25;
+$break-ipad: 500px;
 .streamer_page {
     &__player{
         display: flex;
@@ -12,7 +13,12 @@ $main-brand-color:  #D7CA25;
         }
         &__filters {
             display: flex;
-            margin: -6rem  auto 0;
+            margin-left: -5rem;
+            width: 95vw;
+            @media screen and (min-width: $break-ipad) {
+                width: auto;
+                margin: -6rem  auto 0;
+            }
             button {
                 cursor: pointer;
                 font-weight: bold;
