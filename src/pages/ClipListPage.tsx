@@ -67,7 +67,7 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
             <div className="streamer_page__player">
                 <div className="streamer_page__player__filters">
                     <button className={currAction.current === 'all' ? 'active' : ''} onClick={() => sortByAction('all')}>All</button>
-                    <button className={currAction.current === 'eliminatedby' ? 'active' : ''} onClick={() => sortByAction('eliminatedby')}>Elimianted By</button>
+                    <button className={currAction.current === 'eliminatedby' ? 'active' : ''} onClick={() => sortByAction('eliminatedby')}>Eliminated By</button>
                     <button className={currAction.current === 'eliminated' ? 'active' : ''} onClick={() => sortByAction('eliminated')}>Eliminated</button>
                     <button className={currAction.current === 'victory' ? 'active' : ''} onClick={() => sortByAction('victory')}>Victory</button>
                 </div>
