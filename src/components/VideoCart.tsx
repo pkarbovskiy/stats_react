@@ -36,7 +36,7 @@ const VideoCart = (props: videoCartProps) => {
     }
     let killMsg = match_on_player_id ? `eliminated` : `eliminated by`
     const videoUrl = `/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`
-    const playerUrl = `/player/${player.id}/${player.slug}`
+    const playerUrl = `/player/${(player || {}).id}/${(player || {}).slug}`
     return (
         <div className="video_cart">
             <div className="video_cart__streamername">
