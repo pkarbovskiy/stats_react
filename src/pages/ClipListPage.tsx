@@ -10,6 +10,7 @@ declare global {
 const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(clipsSorted)
     const currAction: any = useRef('all')
+    const initialAmount = clipsSorted.length
     /**
      * split all events by action and keep them in the same order
      * @param { entitySorted, entityById } entity which consists of just ids in array and dictionary
@@ -46,16 +47,13 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
     function sortByAction(action: string): void {
         currAction.current = action
         // setting what actions we need to see
-        setMediaSorted((state: any) => idsForActions[action].slice(0, clipsSorted.length))
+        setMediaSorted(idsForActions[action].slice(0, initialAmount))
     }
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
                 gaEvents({ eventCategory: 'ClipList Page', eventAction: 'scroll', eventLabel: `${player.id}` })
-                setMediaSorted(
-                    (state: any) => {
-                        return state.concat(idsForActions[currAction.current].slice(state.length - 1, state.length + 4))
-                    })
+                setMediaSorted((state: any) => idsForActions[currAction.current].slice(0, state.length + 4))
             }
         }
         window.addEventListener('scroll', scroll)

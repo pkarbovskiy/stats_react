@@ -6,7 +6,11 @@ export const cloudFrontUrl = '//d38ev7kpu49one.cloudfront.net'
 
 export const featuredStreamer8bit = `${cloudFrontUrl}/featured_streamers/::id.png`
 
+export const reactionImage = `${cloudFrontUrl}/::id.png`
+
 export const defaultPic = `${cloudFrontUrl}/static/face.svg`
+
+export const defaultVideoImage = `${cloudFrontUrl}/static/image.svg`
 // ids for existing 8bit faces
 export const pic8bitFaces = [
     3337,
