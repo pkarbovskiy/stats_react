@@ -27,9 +27,10 @@ export type videoCartProps = {
     title: string;
     imageId: number;
     since: any;
+    gaEvent?: string;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, match_on_player_id, player, since, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false } = props
+    let { id, streamer, match_on_player_id, player, since, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false, gaEvent } = props
     videoId = videoId || id
     function error(event: any) {
         event.target.src = defaultVideoImage
@@ -42,7 +43,7 @@ const VideoCart = (props: videoCartProps) => {
             <div className="video_cart__streamername">
                 {includeStreamerName ? `${streamer.name}` : null}
             </div>
-            <Link to={videoUrl} className="video_cart--link" onClick={() => gaEvents({ eventCategory: 'Slider', eventAction: 'click', eventLabel: `${videoId}` })}>
+            <Link to={videoUrl} className="video_cart--link" onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `${videoId}` })}>
                 <img className="video_cart--image"
                     onError={error}
                     src={reactionImage.replace('::id', `${imageId ? imageId : id}`)}

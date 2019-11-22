@@ -6,9 +6,9 @@ import Slider from '../components/Slider'
 
 //TODO: figure out proper type
 const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSorted }: any) => {
-    function error(event: any) {
-        event.target.src = "//d38ev7kpu49one.cloudfront.net/static/face.svg"
-    }
+    const playerUrl = `/player/${player.id}/${player.slug}`
+    const videosUrl = `${playerUrl}/videos`
+    const clipsUrl = `${playerUrl}/clips`
     return (
         <>
             {player &&
@@ -16,15 +16,15 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                     {videosSorted.length > 0 &&
                         <>
                             <div className="streamer_page__category">
-                                <h3>Recent Broadcasts </h3>
-                                <Link to={`/player/${player.id}/${player.slug}/videos`} className="small_link">View All ></Link>
+                                <h3>Recent Broadcasts</h3>
+                                <Link to={videosUrl} className="small_link">View All ></Link>
                             </div>
                             <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} includeStreamerName={false} />
                         </>
                     }
                     <div className="streamer_page__category">
-                        <h3>Reactions </h3>
-                        <Link to={`/player/${player.id}/${player.slug}/clips`} className="small_link">View All ></Link>
+                        <h3>Reactions</h3>
+                        <Link to={clipsUrl} className="small_link">View All ></Link>
                     </div>
                     <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false} />
                 </>

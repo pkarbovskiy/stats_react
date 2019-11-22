@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
-import { gaEvents, shouldLazyLoad, onErrorStreamerFace } from '../common_function'
+import { gaEvents, shouldLazyLoad } from '../common_function'
 
 const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(videosSorted)
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
-                gaEvents({ eventCategory: 'Video List Page', eventAction: 'scroll On LazyLoading', eventLabel: `${match.url}` })
                 setMediaSorted((state: any) => state.concat(allMediaSorted.slice(state.length - 1, state.length + 10)))
             }
         }

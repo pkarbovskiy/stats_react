@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addVideosById } from '../actions'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
-import { gaEvents, shouldLazyLoad, onErrorStreamerFace } from '../common_function'
+import { gaEvents, shouldLazyLoad } from '../common_function'
 declare global {
     interface Window { body: any; }
 }
@@ -39,8 +39,7 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
         () => splitByAction({ entitySorted: allMediaSorted, entityById: clipsById }),
         [
             allMediaSorted,
-            clipsById,
-            match.url
+            clipsById
         ]
     )
 

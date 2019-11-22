@@ -45,9 +45,6 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
     }
     const [state, dispatch] = useReducer(buttonsReducer, initialState);
     
-    let currentDeathIndex: number = 0,
-        currentKillIndex: number = 0
-
     let splitDeathKill: {[action:string]: timer[]} = {
         [ACTIONS.DEATH]: [],
         [ACTIONS.KILL]: [] 

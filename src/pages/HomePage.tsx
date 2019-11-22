@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
 import '../styles/App.scss'
 import { addStreamersById, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
-import url from '../constants'
-import { gaEvents, shouldLazyLoad } from '../common_function'
+import url, { isMobile } from '../constants'
+import { shouldLazyLoad } from '../common_function'
 
 const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
     //TODO: refactor
     // @ts-ignore
-    const elementsOnLoad = navigator.userAgent.toLowerCase().match(/mobile/i) && ((navigator.userAgent.toLowerCase().match(/mobile/i) || { input: '' }).input || '').indexOf('ipad') === -1 ? 2 : 4
+    const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 2 : 4
     const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
-                gaEvents({ eventCategory: 'Home Page', eventAction: 'scroll', eventLabel: 'pagescroll' })
                 setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
             }
 
@@ -58,6 +56,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
             {latestVideos.length > 0 && (<LatestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
+                gaEvent="Home Page::Latest videos"
             />)}
             <h3 className="home_page--header">Broadcasts by streamer</h3>
             {!!Object.keys(streamersById).length &&
@@ -69,6 +68,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
                         streamer={streamersById[id].streamer}
                         mediaById={streamersById[id].videosById}
                         mediaSorted={streamersById[id].videosSorted}
+                        gaEvent="Home Page::Featured Streamers"
                     />)
                 })
             }
