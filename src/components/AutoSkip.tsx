@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { gaEvents } from '../common_function'
 
 type timer = {
     id: number;
@@ -16,6 +17,10 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
     const timers = [].concat(deathKillTimers['eliminated'] || [], deathKillTimers['eliminatedby']).sort((a, b) => a[0] - b[0])
     const [checkBoxStatus, onChangeStatus] = useState(false)
     const id: any = useRef()
+    function autoskipAndTrack() {
+        gaEvents({ eventCategory: 'Autoskip', eventAction: 'click', eventLabel: `${checkBoxStatus ? 'enabled' : 'disabled'}` })
+        onChangeStatus(oldState => !oldState)
+    }
     function checkAndMoveToNextEvent() {
         let currentTime: number = videoHandler.getCurrentTime()
         // we are before the first event jump to it
@@ -76,7 +81,7 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
     return (
         <div className="AutoskipSwitch">
             <label className="switch">
-                <input type="checkbox" id="autoskip" onChange={() => onChangeStatus(oldState => !oldState)} />
+                <input type="checkbox" id="autoskip" onChange={() => autoskipAndTrack()} />
                 <span className="autoskip round"></span>
             </label>
             <label className="text" htmlFor="autoskip">Autoskip</label>
