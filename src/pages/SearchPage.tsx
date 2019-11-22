@@ -46,6 +46,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                             streamer={search.playersId[playerId].streamer}
                             mediaById={search.playersId[playerId].videosById}
                             mediaSorted={search.playersId[playerId].videosSorted.slice(0, 6)}
+                            gaEvent="Search Page"
                         />
                     )
                 } else {
@@ -60,6 +61,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                     <LatestVideos
                         mediaSorted={latestVideos}
                         mediaById={latestVideosById}
+                        gaEvent="Search Page::Latest Videos"
                     />
                 </>
             )}

@@ -44,6 +44,7 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
     )
 
     function sortByAction(action: string): void {
+        gaEvents({ eventCategory: 'ClipList Page', eventAction: 'click', eventLabel: `${action}` })
         currAction.current = action
         // setting what actions we need to see
         setMediaSorted(idsForActions[action].slice(0, initialAmount))
@@ -51,7 +52,6 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
-                gaEvents({ eventCategory: 'ClipList Page', eventAction: 'scroll', eventLabel: `${player.id}` })
                 setMediaSorted((state: any) => idsForActions[currAction.current].slice(0, state.length + 4))
             }
         }

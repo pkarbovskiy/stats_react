@@ -4,13 +4,8 @@ $break-ipad: 500px;
     flex-flow: row wrap;
     justify-content: center;
     &.side {
-        padding: 5%;
-        width: 74vw;
-        margin: 10px auto;
-        justify-content: left;
-        @media screen and (max-width: 1024px) {
-            width: 100vw;
-        }
+        width: 100vw;
+        margin: 2rem 0 0 -3rem;
         .video_cart {
             display: flex;
             flex-direction: row;
