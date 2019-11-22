@@ -20,7 +20,7 @@ $color-streamer-name: lightgrey;
 $font-size: 10px;
 $break-large: 1200px;
 $break-ipad: 769px;
-
+$break-small-phone: 320px;
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -73,6 +73,9 @@ a {
     }
     .site--logo {
         img {
+            @media screen and (max-width: $break-small-phone) {
+                max-height: 1.3rem;
+            }
             max-height: 1.6rem;
         }
         @media screen and (min-width: $break-ipad) { 

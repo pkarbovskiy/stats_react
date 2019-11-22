@@ -1,11 +1,14 @@
 $break-ipad: 500px;
+$break-pc: 1440px;
 .table {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
     &.side {
         width: 100vw;
         margin: 2rem 0 0 -3rem;
+        @media screen and (min-width: $break-pc) {
+            width: 74vw;
+        }
         .video_cart {
             display: flex;
             flex-direction: row;
