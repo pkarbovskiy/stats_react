@@ -76,7 +76,7 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        clipsSorted: state.mainReducer.clipsSorted.slice(0, 30),
+        clipsSorted: state.mainReducer.clipsSorted.slice(0, 42),
         allMediaSorted: state.mainReducer.clipsSorted,
         clipsById: state.mainReducer.clipsById,
         playersById: state.mainReducer.playersById,

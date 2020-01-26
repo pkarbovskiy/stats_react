@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import DeathKill from './DeathKill'
-import AutoSkip from './AutoSkip'
+import VideoNavigation from './VideoNavigation'
 import Loader from '../components/Loader'
 declare global {
     interface Window { Twitch: any; }
@@ -20,16 +19,16 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
     const [player, setPlayer] = useState()
     useEffect(() => {
         if (window.Twitch && window.Twitch.Player) {
-            createEmbedAddListeners();
-            return;
+            createEmbedAddListeners()
+            return
         }
 
-        const script = document.createElement('script');
-        script.setAttribute('src', EMBED_URL);
+        const script = document.createElement('script')
+        script.setAttribute('src', EMBED_URL)
         script.addEventListener('load', () => {
-            createEmbedAddListeners();
+            createEmbedAddListeners()
         });
-        document.body.appendChild(script);
+        document.body.appendChild(script)
 
         function createEmbedAddListeners() {
             setPlayer(new window.Twitch.Player(targetElementId, { autoplay, videoId, videoTime }))
@@ -60,8 +59,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
         <>
             {!player && <Loader />}
             <div id={targetElementId} className="player"></div>
-            <DeathKill videoHandler={player} deathKillTimers={deathKillTimers} />
-            <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
+            <VideoNavigation videoHandler={player} deathKillTimers={deathKillTimers} />
         </>
     )
 }

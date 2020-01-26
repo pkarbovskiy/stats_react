@@ -1,4 +1,4 @@
-export default ''//'http://192.168.232.129:8000'
+export default 'http://192.168.232.129:8000'
 
 export const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i)
 

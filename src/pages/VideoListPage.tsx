@@ -28,7 +28,7 @@ const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, mat
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosById: state.mainReducer.videosById,
-        videosSorted: state.mainReducer.videosSorted.slice(0, 30),
+        videosSorted: state.mainReducer.videosSorted.slice(0, 42),
         allMediaSorted: state.mainReducer.videosSorted,
         streamer: state.mainReducer.currentPlayer
     }

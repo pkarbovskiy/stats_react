@@ -3,7 +3,6 @@ import TwitchPlayer from '../components/TwitchPlayer'
 import Mixer from '../components/Mixer'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import Table from '../components/Table'
 import Loader from '../components/Loader'
 import url, { mediaTypes } from '../constants'
 import { addMedia } from '../actions'
@@ -25,7 +24,10 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
             fetch(`${url}/api/video/${videoId}`)
                 .then(data => data.json())
                 .then(data => {
-                    setTimeline(data['timeline'])
+                    setTimeline({
+                        splitEvents: data['timeline'],
+                        mergedEvents: [].concat(data['timeline']['eliminated'] || [], data['timeline']['eliminatedby']).sort((a, b) => a[0] - b[0])
+                    })
                     setVideo(data['video'])
                 })
         }
