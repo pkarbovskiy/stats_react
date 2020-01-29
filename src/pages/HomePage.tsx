@@ -48,8 +48,9 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
         <div className="home_page">
             <div className="home_page__info">
                 How to use the site:<br></br>
-                - search your name above to see if you've killed a streamer OR<br></br>
-                - choose a video and toggle AutoSkip to see all the action (kills, deaths, wins)
+                - *NEW* "Top Highlights" show you our best reactions over the last few days<br></br>
+                - search your name above to see if you've killed a streamer<br></br>
+                - choose a video and toggle AutoSkip to see just the action (wins, kills, deaths)
             </div>
             <h3>Top Highlights</h3>
             {latestVideos.length === 0 && <Loader />}
