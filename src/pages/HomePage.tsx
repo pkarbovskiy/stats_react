@@ -51,7 +51,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
                 - search your name above to see if you've killed a streamer OR<br></br>
                 - choose a video and toggle AutoSkip to see all the action (kills, deaths, wins)
             </div>
-            <h3>Latest broadcasts</h3>
+            <h3>Top Highlights</h3>
             {latestVideos.length === 0 && <Loader />}
             {latestVideos.length > 0 && (<LatestVideos
                 mediaSorted={latestVideos}

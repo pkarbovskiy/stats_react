@@ -46,7 +46,7 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
             }
             {/* <Table classNameProp="side" videos={video} /> */}
             <br></br><br></br><br></br><br></br><br></br>
-            <h3>Also check out latest broadcasts</h3>
+            <h3>Also check out top highlights</h3>
             {latestVideos.length === 0 && <Loader />}
             {(<LatestVideos
                 mediaSorted={latestVideos}
