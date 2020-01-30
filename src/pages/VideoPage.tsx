@@ -51,7 +51,7 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
             {(<LatestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
-                gaEvent="Video Page::Latest Videos"
+                gaEvent="Video Page::Top rated"
             />)}
         </div>
     )

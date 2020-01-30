@@ -57,7 +57,7 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
             {latestVideos.length > 0 && (<LatestVideos
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
-                gaEvent="Home Page::Latest videos"
+                gaEvent="Home Page::Top rated"
             />)}
             <h3 className="home_page--header">Broadcasts by streamer</h3>
             {!!Object.keys(streamersById).length &&

@@ -61,7 +61,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                     <LatestVideos
                         mediaSorted={latestVideos}
                         mediaById={latestVideosById}
-                        gaEvent="Search Page::Latest Videos"
+                        gaEvent="Search Page::Top rated"
                     />
                 </>
             )}
