@@ -3,26 +3,21 @@ import { connect } from 'react-redux'
 import StreamerVideos from '../components/StreamerVideos'
 import LatestVideos from '../components/LatestVideos'
 import '../styles/App.scss'
-import { addStreamersById, addLatestVideos } from '../actions'
+import { addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import { State } from '../reducers/reducers'
 import url, { isMobile } from '../constants'
 import { shouldLazyLoad } from '../common_function'
 
-const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
+const HomePage = ({ latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
     { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
-    //TODO: refactor
+
     // @ts-ignore
     const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 2 : 4
-    const [featuredStreamersArr, setFeaturedStreamersArr] = useState(featuredStreamers.slice(0, elementsOnLoad))
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
-                setFeaturedStreamersArr((state: any) => state.concat(featuredStreamers.slice(state.length, state.length + 2)))
-            }
-
-            if (featuredStreamers.length === featuredStreamersArr.length) {
-                window.removeEventListener('scroll', scroll)
+                setMediaSorted((state: any) => idsForActions[currAction.current].slice(0, state.length + 4))
             }
         }
         window.addEventListener('scroll', scroll)
@@ -30,20 +25,16 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
         return () => { window.removeEventListener('scroll', scroll) }
     }, [])
     useEffect(() => {
-        // fetch featured streamers
-        fetch(`${url}/api/player/featured_streamers?ids=3337,10654,3485,3429,5010,3372,3476,3603,3150,3426,3524,3316,3473,3365,3306,3591,8370,3510`)
-            .then(data => data.json())
-            .then(data => {
-                onDataFeatured(data)
-            })
         // fetch latest videos
-        fetch(`${url}/api/video/latest_videos`)
+        getTopRatedVideos(1)
+    }, [])
+    function getTopRatedVideos(page = 1) {
+        fetch(`${url}/api/video/latest_videos?page=${page}`)
             .then(data => data.json())
             .then(data => {
                 onDataLatest(data)
             })
-    }, [])
-
+    }
     return (
         <div className="home_page">
             <div className="home_page__info">
@@ -59,37 +50,18 @@ const HomePage = ({ streamersById, featuredStreamers, latestVideos, latestVideos
                 mediaById={latestVideosById}
                 gaEvent="Home Page::Top rated"
             />)}
-            <h3 className="home_page--header">Broadcasts by streamer</h3>
-            {!!Object.keys(streamersById).length &&
-                featuredStreamersArr.map((id: number) => {
-                    if (!streamersById[id]) {
-                        return (<></>)
-                    }
-                    return (<StreamerVideos key={id}
-                        streamer={streamersById[id].streamer}
-                        mediaById={streamersById[id].videosById}
-                        mediaSorted={streamersById[id].videosSorted}
-                        gaEvent="Home Page::Featured Streamers"
-                    />)
-                })
-            }
         </div>
     );
 }
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        streamersById: state.mainReducer.streamersById,
-        featuredStreamers: state.mainReducer.featuredStreamers,
         latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos.slice(0, 6)
+        latestVideos: state.mainReducer.latestVideos
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
-        onDataFeatured: (data: any) => {
-            dispatch(addStreamersById(data))
-        },
         onDataLatest: (data: any) => {
             dispatch(addLatestVideos(data))
         }
