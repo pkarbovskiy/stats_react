@@ -8,7 +8,7 @@ export const {
     addPlayersById,
     setCurrentPlayer,
     addStreamersById,
-    addLatestVideos,
+    addMedia,
     setCurrentSearch
 } = createActions({
     ADD_VIDEOS_BY_ID: (data: any) => data,
@@ -18,6 +18,6 @@ export const {
     ADD_PLAYERS_BY_ID: (data: any) => data,
     SET_CURRENT_PLAYER: (data: any) => data,
     ADD_STREAMERS_BY_ID: (data: any) => data,
-    ADD_LATEST_VIDEOS: (data: any) => data,
+    ADD_MEDIA: (data: any, category: string) => Object.assign({}, data, {category}),
     SET_CURRENT_SEARCH: (data: any, query: string) => ({data, query})
 })

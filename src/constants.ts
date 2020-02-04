@@ -11,6 +11,11 @@ export const reactionImage = `${cloudFrontUrl}/::id.png`
 export const defaultPic = `${cloudFrontUrl}/static/face.svg`
 
 export const defaultVideoImage = `${cloudFrontUrl}/static/image.svg`
+
+export const mediaTypes = {
+    TOP_RATED: 'top_rated'
+}
+
 // ids for existing 8bit faces
 export const pic8bitFaces = [
     3337,

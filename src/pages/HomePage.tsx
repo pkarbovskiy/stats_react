@@ -1,43 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import TopRated from '../components/TopRated'
 import '../styles/App.scss'
-import { addLatestVideos } from '../actions'
+import { addMedia } from '../actions'
 import Loader from '../components/Loader'
-import { State } from '../reducers/reducers'
-import url, { isMobile } from '../constants'
+//import { State } from '../reducers/reducers'
+import url, { isMobile, mediaTypes } from '../constants'
 import { shouldLazyLoad } from '../common_function'
 
-const HomePage = ({ clipsSorted, clipsSortedById, onDataLatest, allMediaSorted }:
-    { streamersById: any; featuredStreamers: number[]; clipsSorted: number[], clipsSortedById: any; onDataLatest: any; allMediaSorted: number[] }) => {
-    // @ts-ignore
-    const elementsOnLoad = 36//isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
-    const [mediaSorted, setMediaSorted] = useState(clipsSorted)
+const HomePage = () => {
+    const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
+    const {clipsSortedById, allMediaSorted}:{clipsSortedById:any; allMediaSorted: number[]} = useSelector(
+        (state: any) => ({
+            clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
+            allMediaSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media
+        })
+    )
+    const dispatch = useDispatch()
+    const [mediaSorted, setMediaSorted] = useState(allMediaSorted.slice(0, elementsOnLoad))
 
-    if (mediaSorted.length === 0 && clipsSorted.length > 0) {
-        setMediaSorted(state => clipsSorted.slice(0, elementsOnLoad))
-    }
-
-    const initialAmount = clipsSorted.length
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
                 setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + 6))
             }
         }
+
         window.addEventListener('scroll', scroll)
 
         return () => { window.removeEventListener('scroll', scroll) }
     }, [])
     useEffect(() => {
         // fetch latest videos
-        getTopRatedVideos(1)
+        getMediaForThePage(1, elementsOnLoad)
     }, [])
-    function getTopRatedVideos(page = 1) {
-        fetch(`${url}/api/video/top_videos`)
+    function getMediaForThePage(page = 1, amount = 3) {
+        fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
             .then(data => data.json())
             .then(data => {
-                onDataLatest(data)
+                dispatch(addMedia(data, mediaTypes.TOP_RATED))
             })
     }
     return (
@@ -58,23 +59,5 @@ const HomePage = ({ clipsSorted, clipsSortedById, onDataLatest, allMediaSorted }
         </div>
     );
 }
-const mapStateToProps = (state: { mainReducer: State }) => {
-    return {
-        clipsSortedById: state.mainReducer.latestVideosById,
-        clipsSorted: state.mainReducer.latestVideos.slice(0, 36),
-        allMediaSorted: state.mainReducer.latestVideos
-    }
-}
 
-const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
-    return {
-        onDataLatest: (data: any) => {
-            dispatch(addLatestVideos(data))
-        }
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(HomePage)
+export default HomePage

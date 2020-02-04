@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { pic8bitFaces } from '../constants'
+import { pic8bitFaces, mediaTypes } from '../constants'
 import {
     addVideosById,
     addClipsById,
@@ -7,7 +7,7 @@ import {
     addClipsSorted,
     addPlayersById,
     addStreamersById,
-    addLatestVideos,
+    addMedia,
     setCurrentPlayer,
     setCurrentSearch
 } from '../actions'
@@ -17,8 +17,9 @@ const DEFAULT_STATE = {
     twitchPlayer: {},
     currentPlayer: {},
     streamersById: {},
-    latestVideosById: {},
-    latestVideos: [],
+    media: {
+        [mediaTypes.TOP_RATED]: {media:{}, byId:[]}
+    }  as { [key: string]: any },
     videos: [],
     featuredStreamers: pic8bitFaces,
     playersById: {},
@@ -66,10 +67,13 @@ const addStreamersByIdReducer = (state: State, addStreamersById: { payload: any 
     return newState
 }
 
-const addLatestVideosReducer = (state: State, addLatestVideos: { payload: any }): State => {
+const addMediaReducer = (state: State, addMedia: { payload: any }): State => {
     const newState = Object.assign({}, state)
-    newState.latestVideosById = addLatestVideos.payload.latestVideosById
-    newState.latestVideos = addLatestVideos.payload.latestVideos
+    const {byId, media, category} = addMedia.payload
+    newState.media[category] = {
+        byId,
+        media
+    }
     return newState
 }
 
@@ -93,7 +97,7 @@ export const mainReducer = handleActions({
     [setCurrentPlayer as any]: setCurrentPlayerReducer,
     [addStreamersById as any]: addStreamersByIdReducer,
     [setCurrentSearch as any]: setCurrentSearchReducer,
-    [addLatestVideos as any]: addLatestVideosReducer,
+    [addMedia as any]: addMediaReducer,
 },
     DEFAULT_STATE
 )
