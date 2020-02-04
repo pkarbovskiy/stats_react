@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import StreamerVideosNoHeader from '../components/StreamerVideosNoHeader'
-import LatestVideos from '../components/LatestVideos'
+import TopRated from '../components/TopRated'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import { setCurrentSearch, addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
 import url from '../constants'
 
-const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById, onData, onDataLatest }:
-    { location: any; searchFromCache: any; latestVideos: number[], latestVideosById: any, onData: any; onDataLatest: any }) => {
+const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, onData, onDataLatest }:
+    { location: any; searchFromCache: any; clipsSorted: number[], clipsSortedById: any, onData: any; onDataLatest: any }) => {
     const [search, setSearch] = useState()
     const [loaded, setLoaded] = useState(false)
     // TODO: may be make it protected
@@ -27,7 +27,7 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
                 })
         }
         // fetch latest videos
-        fetch(`${url}/api/video/latest_videos`)
+        fetch(`${url}/api/video/top_videos`)
             .then(data => data.json())
             .then(data => {
                 onDataLatest(data)
@@ -55,12 +55,12 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
 
             })}
             <br></br><br></br><br></br><br></br><br></br><br></br>
-            {latestVideos.length > 0 && (
+            {clipsSorted.length > 0 && (
                 <>
                     <h3>Also check out top highlights:</h3>
-                    <LatestVideos
-                        mediaSorted={latestVideos}
-                        mediaById={latestVideosById}
+                    <TopRated
+                        mediaSorted={clipsSorted}
+                        mediaById={clipsSortedById}
                         gaEvent="Search Page::Top rated"
                     />
                 </>
@@ -73,8 +73,8 @@ const SearchPage = ({ location, searchFromCache, latestVideos, latestVideosById,
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         searchFromCache: state.mainReducer.search,
-        latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos.slice(0, 6)
+        clipsSortedById: state.mainReducer.latestVideosById,
+        clipsSorted: state.mainReducer.latestVideos.slice(0, 6)
     }
 }
 

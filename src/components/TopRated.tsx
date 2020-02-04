@@ -1,7 +1,7 @@
 import React from 'react'
-import Table from '../components/Table'
+import Table from './Table'
 
-const LatestVideos = ({ mediaById, mediaSorted, gaEvent }: { mediaById: any; mediaSorted: any; gaEvent?: string }) => {
+const TopRated = ({ mediaById, mediaSorted, gaEvent }: { mediaById: any; mediaSorted: any; gaEvent?: string }) => {
     return (
         <div className="latest_videos">
             {<Table mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} includeStreamerName={true} gaEvent={gaEvent} />}
@@ -9,4 +9,4 @@ const LatestVideos = ({ mediaById, mediaSorted, gaEvent }: { mediaById: any; med
     )
 }
 
-export default LatestVideos
+export default TopRated

@@ -23,7 +23,9 @@ export const getDocumentHeight = () => {
     )
 }
 
-export const shouldLazyLoad = () => getDocumentHeight() - window.innerHeight - document.documentElement.scrollTop < 150
+export const shouldLazyLoad = () => {
+    return getDocumentHeight() - window.innerHeight - document.documentElement.scrollTop < 250
+}
 
 export const onErrorStreamerFace = (event: any) => {
     event.target.src = "//d38ev7kpu49one.cloudfront.net/static/face.svg"

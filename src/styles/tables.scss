@@ -5,19 +5,23 @@ $break-pc: 1440px;
     flex-flow: row wrap;
     &.side {
         width: 100vw;
-        margin: 2rem 0 0 -3rem;
         @media screen and (min-width: $break-pc) {
+            margin: 2rem 0 0 -3rem;
             width: 74vw;
         }
         .video_cart {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
             }
             &--image {
-                width: 192px;
+                @media screen and (min-width: $break-ipad) {
+                    width: 192px;
                 height: 107px;
+                }
+                width: 360px;
+                height: 200px;
             }
             &__info {
                 display: flex;
@@ -88,7 +92,6 @@ $break-pc: 1440px;
                 @media screen and (max-width: $break-ipad) {
                     display: flex;
                     flex-wrap: wrap;
-                    width: 150px;
                 }
             }
             &__name {

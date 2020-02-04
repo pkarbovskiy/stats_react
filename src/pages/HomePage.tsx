@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import StreamerVideos from '../components/StreamerVideos'
-import LatestVideos from '../components/LatestVideos'
+import TopRated from '../components/TopRated'
 import '../styles/App.scss'
 import { addLatestVideos } from '../actions'
 import Loader from '../components/Loader'
@@ -9,15 +8,21 @@ import { State } from '../reducers/reducers'
 import url, { isMobile } from '../constants'
 import { shouldLazyLoad } from '../common_function'
 
-const HomePage = ({ latestVideos, latestVideosById, onDataFeatured, onDataLatest }:
-    { streamersById: any; featuredStreamers: number[]; latestVideos: number[], latestVideosById: any; onDataFeatured: any; onDataLatest: any }) => {
-
+const HomePage = ({ clipsSorted, clipsSortedById, onDataLatest, allMediaSorted }:
+    { streamersById: any; featuredStreamers: number[]; clipsSorted: number[], clipsSortedById: any; onDataLatest: any; allMediaSorted: number[] }) => {
     // @ts-ignore
-    const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 2 : 4
+    const elementsOnLoad = 36//isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
+    const [mediaSorted, setMediaSorted] = useState(clipsSorted)
+
+    if (mediaSorted.length === 0 && clipsSorted.length > 0) {
+        setMediaSorted(state => clipsSorted.slice(0, elementsOnLoad))
+    }
+
+    const initialAmount = clipsSorted.length
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
-                setMediaSorted((state: any) => idsForActions[currAction.current].slice(0, state.length + 4))
+                setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + 6))
             }
         }
         window.addEventListener('scroll', scroll)
@@ -29,7 +34,7 @@ const HomePage = ({ latestVideos, latestVideosById, onDataFeatured, onDataLatest
         getTopRatedVideos(1)
     }, [])
     function getTopRatedVideos(page = 1) {
-        fetch(`${url}/api/video/latest_videos?page=${page}`)
+        fetch(`${url}/api/video/top_videos`)
             .then(data => data.json())
             .then(data => {
                 onDataLatest(data)
@@ -44,10 +49,10 @@ const HomePage = ({ latestVideos, latestVideosById, onDataFeatured, onDataLatest
                 - choose a video and toggle AutoSkip to see just the action (wins, kills, deaths)
             </div>
             <h3>Top Highlights</h3>
-            {latestVideos.length === 0 && <Loader />}
-            {latestVideos.length > 0 && (<LatestVideos
-                mediaSorted={latestVideos}
-                mediaById={latestVideosById}
+            {mediaSorted.length === 0 && <Loader />}
+            {mediaSorted.length > 0 && (<TopRated
+                mediaSorted={mediaSorted}
+                mediaById={clipsSortedById}
                 gaEvent="Home Page::Top rated"
             />)}
         </div>
@@ -55,8 +60,9 @@ const HomePage = ({ latestVideos, latestVideosById, onDataFeatured, onDataLatest
 }
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos
+        clipsSortedById: state.mainReducer.latestVideosById,
+        clipsSorted: state.mainReducer.latestVideos.slice(0, 36),
+        allMediaSorted: state.mainReducer.latestVideos
     }
 }
 

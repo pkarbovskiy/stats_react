@@ -6,7 +6,7 @@ import Table from '../components/Table'
 import Loader from '../components/Loader'
 import url from '../constants'
 import { addLatestVideos } from '../actions'
-import LatestVideos from '../components/LatestVideos'
+import TopRated from '../components/TopRated'
 
 const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
     { match: any; latestVideos: number[]; latestVideosById: any; onData: any }) => {
@@ -32,7 +32,7 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
             getVideoInfo(match.params.videoId | 0)
         }
         // fetch latest videos
-        fetch(`${url}/api/video/latest_videos`)
+        fetch(`${url}/api/video/top_videos`)
             .then(data => data.json())
             .then(data => {
                 onData(data)
@@ -48,7 +48,7 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
             <br></br><br></br><br></br><br></br><br></br>
             <h3>Also check out top highlights</h3>
             {latestVideos.length === 0 && <Loader />}
-            {(<LatestVideos
+            {(<TopRated
                 mediaSorted={latestVideos}
                 mediaById={latestVideosById}
                 gaEvent="Video Page::Top rated"
