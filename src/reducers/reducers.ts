@@ -18,8 +18,8 @@ const DEFAULT_STATE = {
     currentPlayer: {},
     streamersById: {},
     media: {
-        [mediaTypes.TOP_RATED]: {media:{}, byId:[]}
-    }  as { [key: string]: any },
+        [mediaTypes.TOP_RATED]: { media: [], byId: {} }
+    } as { [key: string]: any },
     videos: [],
     featuredStreamers: pic8bitFaces,
     playersById: {},
@@ -69,7 +69,7 @@ const addStreamersByIdReducer = (state: State, addStreamersById: { payload: any 
 
 const addMediaReducer = (state: State, addMedia: { payload: any }): State => {
     const newState = Object.assign({}, state)
-    const {byId, media, category} = addMedia.payload
+    const { byId, media, category } = addMedia.payload
     newState.media[category] = {
         byId,
         media

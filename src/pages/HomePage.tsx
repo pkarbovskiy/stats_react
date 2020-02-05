@@ -10,18 +10,22 @@ import { shouldLazyLoad } from '../common_function'
 
 const HomePage = () => {
     const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
-    const {clipsSortedById, allMediaSorted}:{clipsSortedById:any; allMediaSorted: number[]} = useSelector(
+    const { clipsSortedById, allMediaSorted }: { clipsSortedById: any; allMediaSorted: number[] } = useSelector(
         (state: any) => ({
             clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
             allMediaSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media
         })
     )
     const dispatch = useDispatch()
-    const [mediaSorted, setMediaSorted] = useState(allMediaSorted.slice(0, elementsOnLoad))
-
+    const [mediaSorted, setMediaSorted] = useState(() => allMediaSorted.slice(0, elementsOnLoad))
+    //const [currentPage, setCurrentPage] = useState(1)
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
+                // if (mediaSorted.length + 6 > allMediaSorted.length) {
+                //     getMediaForThePage(currentPage, elementsOnLoad)
+                //     setCurrentPage((state: number) => state++)
+                // }
                 setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + 6))
             }
         }
@@ -29,16 +33,21 @@ const HomePage = () => {
         window.addEventListener('scroll', scroll)
 
         return () => { window.removeEventListener('scroll', scroll) }
-    }, [])
+    }, [allMediaSorted])
     useEffect(() => {
-        // fetch latest videos
-        getMediaForThePage(1, elementsOnLoad)
+        if (allMediaSorted.length < elementsOnLoad) {
+
+            // fetch media from server
+            getMediaForThePage(1, elementsOnLoad)
+            //setCurrentPage((state: number) => state++)
+        }
     }, [])
     function getMediaForThePage(page = 1, amount = 3) {
         fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
             .then(data => data.json())
             .then(data => {
                 dispatch(addMedia(data, mediaTypes.TOP_RATED))
+                setMediaSorted((state: any) => data.media.slice(0, elementsOnLoad))
             })
     }
     return (

@@ -4,12 +4,12 @@ import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
 import Loader from '../components/Loader'
-import url from '../constants'
-import { addLatestVideos } from '../actions'
+import url, { mediaTypes } from '../constants'
+import { addMedia } from '../actions'
 import TopRated from '../components/TopRated'
 
-const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
-    { match: any; latestVideos: number[]; latestVideosById: any; onData: any }) => {
+const VideoPage = ({ match, media, mediaById, onData }:
+    { match: any; media: number[]; mediaById: any; onData: any }) => {
     const [timeline, setTimeline] = useState()
     const [video, setVideo] = useState()
     useEffect(() => {
@@ -47,10 +47,10 @@ const VideoPage = ({ match, latestVideos, latestVideosById, onData }:
             {/* <Table classNameProp="side" videos={video} /> */}
             <br></br><br></br><br></br><br></br><br></br>
             <h3>Also check out top highlights</h3>
-            {latestVideos.length === 0 && <Loader />}
+            {media.length === 0 && <Loader />}
             {(<TopRated
-                mediaSorted={latestVideos}
-                mediaById={latestVideosById}
+                mediaSorted={media}
+                mediaById={mediaById}
                 gaEvent="Video Page::Top rated"
             />)}
         </div>
@@ -62,15 +62,15 @@ const mapStateToProps = (state: { mainReducer: State }) => {
         videos: state.mainReducer.videos,
         deathKillTimers: state.mainReducer.deathKillTimers,
         twitchPlayer: state.mainReducer.twitchPlayer,
-        latestVideosById: state.mainReducer.latestVideosById,
-        latestVideos: state.mainReducer.latestVideos.slice(0, 6)
+        mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
+        media: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
     }
 }
 
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
         onData: (data: any) => {
-            dispatch(addLatestVideos(data))
+            dispatch(addMedia(data))
         }
     }
 }

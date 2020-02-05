@@ -3,12 +3,12 @@ import StreamerVideosNoHeader from '../components/StreamerVideosNoHeader'
 import TopRated from '../components/TopRated'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import { setCurrentSearch, addLatestVideos } from '../actions'
+import { setCurrentSearch, addMedia } from '../actions'
 import Loader from '../components/Loader'
-import url from '../constants'
+import url, { mediaTypes } from '../constants'
 
-const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, onData, onDataLatest }:
-    { location: any; searchFromCache: any; clipsSorted: number[], clipsSortedById: any, onData: any; onDataLatest: any }) => {
+const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, onData, onDataMedia }:
+    { location: any; searchFromCache: any; clipsSorted: number[], clipsSortedById: any, onData: any; onDataMedia: any }) => {
     const [search, setSearch] = useState()
     const [loaded, setLoaded] = useState(false)
     // TODO: may be make it protected
@@ -27,10 +27,10 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
                 })
         }
         // fetch latest videos
-        fetch(`${url}/api/video/top_videos`)
+        fetch(`${url}/api/video/top_videos?page=1&amount=6`)
             .then(data => data.json())
             .then(data => {
-                onDataLatest(data)
+                onDataMedia(data)
             })
     }, [])
     return (
@@ -43,6 +43,7 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
                 if (search.playersId[playerId].videosSorted && search.playersId[playerId].videosSorted.length > 0) {
                     return (
                         <StreamerVideosNoHeader
+                            key={playerId}
                             streamer={search.playersId[playerId].streamer}
                             mediaById={search.playersId[playerId].videosById}
                             mediaSorted={search.playersId[playerId].videosSorted.slice(0, 6)}
@@ -69,12 +70,11 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
     )
 }
 
-
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         searchFromCache: state.mainReducer.search,
-        clipsSortedById: state.mainReducer.latestVideosById,
-        clipsSorted: state.mainReducer.latestVideos.slice(0, 6)
+        clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
+        clipsSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
     }
 }
 
@@ -83,8 +83,8 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
         onData: (data: any, query: string) => {
             dispatch(setCurrentSearch(data, query))
         },
-        onDataLatest: (data: any) => {
-            dispatch(addLatestVideos(data))
+        onDataMedia: (data: any) => {
+            dispatch(addMedia(data))
         }
     }
 }
