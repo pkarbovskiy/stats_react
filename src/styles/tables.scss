@@ -4,11 +4,16 @@ $main-brand-color:  #D7CA25;
 .table {
     display: flex;
     flex-flow: row wrap;
+    &.clips {
+        @media screen and (max-width: $break-ipad) {
+            margin-left: -60px;
+        }
+    }
     &.side {
         width: 100vw;
         @media screen and (min-width: $break-pc) {
             margin: 2rem 0 0 -3rem;
-            width: 74vw;
+            width: 70vw;
         }
         .video_cart {
             display: flex;
@@ -50,6 +55,9 @@ $main-brand-color:  #D7CA25;
                         font-weight: normal;
                         text-decoration: none;
                     }
+                }
+                &__name {
+                    text-align: left;
                 }
             }
         }
@@ -123,6 +131,7 @@ $main-brand-color:  #D7CA25;
             }
             &__name {
                 font-weight: bold;
+                text-align: center;
             }
         }
     }

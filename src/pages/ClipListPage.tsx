@@ -68,7 +68,7 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
                     <button className={currAction.current === 'eliminated' ? 'active' : ''} onClick={() => sortByAction('eliminated')}>Eliminated</button>
                     <button className={currAction.current === 'victory' ? 'active' : ''} onClick={() => sortByAction('victory')}>Victory</button>
                 </div>
-                <Table classNameProp="side" mediaSorted={mediaSorted} mediaById={clipsById} playersById={playersById} />
+                <Table classNameProp={['side', 'clips']} mediaSorted={mediaSorted} mediaById={clipsById} playersById={playersById} />
             </div>
         </>
     );
