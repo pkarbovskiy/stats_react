@@ -252,8 +252,15 @@ const InfoPage = ({ match }: any) => {
                     Using our super duper navigation you can skip to the next kill or death on the stream,
                     or use our Autoskip feature for an action-packed viewing experience.
                     Our "Search" feature also allows you to discover if you've eliminated any streamers and see their reactions.
-                    Try it out and <a href="https://www.reddit.com/r/StreamSn1pers/">let us know</a> what you find!
-
+                    "FragFinder" is our solution for streamers and content creators to find the best moments from their streams in a fraction of the usual time.
+                </div>
+                <div className="info_block__update">
+                    <h2>Update: Feb 5th, 2020</h2>
+                    Home page now shows what we think are the top moments from across many streamers (but that's just, like, our opinion, man).<br></br><br></br>
+                    FragFinder is a new tool that can help you find the best moments from your own stream! 
+                    If you want to try it out, 
+                    <a rel="noopener noreferrer" href="https://twitter.com/streamsn1pers" target="_blank"> send us a DM</a> or 
+                    <a href="mailto:collaborations@StreamSnipers.com?subject=I'd like to try out FragFinder!"> drop us an email.</a>
                 </div>
                 <div className="info_block__update">
                     <h2>Update: Oct 26th, 2019</h2>
@@ -270,7 +277,7 @@ const InfoPage = ({ match }: any) => {
                     Let us know on our <a rel="noopener noreferrer" href="https://www.reddit.com/r/StreamSn1pers/" target="_blank">Reddit </a>
                     or
                     <a rel="noopener noreferrer" href="https://twitter.com/streamsn1pers" target="_blank"> Twitter</a> pages.
-                    </div>
+                </div>
             </div>
             break
         default:
