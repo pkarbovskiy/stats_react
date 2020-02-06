@@ -8,12 +8,16 @@ import url, { mediaTypes } from '../constants'
 import { addMedia } from '../actions'
 import TopRated from '../components/TopRated'
 
-const VideoPage = ({ match, media, mediaById, onData }:
-    { match: any; media: number[]; mediaById: any; onData: any }) => {
+const VideoPage = ({ match, mediaRedux, mediaById, onData }:
+    { match: any; mediaRedux: number[]; mediaById: any; onData: any }) => {
+    
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    
     const [timeline, setTimeline] = useState()
-    const [video, setVideo] = useState()
+    const [video, setVideo] = useState()    
+    const [media, setMedia] = useState<number[]>(mediaRedux)
+    
     useEffect(() => {
         setVideo(false)
         function getVideoInfo(videoId: number) {
@@ -41,20 +45,27 @@ const VideoPage = ({ match, media, mediaById, onData }:
             })
 
     }, [match.params.videoId])
+
+    useEffect(() => {
+        setMedia(()=> mediaRedux)
+    }, [mediaRedux])
+
     return (
         <div className="video_page">
             {video &&
                 <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />
             }
-            {/* <Table classNameProp="side" videos={video} /> */}
-            <br></br><br></br><br></br><br></br><br></br>
-            <h3>Also check out top highlights</h3>
-            {media.length === 0 && <Loader />}
-            {(<TopRated
-                mediaSorted={media}
-                mediaById={mediaById}
-                gaEvent="Video Page::Top rated"
-            />)}
+            {/* <Table classNameProp="side" videos={video} /> */}            
+            {media.length > 0 && <>
+                <br></br><br></br><br></br><br></br><br></br>
+                    <h3>Also check out top highlights</h3>
+                    <TopRated
+                        mediaSorted={media}
+                        mediaById={mediaById}
+                        gaEvent="Video Page::Top rated"
+                    />
+                </>
+            }
         </div>
     )
 }
@@ -65,7 +76,7 @@ const mapStateToProps = (state: { mainReducer: State }) => {
         deathKillTimers: state.mainReducer.deathKillTimers,
         twitchPlayer: state.mainReducer.twitchPlayer,
         mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
-        media: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
+        mediaRedux: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
     }
 }
 

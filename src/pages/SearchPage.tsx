@@ -7,10 +7,11 @@ import { setCurrentSearch, addMedia } from '../actions'
 import Loader from '../components/Loader'
 import url, { mediaTypes } from '../constants'
 
-const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, onData, onDataMedia }:
-    { location: any; searchFromCache: any; clipsSorted: number[], clipsSortedById: any, onData: any; onDataMedia: any }) => {
+const SearchPage = ({ location, searchFromCache, clipsSortedRedux, clipsSortedById, onData, onDataMedia }:
+    { location: any; searchFromCache: any; clipsSortedRedux: number[], clipsSortedById: any, onData: any; onDataMedia: any }) => {
     const [search, setSearch] = useState()
     const [loaded, setLoaded] = useState(false)
+    const [clipsSorted, setClipsSorted] = useState(clipsSortedRedux.slice(0, 6))
     // TODO: may be make it protected
     const searchString = location.search.replace('?', '').split('=')
     useEffect(() => {
@@ -31,6 +32,7 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
             .then(data => data.json())
             .then(data => {
                 onDataMedia(data)
+                setClipsSorted(()=> data.media.slice(0, 6))
             })
     }, [])
     return (
@@ -55,9 +57,9 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
                 }
 
             })}
-            <br></br><br></br><br></br><br></br><br></br><br></br>
             {clipsSorted.length > 0 && (
                 <>
+                    <br></br><br></br><br></br><br></br><br></br><br></br>
                     <h3>Also check out top highlights:</h3>
                     <TopRated
                         mediaSorted={clipsSorted}
@@ -74,7 +76,7 @@ const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         searchFromCache: state.mainReducer.search,
         clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
-        clipsSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
+        clipsSortedRedux: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
     }
 }
 

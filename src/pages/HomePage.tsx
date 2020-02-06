@@ -9,24 +9,26 @@ import url, { isMobile, mediaTypes } from '../constants'
 import { shouldLazyLoad } from '../common_function'
 
 const HomePage = () => {
+    const additionLazy = 6
     const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
-    const { clipsSortedById, allMediaSorted }: { clipsSortedById: any; allMediaSorted: number[] } = useSelector(
+    const { clipsSortedById, allMediaSortedRedux }: { clipsSortedById: any; allMediaSortedRedux: number[] } = useSelector(
         (state: any) => ({
             clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
-            allMediaSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media
+            allMediaSortedRedux: state.mainReducer.media[mediaTypes.TOP_RATED].media
         })
     )
     const dispatch = useDispatch()
-    const [mediaSorted, setMediaSorted] = useState(() => allMediaSorted.slice(0, elementsOnLoad))
-    //const [currentPage, setCurrentPage] = useState(1)
+    const [allMediaSorted, setAllMediaSorted] = useState<number[]>([])
+    const [mediaSorted, setMediaSorted] = useState<number[]>([])
+    const [nextPageToLoad, setNextPageToLoad] = useState<number>(1)
+    
     useEffect(() => {
         function scroll() {
-            if (shouldLazyLoad()) {
-                // if (mediaSorted.length + 6 > allMediaSorted.length) {
-                //     getMediaForThePage(currentPage, elementsOnLoad)
-                //     setCurrentPage((state: number) => state++)
-                // }
-                setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + 6))
+            if (shouldLazyLoad() && allMediaSorted.length | 0) {
+                if (mediaSorted.length + additionLazy > allMediaSorted.length) {
+                    getMediaForThePage(nextPageToLoad, elementsOnLoad)
+                }
+                setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + additionLazy))
             }
         }
 
@@ -34,20 +36,26 @@ const HomePage = () => {
 
         return () => { window.removeEventListener('scroll', scroll) }
     }, [allMediaSorted])
+    // after redux is updated update the state of the component
+    useEffect(() => {
+        setAllMediaSorted(() => allMediaSortedRedux)
+    }, [allMediaSortedRedux])
+
     useEffect(() => {
         if (allMediaSorted.length < elementsOnLoad) {
-
             // fetch media from server
-            getMediaForThePage(1, elementsOnLoad)
-            //setCurrentPage((state: number) => state++)
+            getMediaForThePage(nextPageToLoad, elementsOnLoad)
+            
         }
-    }, [])
+    }, [allMediaSorted])
+
     function getMediaForThePage(page = 1, amount = 3) {
         fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
             .then(data => data.json())
             .then(data => {
                 dispatch(addMedia(data, mediaTypes.TOP_RATED))
-                setMediaSorted((state: any) => data.media.slice(0, elementsOnLoad))
+                setMediaSorted((state:number[]) => state.concat(data.media.slice(0, elementsOnLoad)))
+                setNextPageToLoad((state: number) => state + 1)
             })
     }
     return (
