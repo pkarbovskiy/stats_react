@@ -65,10 +65,10 @@ const VideoCart = (props: videoCartProps) => {
                     </span>
                     :
                     <span className={`video_cart__info__name${title != null ? ' title' : ''}${avatar ? ' avatar' : ''}`}>
-                        {avatar ? <span className={`video_cart__info__name__streamer`}>{streamer.name}</span> : <></>}
-                        {title === void 0 && player.name !== 'victory' ?
-                            <Link to={playerUrl}>{`${killMsg}`}<br />{`${player.name}`}</Link> :
-                            (title ? title : 'Victory Royale')
+                        {avatar ? <span className={`video_cart__info__name__streamer`}>{streamer.name}</span> :
+                            title === void 0 && player.name !== 'victory' ?
+                                <Link to={playerUrl}>{`${killMsg}`}<br />{`${player.name}`}</Link> :
+                                (title ? title : 'Victory Royale')
                         }
                     </span>
                 }
