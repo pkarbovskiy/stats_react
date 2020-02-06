@@ -21,7 +21,7 @@ export type videoCartProps = {
     action: string;
     videoId?: number;
     timestamp: number | '';
-    includeAvatar: boolean;
+    avatar: boolean | string;
     includeStreamerName: boolean;
     match_on_player_id: boolean;
     title: string;
@@ -30,7 +30,7 @@ export type videoCartProps = {
     gaEvent?: string;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, match_on_player_id, player, since, videoId, title, imageId = '', timestamp = '', includeAvatar = false, includeStreamerName = false, gaEvent } = props
+    let { id, streamer, match_on_player_id, player, since, videoId, title, imageId = '', timestamp = '', avatar = false, includeStreamerName = false, gaEvent } = props
     videoId = videoId || id
     function error(event: any) {
         event.target.src = defaultVideoImage
@@ -52,10 +52,11 @@ const VideoCart = (props: videoCartProps) => {
                 <Since since={since} />
             </Link>
             <div className="video_cart__info">
-                {includeAvatar ?
+                {avatar ?
                     <Link to={`/player/${streamer.id}/${streamer.slug}`} className="video_cart__info__streamer--pic">
                         <Avatar player={streamer} />
-                    </Link> :
+                    </Link>
+                    :
                     ''
                 }
                 {includeStreamerName ?
@@ -63,7 +64,8 @@ const VideoCart = (props: videoCartProps) => {
                         {title === void 0 ? <Link to={playerUrl}>{player.name}</Link> : title}
                     </span>
                     :
-                    <span className={`video_cart__info__name${title != null ? ' title' : ''}`}>
+                    <span className={`video_cart__info__name${title != null ? ' title' : ''}${avatar ? ' avatar' : ''}`}>
+                        {avatar ? <span className={`video_cart__info__name__streamer`}>{streamer.name}</span> : <></>}
                         {title === void 0 && player.name !== 'victory' ?
                             <Link to={playerUrl}>{`${killMsg}`}<br />{`${player.name}`}</Link> :
                             (title ? title : 'Victory Royale')

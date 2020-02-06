@@ -11,7 +11,7 @@ const Avatar = ({ player }: { player: { id: number; name: string; avatar?: strin
         avatar = true
     }
 
-    return (<img src={profilePic} alt={`${player.name} avatar`} className={avatar ? 'avatar' : ''} />)
+    return (<img src={profilePic} alt={``} className={avatar ? 'avatar' : ''} />)
 }
 
 export default Avatar
