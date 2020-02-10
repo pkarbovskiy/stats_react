@@ -2,6 +2,8 @@ export default ''//'http://192.168.232.129:8000'
 
 export const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i)
 
+export const mobileNotIpad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1
+
 export const cloudFrontUrl = '//d38ev7kpu49one.cloudfront.net'
 
 export const featuredStreamer8bit = `${cloudFrontUrl}/featured_streamers/::id.png`

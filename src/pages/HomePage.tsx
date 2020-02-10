@@ -5,12 +5,12 @@ import '../styles/App.scss'
 import { addMedia } from '../actions'
 import Loader from '../components/Loader'
 //import { State } from '../reducers/reducers'
-import url, { isMobile, mediaTypes } from '../constants'
+import url, { mobileNotIpad, mediaTypes } from '../constants'
 import { shouldLazyLoad } from '../common_function'
 
 const HomePage = () => {
     const additionLazy = 6
-    const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
+    const elementsOnLoad = mobileNotIpad ? 3 : 36
     const { clipsSortedById, allMediaSortedRedux }: { clipsSortedById: any; allMediaSortedRedux: number[] } = useSelector(
         (state: any) => ({
             clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
@@ -31,15 +31,14 @@ const HomePage = () => {
                 setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + additionLazy))
             }
         }
-
         window.addEventListener('scroll', scroll)
-
         return () => { window.removeEventListener('scroll', scroll) }
-    }, [allMediaSorted])
+    }, [])
+
     // after redux is updated update the state of the component
     useEffect(() => {
         setAllMediaSorted(() => allMediaSortedRedux)
-    }, [allMediaSortedRedux])
+    }, [allMediaSortedRedux.length])
 
     useEffect(() => {
         if (allMediaSorted.length < elementsOnLoad) {
@@ -47,7 +46,7 @@ const HomePage = () => {
             getMediaForThePage(nextPageToLoad, elementsOnLoad)
             
         }
-    }, [allMediaSorted])
+    }, [allMediaSorted.length])
 
     function getMediaForThePage(page = 1, amount = 3) {
         fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
