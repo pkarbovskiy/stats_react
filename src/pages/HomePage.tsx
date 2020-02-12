@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import TopRated from '../components/TopRated'
 import '../styles/App.scss'
@@ -11,52 +11,44 @@ import { shouldLazyLoad } from '../common_function'
 const HomePage = () => {
     const additionLazy = 6
     const elementsOnLoad = mobileNotIpad ? 3 : 36
-    const { clipsSortedById, allMediaSortedRedux }: { clipsSortedById: any; allMediaSortedRedux: number[] } = useSelector(
+    const [pageNamber, setNextPageToLoad] = useState<number>(1)
+    const amountCurrShowing = useRef(elementsOnLoad)
+    const { mediaById, allMediaRedux }: { mediaById: any; allMediaRedux: number[] } = useSelector(
         (state: any) => ({
-            clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
-            allMediaSortedRedux: state.mainReducer.media[mediaTypes.TOP_RATED].media
+            mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
+            allMediaRedux: state.mainReducer.media[mediaTypes.TOP_RATED].media
         })
     )
     const dispatch = useDispatch()
-    const [allMediaSorted, setAllMediaSorted] = useState<number[]>([])
-    const [mediaSorted, setMediaSorted] = useState<number[]>([])
-    const [nextPageToLoad, setNextPageToLoad] = useState<number>(1)
-    
-    useEffect(() => {
-        function scroll() {
-            if (shouldLazyLoad() && allMediaSorted.length | 0) {
-                if (mediaSorted.length + additionLazy > allMediaSorted.length) {
-                    getMediaForThePage(nextPageToLoad, elementsOnLoad)
-                }
-                setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + additionLazy))
+
+    function scroll() {
+        if (shouldLazyLoad() && allMediaRedux.length | 0) {
+            if (amountCurrShowing.current + additionLazy >= allMediaRedux.length) {
+                getMediaForThePage(pageNamber, elementsOnLoad)
             }
+            amountCurrShowing.current += additionLazy
         }
+    }
+    useEffect(() => {
+        loadOneMorePage()
         window.addEventListener('scroll', scroll)
         return () => { window.removeEventListener('scroll', scroll) }
-    }, [])
+    }, [allMediaRedux.length])
 
-    // after redux is updated update the state of the component
-    useEffect(() => {
-        setAllMediaSorted(() => allMediaSortedRedux)
-    }, [allMediaSortedRedux.length])
-
-    useEffect(() => {
-        if (allMediaSorted.length < elementsOnLoad) {
-            // fetch media from server
-            getMediaForThePage(nextPageToLoad, elementsOnLoad)
-            
-        }
-    }, [allMediaSorted.length])
+    function loadOneMorePage() {
+        // fetch media from server
+        getMediaForThePage(pageNamber, elementsOnLoad)
+    }
 
     function getMediaForThePage(page = 1, amount = 3) {
         fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
             .then(data => data.json())
             .then(data => {
-                dispatch(addMedia(data, mediaTypes.TOP_RATED))
-                setMediaSorted((state:number[]) => state.concat(data.media.slice(0, elementsOnLoad)))
                 setNextPageToLoad((state: number) => state + 1)
+                dispatch(addMedia(data, mediaTypes.TOP_RATED))
             })
     }
+
     return (
         <div className="home_page">
             <div className="home_page__info">
@@ -66,10 +58,10 @@ const HomePage = () => {
                 - choose a video and toggle AutoSkip to see just the action (wins, kills, deaths)
             </div>
             <h3>Top Highlights</h3>
-            {mediaSorted.length === 0 && <Loader />}
-            {mediaSorted.length > 0 && (<TopRated
-                mediaSorted={mediaSorted}
-                mediaById={clipsSortedById}
+            {allMediaRedux.length === 0 && <Loader />}
+            {allMediaRedux.length > 0 && (<TopRated
+                mediaSorted={allMediaRedux.slice(0, amountCurrShowing.current)}
+                mediaById={mediaById}
                 gaEvent="Home Page::Top rated"
             />)}
         </div>
