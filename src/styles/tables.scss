@@ -99,10 +99,13 @@ $main-brand-color:  #D7CA25;
             &__name {
                 display: flex;
                 flex-direction: column;
+                &__title:visited {
+                    color: $main-brand-color
+                }
             }
             &__name,
             &__description {
-                width: 17.2rem;
+                width: 30rem;;
                 &.avatar {
                     @media screen and (min-width: $break-ipad) {
                         width: 12.2rem;
@@ -120,7 +123,7 @@ $main-brand-color:  #D7CA25;
                     text-decoration: none;
                     @media screen and (max-width: $break-ipad) {
                         text-align: left;
-                        width: 11rem;
+                        width: 30rem;
                         word-wrap: break-word;
                     }
                 }

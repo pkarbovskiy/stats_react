@@ -24,13 +24,14 @@ export type videoCartProps = {
     avatar: boolean | string;
     includeStreamerName: boolean;
     match_on_player_id: boolean;
-    title: string;
+    title?: string;
     imageId: number;
     since: any;
     gaEvent?: string;
+    c_title?: string;
 }
 const VideoCart = (props: videoCartProps) => {
-    let { id, streamer, match_on_player_id, player, since, videoId, title, imageId = '', timestamp = '', avatar = false, includeStreamerName = false, gaEvent } = props
+    let { id, streamer, match_on_player_id, player, since, videoId, title, c_title, imageId = '', timestamp = '', avatar = false, includeStreamerName = false, gaEvent } = props
     videoId = videoId || id
     function error(event: any) {
         event.target.src = defaultVideoImage
@@ -53,7 +54,7 @@ const VideoCart = (props: videoCartProps) => {
             </Link>
             <div className="video_cart__info">
                 {avatar ?
-                    <Link to={`/player/${streamer.id}/${streamer.slug}`} className="video_cart__info__streamer--pic">
+                    <Link to={`/player/${streamer.id}/${streamer.slug}`} className="video_cart__info__streamer--pic" onClick={() => gaEvents({ eventCategory: `${gaEvent}:avatar`, eventAction: 'click', eventLabel: `${videoId}` })}>
                         <Avatar player={streamer} />
                     </Link>
                     :
@@ -65,10 +66,16 @@ const VideoCart = (props: videoCartProps) => {
                     </span>
                     :
                     <span className={`video_cart__info__name${title != null ? ' title' : ''}${avatar ? ' avatar' : ''}`}>
-                        {avatar ? <span className={`video_cart__info__name__streamer`}>{streamer.name}</span> :
-                            title === void 0 && player.name !== 'victory' ?
-                                <Link to={playerUrl}>{`${killMsg}`}<br />{`${player.name}`}</Link> :
-                                (title ? title : 'Victory Royale')
+                        {avatar && c_title ?
+                            <>
+                                <span className={`video_cart__info__name__streamer`}>{streamer.name}</span>
+                                <Link className={`video_cart__info__name__title`} to={videoUrl} onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `${videoId}` })}>{c_title}</Link>
+                            </> :
+                            avatar ?
+                                <span className={`video_cart__info__name__streamer`}>{streamer.name}</span> :
+                                title === void 0 && player.name !== 'victory' ?
+                                    <Link to={playerUrl} onClick={() => gaEvents({ eventCategory: `${gaEvent}:player_url`, eventAction: 'click', eventLabel: `${videoId}` })}>{`${killMsg}`}<br />{`${player.name}`}</Link> :
+                                    (title ? title : 'Victory Royale')
                         }
                     </span>
                 }
