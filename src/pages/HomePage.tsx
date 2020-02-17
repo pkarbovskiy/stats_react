@@ -1,41 +1,75 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import TopRated from '../components/TopRated'
 import '../styles/App.scss'
 import { addMedia } from '../actions'
 import Loader from '../components/Loader'
-//import { State } from '../reducers/reducers'
-import url, { isMobile, mediaTypes } from '../constants'
-import { shouldLazyLoad } from '../common_function'
+import url, { mobileNotIpad, mediaTypes } from '../constants'
+import { shouldLazyLoad, gaEvents } from '../common_function'
 
 const HomePage = () => {
-    const elementsOnLoad = isMobile && ((isMobile || { input: '' }).input || '').indexOf('ipad') === -1 ? 3 : 36
-    const { clipsSortedById, allMediaSorted }: { clipsSortedById: any; allMediaSorted: number[] } = useSelector(
+    const elementsOnLoad = mobileNotIpad ? 3 : 36
+    const { mediaById, media }: { mediaById: any; media: number[] } = useSelector(
         (state: any) => ({
-            clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
-            allMediaSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media
+            mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
+            media: state.mainReducer.media[mediaTypes.TOP_RATED].media
         })
     )
+
+    const currentSince = useRef<1 | 7 | 14>(7)
+
+    /**
+     * split all events by since and keep them in the same order
+     * @param { entitySorted, entityById } entity which consists of just ids in array and dictionary
+     * @returns object like { [since: number]: number[] }
+     */
+    function splitBySince({ entitySorted, entityById }: { entitySorted: any; entityById: any }): { [action: string]: number[] } {
+        return entitySorted.reduce((acc: { [action: string]: number[] }, id: number) => {
+
+            if (!entityById[id]) {
+                return acc
+            }
+
+            if (entityById[id].since <= 1) {
+                acc[1].push(id)
+            }
+
+            if (entityById[id].since <= 7) {
+                acc[7].push(id)
+            }
+
+
+            if (entityById[id].since <= 14) {
+                acc[14].push(id)
+            }
+
+            return acc
+        }, { 1: [], 7: [], 14: [] })
+    }
+
+    const idsForSince = useMemo(
+        () => splitBySince({ entitySorted: media, entityById: mediaById }),
+        [
+            media,
+            mediaById
+        ]
+    )
     const dispatch = useDispatch()
-    const [mediaSorted, setMediaSorted] = useState(() => allMediaSorted.slice(0, elementsOnLoad))
-    //const [currentPage, setCurrentPage] = useState(1)
+    const [mediaSorted, setMediaSorted] = useState(() => media.slice(0, elementsOnLoad))
+
     useEffect(() => {
         function scroll() {
             if (shouldLazyLoad()) {
-                // if (mediaSorted.length + 6 > allMediaSorted.length) {
-                //     getMediaForThePage(currentPage, elementsOnLoad)
-                //     setCurrentPage((state: number) => state++)
-                // }
-                setMediaSorted((state: any) => allMediaSorted.slice(0, state.length + 6))
+                setMediaSorted((state: any) => idsForSince[currentSince.current].slice(0, state.length + 6))
             }
         }
 
         window.addEventListener('scroll', scroll)
 
         return () => { window.removeEventListener('scroll', scroll) }
-    }, [allMediaSorted])
+    }, [media])
     useEffect(() => {
-        if (allMediaSorted.length < elementsOnLoad) {
+        if (media.length < elementsOnLoad) {
 
             // fetch media from server
             getMediaForThePage(1, elementsOnLoad)
@@ -50,6 +84,12 @@ const HomePage = () => {
                 setMediaSorted((state: any) => data.media.slice(0, elementsOnLoad))
             })
     }
+    function sortBySince(since: 1 | 7 | 14): void {
+        gaEvents({ eventCategory: `Top Rated Buttons:click:${since}`, eventAction: 'click', eventLabel: `${since}` })
+        currentSince.current = since
+        // setting what actions we need to see
+        setMediaSorted(idsForSince[since].slice(0, elementsOnLoad))
+    }
     return (
         <div className="home_page">
             <div className="home_page__info">
@@ -60,11 +100,20 @@ const HomePage = () => {
             </div>
             <h3>Top Highlights</h3>
             {mediaSorted.length === 0 && <Loader />}
-            {mediaSorted.length > 0 && (<TopRated
-                mediaSorted={mediaSorted}
-                mediaById={clipsSortedById}
-                gaEvent="Home Page::Top rated"
-            />)}
+            {mediaSorted.length > 0 && (
+                <>
+                    <div className="home_page__filters">
+                        <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Today</button>
+                        <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Week ago</button>
+                        <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>2 Weeks ago</button>
+                    </div>
+                    <TopRated
+                        mediaSorted={mediaSorted}
+                        mediaById={mediaById}
+                        gaEvent="Home Page::Top rated"
+                    />
+                </>
+            )}
         </div>
     );
 }

@@ -253,3 +253,44 @@ h2 {
     color:#fff;
     padding: .1rem .3rem;
 }
+.home_page {
+    &__filters {
+        display: flex;
+        justify-content: center;
+        @media screen and (min-width: $break-ipad-min) and (max-width: $break-ipad-max) {                
+            margin: 0 0 1rem 19rem;
+        }
+        @media screen and (min-width: $break-pc) {
+            width: auto;
+            margin: 0 0 1rem 23rem;
+        }
+        @media screen and (min-width: $break-mid-pc) {
+            margin: 0 auto;
+        }
+        button {
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            width: 11rem;
+            background-color: #222;
+            padding: 1rem;                
+            border-radius: 0.5rem;
+            color: #fff;
+            &:hover {
+                background-color: #ccc;
+            }
+            &.active {
+                background-color: $main-brand-color;
+                color: #000;
+                transition: background-color .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                transition: color .5s ease;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        button + button {
+            margin-left: 0.9rem;
+        }
+    }
+}
