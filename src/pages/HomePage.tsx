@@ -55,9 +55,10 @@ const HomePage = () => {
         ]
     )
     const dispatch = useDispatch()
-    const [mediaSorted, setMediaSorted] = useState(() => media.slice(0, elementsOnLoad))
+    const [mediaSorted, setMediaSorted] = useState<number[]>([])
 
     useEffect(() => {
+        setMediaSorted((state: any) => idsForSince[currentSince.current].slice(0, elementsOnLoad))
         function scroll() {
             if (shouldLazyLoad()) {
                 setMediaSorted((state: any) => idsForSince[currentSince.current].slice(0, state.length + 6))
@@ -81,7 +82,6 @@ const HomePage = () => {
             .then(data => data.json())
             .then(data => {
                 dispatch(addMedia(data, mediaTypes.TOP_RATED))
-                setMediaSorted((state: any) => data.media.slice(0, elementsOnLoad))
             })
     }
     function sortBySince(since: 1 | 7 | 14): void {
@@ -103,7 +103,7 @@ const HomePage = () => {
             {mediaSorted.length > 0 && (
                 <>
                     <div className="home_page__filters">
-                        <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Today</button>
+                        <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Yesterday</button>
                         <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Week ago</button>
                         <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>2 Weeks ago</button>
                     </div>

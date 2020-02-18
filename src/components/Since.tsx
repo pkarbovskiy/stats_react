@@ -16,7 +16,7 @@ const Since = ({ since }: { since: any }) => {
             text = 'Last month'
             break
         case since >= 60:
-            text = `${since / 30 | 0} months`
+            text = `${since / 30 | 0} months ago`
             break
         default:
             return (<></>)
