@@ -104,8 +104,8 @@ const HomePage = () => {
                 <>
                     <div className="home_page__filters">
                         <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Yesterday</button>
-                        <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Week ago</button>
-                        <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>2 Weeks ago</button>
+                        <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Last Week</button>
+                        <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>Last 2 Weeks</button>
                     </div>
                     <TopRated
                         mediaSorted={mediaSorted}
