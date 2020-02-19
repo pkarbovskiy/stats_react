@@ -216,6 +216,9 @@ a {
         font-size: 2rem;
         color: $main-brand-color;
     }
+    h3 {
+        padding-left: 1rem;
+    }
     &__info {
         font-size: 1.6rem;
         display: flex;
@@ -225,6 +228,7 @@ a {
         color: #ddd;
         @media (max-width: $break-ipad) {
             font-size: 1.2rem;
+            padding: 0 1rem;
         }
     }
     &__link {
@@ -257,6 +261,7 @@ h2 {
     &__filters {
         display: flex;
         justify-content: center;
+        margin-bottom: 2rem;
         @media screen and (min-width: $break-ipad-min) and (max-width: $break-ipad-max) {                
             margin: 0 0 1rem 19rem;
         }

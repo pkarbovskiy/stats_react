@@ -12,7 +12,7 @@ $main-brand-color:  #D7CA25;
     &.side {
         width: 100vw;
         @media screen and (min-width: $break-pc) {
-            margin: 2rem 0 0 -3rem;
+            margin: 2rem 0 0 0;
             width: 70vw;
         }
         .video_cart {
@@ -20,6 +20,7 @@ $main-brand-color:  #D7CA25;
             flex-direction: column;
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
+                width: 215px;
             }
             &--link:visited {
                 filter: blur(5px);
