@@ -1,17 +1,13 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react'
+import { convertToFancyTime } from '../common_function'
 
 const Mixer = (props: any) => {
     const iframe: any = useRef(false)
-    useEffect(() => {
-        if (iframe.current) {
-            const video = iframe.current.contentWindow.document.querySelector('.spectre-video-element')
-            console.log(iframe.current.contentWindow.document)
-            //video.currentTime = 360
-        }
-    }, [iframe.current])
+    const buffer = 15
+    let videoTime: string = convertToFancyTime(props.videoTime - buffer < 0 ? 0 : props.videoTime - buffer)
     return (
-        <iframe src="https://mixer.com/embed/player/ninja?vod=220588737" ref={iframe}></iframe>
+        <iframe src={`https://mixer.com/embed/player/${props.channel_name}?vod=${props.videoId}&t=${videoTime}`} ref={iframe} className="player"></iframe>
     )
 }
 

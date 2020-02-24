@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TwitchPlayer from '../components/TwitchPlayer'
+import Mixer from '../components/Mixer'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
 import Table from '../components/Table'
@@ -10,14 +11,14 @@ import TopRated from '../components/TopRated'
 
 const VideoPage = ({ match, mediaRedux, mediaById, onData }:
     { match: any; mediaRedux: number[]; mediaById: any; onData: any }) => {
-    
+
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    
+
     const [timeline, setTimeline] = useState()
-    const [video, setVideo] = useState()    
+    const [video, setVideo] = useState()
     const [media, setMedia] = useState<number[]>(mediaRedux)
-    
+
     useEffect(() => {
         setVideo(false)
         function getVideoInfo(videoId: number) {
@@ -47,24 +48,25 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
     }, [match.params.videoId])
 
     useEffect(() => {
-        setMedia(()=> mediaRedux)
+        setMedia(() => mediaRedux)
     }, [mediaRedux])
 
     return (
         <div className="video_page">
-            {video &&
-                <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />
+            {video && (video.platform_id === 2 ?
+                <Mixer {...video} videoTime={match.params.timer | 0} />
+                : <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />)
             }
-            {/* <Table classNameProp="side" videos={video} /> */}            
+            {/* <Table classNameProp="side" videos={video} /> */}
             {media.length > 0 && <>
                 <br></br><br></br><br></br><br></br><br></br>
-                    <h3>Also check out top highlights</h3>
-                    <TopRated
-                        mediaSorted={media}
-                        mediaById={mediaById}
-                        gaEvent="Video Page::Top rated"
-                    />
-                </>
+                <h3>Also check out top highlights</h3>
+                <TopRated
+                    mediaSorted={media}
+                    mediaById={mediaById}
+                    gaEvent="Video Page::Top rated"
+                />
+            </>
             }
         </div>
     )
