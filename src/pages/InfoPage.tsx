@@ -6,14 +6,14 @@ const InfoPage = ({ match }: any) => {
         case "/about_us":
             text = <div className="info_block__about_us">
                 <h2>About us</h2>
-                StreamSnipers was created by a team of video game enthusiasts.
+                VodSearch was created by a team of video game enthusiasts.
                 Our mission is to build products and services that increase the number and quality of ways that streamers and fans connect.
                 We aim to make it easier for streamers to get more out of the material they put out,
                 while at the same time giving fans better ways to explore and discover.
             <br></br><br></br>
-                If you're a streamer and would be interested in collaborating, shoot us a note at <a href="mailto: collaborations@StreamSnipers.com">collaborations@StreamSnipers.com</a>.
+                If you're a streamer and would be interested in collaborating, shoot us a note at <a href="mailto: collaborations@VodSearch.tv">collaborations@VodSearch.tv</a>.
             <br></br><br></br>
-                If you're a developer with a passion for gaming and skilled in front-end design or back-end optimization contact us at <a href="mailto: work@StreamSnipers.com">work@StreamSnipers.com</a>.
+                If you're a developer with a passion for gaming and skilled in front-end design or back-end optimization contact us at <a href="mailto: work@VodSearch.tv">work@VodSearch.tv</a>.
             </div>
             break
         case "/privacy":
@@ -82,7 +82,7 @@ const InfoPage = ({ match }: any) => {
                 9. Email Communications<br></br>
                 From time to time, Company may contact you via email for the purpose of providing announcements, promotional offers, alerts, confirmations, surveys, and/or other general communication regarding the Services. To improve the Services, we may receive a notification when you open an email from Company or click on a link therein.
 
-                If you would like to stop receiving such communications via email from Company, you may opt out of such communications by clicking on the UNSUBSCRIBE button and/or by emailing us at support@streamsnipers.com.
+                If you would like to stop receiving such communications via email from Company, you may opt out of such communications by clicking on the UNSUBSCRIBE button and/or by emailing us at support at vodsearch.tv.
             <br></br><br></br>
                 10. Changes to this Privacy Policy<br></br>
                 Company reserves the right to change this Privacy Policy at any time in Company's sole discretion. We will provide you with notice of such a change. Notice of any changes to the Privacy Policy will be accomplished upon Company sending you an email to the address listed in your Account notifying you of such changes and Company announcing such changes through the Services. Such changes will go into effect immediately upon your access of the Services after you are given notice, as described herein. Your continued use of the Services following the notice of any changes to this Privacy Policy constitutes your acceptance of such changes. Any information collected by the Services will be dealt with in accordance with the version of this Privacy Policy that was in place at the time of collection.
@@ -91,7 +91,7 @@ const InfoPage = ({ match }: any) => {
                 The information collected pursuant to this Privacy Policy, including Personal Information, is considered an asset of Company. In the event Company or some or all of the assets related to the Services are acquired by another entity through a sale, merger, or some other change of ownership transaction, Company reserves the right to transfer or assign the information, collected pursuant to this Privacy Policy, in that event.
             <br></br><br></br>
                 12. Contact Information<br></br>
-                Company welcomes your questions or comments regarding this Privacy Policy. If you believe that Company has not adhered to this Privacy Policy, or if you have any other questions or concerns regarding this Privacy Policy please contact Company at support@streamsnipers.com.
+                Company welcomes your questions or comments regarding this Privacy Policy. If you believe that Company has not adhered to this Privacy Policy, or if you have any other questions or concerns regarding this Privacy Policy please contact Company at support at vodsearch.tv.
 
                 The effective date of this Privacy Policy is July 23, 2019
             </div>
@@ -241,14 +241,14 @@ const InfoPage = ({ match }: any) => {
                 You hereby consent to the jurisdiction of the State of Nevada and agree that its laws will be used to resolve all disputes arising from or concerning these Terms.
             <br></br>
                 Questions and Feedback<br></br><br></br>
-                If you have any questions or comments about these Terms or our Services, please contact us at: <a href="mailto: support@streamsnipers.com">support@streamsnipers.com</a>.
+                If you have any questions or comments about these Terms or our Services, please contact us at: <a href="mailto: support@vodsearch.tv">support@VodSearch.tv</a>.
             </div>
             break
         case "/info":
             text = <div className="info_block__about_us">
                 <div className="info_block__update">
                     <h2>New to the site?</h2>
-                    StreamSnipers shows you highlights of all the on-stream action from your favorite Fortnite players.
+                    VodSearch shows you highlights of all the on-stream action from your favorite Fortnite players.
                     Using our super duper navigation you can skip to the next kill or death on the stream,
                     or use our Autoskip feature for an action-packed viewing experience.
                     Our "Search" feature also allows you to discover if you've eliminated any streamers and see their reactions.
@@ -257,14 +257,14 @@ const InfoPage = ({ match }: any) => {
                 <div className="info_block__update">
                     <h2>Update: Feb 5th, 2020</h2>
                     Home page now shows what we think are the top moments from across many streamers (but that's just, like, our opinion, man).<br></br><br></br>
-                    FragFinder is a new tool that can help you find the best moments from your own stream! 
-                    If you want to try it out, 
-                    <a rel="noopener noreferrer" href="https://twitter.com/streamsn1pers" target="_blank"> send us a DM</a> or 
-                    <a href="mailto:collaborations@StreamSnipers.com?subject=I'd like to try out FragFinder!"> drop us an email.</a>
+                    FragFinder is a new tool that can help you find the best moments from your own stream!
+                    If you want to try it out,
+                    <a rel="noopener noreferrer" href="https://twitter.com/streamsn1pers" target="_blank"> send us a DM</a> or
+                    <a href="mailto:collaborations@vodsearch.tv?subject=I'd like to try out FragFinder!"> drop us an email.</a>
                 </div>
                 <div className="info_block__update">
                     <h2>Update: Oct 26th, 2019</h2>
-                    StreamSnipers has a new look with added functionality!<br></br><br></br>
+                    VodSearch has a new look with added functionality!<br></br><br></br>
                     Just like before, you can search for your Epic name to see if you've eliminated any streamers,
                     by just typing it into the bar at the top of the page. But there's more!<br></br><br></br>
                     New Features:

@@ -66,7 +66,7 @@ $main-brand-color:  #D7CA25;
     .video_cart {
         margin: 5px auto;
         @media screen and (min-width: $break-ipad) {
-            margin: 7px 7px 10px 7px;
+            margin: 7px 0 10px;;
         }
         position: relative;
         &--image {

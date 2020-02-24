@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { topStreamers } from '../interfaces/interfaces';
-
+//TODO if ever we put this back we need to verify url for img and make it cloud foundry
 const TopStreamers: React.FC<{ topStreamers: topStreamers }> = (props: { topStreamers: topStreamers }) => {
     const { topStreamers } = props;
     return (
@@ -11,7 +11,7 @@ const TopStreamers: React.FC<{ topStreamers: topStreamers }> = (props: { topStre
                     <Link
                         to={`/player/${topStreamers[streamerName]}/${streamerName.toLowerCase()}`}
                     >
-                        <img src={`http://streamsnipers.com/static/images/streamers/${streamerName}.png`} alt="top streamer" />
+                        <img src={`http://vodsearch.tv/static/images/streamers/${streamerName}.png`} alt="top streamer" />
                         <h3>{streamerName}</h3>
                     </Link>
                 )
