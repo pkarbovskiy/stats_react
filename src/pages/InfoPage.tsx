@@ -6,14 +6,14 @@ const InfoPage = ({ match }: any) => {
         case "/about_us":
             text = <div className="info_block__about_us">
                 <h2>About us</h2>
-                VodSearch was created by a team of video game enthusiasts.
+                VODsearch.tv was created by a team of video game enthusiasts.
                 Our mission is to build products and services that increase the number and quality of ways that streamers and fans connect.
                 We aim to make it easier for streamers to get more out of the material they put out,
                 while at the same time giving fans better ways to explore and discover.
             <br></br><br></br>
-                If you're a streamer and would be interested in collaborating, shoot us a note at <a href="mailto: collaborations@VodSearch.tv">collaborations@VodSearch.tv</a>.
+                If you're a streamer and would be interested in collaborating, shoot us a note at <a href="mailto: collaborations@vodsearch.tv">collaborations@VODsearch.tv</a>.
             <br></br><br></br>
-                If you're a developer with a passion for gaming and skilled in front-end design or back-end optimization contact us at <a href="mailto: work@VodSearch.tv">work@VodSearch.tv</a>.
+                If you're a developer with a passion for gaming and skilled in front-end design or back-end optimization contact us at <a href="mailto: work@vodsearch.tv">work@VODsearch.tv</a>.
             </div>
             break
         case "/privacy":
@@ -241,14 +241,14 @@ const InfoPage = ({ match }: any) => {
                 You hereby consent to the jurisdiction of the State of Nevada and agree that its laws will be used to resolve all disputes arising from or concerning these Terms.
             <br></br>
                 Questions and Feedback<br></br><br></br>
-                If you have any questions or comments about these Terms or our Services, please contact us at: <a href="mailto: support@vodsearch.tv">support@VodSearch.tv</a>.
+                If you have any questions or comments about these Terms or our Services, please contact us at: <a href="mailto: support@vodsearch.tv">support@VODsearch.tv</a>.
             </div>
             break
         case "/info":
             text = <div className="info_block__about_us">
                 <div className="info_block__update">
                     <h2>New to the site?</h2>
-                    VodSearch shows you highlights of all the on-stream action from your favorite Fortnite players.
+                    VODsearch.tv shows you highlights of all the on-stream action from your favorite Fortnite players.
                     Using our super duper navigation you can skip to the next kill or death on the stream,
                     or use our Autoskip feature for an action-packed viewing experience.
                     Our "Search" feature also allows you to discover if you've eliminated any streamers and see their reactions.
@@ -264,7 +264,7 @@ const InfoPage = ({ match }: any) => {
                 </div>
                 <div className="info_block__update">
                     <h2>Update: Oct 26th, 2019</h2>
-                    VodSearch has a new look with added functionality!<br></br><br></br>
+                    VODsearch.tv has a new look with added functionality!<br></br><br></br>
                     Just like before, you can search for your Epic name to see if you've eliminated any streamers,
                     by just typing it into the bar at the top of the page. But there's more!<br></br><br></br>
                     New Features:
