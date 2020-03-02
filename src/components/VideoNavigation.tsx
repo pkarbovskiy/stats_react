@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react'
+import React, {useReducer, useRef} from 'react'
 import AutoSkip from './AutoSkip'
 
 type timer = number[]
@@ -7,6 +7,7 @@ type DeathKillProps = {
     videoHandler: any;
 }
 const ACTIONS = {
+    ALL: "all",
     DEATH: "eliminatedby",
     KILL: "eliminated",
 }
@@ -31,6 +32,7 @@ const buttonsReducer = (state:any, action:any) => {
 }
 
 const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
+    const currentAction = useRef(ACTIONS.ALL)
     const initialState = {
         isPrevReactionDisabled: false,
         isDeathReactionDisabled: false,
@@ -60,13 +62,13 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
                 record => {
                     return record[0] < currentTime - 5
                 })
-                console.log(timer)
         }
         if (!timer) {
             return null
         }
         return timer
     }
+
     function move(direction: 1 | 0, action: string): void {
         if (!videoHandler) {
             return
@@ -80,12 +82,12 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
             videoHandler.seek(timer[0])
         }
     }
-
+    
     return (
         <nav className="video__nav">
             <aside className="video__nav--left">
                 <div className="video__nav__container">
-                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.DEATH)} disabled={state.isDeathPrevDisabled}>
+                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, currentAction.current)} disabled={state.isDeathPrevDisabled}>
                         <svg viewBox="0 0 512 512">
                             <path d="M8 256c0 137 111 248 248 248s248-111 248-248S393 8 256 8 8 119 8 256zm448 0c0 110.5-89.5 200-200
                                     200S56 366.5 56 256 145.5 56 256 56s200 89.5 200 200zm-72-20v40c0 6.6-5.4 12-12 12H256v67c0
@@ -115,31 +117,34 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
                 </div>
             </aside>
             <div className="video__nav--middle">
+                <AutoSkip videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
                 <div className="video__nav__container">
-                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.DEATH)} disabled={state.isDeathPrevDisabled}>
+                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> {currentAction.current = ACTIONS.ALL}} disabled={state.isDeathPrevDisabled}>
                         All
                     </button>
                 </div>
                 <div className="video__nav__container">
-                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.DEATH)} disabled={state.isDeathPrevDisabled}>
-                        <svg role="img" viewBox="0 0 496 512">
-                            <title>Eliminated</title>
-                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-96 206.6l-28.7
-                                28.7c-14.8 14.8-37.8-7.5-22.6-22.6l28.7-28.7-28.7-28.7c-15-15 7.7-37.6 22.6-22.6l28.7 28.7
-                                28.7-28.7c15-15 37.6 7.7 22.6 22.6L174.6 192l28.7 28.7c15.2 15.2-7.9 37.4-22.6 22.6L152
-                                214.6zM248 416c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7
-                                64-64 64zm147.3-195.3c15.2 15.2-7.9 37.4-22.6 22.6L344 214.6l-28.7 28.7c-14.8
-                                14.8-37.8-7.5-22.6-22.6l28.7-28.7-28.7-28.7c-15-15 7.7-37.6 22.6-22.6l28.7 28.7
-                                28.7-28.7c15-15 37.6 7.7 22.6 22.6L366.6 192l28.7 28.7z">
-                            </path>
-                        </svg>
+                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> {currentAction.current = ACTIONS.KILL}} disabled={state.isDeathPrevDisabled}>
+                    <svg viewBox="0 0 512 512">
+                        <title>Eliminated</title>
+                        <path d="M500 224h-30.364C455.724 130.325 381.675 56.276 288 42.364V12c0-6.627-5.373-12-12-12h-40c-6.627
+                            0-12 5.373-12 12v30.364C130.325 56.276 56.276 130.325 42.364 224H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373
+                            12 12 12h30.364C56.276 381.675 130.325 455.724 224 469.636V500c0 6.627 5.373 12 12 12h40c6.627 0
+                            12-5.373 12-12v-30.364C381.675 455.724 455.724 381.675 469.636 288H500c6.627 0
+                            12-5.373 12-12v-40c0-6.627-5.373-12-12-12zM288 404.634V364c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12
+                            12v40.634C165.826 392.232 119.783 346.243 107.366 288H148c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-40.634C119.768
+                            165.826 165.757 119.783 224 107.366V148c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40.634C346.174 119.768 392.217
+                            165.757 404.634 224H364c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40.634C392.232 346.174 346.243 392.217 288
+                            404.634zM288 256c0 17.673-14.327 32-32 32s-32-14.327-32-32c0-17.673 14.327-32 32-32s32 14.327 32 32z">
+                        </path>
+                    </svg>
                     </button>
                     <label className="video__nav__container--lbl">
                         Elim.
                     </label>
                 </div>
                 <div className="video__nav__container">
-                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> move(0, ACTIONS.DEATH)} disabled={state.isDeathPrevDisabled}>
+                    <button className={`video__nav__container--btn${state.isDeathPrevDisabled ? ' disabled' : ''}`}  onClick={()=> {currentAction.current = ACTIONS.DEATH}} disabled={state.isDeathPrevDisabled}>
                         <svg role="img" viewBox="0 0 448 512">
                             <title>Eliminated By</title>
                             <path d="M439.15 453.06L297.17 384l141.99-69.06c7.9-3.95 11.11-13.56 7.15-21.46L432
@@ -176,7 +181,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
                         Victory
                     </label>
                 </div>
-                <AutoSkip videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
+                
             </div>
             <aside className="video__nav--right">
                 <div className="video__nav__container">
@@ -195,7 +200,7 @@ const DeathKill = ({deathKillTimers, videoHandler}: DeathKillProps) => {
                     </label>
                 </div>                
                 <div className="video__nav__container">
-                    <button className={`video__nav__container--btn${state.isKillNextDisabled ? ' disabled' : ''}`}   onClick={()=> move(1, ACTIONS.KILL)} disabled={state.isKillNextDisabled}>
+                    <button className={`video__nav__container--btn${state.isKillNextDisabled ? ' disabled' : ''}`}   onClick={()=> move(1, currentAction.current)} disabled={state.isKillNextDisabled}>
                         <svg aria-hidden="true" focusable="false" role="img"  viewBox="0 0 512 512">
                             <title>Next Event</title>
                             <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zM140 300h116v70.9c0 10.7 13 16.1 20.5

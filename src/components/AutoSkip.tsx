@@ -103,7 +103,7 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
                 </svg>
                 <label className="autoskip_switch--btn--label">{activityStatus? 'N': 'FF'}</label>
             </button>
-            <span>Autoskip to next events</span>            
+            <span>Autoskip</span>            
         </div>
     )
 }

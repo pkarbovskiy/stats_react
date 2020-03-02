@@ -8,6 +8,9 @@ $main-brand-color:  #D7CA25;
     justify-content: space-between;
     flex-direction: row;
     margin: 10px auto 0;
+    &--middle {
+        display: flex;
+    }
     &--left,
     &--right {
         display: flex;
@@ -18,7 +21,9 @@ $main-brand-color:  #D7CA25;
     &__container {
         display: flex;
         flex-direction: column;
+        width: 36px;
         &--btn {
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -62,8 +67,8 @@ $main-brand-color:  #D7CA25;
         &--lbl {
             width: 36px;
             height: 15px;
-            color: white;
-            margin-left: 15px;
+            color: #fff;
+            text-align: center;
         }
     }
 }
