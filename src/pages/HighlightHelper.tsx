@@ -1,4 +1,5 @@
 import React from 'react'
+import { gaEvents } from '../common_function'
 
 const HighlightHelper = () => {
     return (
@@ -25,7 +26,7 @@ const HighlightHelper = () => {
                     <li>Find multi kills or squad wipes in seconds.</li>
                     <li>Click the links to watch the moment and clip it.</li>
                 </ul>
-                <a href="/api/video_score">Try For FREE</a>
+                <a href="mailto:collaborations@vodsearch.tv?subject=I'd like to try out HighlightHelper!" onClick={() => gaEvents({ eventCategory: `LadingPage:click:email`, eventAction: 'click', eventLabel: 'landing:email:click' })}>Try For FREE</a>
             </p>
         </div>
     )

@@ -259,8 +259,8 @@ const InfoPage = ({ match }: any) => {
                     Home page now shows what we think are the top moments from across many streamers (but that's just, like, our opinion, man).<br></br><br></br>
                     FragFinder is a new tool that can help you find the best moments from your own stream!
                     If you want to try it out,
-                    <a rel="noopener noreferrer" href="https://twitter.com/streamsn1pers" target="_blank"> send us a DM</a> or
-                    <a href="mailto:collaborations@vodsearch.tv?subject=I'd like to try out FragFinder!"> drop us an email.</a>
+                    <a rel="noopener noreferrer" href="https://twitter.com/VODsearchtv" target="_blank"> send us a DM</a> or
+                    <a href="mailto:collaborations@vodsearch.tv?subject=I'd like to try out HighlightHelper!"> drop us an email.</a>
                 </div>
                 <div className="info_block__update">
                     <h2>Update: Oct 26th, 2019</h2>
@@ -276,7 +276,7 @@ const InfoPage = ({ match }: any) => {
                     We love to hear what you think and what else you'd like to see on the site!
                     Let us know on our <a rel="noopener noreferrer" href="https://www.reddit.com/r/StreamSn1pers/" target="_blank">Reddit </a>
                     or
-                    <a rel="noopener noreferrer" href="https://twitter.com/streamsn1pers" target="_blank"> Twitter</a> pages.
+                    <a rel="noopener noreferrer" href="https://twitter.com/VODsearchtv" target="_blank"> Twitter</a> pages.
                 </div>
             </div>
             break
