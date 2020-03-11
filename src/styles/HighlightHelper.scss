@@ -1,0 +1,102 @@
+$main-brand-color:  #D7CA25;
+$break-phone: 76.8rem;
+.high_helper {
+    display: flex;
+    width: 100rem;;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @media screen and (max-width: $break-phone) {
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+    }
+    h1 {
+        display: block;
+        width: 100rem;
+        height: 4rem;
+        margin-bottom: 6rem;
+        font-size: 4rem;
+        line-height: 4rem;
+        text-align: center;
+        color: $main-brand-color;
+        @media screen and (max-width: $break-phone) {
+            width: 100vw;
+        }
+    }
+    &__first, &__second {
+        &_screen {
+            img {
+                width: 35rem;
+            }
+        }
+        &_par {
+            width: 45rem;
+            font-size: 2.5rem;
+            margin: 0;
+            text-align: justify;
+            @media screen and (max-width: $break-phone) {
+                width:100vw;
+                padding: 0 1rem;
+            }
+        }
+    }
+    &__first {
+        &_screen {
+            @media screen and (max-width: $break-phone) {
+                order: 1;
+                margin-right: 0;
+            }
+            margin-right: 4rem;
+            &__claim {
+                font-size: 1.6rem;
+                span {
+                    color: $main-brand-color;
+                }
+            }
+        }
+        &_par {
+            @media screen and (max-width: $break-phone) {
+                order: 2;
+            }
+            &__cta {
+                color: $main-brand-color;
+                display: block;
+                margin-top: 1.1rem;
+                @media screen and (max-width: $break-phone) {
+                    margin: -2rem 0 1rem 0;
+                }
+            }
+        }
+    }
+    &__second {
+        &_screen {
+            @media screen and (max-width: $break-phone) {
+                order: 3;
+            }
+            margin-top: 2rem;
+        }
+        &_par {
+            @media screen and (max-width: $break-phone) {
+                order: 4;
+            }
+            ul {
+                margin: 1rem 0 0 0;
+            }
+            a {
+                display: block;
+                background-color: $main-brand-color;
+                color: #000;
+                border-radius: 1.1rem;
+                font-weight: bold;
+                text-align: center;
+                padding: 0.9rem 0;
+                width: 41.2rem;
+                margin: 1.8rem 0 0 3.8rem;
+                @media screen and (max-width: $break-phone) {
+                    width: 32.2rem;
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+}

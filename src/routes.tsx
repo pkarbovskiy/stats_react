@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import HomePage from './pages/HomePage'
 import InfoPage from './pages/InfoPage'
+import HighlightHelper from './pages/HighlightHelper'
 import VideoPage from './pages/VideoPage'
 import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
@@ -29,12 +30,13 @@ const Root = ({ store }: { store: any }) => {
                         <span>Home</span>
                     </NavLink>
                     <hr />
-                    {/* <NavLink activeClassName={"active"} to="/all_videos" className="link">
-                        <svg viewBox="0 0 576 512"><path d="M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z">
-                        </path>
+                    <NavLink activeClassName={"active"} to="/highlighthelper" className="link">
+                        <svg viewBox="0 0 512 512">
+                            <path d="M488 64h-8v20c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12V64H96v20c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12V64h-8C10.7 64 0 74.7 0 88v336c0 13.3 10.7 24 24 24h8v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h320v-20c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v20h8c13.3 0 24-10.7 24-24V88c0-13.3-10.7-24-24-24zM96 372c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12H44c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm384 192c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40zm0-96c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40z">
+                            </path>
                         </svg>
-                        <span>All Videos</span>
-                    </NavLink> */}
+                        <span>Highlight Helper</span>
+                    </NavLink>
                     <NavLink activeClassName={"active"} to="/random_video" className="link">
                         <svg viewBox="0 0 512 512">
                             <path d="M504.971 359.029c9.373 9.373 9.373 24.569 0 33.941l-80 79.984c-15.01 15.01-40.971 4.49-40.971-16.971V416h-58.785a12.004 12.004 0 0 1-8.773-3.812l-70.556-75.596 53.333-57.143L352 336h32v-39.981c0-21.438 25.943-31.998 40.971-16.971l80 79.981zM12 176h84l52.781 56.551 53.333-57.143-70.556-75.596A11.999 11.999 0 0 0 122.785 96H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12zm372 0v39.984c0 21.46 25.961 31.98 40.971 16.971l80-79.984c9.373-9.373 9.373-24.569 0-33.941l-80-79.981C409.943 24.021 384 34.582 384 56.019V96h-58.785a12.004 12.004 0 0 0-8.773 3.812L96 336H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h110.785c3.326 0 6.503-1.381 8.773-3.812L352 176h32z">
@@ -104,6 +106,8 @@ const Root = ({ store }: { store: any }) => {
                     <Route exact path="/info" component={InfoPage} />
                     <Route exact path="/privacy" component={InfoPage} />
                     <Route exact path="/terms_of_service" component={InfoPage} />
+                    <Route exact path="/highlighthelper" component={HighlightHelper} />
+
                 </main>
                 <CookieConsent location="bottom" style={{ opacity: 0.9 }} onAccept={() => { }}>
                     <span style={{ fontSize: "20px" }}>
