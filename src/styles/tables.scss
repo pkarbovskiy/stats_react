@@ -4,6 +4,7 @@ $main-brand-color:  #D7CA25;
 .table {
     display: flex;
     flex-flow: row wrap;
+    justify-content: left;
     &.clips {
         @media screen and (max-width: $break-ipad) {
             margin-left: -60px;
@@ -13,29 +14,28 @@ $main-brand-color:  #D7CA25;
         width: 100vw;
         @media screen and (min-width: $break-pc) {
             margin: 2rem 0 0 0;
-            width: 70vw;
+            width: 76vw;
         }
         .video_cart {
             display: flex;
             flex-direction: column;
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
-                width: 215px;
             }
             &--link:visited {
                 filter: blur(5px);
             }
             &--image {
                 @media screen and (min-width: $break-ipad) {
-                    width: 192px;
-                    height: 107px;
+                    width: 270px;
+                    height: 150px;
                 }
                 width: 360px;
                 height: 200px;
             }
             &__info {
                 display: flex;
-                padding: 2px 10px;
+                padding: 2px 0;
                 align-items: center;
                 &__streamer--pic {
                     width: 40px;
@@ -64,10 +64,7 @@ $main-brand-color:  #D7CA25;
         }
     }
     .video_cart {
-        margin: 5px auto;
-        @media screen and (min-width: $break-ipad) {
-            margin: 7px 0 10px;;
-        }
+        margin: 0 1rem  1.5rem;
         position: relative;
         &--image {
             padding: 0;
@@ -106,17 +103,17 @@ $main-brand-color:  #D7CA25;
             }
             &__name,
             &__description {
-                width: 30rem;;
+                width: 26.3rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 &.avatar {
                     @media screen and (min-width: $break-ipad) {
-                        width: 12.2rem;
+                        width: 21.3rem;
                     }
                 }
-                overflow: hidden;
                 &.title {
                     white-space: nowrap;
                 }
-                text-overflow: ellipsis;
                 a {
                     color: #a0a0a0;
                     font-size: 15px;
@@ -124,7 +121,7 @@ $main-brand-color:  #D7CA25;
                     text-decoration: none;
                     @media screen and (max-width: $break-ipad) {
                         text-align: left;
-                        width: 30rem;
+                        width: 25rem;
                         word-wrap: break-word;
                     }
                 }

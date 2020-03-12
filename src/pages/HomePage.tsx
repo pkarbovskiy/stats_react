@@ -68,7 +68,7 @@ const HomePage = () => {
         window.addEventListener('scroll', scroll)
 
         return () => { window.removeEventListener('scroll', scroll) }
-    }, [media])
+    }, [media, elementsOnLoad])
     useEffect(() => {
         if (media.length < elementsOnLoad) {
 
