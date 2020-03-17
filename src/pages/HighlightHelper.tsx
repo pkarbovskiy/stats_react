@@ -14,11 +14,11 @@ const HighlightHelper = () => {
                 <span className="high_helper__first_par__cta">Try it for FREE for a limited time.</span>
             </p>
             <div className="high_helper__first_screen">
-                <img src="http://d38ev7kpu49one.cloudfront.net/static/monitor01.png" alt="initial screen" />
+                <img src="//d38ev7kpu49one.cloudfront.net/static/monitor01.png" alt="initial screen" />
                 <p className="high_helper__first_screen__claim">Making highlight videos has never been <span>so easy</span>.</p>
             </div>
             <div className="high_helper__second_screen">
-                <img src="http://d38ev7kpu49one.cloudfront.net/static/monitor02.png" alt="stats table" />
+                <img src="//d38ev7kpu49one.cloudfront.net/static/monitor02.png" alt="stats table" />
             </div>
             <p className="high_helper__second_par">
                 <ul>
