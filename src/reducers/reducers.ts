@@ -12,7 +12,7 @@ import {
     setCurrentSearch
 } from '../actions'
 const DEFAULT_STATE = {
-    deathKillTimers: [],
+    timelines: [],
     timeline: {},
     twitchPlayer: {},
     currentPlayer: {},

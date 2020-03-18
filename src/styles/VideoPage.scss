@@ -82,21 +82,40 @@ $green-color: #25D725;
         display: flex;
         flex-wrap: wrap;
         .player {
-            width: 85vw;
+            width: 86vw;
             height: calc(87vw / 1.78);
             @media (max-width: $break-iphone-5) {
                 width: 81vw;
                 height: calc(81vw / 1.78);
             }
         }
-        .death_kill {
+        .video__nav {
             flex-direction: column;
             align-items: center;
             justify-content: start;
-            margin-top: 59px;
-            &__back, &__next {
-                flex-direction: column;
+            width: 91px;
+            margin-left: 9px;
+            &--left, &--right, &--middle {
+                flex-flow: row wrap;
             }
+            &--left, &--right {
+                flex-wrap: nowrap;
+                margin-left: -1rem;
+            }
+            &--middle {
+                width: 10.7rem;
+            }
+            &__container {
+                flex-flow: row wrap;
+                width: 5rem;
+            }
+            &__container--btn {
+                width: 5rem;
+                height: 4rem;
+            }
+        }
+        .autoskip_switch--btn {
+            width: 10rem;
         }
 
         .AutoskipSwitch {

@@ -35,6 +35,12 @@ $main-brand-color:  #D7CA25;
             border-radius: 5px;
             border: 1px solid #6c6c6c;
             padding: 3px;
+            &.active {
+                svg {
+                    fill: $main-brand-color;
+                }
+                color: $main-brand-color;
+            }
             span {
                 color:white;
             }
@@ -51,9 +57,9 @@ $main-brand-color:  #D7CA25;
                     fill: $main-brand-color;
                 }
             }
-            &:focus, &:active {
-                border: 1px solid $main-brand-color;
-            }
+            // &:focus, &:active {
+            //     border: 1px solid $main-brand-color;
+            // }
             &:disabled,
             &[disabled] {
                 border: 1px solid white;

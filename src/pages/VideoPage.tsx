@@ -14,7 +14,7 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-    const [timeline, setTimeline] = useState()
+    const [timeline, setTimeline] = useState<{ splitEvents: any[], mergedEvents: any[] }>()
     const [video, setVideo] = useState()
     const [media, setMedia] = useState<number[]>(mediaRedux)
 
@@ -26,7 +26,7 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
                 .then(data => {
                     setTimeline({
                         splitEvents: data['timeline'],
-                        mergedEvents: [].concat(data['timeline']['eliminated'] || [], data['timeline']['eliminatedby']).sort((a, b) => a[0] - b[0])
+                        mergedEvents: [].concat(data['timeline']['eliminated'] || [], data['timeline']['eliminatedby'] || []).sort((a, b) => a[0] - b[0])
                     })
                     setVideo(data['video'])
                 })
@@ -77,7 +77,7 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videos: state.mainReducer.videos,
-        deathKillTimers: state.mainReducer.deathKillTimers,
+        timelines: state.mainReducer.timelines,
         twitchPlayer: state.mainReducer.twitchPlayer,
         mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
         mediaRedux: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
