@@ -5,6 +5,7 @@ $red-color: #D72525;
 $green-color: #25D725;
 .video_page {
     position: relative;
+    width: 100vw;
     &__info {
         display:flex;
         margin: 5px;
