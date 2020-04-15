@@ -18,6 +18,8 @@ export const mediaTypes = {
     TOP_RATED: 'top_rated'
 }
 
+export const elementsOnLoad = mobileNotIpad ? 3 : 36
+
 // ids for existing 8bit faces
 export const pic8bitFaces = [
     3337,

@@ -128,7 +128,7 @@ const DeathKill = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
             <div className="video__nav--middle">
                 <AutoSkip videoHandler={videoHandler} deathKillTimers={deathKillTimers} />
                 <div className="video__nav__container">
-                    <button className={currentAction.current === ACTIONS.ALL ? 'video__nav__container--btn active' : 'video__nav__container--btn'} onClick={() => { currentAction.current = ACTIONS.ALL }} disabled={state.isDeathPrevDisabled}>
+                    <button onClick={() => { currentAction.current = ACTIONS.ALL }} className={currentAction.current === ACTIONS.ALL ? 'video__nav__container--btn active' : 'video__nav__container--btn'} disabled={state.isDeathPrevDisabled}>
                         All
                     </button>
                     <label className="video__nav__container--lbl">
@@ -136,7 +136,7 @@ const DeathKill = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
                     </label>
                 </div>
                 <div className="video__nav__container">
-                    <button className={currentAction.current === ACTIONS.KILL ? 'video__nav__container--btn active' : 'video__nav__container--btn'} onClick={() => { currentAction.current = ACTIONS.KILL }} disabled={state.isDeathPrevDisabled}>
+                    <button onClick={() => { currentAction.current = ACTIONS.KILL }} className={currentAction.current === ACTIONS.KILL ? 'video__nav__container--btn active' : 'video__nav__container--btn'} disabled={state.isDeathPrevDisabled}>
                         <svg viewBox="0 0 512 512">
                             <title>Eliminated</title>
                             <path d="M500 224h-30.364C455.724 130.325 381.675 56.276 288 42.364V12c0-6.627-5.373-12-12-12h-40c-6.627

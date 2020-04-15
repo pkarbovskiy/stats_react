@@ -9,7 +9,7 @@ import url, { mediaTypes } from '../constants'
 
 const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, onData, onDataMedia }:
     { location: any; searchFromCache: any; clipsSorted: number[], clipsSortedById: any, onData: any; onDataMedia: any }) => {
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState<any>()
     const [loaded, setLoaded] = useState(false)
     // TODO: may be make it protected
     const searchString = location.search.replace('?', '').split('=')
@@ -17,6 +17,7 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
         const queryString = encodeURI(searchString[1])
         if (searchFromCache[queryString]) {
             setSearch(searchFromCache[queryString])
+            setLoaded(true)
         } else {
             fetch(`${url}/api/search?q=${searchString[1]}`)
                 .then(data => data.json())

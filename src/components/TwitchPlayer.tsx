@@ -16,7 +16,7 @@ const EMBED_URL = 'https://player.twitch.tv/js/embed/v1.js';
 const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, deathKillTimers }: Props) => {
     const buffer = 15
     videoTime = videoTime - buffer < 0 ? 0 : videoTime - buffer
-    const [player, setPlayer] = useState()
+    const [player, setPlayer] = useState<any>()
     useEffect(() => {
         if (window.Twitch && window.Twitch.Player) {
             createEmbedAddListeners()

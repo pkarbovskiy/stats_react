@@ -18,7 +18,7 @@ import url from '../constants'
 
 //TODO: figure out proper type
 const StreamerPage = ({ match, onData }: any) => {
-    const [streamer, setStreamer] = useState()
+    const [streamer, setStreamer] = useState({} as any)
     useEffect(() => {
         function getPlayer(playerId: number) {
             fetch(`${url}/api/player/${playerId | 0}`)

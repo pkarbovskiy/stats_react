@@ -15,10 +15,12 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     const [timeline, setTimeline] = useState<{ splitEvents: any[], mergedEvents: any[] }>()
-    const [video, setVideo] = useState()
+    const [video, setVideo] = useState<any>()
     const [media, setMedia] = useState<number[]>(mediaRedux)
 
     useEffect(() => {
+        const page = 1
+        const amount = 12
         setVideo(false)
         function getVideoInfo(videoId: number) {
             fetch(`${url}/api/video/${videoId}`)
@@ -41,7 +43,7 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
             getVideoInfo(match.params.videoId | 0)
         }
         // fetch latest videos
-        fetch(`${url}/api/video/top_videos`)
+        fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
             .then(data => data.json())
             .then(data => {
                 onData(data)
@@ -59,15 +61,15 @@ const VideoPage = ({ match, mediaRedux, mediaById, onData }:
                 <Mixer {...video} videoTime={match.params.timer | 0} />
                 : <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />)
             }
-            {/* <Table classNameProp="side" videos={video} /> */}
             {media.length > 0 && <>
-                <br></br><br></br><br></br><br></br><br></br>
-                <h3>Also check out top highlights</h3>
-                <TopRated
-                    mediaSorted={media}
-                    mediaById={mediaById}
-                    gaEvent="Video Page::Top rated"
-                />
+                <div className="video_page__extra_content">
+                    <h3>Also check out top highlights</h3>
+                    <TopRated
+                        mediaSorted={media}
+                        mediaById={mediaById}
+                        gaEvent="Video Page::Top rated"
+                    />
+                </div>
             </>
             }
         </div>
@@ -87,7 +89,7 @@ const mapStateToProps = (state: { mainReducer: State }) => {
 const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
         onData: (data: any) => {
-            dispatch(addMedia(data))
+            dispatch(addMedia(data, mediaTypes.TOP_RATED))
         }
     }
 }

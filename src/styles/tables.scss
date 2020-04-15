@@ -19,6 +19,10 @@ $main-brand-color:  #D7CA25;
         .video_cart {
             display: flex;
             flex-direction: column;
+            border-radius: .5rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+            padding: .8rem;
+
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
             }
@@ -83,7 +87,6 @@ $main-brand-color:  #D7CA25;
             flex-direction: row;
             font-size: 1.4rem;
             width: 100%;
-            background-color: #121212;
             opacity: 0.8;
             &__streamer--pic {
                 display:block;

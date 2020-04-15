@@ -80,7 +80,7 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
 
     return (
         <div className="autoskip_switch">
-            <button className={`autoskip_switch--btn ${activityStatus? 'enabled': 'disabled'}`} onClick={() => autoskipAndTrack()}>
+            <button className={`autoskip_switch--btn ${activityStatus ? 'enabled' : 'disabled'}`} onClick={() => autoskipAndTrack()}>
                 <svg viewBox="0 0 512 512" className="off">
                     <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0
                             448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200
@@ -101,9 +101,9 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
                             16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z">
                     </path>
                 </svg>
-                <label className="autoskip_switch--btn--label">{activityStatus? 'N': 'FF'}</label>
+                <label className="autoskip_switch--btn--label">{activityStatus ? 'N' : 'FF'}</label>
             </button>
-            <span>Autoskip</span>            
+            <span>Autoskip</span>
         </div>
     )
 }
