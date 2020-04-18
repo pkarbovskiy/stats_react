@@ -1,0 +1,59 @@
+html, body {
+    height: 100%; 
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #666FE4;
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.vod-content {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(102, 111, 228, 0.15) 100%);
+}
+
+.vod-side {
+    min-width: 375px;
+}
+
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.bg-primary-900 {
+    background: #1E2134!important;
+}
+
+.bg-primary-800 {
+    background: #303354;
+}
+
+.bg-primary-500 {
+    background: #666FE4;
+}
+
+.text-primary-500 {
+    color: #666FE4;
+}
+
+.border-primary-500 {
+    border-color: #666FE4;
+}
+

@@ -20,7 +20,7 @@ const Root = ({ store }: { store: any }) => {
     return (
         <Provider store={store}>
             <Router>
-                <Header toggleMenu={toggleMenu} />
+                {/* <Header toggleMenu={toggleMenu} />
                 <HamburgerMenu isMenuShown={isMenuShown} toggleMenu={toggleMenu}>
                     <HumbuergerLogo toggleMenu={toggleMenu} noHomeLink={true} />
                     <NavLink exact activeClassName={"active"} to="/" className="link">
@@ -53,13 +53,13 @@ const Root = ({ store }: { store: any }) => {
                         </svg>
                         <span>Random Streamers</span>
                     </NavLink>
-                    {/* <NavLink activeClassName={"active"} to="/featured_streamers" className="link">
+                     <NavLink activeClassName={"active"} to="/featured_streamers" className="link">
                         <svg viewBox="0 0 448 512">
                             <path d="M325.4 289.2L224 390.6 122.6 289.2C54 295.3 0 352.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-70.2-54-127.1-122.6-133.2zM32 192c27.3 0 51.8-11.5 69.2-29.7 15.1 53.9 64 93.7 122.8 93.7 70.7 0 128-57.3 128-128S294.7 0 224 0c-50.4 0-93.6 29.4-114.5 71.8C92.1 47.8 64 32 32 32c0 33.4 17.1 62.8 43.1 80-26 17.2-43.1 46.6-43.1 80zm144-96h96c17.7 0 32 14.3 32 32H144c0-17.7 14.3-32 32-32z">
                             </path>
                         </svg>
                         <span>Featured Streamers</span>
-                    </NavLink> */}
+                    </NavLink> 
                     <hr />
                     <a href="https://twitter.com/VODsearchtv/" className="link" target="_blank" rel="noopener noreferrer nofollow" onClick-={() => gaEvents({ eventCategory: `Twitter link sidebar clicked`, eventAction: 'click', eventLabel: `click` })}>
                         <svg viewBox="0 0 512 512">
@@ -92,7 +92,7 @@ const Root = ({ store }: { store: any }) => {
                     <Link to="/about_us" className="info">
                         <span>About Us</span>
                     </Link>
-                </HamburgerMenu>
+                </HamburgerMenu> */}
                 <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/all_videos" component={VideoListPage} />
@@ -110,7 +110,7 @@ const Root = ({ store }: { store: any }) => {
                     <Route exact path="/highlighthelper" component={HighlightHelper} />
 
                 </main>
-                <CookieConsent location="bottom" style={{ opacity: 0.9 }} onAccept={() => { }}>
+                <CookieConsent style={{ opacity: "0.7" }} location="bottom" containerClasses='bg-primary-900' buttonStyle={{background:'#eaeaea' , borderRadius: "5px", boxShadow: "0px 23px 36px rgb(252, 249, 241, 0.06)" ,margin: "0 auto"}} buttonClasses='rounded bg-primary-800' onAccept={() => { }}>
                     <span style={{ fontSize: "20px" }}>
                         We use technical and analytics cookies to enhance your user experience.
                         For more info refer to our <a href="/privacy">Privacy Policy.</a>
