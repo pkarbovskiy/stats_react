@@ -6,7 +6,7 @@ import VideoPage from './pages/VideoPage'
 import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
 import VideoListPage from './pages/VideoListPage'
-import Header from './common/header'
+import Header from './common/Header'
 import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom'
 import HamburgerMenu from './components/HamburgerMenu'
 import HumbuergerLogo from './components/HamburgerLogo'
@@ -20,7 +20,9 @@ const Root = ({ store }: { store: any }) => {
     return (
         <Provider store={store}>
             <Router>
-                {/* <Header toggleMenu={toggleMenu} />
+                {/*
+                  <Header toggleMenu={toggleMenu} />
+                  
                 <HamburgerMenu isMenuShown={isMenuShown} toggleMenu={toggleMenu}>
                     <HumbuergerLogo toggleMenu={toggleMenu} noHomeLink={true} />
                     <NavLink exact activeClassName={"active"} to="/" className="link">
@@ -92,7 +94,7 @@ const Root = ({ store }: { store: any }) => {
                     <Link to="/about_us" className="info">
                         <span>About Us</span>
                     </Link>
-                </HamburgerMenu> */}
+                </HamburgerMenu>  */}
                 <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/all_videos" component={VideoListPage} />
