@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../components/Search'
+import SearchMobile from './SearchMobile'
 import Header from '../common/Header'
 
 const Sidebar = () => {
@@ -7,7 +7,7 @@ const Sidebar = () => {
         <div className="vod-side bg-primary-900 lg:w-2/6">
             <div className="p-8">
                 <Header />
-                <Search />
+                <SearchMobile />
                 {/* <VodTwitchStream> */}
                 <div className="h-64 my-8 overflow-hidden rounded-lg video-responsive">
                     <iframe className="w-full h-full" src="https://player.twitch.tv/?channel=vodsearch" scrolling="no"></iframe>
