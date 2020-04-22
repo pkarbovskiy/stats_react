@@ -6,13 +6,26 @@ import { addMedia } from '../actions'
 import Loader from '../components/Loader'
 import Sidebar from '../components/Sidebar'
 import Search from '../components/Search'
+import Swiper from 'react-id-swiper';
 
 
 import url, { mediaTypes, elementsOnLoad } from '../constants'
 import { shouldLazyLoad, gaEvents } from '../common_function'
 import SearchMobile from '../components/SearchMobile'
 
+//----------------------------------------------------------
+
+//----------------------------------------------------------
+
 const HomePage = () => {
+
+    const params = {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
+    }
+
     const { mediaById, media }: { mediaById: any; media: number[] } = useSelector(
         (state: any) => ({
             mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
@@ -145,20 +158,20 @@ const HomePage = () => {
                                 </svg>
                             </div>
                         </div>
-
-                        <div className="flex flex-wrap px-8 py-3 mb-4 shadow sm:flex-row">
-                            <div className='px-3 py-1 m-2 ml-8 font-bold text-blue-600 bg-blue-100 rounded-full shadow-outline '>
-                                All Categories
-                            </div>
-                            <div className='px-3 py-1 m-2 bg-blue-100 rounded-full shadow-outline '>
-                                Solo
-                            </div>
-                        </div>
-
+                        <Swiper {...params} containerClass='shadow px-12 py-2 relative justify-center overflow-hidden list-outside m-auto' wrapperClass='flex' slideClass='flex-initial text-center p-2 m-2 bg-blue-100 rounded-full shadow-outline'>
+                            <div>All Categories</div>
+                            <div>Solo</div>
+                            <div>Random</div>
+                            <div>Quadra</div>
+                            <div>Snipe</div>
+                            <div>RPG</div>
+                            <div>Streaming</div>
+                            <div>Ace</div>
+                        </Swiper>
                         <div className="flex my-8 ml-8 text-2xl font-bold text-primary-500">Top Highlights</div>
                         {/* <VodTabs> */}
                         <div className="flex my-4 text-sm">
-                            <div className={currentSince.current === 1 ? "ml-8 pb-2 font-bold border-b-4 border-solid cursor-pointer text-primary-500 border-primary-500" : 'ml-8 text-gray-600 cursor-pointer'} onClick={() => sortBySince(1)}>Last 2 Days</div>
+                            <div className={currentSince.current === 1 ? "ml-8 pb-2 font-bold border-b-4 border-solid cursor-pointer text-primary-500 border-primary-500 w" : 'ml-8 text-gray-600 cursor-pointer'} onClick={() => sortBySince(1)}>Last 2 Days</div>
                             <div className={currentSince.current === 7 ? "ml-8 pb-2 font-bold border-b-4 border-solid cursor-pointer text-primary-500 border-primary-500" : 'ml-8 text-gray-600 cursor-pointer'} onClick={() => sortBySince(7)}>Last Week</div>
                             <div className={currentSince.current === 14 ? "ml-8 pb-2 font-bold border-b-4 border-solid cursor-pointer text-primary-500 border-primary-500" : 'ml-8 text-gray-600 cursor-pointer'} onClick={() => sortBySince(14)}>Last 2 Weeks</div>
                         </div>

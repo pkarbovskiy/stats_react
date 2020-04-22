@@ -10,6 +10,11 @@ html, body {
     height: 7px;
 }
 
+.scrolling-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+
 ::-webkit-scrollbar-thumb {
     background-color: #666FE4;
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
