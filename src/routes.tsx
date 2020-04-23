@@ -6,7 +6,7 @@ import VideoPage from './pages/VideoPage'
 import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
 import VideoListPage from './pages/VideoListPage'
-import Header from './common/Header'
+import SidebarHeader from './common/SidebarHeader'
 import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom'
 import HamburgerMenu from './components/HamburgerMenu'
 import HumbuergerLogo from './components/HamburgerLogo'
@@ -21,6 +21,8 @@ const Root = ({ store }: { store: any }) => {
         <Provider store={store}>
             <Router>
                 {/*
+
+                    Hamburger menu is being replaced by "Sidebar" ----------------------------------
                   <Header toggleMenu={toggleMenu} />
                   
                 <HamburgerMenu isMenuShown={isMenuShown} toggleMenu={toggleMenu}>
@@ -112,7 +114,7 @@ const Root = ({ store }: { store: any }) => {
                     <Route exact path="/highlighthelper" component={HighlightHelper} />
 
                 </main>
-                <CookieConsent style={{ opacity: "0.7" }} location="bottom" containerClasses='bg-primary-900' buttonStyle={{background:'#eaeaea' , borderRadius: "5px", boxShadow: "0px 23px 36px rgb(252, 249, 241, 0.06)" ,margin: "0 auto"}} buttonClasses='rounded bg-primary-800' onAccept={() => { }}>
+                <CookieConsent style={{ opacity: "0.7" }} location="bottom" containerClasses='bg-primary-900' buttonStyle={{ background: '#eaeaea', borderRadius: "5px", boxShadow: "0px 23px 36px rgb(252, 249, 241, 0.06)", margin: "0 auto" }} buttonClasses='rounded bg-primary-800' onAccept={() => { }}>
                     <span style={{ fontSize: "20px" }}>
                         We use technical and analytics cookies to enhance your user experience.
                         For more info refer to our <a href="/privacy">Privacy Policy.</a>

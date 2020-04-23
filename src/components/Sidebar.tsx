@@ -1,12 +1,12 @@
 import React from 'react'
 import SearchMobile from './SearchMobile'
-import Header from '../common/Header'
+import SidebarHeader from '../common/SidebarHeader'
 
 const Sidebar = () => {
     return (
         <div className="vod-side bg-primary-900 lg:w-2/6">
             <div className="p-8">
-                <Header />
+                <SidebarHeader />
                 <SearchMobile />
                 {/* <VodTwitchStream> */}
                 <div className="h-64 my-8 overflow-hidden rounded-lg video-responsive">
