@@ -12,6 +12,7 @@ import Swiper from 'react-id-swiper';
 import url, { mediaTypes, elementsOnLoad } from '../constants'
 import { shouldLazyLoad, gaEvents } from '../common_function'
 import SearchMobile from '../components/SearchMobile'
+import 'swiper/css/swiper.css';
 
 //----------------------------------------------------------
 
@@ -20,10 +21,8 @@ import SearchMobile from '../components/SearchMobile'
 const HomePage = () => {
 
     const params = {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        }
+        slidesPerView: 7,
+        spaceBetween: 15,
     }
 
     const { mediaById, media }: { mediaById: any; media: number[] } = useSelector(
@@ -120,8 +119,8 @@ const HomePage = () => {
                 <div className="flex flex-col h-full lg:flex-row">
                     <Sidebar />
                     <div className="w-full pb-8 vod-content">
-                        <div className="flex items-center justify-center px-8 py-2 shadow-md sm:flex-row ">
-                            <div className="flex-initial pl-6">
+                        <div className="flex items-center justify-between px-8 py-3 shadow-md sm:flex-row ">
+                            <div className="flex-initial md:pl-4">
                                 <svg width="101" height="29" viewBox="0 0 101 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 14.0931C0 21.8459 0.0191652 28.1862 0.0447188 28.1862C0.0830491 28.1862 5.28959 27.2211 5.92843 27.0933L6.26063 27.0293V21.8523V16.6816H8.24103H10.2214V15.7357C10.2214 15.218 10.2406 13.8694 10.2661 12.7317L10.3045 10.6737H8.28575H6.26063V8.40473V6.13577H8.59239C9.87646 6.13577 10.9242 6.12299 10.9242 6.10381C10.9242 6.03351 11.4352 0.57523 11.4672 0.300398L11.5055 0H5.74955H0V14.0931Z" fill="#666FE4" />
                                     <path d="M95.5573 0.824446L90.4594 1.24628V13.978V26.7097L90.6702 26.7417C90.8554 26.7736 100.726 27.4895 100.924 27.4831C100.981 27.4831 101 26.8056 101 24.3193V21.1556H98.8281H96.6561V18.8547V16.5537H98.5087H100.361V13.8054V11.0571H98.4448H96.5283V9.23556V7.41401L96.6753 7.38844C96.7519 7.36927 97.4035 7.3437 98.1254 7.31814C98.8473 7.29896 99.7864 7.267 100.221 7.24144L101 7.20309V3.79646V0.383438L100.828 0.38983C100.726 0.396221 98.3554 0.587963 95.5573 0.824446Z" fill="#666FE4" />
@@ -133,16 +132,15 @@ const HomePage = () => {
                                     <path d="M83.4328 3.23408C79.9703 3.41943 77.0891 3.57283 77.0316 3.57283C76.923 3.57922 76.9166 3.76457 76.9166 6.58319V9.58716H78.5457H80.1747V17.9919V26.3966H83.2731H86.3714V17.6404V8.8841H88.0963H89.8212V5.88013C89.8212 4.22475 89.802 2.88255 89.7765 2.88255C89.7445 2.88894 86.8953 3.04234 83.4328 3.23408Z" fill="#666FE4" />
                                 </svg>
                             </div>
-                            <div className="flex-initial px-4">
+                            <div className="flex-initial px-2 md:px-4">
                                 <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17.7111 0.5L19.9717 2.79889L10.4717 12.5L0.97168 2.79889L3.23225 0.5L10.4717 7.89269L17.7111 0.5Z" fill="#666FE4" />
                                 </svg>
 
                             </div>
-                            <div className="flex-1 pr-10">
+                            <div className="flex-1 pr-5 md:pr-10">
                                 <Search />
                             </div>
-
                             <div className="flex-initial ">
                                 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect x="56" y="56" width="56" height="56" rx="28" transform="rotate(-180 56 56)" fill="#F9F6FD" />
@@ -158,16 +156,20 @@ const HomePage = () => {
                                 </svg>
                             </div>
                         </div>
-                        <Swiper {...params} containerClass='shadow px-12 py-2 relative justify-center overflow-hidden list-outside m-auto' wrapperClass='flex' slideClass='flex-initial text-center p-2 m-2 bg-blue-100 rounded-full shadow-outline'>
-                            <div>All Categories</div>
-                            <div>Solo</div>
-                            <div>Random</div>
-                            <div>Quadra</div>
-                            <div>Snipe</div>
-                            <div>RPG</div>
-                            <div>Streaming</div>
-                            <div>Ace</div>
-                        </Swiper>
+                        <div className='w-full m-auto overflow-hidden shadow'>
+                            <Swiper {...params} containerClass='m-auto max-w-3xl flex flex-row px-12 py-4 overflow-hidden'>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>All</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Solo</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Random</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Quadra</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Quadra</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Quadra</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Quadra</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Quadra</div>
+                                <div className='p-2 text-center bg-gray-200 rounded-full shadow'>Snipe</div>
+                            </Swiper>
+                        </div>
+
                         <div className="flex my-8 ml-8 text-2xl font-bold text-primary-500">Top Highlights</div>
                         {/* <VodTabs> */}
                         <div className="flex my-4 text-sm">

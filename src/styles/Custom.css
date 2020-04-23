@@ -2,6 +2,7 @@ html, body {
     height: 100%; 
     font-family: 'Quicksand', sans-serif;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
