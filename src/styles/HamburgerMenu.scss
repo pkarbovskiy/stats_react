@@ -1,4 +1,4 @@
-$header-background: #090909;
+$header-background: #151724;
 $main-brand-color:  #D7CA25;
 $main-font-color: #999;
 $break-large: 1200px;
@@ -57,9 +57,9 @@ $break-large: 1200px;
                 fill: white;
                 width: 25px
             }
-            span {
-                padding-left: 15px;
-            }
+            // span {
+            //     padding-left: 15px;
+            // }
         }
     }
 }
@@ -71,7 +71,7 @@ $break-large: 1200px;
         &--links {
             height: 100%;
             padding-top: 6.2rem;
-            width: 25rem; 
+            width: 34.4rem;
             position: fixed;
             .logo--link {
                 display: none !important;

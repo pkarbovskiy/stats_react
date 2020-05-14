@@ -1,9 +1,11 @@
 $break-ipad: 500px;
 .latest_videos {
+    width: 100vw;
+    margin-left: -9px;
     @media screen and (min-width: $break-ipad) {
         width: 70vw;;
+        margin: 0px;
     }
-    margin: 0px;
     &__info {
         display: flex;
         align-items: center;

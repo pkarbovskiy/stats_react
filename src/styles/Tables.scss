@@ -1,50 +1,30 @@
-$break-ipad: 769px;
-.slider-wrapper {
-    position: relative;
+$break-ipad: 500px;
+$break-pc: 1440px;
+$main-brand-color:  #D7CA25;
+.since--date {
+    font-size: 1.3rem;
+    position: absolute;
+    text-decoration: none;
+    background-color:#121212;
+    opacity:.85;
+    bottom: 7.1rem;
+    left: .8rem;
+    color:#fff;
+    padding: .1rem .3rem;
+    border-top-right-radius: 8px;
 }
-.slider {
+.table {
     display: flex;
-    position: relative;
-    width: 93vw;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
-    &::-webkit-scrollbar {
-        display: none;
+    flex-flow: row wrap;
+    justify-content: center;
+    @media screen and (min-width: $break-ipad) {
+        justify-content: left;
     }
-    &__next,
-    &__previous {
-        display:none;    
-        @media screen and (min-width: $break-ipad) {
-            &__next,
-            &__previous {
-                display: flex;
-                position: absolute;
-                z-index: 3;
-                width: 36px;
-                height: 36px;
-                top: 43px;
-                border: none;
-                border-radius: 50%;
-                background-color: white;
-                svg {
-                    height: 25px;
-                    fill:#1d1d1d;
-                }
-            }
-            &__next {
-                right:0;        
-            }
-            &__previous {
-                left: -11px;
-                svg {
-                    transform: scaleX(-1);
-                }
-            }
-        }
-    }
+    // &.clips {
+    //     @media screen and (max-width: $break-ipad) {
+    //         margin-left: -60px;
+    //     }
+    // }
     &.side {
         width: 100vw;
         @media screen and (min-width: $break-pc) {
@@ -55,21 +35,22 @@ $break-ipad: 769px;
             display: flex;
             flex-direction: column;
             border-radius: .5rem;
-            box-shadow: 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14), 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07);;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
             padding: .8rem;
 
             @media screen and (min-width: $break-ipad) {
                 flex-direction: column;
+                margin-left: 1.5rem;
             }
             &--link:visited {
                 filter: blur(5px);
             }
             &--image {
                 @media screen and (min-width: $break-ipad) {
-                    width: 27.9rem;
+                    width: 279px;
                     height: auto;
                 }
-                width: 30rem;
+                width: 340px;
                 height: auto;
             }
             &__info {
@@ -102,11 +83,37 @@ $break-ipad: 769px;
             }
         }
     }
-    .video_cart {
-        margin: 0 1rem  1.5rem;
-        &:first-child {
-            margin-left: 0;
+    &.dark {
+        flex-flow: column;
+        width: 332px;
+        margin: 0 auto;
+        .video_cart {
+            padding: 3px 0 0 3px;
+            margin: 10px 0;
+            border-radius: 12px;
+            background: #303354;
+            &__info {
+
+                &__description, &__name a, &__name {
+                    color: #fff;
+                }
+            }
+            &--link {
+                padding: 0;
+            }
+            &--image {
+                width: 326px;
+                height: auto;
+                border-radius: 12px 12px 0 0;
+            }
+            .since--date {
+                bottom: 4.2rem;
+                left: .3rem;
+            }
         }
+    }
+    .video_cart {
+        margin: 0 0  1.5rem;
         position: relative;
         &--image {
             padding: 0;
@@ -118,7 +125,7 @@ $break-ipad: 769px;
         
         &--link:visited {
             .since--date {
-                color: #B8BAD2;
+               color: #B8BAD2;
             }
         }
         &__info {
@@ -140,7 +147,7 @@ $break-ipad: 769px;
                 display: flex;
                 flex-direction: column;
                 &__title:visited {
-                    color: #B8BAD2;
+                    color: #434190;
                 }
             }
             &__name,

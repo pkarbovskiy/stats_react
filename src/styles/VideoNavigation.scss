@@ -1,80 +1,135 @@
 $main-brand-color:  #D7CA25;
+$break-iphone-5: 568px;
+$break-iphone-x: 1024px;
 .video__nav {
-    @media screen and (min-width: $break-large) {
-        width: 60vw;
-    }
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   margin-left: 10px;
+   height: calc(60vw / 1.78);
+   &--btn {
+    width: 186px;
+    height: calc(50% - 2px);
+    border: none;
+    background: #666FE4;
+    box-shadow: 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14), 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    margin: 10px auto 0;
-    &--middle {
-        display: flex;
+    justify-content: center;
+    &:hover {
+        background-color: #434190;
     }
-    &--left,
-    &--right {
-        display: flex;
-        align-items: center;
+    &.left {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    &.right {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+   }
+   &--lbl {
+    font-family: Quicksand;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+    color: #fff;
+    margin: 0 7px;
+   }
+   &__container {
+    height: .4rem;
+       position: relative;
+   }
+   &__action {
+        position: absolute;
+        top: -33px;
+        left: 62px;
+        width: 6.4rem;
+        height: 6.4rem;
+        border-radius: 100%;
+        border: none;
+        &:hover {
+            background: #BEC2F4;
+        }
+
+    }
+    @media screen and (max-width: $break-iphone-x) {
         flex-direction: row;
-        margin-top: 10px auto 0;
-    }
-    &__container {
-        display: flex;
-        flex-direction: column;
-        width: 36px;
+        width: 98vw;
+        margin: 20px 0 0 0;
         &--btn {
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            user-select: none;
-            outline: none;
-            background-color: black;
-            border-radius: 5px;
-            border: 1px solid #6c6c6c;
-            padding: 3px;
-            &.active {
-                svg {
-                    fill: $main-brand-color;
-                }
-                color: $main-brand-color;
+            width: calc(50% - 1px);
+            height: 66px;
+        }
+
+        &__action {
+            top: 7px;
+            left: -23px;
+            height: 53px;
+            width: 53px;
+            background: #fff;
+        }
+        &__container {
+            position: relative;
+            height: 0;
+            width: .5rem;
+        }
+        &--btn {
+            &.left {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
             }
-            span {
-                color:white;
+            &.right {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
             }
-            svg {
-                width: 26px;
-                fill: white;
-            }
-            &:hover {
-                span {
-                    color: $main-brand-color;
-                }
-                border: 1px solid $main-brand-color;
-                svg {
-                    fill: $main-brand-color;
-                }
-            }
-            // &:focus, &:active {
-            //     border: 1px solid $main-brand-color;
-            // }
-            &:disabled,
-            &[disabled] {
-                border: 1px solid white;
-                opacity: 0.5;
-                background-color: #aaa;
-                svg {
-                    fill: white;
-                }
-            }
+        }
+    }
+    @media screen and (orientation:landscape) and (max-width: $break-iphone-x) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        width: 91px;
+        margin: 0 0 35px 9px;
+        height: calc(77vw / 1.78);
+        &__action {
+            top: -31px;
+            left: -29px;
+            height: 64px;
+            width: 64px;
         }
         &--lbl {
-            width: 36px;
-            height: 15px;
-            color: #fff;
-            text-align: center;
+            display:none;
+        }
+        &__container {
+            position: relative;
+            height: .5rem;
+            width: 0;
+        }
+        &--btn {
+            width: 105px;
+            height: calc(50% - 1px);
+            &.left, &.right {
+                border-radius: 8px;
+            }
+            &.left {
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            &.right {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
         }
     }
+   
+}
+
+.video_filters {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

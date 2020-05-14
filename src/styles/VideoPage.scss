@@ -1,11 +1,14 @@
 $break-iphone-5: 568px;
-$break-iphone-x: 824px;
+$break-iphone-x: 1024px;
 $main-brand-color:  #D7CA25;
 $red-color: #D72525;
 $green-color: #25D725;
 .video_page {
     position: relative;
-    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    width: calc(60vw + 190px);
+    margin: 50px 0 0 50px;
     &__info {
         display:flex;
         margin: 5px;
@@ -24,109 +27,141 @@ $green-color: #25D725;
             font-size: 14px;
         }
     }
-    .autoskip_switch {
+    .AutoskipSwitch {
         display: flex; 
-        width: 77px;
-        flex-flow: column;
-        flex-grow:1;
+        width: 171px;
+        height: 24px;
         position: relative;
-        &--btn {
-            &:hover {
-                border: 1px solid $main-brand-color;
-                svg {
-                    fill: $main-brand-color;
-                }
-            }
-            &--label {
-                color: #fff;
-                font-size: 2.7rem;
-                line-height: 2.7rem;
-            }
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 76px;
-            height: 36px;
-            -webkit-user-select: none;
-            user-select: none;
-            outline: none;
-            background-color: black;
-            border-radius: 5px;
-            border: 1px solid #6c6c6c;
-            padding: 3px;
-            svg {
-                width: 24px;
-                fill: white;
-                
-            }
-            .on, .off {
-                display: none;
-            }
-            &.enabled {
-                .on {
-                    display: block;
-                    fill: $green-color;
-                }
-            }
-            &.disabled {
-                .off {
-                    display: block;
-                    fill: $red-color;
-                }
-            }
+        margin-bottom: 19px;
+        .text {
+            font-size: 1.3rem;
+            font-family: Roboto;
+            font-weight: bold;
+            line-height: 26px;
+        }  
+        /* The switch - the box around the slider */
+        .switch {
+          position: absolute;
+          width: 59px;
+          height: 34px;
+          right: 0;    
+          /* Hide default HTML checkbox */
+          .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          
+          /* The slider */
+          .autoskip {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #F9F6FD;
+            -webkit-transition: .4s;
+            transition: .4s;
+            height: 2.5rem;
+            border: 3px solid #666FE4;
+          }
+          
+          .autoskip:before {
+            position: absolute;
+            content: "";
+            height: 1.7rem;
+            width: 1.7rem;
+            left: 3px;
+            bottom: 1px;
+            background-color: #666FE4;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          .autoskip:after {
+                position: absolute;
+                content: "OFF";
+                width: 19px;
+                height: 15px;
+                left: 22px;
+                top: 2px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 13px;
+                line-height: 15px;
+                color: #666FE4;
+                transition: ease;
+          }
+          input:checked + .autoskip:after {
+            content: "ON";
+            left: 6px;
+          }
+        //   input:checked + .autoskip {
+        //     background-color: #D7CA25;
+        //   }
+          
+          input:focus + .autoskip {
+            box-shadow: 0 0 1px rgb(0, 0, 0);
+          }
+          
+          input:checked + .autoskip:before {
+            -webkit-transform: translateX(30px);
+            -ms-transform: translateX(30px);
+            transform: translateX(30px);
+          }
+          
+          /* Rounded autoskips */
+          .autoskip.round {
+            border-radius: 34px;
+          }
+          
+          .autoskip.round:before {
+            border-radius: 50%;
+          }
+        }
+    }    
+}
+@media screen and (max-width: $break-iphone-x) {
+    .video_page {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100vw;
+        height: 100%;
+        margin: 0 0 33px 0;
+        .AutoskipSwitch {
+            margin: 10px 0 15px 5px;
+        }
+        .player {
+            width: 98vw;
+            margin: 0 auto;
         }
     }
-}
-      
+}     
 @media screen and (orientation:landscape) and (max-width: $break-iphone-x) { 
     .video_page {
         position: relative;
         display: flex;
         flex-wrap: wrap;
+        width: 100vw;
+        margin: 0;
         .player {
-            width: 86vw;
-            height: calc(87vw / 1.78);
-            @media (max-width: $break-iphone-5) {
-                width: 81vw;
-                height: calc(81vw / 1.78);
-            }
-        }
-        .video__nav {
-            flex-direction: column;
-            align-items: center;
-            justify-content: start;
-            width: 91px;
-            margin-left: 9px;
-            &--left, &--right, &--middle {
-                flex-flow: row wrap;
-            }
-            &--left, &--right {
-                flex-wrap: nowrap;
-                margin-left: -1rem;
-            }
-            &--middle {
-                width: 10.7rem;
-            }
-            &__container {
-                flex-flow: row wrap;
-                width: 5rem;
-            }
-            &__container--btn {
-                width: 5rem;
-                height: 4rem;
-            }
+            width: 77vw;
+            height: calc(77vw / 1.78);
+            margin-right: 10px;
+            // @media (max-width: $break-iphone-5) {
+            //     width: 81vw;
+            //     height: calc(81vw / 1.78);
+            // }
         }
         .autoskip_switch--btn {
             width: 10rem;
         }
 
         .AutoskipSwitch {
-            right: 65px;
-            padding-top: 5px;
-            .text {
-                font-size: 1.5rem;
-                margin: 3rem 0 0 0;
-            }  
+            margin: 19px 31px 19px;    
         }
     }
 }

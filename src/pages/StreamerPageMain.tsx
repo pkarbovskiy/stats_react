@@ -36,8 +36,8 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
         videosById: state.mainReducer.videosById,
-        videosSorted: state.mainReducer.videosSorted.slice(0, 6),
-        clipsSorted: state.mainReducer.clipsSorted.slice(0, 6),
+        videosSorted: state.mainReducer.videosSorted.slice(0, 4),
+        clipsSorted: state.mainReducer.clipsSorted.slice(0, 4),
         clipsById: state.mainReducer.clipsById,
         player: state.mainReducer.currentPlayer
     }

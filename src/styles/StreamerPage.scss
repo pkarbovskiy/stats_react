@@ -6,20 +6,24 @@ $break-pc: 769px;
 $break-small-pc: 1024px;
 $break-mid-pc: 1440px;
 .streamer_page {
+    .slider-wrapper {
+        margin-left: .5rem;
+    }
     &__player{
         display: flex;
         flex-direction: column;
-        width: 70vw;
-        margin: 1rem 0 0 3rem;
+        width: 100vw;
+        margin: 1rem 0 0 0;
         @media screen and (min-width: $break-ipad) {
             margin: 1.6rem 0 0 2.6rem;
         }
         @media screen and (min-width: $break-mid-pc) {
             margin: 2rem auto;
+            width: 70vw;
         }
         &__filters {
             display: flex;
-            margin: 0 0 2rem -5rem;
+            margin: 0 auto 2rem;
             width: 95vw;
             @media screen and (min-width: $break-ipad-min) and (max-width: $break-ipad-max) {                
                 margin: -5rem 0 1rem 19rem;
@@ -36,16 +40,15 @@ $break-mid-pc: 1440px;
                 font-weight: bold;
                 border: none;
                 width: 11rem;
-                background-color: #222;
+                background-color: #666FE4;
                 padding: 1rem;                
                 border-radius: 0.5rem;
                 color: #fff;
                 &:hover {
-                    background-color: #ccc;
+                    background-color:  #434190;
                 }
                 &.active {
-                    background-color: $main-brand-color;
-                    color: #000;
+                    background-color:  #434190;
                     transition: background-color .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                     transition: color .5s ease;
                 }
@@ -60,6 +63,7 @@ $break-mid-pc: 1440px;
     }
     &__avatar {
         display: flex;
+        padding-left: 0.8rem;
         img {
             width: 5rem;
             &.avatar {
@@ -74,6 +78,7 @@ $break-mid-pc: 1440px;
         font-size: 1.6rem;
         display: flex;
         align-items: center;
+        padding-left: 1.2rem;
         &--direction {
             color:$main-brand-color;
             
@@ -82,7 +87,8 @@ $break-mid-pc: 1440px;
             margin-left: 1rem;
             margin: 10px;
             text-decoration: none;
-            color: #D7CA25;
+            color: #1E2134;
+            font-weight: bold;
         }
     }
     &__nav {
@@ -94,14 +100,21 @@ $break-mid-pc: 1440px;
         padding: 0 16px;
         justify-content: center;
         align-items: center;
-        background-color: #090909;
+        border-bottom: 1px solid #E1E1E1;
+        @media screen and (min-width: $break-small-pc) {
+            width: calc(100vw - 400px);
+        }
         &--link {
+            font-weight: bold;
+            &:hover {
+                color: #434190;
+            }
             &.active {
-                color: $main-brand-color;
+                color: #434190;
                 transition: color all .5s;
                 div {                    
                     padding-top: .5rem;
-                    border-bottom:2px solid $main-brand-color;
+                    border-bottom:4px solid #434190;
                 }
             }
             div {

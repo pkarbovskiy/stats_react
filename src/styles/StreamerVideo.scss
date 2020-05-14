@@ -9,11 +9,16 @@ $main-brand-color:  #D7CA25;
     align-items: center;
     cursor: pointer;
     .up,.down {
-        width: 2rem;
-        height: 2rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        background: #E5E7FA;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: .3rem;
         svg { 
-            height: 100%;
-            width: 100%;
+            width: 1.3rem;
         }
     }
     .up {
@@ -36,6 +41,7 @@ $main-brand-color:  #D7CA25;
     h2 {
         margin: 0 0 0 10px;
         &.no_header {
+            color: #1E2134;
             margin: 0;
         }
         font-size: 1.8rem;

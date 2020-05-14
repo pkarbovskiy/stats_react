@@ -7,17 +7,17 @@ import { setCurrentSearch, addMedia } from '../actions'
 import Loader from '../components/Loader'
 import url, { mediaTypes } from '../constants'
 
-const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, onData, onDataMedia }:
-    { location: any; searchFromCache: any; clipsSorted: number[], clipsSortedById: any, onData: any; onDataMedia: any }) => {
+const SearchPage = ({ location, searchFromCache, onData }:
+    { location: any; searchFromCache: any; onData: any; }) => {
     const [search, setSearch] = useState<any>()
-    const [loaded, setLoaded] = useState(false)
+    const [loaded, setLoaded] = useState<any>(false)
     // TODO: may be make it protected
     const searchString = location.search.replace('?', '').split('=')
     useEffect(() => {
+        setLoaded(false)
         const queryString = encodeURI(searchString[1])
         if (searchFromCache[queryString]) {
             setSearch(searchFromCache[queryString])
-            setLoaded(true)
         } else {
             fetch(`${url}/api/search?q=${searchString[1]}`)
                 .then(data => data.json())
@@ -27,13 +27,7 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
                     setLoaded(true)
                 })
         }
-        // fetch latest videos
-        fetch(`${url}/api/video/top_videos?page=1&amount=6`)
-            .then(data => data.json())
-            .then(data => {
-                onDataMedia(data)
-            })
-    }, [])
+    }, [searchString[1]])
     return (
         <div className="search_page">
             {!loaded && <Loader />}
@@ -47,7 +41,7 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
                             key={playerId}
                             streamer={search.playersId[playerId].streamer}
                             mediaById={search.playersId[playerId].videosById}
-                            mediaSorted={search.playersId[playerId].videosSorted.slice(0, 6)}
+                            mediaSorted={search.playersId[playerId].videosSorted.slice(0, 4)}
                             gaEvent="Search Page"
                         />
                     )
@@ -56,27 +50,13 @@ const SearchPage = ({ location, searchFromCache, clipsSorted, clipsSortedById, o
                 }
 
             })}
-            <br /><br /><br />
-            {clipsSorted.length > 0 && (
-                <>
-                    <br /><br /><br />
-                    <h3>Also check out top highlights:</h3>
-                    <TopRated
-                        mediaSorted={clipsSorted}
-                        mediaById={clipsSortedById}
-                        gaEvent="Search Page::Top rated"
-                    />
-                </>
-            )}
         </div>
     )
 }
 
 const mapStateToProps = (state: { mainReducer: State }) => {
     return {
-        searchFromCache: state.mainReducer.search,
-        clipsSortedById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
-        clipsSorted: state.mainReducer.media[mediaTypes.TOP_RATED].media.slice(0, 6)
+        searchFromCache: state.mainReducer.search
     }
 }
 
@@ -84,9 +64,6 @@ const mapDispatchToProps = (dispatch: (arg0: any) => {}) => {
     return {
         onData: (data: any, query: string) => {
             dispatch(setCurrentSearch(data, query))
-        },
-        onDataMedia: (data: any) => {
-            dispatch(addMedia(data))
         }
     }
 }

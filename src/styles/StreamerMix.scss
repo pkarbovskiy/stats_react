@@ -1,0 +1,94 @@
+$main-background-color-hover: #434190;
+$main-background-color: #303354;
+$main-font-color: #fff;
+.streamer_mix {
+    margin: 1rem 0 10.9rem 0;
+    position: relative;
+    &__header{
+        width: 104px;
+        height: 14px;
+        margin-left: 3.6rem;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        color: #666FE4;
+    }
+    &__player {
+        display: flex;
+        margin-left: 3.6rem;
+        &__name {
+            display: block;
+            width: 9.1rem;
+            height: 4rem;
+            line-height: 4rem;
+            margin-left: 1.5rem;
+            color: #fff;
+            font-family: Quicksand;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.2rem;
+            border-radius: 0;
+        }
+        .avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 100%;
+        }
+    }
+    &__refresh {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 6.4rem;
+        height: 6.4rem;
+        position: absolute;
+        top: 31px;
+        right: 30px;
+        &:hover {
+            background-color: #434190;
+        }
+
+        cursor: pointer;
+        background: $main-background-color;
+        border-radius: 100%;
+        
+        transition-duration: .3s;
+        transition-timing-function: cubic-bezier(.4,0,.2,1);
+        transition-property: background-color,transform;
+        svg {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        border:none;        
+    }
+    &__filters {
+        margin: 1rem 0 1rem 3.4rem;
+        button + button {
+            margin-left: 3.8rem;
+        }
+        &__videos, &__clips {
+            border: none;
+            outline:none;
+            background: transparent;
+            color: #BEC2F4;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 0 1rem 0;
+            &.active {
+                color: #fff;
+                border-bottom: 3px solid #666FE4;
+            }
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+
+    

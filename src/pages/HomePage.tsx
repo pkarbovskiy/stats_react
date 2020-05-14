@@ -15,7 +15,6 @@ const HomePage = () => {
         }),
         shallowEqual
     )
-
     const currentSince = useRef<1 | 7 | 14>(7)
 
     /**
@@ -71,8 +70,8 @@ const HomePage = () => {
 
     useEffect(() => {
 
-        function getMediaForThePage(page = 1, amount = 3) {
-            fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}`)
+        function getMediaForThePage(page = 1, amount = 3, since = 7) {
+            fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}&since=${since}`)
                 .then(data => data.json())
                 .then(data => {
                     dispatch(addMedia(data, mediaTypes.TOP_RATED))

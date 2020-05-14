@@ -17,8 +17,8 @@ const StreamerVideosNoHeader = ({ streamer, mediaById, mediaSorted, gaEvent }: {
                 {/* <Avatar player={streamer} /> */}
                 <h2 className="no_header" onClick={() => openCloseDrawer('header')}>{streamer.name}</h2>
                 <div className={isOpened ? 'down' : 'up'} onClick={() => openCloseDrawer('arrow')}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                        <path d="M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"></path>
+                    <svg viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5723 1.84851e-06L12 1.42183L6 7.42183L-2.486e-07 1.42183L1.42773 2.49632e-07L6 4.57227L10.5723 1.84851e-06Z" fill="#666FE4" />
                     </svg>
                 </div>
                 <Link to={clipsUrl} className="small_link" onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `View Reactions Link` })}>View Reactions ></Link>

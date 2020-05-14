@@ -1,10 +1,12 @@
+$break-iphone-x: 1024px;
 .player {
     position: relative;
     height: calc(100vw / 1.78) ;
     @media screen and (min-width: $break-large) {
-        height: calc(68vw / 1.78);
-        width: 68vw;
-        margin: 3rem auto 0;
+        // height: calc(68vw / 1.78);
+        // width: 68vw;
+        height: calc(60vw / 1.78);
+        width: 60vw;
     }
     iframe {
         position: absolute;
@@ -13,6 +15,17 @@
         left: 0;
         right: 0%;
         width: 100%;
-        height: 100%;        
+        height: 100%;   
+        border-radius: 8px;     
     }    
+}
+.player_and_nav {
+    display: flex;
+    margin: 0 auto;
+    @media screen and (max-width: $break-iphone-x) {
+        flex-direction: column;
+    }
+    @media screen and (orientation:landscape) and (max-width: $break-iphone-x) { 
+        flex-direction: row;
+    }
 }
