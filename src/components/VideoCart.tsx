@@ -44,7 +44,7 @@ const VideoCart = (props: videoCartProps) => {
     return (
         <div className={`${singleColumn ? ' sm:w-full p-2' : 'sm:w-1/2 xl:w-1/4 p-2'}`}>
             <div>
-                <a href="#">
+                <div>
                     <div className={`${darkMode ? 'bg-primary-900 text-white text-sm' : 'bg-white text-gray-800'} relative shadow p-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out`}>
                             <Link className="h-40 rounded-lg rounded-b-none w-full object-cover mb-2 block relative" to={videoUrl} onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `${videoId}` })}>
                                 <img className="h-40 rounded-lg rounded-b-none w-full object-cover mb-2"
@@ -87,7 +87,7 @@ const VideoCart = (props: videoCartProps) => {
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     )

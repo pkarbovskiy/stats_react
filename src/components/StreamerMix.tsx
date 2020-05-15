@@ -45,9 +45,9 @@ const SreamerMix = () => {
                         className="w-16 h-16 bg-primary-800 rounded-full flex cursor-pointer justify-center items-center hover:bg-indigo-800 transition duration-300 ease-in-out">
                         <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <defs />
-                            <path fill="white" fill-rule="evenodd"
+                            <path fill="white" fillRule="evenodd"
                                 d="M9 1.64941C3.82432 2.90983 0 7.35519 0 12.6457c0 6.2706 5.37258 11.354 12 11.354 6.6274 0 12-5.0834 12-11.354 0-4.55969-2.8407-8.4916-6.939-10.2978l-1.0033 2.50815c3.0328 1.41698 5.1188 4.37282 5.1188 7.78965 0 4.7952-4.1085 8.6824-9.1765 8.6824-5.06802 0-9.17647-3.8872-9.17647-8.6824 0-3.80117 2.58166-7.03181 6.17647-8.20787V1.64941z"
-                                clip-rule="evenodd" />
+                                clipRule="evenodd" />
                             <rect width="6.33061" height="1.77672" fill="white" rx="0.888361"
                                 transform="matrix(.96933 .24575 -.27248 .96216 5.19482 0)" />
                             <rect width="6.03444" height="1.86392" fill="white" rx="0.931961"
