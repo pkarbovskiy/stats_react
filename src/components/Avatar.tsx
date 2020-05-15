@@ -10,8 +10,11 @@ const Avatar = ({ player }: { player: { id: number; name: string; avatar?: strin
         profilePic = player.avatar
         avatar = true
     }
-
-    return (<img src={profilePic} alt={``} className={avatar ? 'avatar' : 'avatar'} />)
+    return (
+        <img 
+            src={profilePic} 
+            alt={``} 
+            className={avatar ? 'rounded-full  object-center object-cover border-white mr-2 h-12 w-12' : 'rounded-full object-center object-cover border-white mr-2 h-8 w-8'} />)
 }
 
 export default Avatar

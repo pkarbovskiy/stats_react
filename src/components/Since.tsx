@@ -22,7 +22,7 @@ const Since = ({ since }: { since: any }) => {
             return (<></>)
     }
     return (
-        <span className="since--date">{text}</span>
+        <span className="bg-gray-800 text-white absolute bottom-0 text-xs py-1 px-4 opacity-75 rounded-tr-md">{text}</span>
     )
 }
 

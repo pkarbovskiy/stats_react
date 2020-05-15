@@ -95,16 +95,16 @@ const HomePage = () => {
     }
 
     return (
-        <div className="home_page">
-            <h3>Top Highlights</h3>
+        <div className="p-8 py-12 lg:px-16">
+            <div className={'text-primary-500 text-2xl font-bold mb-2 pl-2'}>Top Highlights</div>
             {mediaSorted.length === 0 && <Loader />}
             {mediaSorted.length > 0 && (
                 <>
-                    <div className="home_page__filters">
+                    <div className="home_page__filters pl-2">
                         <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Last 2 days</button>
                         <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Last Week</button>
                         <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>Last 2 Weeks</button>
-                    </div>
+                    </div> 
                     <TopRated
                         mediaSorted={mediaSorted}
                         mediaById={mediaById}

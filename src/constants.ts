@@ -1,4 +1,4 @@
-export default ''//'http://192.168.232.128:8000'
+export default 'https://vodsearch.tv/'//'http://192.168.232.128:8000'
 
 export const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i)
 

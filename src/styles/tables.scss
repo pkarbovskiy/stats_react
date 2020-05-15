@@ -88,6 +88,9 @@ $main-brand-color:  #D7CA25;
         width: 332px;
         margin: 0 auto;
         .video_cart {
+            .bg-white {
+                background: red!important;
+            }
             padding: 3px 0 0 3px;
             margin: 10px 0;
             border-radius: 12px;

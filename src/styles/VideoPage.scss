@@ -29,12 +29,12 @@ $green-color: #25D725;
     }
     .AutoskipSwitch {
         display: flex; 
-        width: 171px;
+        width: 185px;
         height: 24px;
         position: relative;
         margin-bottom: 19px;
         .text {
-            font-size: 1.3rem;
+            font-size: 0.875rem;
             font-family: Roboto;
             font-weight: bold;
             line-height: 26px;
@@ -63,15 +63,15 @@ $green-color: #25D725;
             background-color: #F9F6FD;
             -webkit-transition: .4s;
             transition: .4s;
-            height: 2.5rem;
+            height: 1.5rem;
             border: 3px solid #666FE4;
           }
           
           .autoskip:before {
             position: absolute;
             content: "";
-            height: 1.7rem;
-            width: 1.7rem;
+            height: 1rem;
+            width: 1rem;
             left: 3px;
             bottom: 1px;
             background-color: #666FE4;
