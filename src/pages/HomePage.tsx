@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import TopRated from '../components/TopRated'
-import '../styles/App.scss'
+import '../dist/vodsearch-bundle.css'
 import { addMedia } from '../actions'
 import Loader from '../components/Loader'
 import url, { mediaTypes, elementsOnLoad } from '../constants'

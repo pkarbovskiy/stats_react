@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'Tables';
 @import 'Slider';
 @import 'upDownVote';
@@ -65,19 +69,19 @@ button {
 }
 main {
     width: 100vw;
-    @media screen and (min-width: $break-iphone-x) {
+@media screen and (min-width: $break-iphone-x) {
         width: calc(100% - 400px);
     }
    
 }
 .header {
+    @apply bg-white;
     display: flex;
     flex-flow: row nowrap;
     flex-shrink: 1;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    background-color: $header-background;
     z-index: 1;
     .logo_container {
         position: relative;
@@ -115,10 +119,6 @@ main {
         .logo_container {
             border: none;
         }
-        // .other__search {
-        //     width: 95vw;
-        //     margin: 0 auto 2rem;
-        // }
     }
     @media screen and (min-width: $break-ipad) {
         z-index: 6;
@@ -383,6 +383,10 @@ h2 {
 
 
 
+/* 
+    TODO: 
+    Incorporate the following styles into the existing structure 
+*/
 
 html, body {
     height: 100%; 
