@@ -112,7 +112,7 @@ const DeathKill = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
                     Previous
                 </label>
             </button>
-            <button className="h-16 md:h-2 w-2 bg-white md:w-full relative" onClick={() => goToNextAction()} >
+            <button className="h-16 md:h-2 w-2 md:w-full relative" onClick={() => goToNextAction()} >
                 <VideoFilters action={currentAction} />
             </button>
             <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 md:h-full w-full text-white rounded-lg ${state.isKillNextDisabled ? ' disabled' : ''} `} onClick={() => move(1, currentAction)} disabled={state.isKillNextDisabled}>
