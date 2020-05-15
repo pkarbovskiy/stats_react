@@ -60,8 +60,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
         <>
             {!player && <Loader />}
             <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
-            <div className="player_and_nav">
-
+            <div className="flex flex-col md:flex-row">
                 <div id={targetElementId} className="player"></div>
                 <VideoNavigation videoHandler={player} deathKillTimers={deathKillTimers} />
             </div>

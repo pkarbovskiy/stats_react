@@ -7,7 +7,7 @@ import Logo from './logo'
 
 const Header = ({ toggleMenu }: { toggleMenu: (arg0: any) => void }) => {
     return (
-        <header className="header p-8 py-4 lg:p-0">
+        <header className="header p-8 md:py-4 lg:p-0">
             <div className="logo_container mb-4 lg:mb-0 h-full">
                 <Link to="/" className="flex items-center lg:px-8 h-full">
                     <Logo />

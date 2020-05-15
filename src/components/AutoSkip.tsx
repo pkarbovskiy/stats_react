@@ -82,7 +82,7 @@ const Autoskip = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
         <div className="AutoskipSwitch">
             <label className="text" htmlFor="autoskip">HIGHLIGHT MODE</label>
             <label className="switch">
-                <input type="checkbox" id="autoskip" onChange={() => autoskipAndTrack()} />
+                <input className="ml-2" type="checkbox" id="autoskip" onChange={() => autoskipAndTrack()} />
                 <span className="autoskip round"></span>
             </label>
         </div>

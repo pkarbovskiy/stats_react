@@ -7,8 +7,7 @@ $green-color: #25D725;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: calc(60vw + 190px);
-    margin: 50px 0 0 50px;
+    
     &__info {
         display:flex;
         margin: 5px;
@@ -122,6 +121,10 @@ $green-color: #25D725;
           }
         }
     }    
+
+    .player {
+      width: 100%;
+    }
 }
 @media screen and (max-width: $break-iphone-x) {
     .video_page {
@@ -135,7 +138,7 @@ $green-color: #25D725;
             margin: 10px 0 15px 5px;
         }
         .player {
-            width: 98vw;
+            width: 100%;
             margin: 0 auto;
         }
     }
@@ -148,9 +151,9 @@ $green-color: #25D725;
         width: 100vw;
         margin: 0;
         .player {
-            width: 77vw;
             height: calc(77vw / 1.78);
             margin-right: 10px;
+            
             // @media (max-width: $break-iphone-5) {
             //     width: 81vw;
             //     height: calc(81vw / 1.78);
@@ -161,7 +164,7 @@ $green-color: #25D725;
         }
 
         .AutoskipSwitch {
-            margin: 19px 31px 19px;    
+            // margin: 19px 31px 19px;    
         }
     }
 }
