@@ -38,11 +38,17 @@
         "webpack-cli": "^3.3.11"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "(react-scripts build) & webpack",
+        "build:tailwind": "postcss src/styles/tailwind.css -o src/styles/tailwind.generated.css",
+        "watch:tailwind": "postcss -w src/styles/tailwind.css -o src/styles/tailwind.generated.css",
+      
+        "start": "run-s prebuild start:react",
+        "start:react": "react-scripts start",
+      
+        "prebuild": "npm run build:tailwind",
+        "build": "react-scripts build",
+      
         "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "watch": "webpack --progress --profile --watch"
+        "eject": "react-scripts eject"
     },
     "eslintConfig": {
         "extends": "react-app"

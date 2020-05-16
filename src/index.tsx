@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './styles/tailwind.generated.css'
 import Root from './routes';
 import { createStore } from 'redux'
 import rootReducer from './reducers'
