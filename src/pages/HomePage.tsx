@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import TopRated from '../components/TopRated'
-import '../dist/vodsearch-bundle.css'
 import { addMedia } from '../actions'
 import Loader from '../components/Loader'
+import '../styles/App.scss'
 import url, { mediaTypes, elementsOnLoad } from '../constants'
 import { shouldLazyLoad, gaEvents } from '../common_function'
 
@@ -100,7 +100,7 @@ const HomePage = () => {
             {mediaSorted.length === 0 && <Loader />}
             {mediaSorted.length > 0 && (
                 <>
-                    <div className="home_page__filters pl-2">
+                    <div className="pl-2 home_page__filters">
                         <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Last 2 days</button>
                         <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Last Week</button>
                         <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>Last 2 Weeks</button>
