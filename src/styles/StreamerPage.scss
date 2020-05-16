@@ -102,7 +102,7 @@ $break-mid-pc: 1440px;
         align-items: center;
         border-bottom: 1px solid #E1E1E1;
         @media screen and (min-width: $break-small-pc) {
-            width: calc(100vw - 400px);
+            width: calc(100vw - 375px);
         }
         &--link {
             font-weight: bold;

@@ -40,7 +40,7 @@ html, body {
     font-size: $font-size;
     overflow-x: hidden;
     height: auto;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(102, 111, 228, 0.15) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 55.73%, rgba(102, 111, 228, 0.15) 100%);    
     h3 {
         font-size: 2.0rem;
         color: $main-font-color;
@@ -66,7 +66,7 @@ button {
 main {
     width: 100vw;
 @media screen and (min-width: $break-iphone-x) {
-        width: calc(100% - 400px);
+        width: calc(100% - 375px);
     }
    
 }
@@ -81,7 +81,7 @@ main {
     z-index: 1;
     .logo_container {
         position: relative;
-        width: 396px;
+        width: 375px;
         background: #151724;
         border-right: 4px solid #666FE4;
         .expand-collapse {
@@ -103,7 +103,7 @@ main {
     }
     @media screen and (min-width: $break-iphone-x) {
         &__side {
-            width: calc(100% - 396px);
+            width: calc(100% - 375px);
             box-shadow: 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14), 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07);
         }
     }
@@ -305,7 +305,6 @@ main {
     &__filters {
         display: flex;
         justify-content: left;
-        margin-bottom: 2rem;
  
         button {
             cursor: pointer;
@@ -352,7 +351,7 @@ h2 {
     padding:1.5rem 1.5rem;
     width: 100vw;
     @media screen and (min-width: $break-iphone-x) {
-        width: 392px;
+        width: calc(375px - 4px);
         position: fixed;
         bottom: 0;
         left: 0;
