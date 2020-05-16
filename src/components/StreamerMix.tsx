@@ -29,20 +29,20 @@ const SreamerMix = () => {
         getNextStreamer()
     }, [])
     return (
-        <div className="streamer_mix p-8 py-4">
-            <div className="text-primary-500 tracking-widest uppercase font-bold text-xs">STREAMER MIX</div>
-                <div className="flex justify-between items-center">
+        <div className="p-6 py-4 streamer_mix sm:p-8">
+            <div className="text-xs font-bold tracking-widest uppercase text-primary-500">STREAMER MIX</div>
+                <div className="flex items-center justify-between">
                     <Link 
                         to={`/player/${player.id}/${player.slug}`} 
                         onClick={() => gaEvents({ eventCategory: ``, eventAction: 'click', eventLabel: `` })} 
-                        className="h-12 w-12 flex items-center my-4">
+                        className="flex items-center w-12 h-12 my-4">
                         <Avatar player={player} />
-                        <span className="ml-3 text-white text-lg">{player.name}</span>
+                        <span className="ml-3 text-lg text-white">{player.name}</span>
                     </Link>
                     <button
                         onClick={() => getNextStreamer()} 
                         type="submit"
-                        className="w-16 h-16 bg-primary-800 rounded-full flex cursor-pointer justify-center items-center hover:bg-indigo-800 transition duration-300 ease-in-out">
+                        className="flex items-center justify-center w-16 h-16 transition duration-300 ease-in-out rounded-full cursor-pointer bg-primary-800 hover:bg-indigo-800">
                         <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <defs />
                             <path fill="white" fillRule="evenodd"

@@ -95,7 +95,7 @@ const HomePage = () => {
     }
 
     return (
-        <div className="p-8 py-12 lg:px-16">
+        <div className="p-6 py-12 sm:p-8 lg:px-16">
             <div className={'text-primary-500 text-2xl font-bold mb-2 pl-2'}>Top Highlights</div>
             {mediaSorted.length === 0 && <Loader />}
             {mediaSorted.length > 0 && (

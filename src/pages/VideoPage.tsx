@@ -44,7 +44,7 @@ const VideoPage = ({ match, onData }:
     }, [match.params.videoId])
 
     return (
-        <div className="video_page p-8 lg:px-16">
+        <div className="p-6 video_page sm:p-8 lg:px-16">
             {video && (video.platform_id === 2 ?
                 <Mixer {...video} videoTime={match.params.timer | 0} />
                 : <TwitchPlayer {...video} targetElementId='twitchPlayer' autoplay={true} deathKillTimers={timeline} videoTime={match.params.timer | 0} />)
