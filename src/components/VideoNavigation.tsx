@@ -102,8 +102,8 @@ const DeathKill = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
         setNextAction(actionsOrder[index])
     }
     return (
-        <nav className="flex flex-row md:flex-col md:ml-2 w-full md:w-40 mt-1 md:mt-0">
-            <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 md:h-full w-full text-white rounded-lg ${state.isDeathPrevDisabled ? ' disabled' : ''} `} onClick={() => move(0, currentAction)} disabled={state.isDeathPrevDisabled}>
+        <nav className="flex flex-row w-full mt-1 sm:flex-col sm:ml-2 sm:w-40 sm:mt-0">
+            <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 sm:h-full w-full text-white rounded-lg ${state.isDeathPrevDisabled ? ' disabled' : ''} `} onClick={() => move(0, currentAction)} disabled={state.isDeathPrevDisabled}>
                 {/* <svg width="12" height="19" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 16.7394L9.70111 19L-2.07629e-06 9.5L9.70111 -5.02438e-07L12 2.26057L4.60731 9.5L12 16.7394Z"
                         fill="white" />
@@ -112,10 +112,10 @@ const DeathKill = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
                     Previous
                 </label>
             </button>
-            <button className="h-16 md:h-2 w-2 md:w-full relative" onClick={() => goToNextAction()} >
+            <button className="relative w-2 h-16 sm:h-2 sm:w-full" onClick={() => goToNextAction()} >
                 <VideoFilters action={currentAction} />
             </button>
-            <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 md:h-full w-full text-white rounded-lg ${state.isKillNextDisabled ? ' disabled' : ''} `} onClick={() => move(1, currentAction)} disabled={state.isKillNextDisabled}>
+            <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 sm:h-full w-full text-white rounded-lg ${state.isKillNextDisabled ? ' disabled' : ''} `} onClick={() => move(1, currentAction)} disabled={state.isKillNextDisabled}>
                 <label className="">
                     Next
                 </label>

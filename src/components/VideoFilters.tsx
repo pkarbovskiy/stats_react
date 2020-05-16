@@ -42,8 +42,7 @@ const VideoFilters = ({ action }: { action: string }) => {
     }
     return (
         <div className="video_filters">
-            <button className="bg-white hover:bg-indigo-200 outline-none h-16 w-16 absolute rounded-full flex items-center justify-center">{currentSymbol}</button>
-            
+            <button className="absolute flex items-center justify-center w-16 h-16 bg-white rounded-full outline-none hover:bg-indigo-200">{currentSymbol}</button>
         </div>
     )
 }
