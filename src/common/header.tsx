@@ -7,9 +7,9 @@ import Logo from './logo'
 
 const Header = ({ toggleMenu }: { toggleMenu: (arg0: any) => void }) => {
     return (
-        <header className="h-48 p-6 header md:h-auto lg:p-0">
-            <div className="h-full mb-4 logo_container lg:mb-0">
-                <Link to="/" className="flex items-center h-full lg:px-8">
+        <header className="h-56 p-6 pb-8 lg:h-auto header sm:p-8 md:py-4 lg:p-0">
+            <div className="h-auto lg:h-full logo_container">
+                <Link to="/" className="flex items-center lg:h-full lg:px-8">
                     <Logo />
                 </Link>
                 <button className="expand-collapse" onClick={() => toggleMenu((showMenu: boolean) => !showMenu)}>
