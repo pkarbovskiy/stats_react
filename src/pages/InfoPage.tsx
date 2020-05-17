@@ -4,8 +4,8 @@ const InfoPage = ({ match }: any) => {
     let text = <></>
     switch (match.path) {
         case "/about_us":
-            text = <div className="info_block__about_us">
-                <h2>About us</h2>
+            text = <div className="text-sm text-gray-700 info_block__about_us">
+                <div className={'text-primary-500 text-3xl font-bold mb-4'}>About us</div>
                 VODsearch.tv was created by a team of video game enthusiasts.
                 Our mission is to build products and services that increase the number and quality of ways that streamers and fans connect.
                 We aim to make it easier for streamers to get more out of the material they put out,
@@ -17,7 +17,7 @@ const InfoPage = ({ match }: any) => {
             </div>
             break
         case "/privacy":
-            text = <div className="info_block__privacy">
+            text = <div className="text-black info_block__privacy">
                 Privacy Policy
             <br></br><br></br>
                 General Information
@@ -97,7 +97,7 @@ const InfoPage = ({ match }: any) => {
             </div>
             break
         case "/terms_of_service":
-            text = <div className="info_block__privacy">
+            text = <div className="text-gray-900 info_block__privacy ">
                 Terms of Service<br></br><br></br>
                 General Information<br></br><br></br>
                 Welcome to Stream Snipers an online platform that allows gamers to access highlights of their performance and replay review in-game interactions with celebrity streamers. These Terms of Service (the "Terms") govern your access and the use of the Stream Snipers website and its subdomains (the "Site") our products, and any information, text, graphics, photos, or other materials uploaded to, downloaded from, or appearing on the Site. We refer to the Site and all related services throughout these Terms as the "Services." These Terms are a legally binding agreement between you and 1337, Inc. ("Company"). Read this agreement carefully before using the Services.

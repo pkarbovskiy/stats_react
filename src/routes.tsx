@@ -17,6 +17,7 @@ import { gaEvents } from './common_function'
 import { createBrowserHistory } from "history"
 
 import { Provider } from 'react-redux'
+import PrivacyPolicyLinks from './components/PrivacyPolicyLinks'
 
 const Root = ({ store }: { store: any }) => {
     const [isMenuShown, toggleMenu] = useState(true)
@@ -51,6 +52,9 @@ const Root = ({ store }: { store: any }) => {
                 </main>
                 <footer className="main_footer">
                     <SocialMediaLinks />
+                    <div className="flex justify-center w-full my-4 ">
+                        <PrivacyPolicyLinks />
+                    </div>
                     <span className="all_rights_reserved">© {new Date().getFullYear()} VodSearchTV. All rights reserved.</span>
                 </footer>
                 <CookieConsent location="bottom" style={{ opacity: 0.9 }} onAccept={() => { }}>
