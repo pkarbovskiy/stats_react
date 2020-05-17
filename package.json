@@ -32,9 +32,9 @@
         "typescript": "3.8.3"
     },
     "scripts": {
-        "build:tailwind": "postcss src/styles/tailwind.css -o src/styles/tailwind.generated.css",
+        "build:tailwind": "env NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/tailwind.generated.css",
         "watch:tailwind": "postcss -w src/styles/tailwind.css -o src/styles/tailwind.generated.css",
-        "start": "run-s prebuild start:react",
+        "start": "env NODE_ENV=development run-s prebuild start:react",
         "start:react": "react-scripts start",
         "prebuild": "npm run build:tailwind",
         "build": "react-scripts build",

@@ -1,7 +1,7 @@
 var env = process.env.NODE_ENV || 'development';
 module.exports = {
     purge: {
-        enabled: false,
+        enabled: env !== 'development',
         content: ['./src/**/*.tsx'],
     },
     target: 'relaxed',
