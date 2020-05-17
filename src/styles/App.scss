@@ -347,7 +347,7 @@ h2 {
     background-color: #1E2134;
     padding:1.5rem 1.5rem;
     width: 100vw;
-    @media screen and (min-width: $break-iphone-x) {
+    @media screen and (min-width: $break-large) {
         width: calc(375px - 4px);
         position: fixed;
         bottom: 0;
