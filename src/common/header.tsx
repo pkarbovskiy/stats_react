@@ -7,7 +7,7 @@ import Logo from './logo'
 
 const Header = ({ toggleMenu }: { toggleMenu: (arg0: any) => void }) => {
     return (
-        <header className="h-56 p-6 pb-8 lg:h-auto header sm:p-8 md:py-4 lg:p-0">
+        <header className="h-48 p-6 lg:h-56 lg:h-auto header sm:p-8 lg:p-0">
             <div className="h-auto lg:h-full logo_container">
                 <Link to="/" className="flex items-center lg:h-full lg:px-8">
                     <Logo />
@@ -18,7 +18,7 @@ const Header = ({ toggleMenu }: { toggleMenu: (arg0: any) => void }) => {
                     </svg>
                 </button> 
             </div>
-            <div className="header__side">
+            <div className="pt-4 header__side md:p-0">
                 <Search />
             </div>
         </header>
