@@ -82,7 +82,7 @@ main {
     .logo_container {
         position: relative;
         width: 375px;
-        background: #151724;
+        background: #1E2134;
         border-right: 4px solid #666FE4;
         .expand-collapse {
             position: absolute;
@@ -114,6 +114,7 @@ main {
         align-items: flex-start;
         .logo_container {
             border: none;
+            background: #151724;
         }
     }
     @media screen and (min-width: $break-ipad) {
