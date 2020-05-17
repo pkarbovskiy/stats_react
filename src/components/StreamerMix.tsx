@@ -30,7 +30,7 @@ const SreamerMix = () => {
     }, [])
     return (
         <div className="p-6 py-4 streamer_mix sm:p-8">
-            <div className="text-xs font-bold tracking-widest uppercase text-primary-500">STREAMER MIX</div>
+            <div className="-mb-2 text-xs font-bold tracking-widest uppercase text-primary-500">STREAMER MIX</div>
                 <div className="flex items-center justify-between">
                     <Link 
                         to={`/player/${player.id}/${player.slug}`} 
@@ -42,7 +42,7 @@ const SreamerMix = () => {
                     <button
                         onClick={() => getNextStreamer()} 
                         type="submit"
-                        className="flex items-center justify-center w-16 h-16 transition duration-300 ease-in-out rounded-full cursor-pointer bg-primary-800 hover:bg-indigo-800">
+                        className="flex items-center justify-center w-16 h-16 transition duration-300 ease-in-out rounded-full cursor-pointer focus:border-blue-100 focus:outline-none focus:shadow-outline bg-primary-800 hover:bg-indigo-800">
                         <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <defs />
                             <path fill="white" fillRule="evenodd"
@@ -55,9 +55,9 @@ const SreamerMix = () => {
                     </button>
                 </div>
 
-            <div className="flex text-sm border-solid border-primary-500">
-                <div className={`text-white cursor-pointer hover:text-indigo-400 pb-2 ${currentMediaType === 'videos' ? 'text-white border-b-4 border-primary-500 border-solid pb-2 cursor-pointer' : ''}`} onClick={() => updateFilter('videos')}>Recent Broadcasts</div>
-                <div className={`text-white ml-8 cursor-pointer hover:text-indigo-400 pb-2 ${currentMediaType === 'clips' ? 'text-white border-b-4 border-primary-500 border-solid pb-2 cursor-pointer' : ''}`} onClick={() => updateFilter('clips')}>Reactions</div>
+            <div className="flex -mt-2 text-sm border-solid border-primary-500">
+                <div className={`text-white cursor-pointer hover:text-indigo-400 pb-2 ${currentMediaType === 'videos' ? 'text-white border-b-4 text-indigo-400 border-primary-500 border-solid pb-2 cursor-pointer' : ''}`} onClick={() => updateFilter('videos')}>Recent Broadcasts</div>
+                <div className={`text-white ml-8 cursor-pointer hover:text-indigo-400 pb-2 ${currentMediaType === 'clips' ? 'text-white border-b-4 text-indigo-400 border-primary-500 border-solid pb-2 cursor-pointer' : ''}`} onClick={() => updateFilter('clips')}>Reactions</div>
             </div>
             <Table mediaById={mediaById} singleColumn={true} darkMode={true} mediaSorted={mediaSorted} classNameProp={['dark', 'side']} />
         </div>

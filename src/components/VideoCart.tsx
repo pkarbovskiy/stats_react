@@ -42,8 +42,8 @@ const VideoCart = (props: videoCartProps) => {
     const videoUrl = `/video/${videoId}/${timestamp ? `timer/${timestamp}/` : ''}`
     const playerUrl = `/player/${(player || {}).id}/${(player || {}).slug}`
     return (
-        <div className={`${singleColumn ? ' sm:w-full p-2' : 'sm:w-1/2 xl:w-1/4 p-2'}`}>
-            <div className={`${darkMode ? 'bg-primary-900 text-white text-sm' : 'bg-white text-gray-800'} relative shadow p-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out`}>
+        <div className={`${singleColumn ? ' sm:w-full' : 'sm:w-1/2 xl:w-1/4'} ${darkMode ? ' sm:w-full py-2' : 'sm:w-1/2 xl:w-1/4 p-2'}`}>
+            <div className={`${darkMode ? 'bg-primary-900 text-indigo-300 font-bold text-xs' : 'bg-white text-gray-800'} relative shadow p-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out`}>
                     <Link className="relative block object-cover w-full h-40 mb-2 rounded-lg rounded-b-none" to={videoUrl} onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `${videoId}` })}>
                         <img className="object-cover w-full h-40 mb-2 rounded-lg rounded-b-none"
                             onError={error}
