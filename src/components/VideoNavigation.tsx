@@ -102,21 +102,21 @@ const DeathKill = ({ deathKillTimers, videoHandler }: DeathKillProps) => {
         setNextAction(actionsOrder[index])
     }
     return (
-        <nav className="flex flex-row w-full mt-1 sm:flex-col sm:ml-2 sm:w-56 sm:mt-0">
+        <nav className="flex flex-row w-full mt-6 sm:flex-col sm:ml-2 sm:w-56 sm:mt-0">
             <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 flex justify-center items-center mr-2 font-bold text-lg sm:h-full w-full text-white rounded-lg ${state.isDeathPrevDisabled ? ' disabled' : ''} `} onClick={() => move(0, currentAction)} disabled={state.isDeathPrevDisabled}>
                 <svg className="w-4 h-4" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 16.7394L9.70111 19L-2.07629e-06 9.5L9.70111 -5.02438e-07L12 2.26057L4.60731 9.5L12 16.7394Z"
                         fill="white" />
                 </svg>
-                <label className="ml-2">
+                <label className="hidden ml-2 sm:block">
                     Previous
                 </label>
             </button>
-            <button className="relative w-2 h-16 sm:h-2 sm:w-full" onClick={() => goToNextAction()} >
+            <button className="relative w-2 h-16 sm:h-5 sm:w-full" onClick={() => goToNextAction()} >
                 <VideoFilters action={currentAction} />
             </button>
-            <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 flex justify-center items-center mr-2 font-bold text-lg sm:h-full w-full text-white rounded-lg ${state.isKillNextDisabled ? ' disabled' : ''} `} onClick={() => move(1, currentAction)} disabled={state.isKillNextDisabled}>
-                <label className="mr-2">
+            <button className={`bg-indigo-500 hover:bg-indigo-800 h-16 flex justify-center items-center font-bold text-lg sm:h-full w-full text-white rounded-lg ${state.isKillNextDisabled ? ' disabled' : ''} `} onClick={() => move(1, currentAction)} disabled={state.isKillNextDisabled}>
+                <label className="hidden mr-2 sm:block">
                     Next
                 </label>
                 <svg className="w-4 h-4" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg">
