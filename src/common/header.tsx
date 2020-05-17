@@ -18,7 +18,7 @@ const Header = ({ toggleMenu }: { toggleMenu: (arg0: any) => void }) => {
                     </svg>
                 </button> 
             </div>
-            <div className="pt-4 header__side md:p-0">
+            <div className="pt-4 header__side lg:pt-4">
                 <Search />
             </div>
         </header>
