@@ -34,25 +34,26 @@ const Slider = ({ mediaSorted, mediaById, classNameProp = '', includeStreamerNam
         items.current.scrollLeft += direction * item
     }
     return (
-        <div className="slider-wrapper">
-            <div className={`slider ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
-                {mediaSortedSlice.map((value: any) =>
-                    <VideoCart key={mediaById[value].id} {...mediaById[value]} includeStreamerName={includeStreamerName} gaEvent={gaEvent} />
-                )}
-            </div>
-            <button className="slider__previous" onClick={() => scroll(-1)}>
-                <svg viewBox="0 0 24 24">
-                    <g>
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                    </g></svg>
-            </button>
-            <button className="slider__next" onClick={() => scroll(1)}>
-                <svg viewBox="0 0 24 24">
-                    <g>
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                    </g></svg>
-            </button>
+        <div className={`flex flex-wrap ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
+            {mediaSortedSlice.map((value: any) =>
+                <VideoCart key={mediaById[value].id} {...mediaById[value]} includeStreamerName={includeStreamerName} gaEvent={gaEvent} />
+            )}
         </div>
+        // <div className="slider-wrapper">
+           
+        //     <button className="slider__previous" onClick={() => scroll(-1)}>
+        //         <svg viewBox="0 0 24 24">
+        //             <g>
+        //                 <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        //             </g></svg>
+        //     </button>
+        //     <button className="slider__next" onClick={() => scroll(1)}>
+        //         <svg viewBox="0 0 24 24">
+        //             <g>
+        //                 <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        //             </g></svg>
+        //     </button>
+        // </div>
     )
 }
 
