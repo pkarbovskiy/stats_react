@@ -131,7 +131,6 @@ $green-color: #25D725;
         position: relative;
         display: flex;
         flex-wrap: wrap;
-        width: 100vw;
         height: 100%;
         margin: 0 0 33px 0;
         .AutoskipSwitch {
@@ -148,7 +147,6 @@ $green-color: #25D725;
         position: relative;
         display: flex;
         flex-wrap: wrap;
-        width: 100vw;
         margin: 0;
         .player {
             height: calc(77vw / 1.78);
