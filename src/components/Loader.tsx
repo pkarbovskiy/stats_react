@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Loader = () => (
-    <div className="loader_wrapper">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+    <div className="z-10 flex items-center justify-center block w-full h-full opacity-75">
+        <svg className="w-40 h-40 m-auto" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
             <g transform="rotate(0 50 50)">
                 <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#1d3f72">
                     <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>

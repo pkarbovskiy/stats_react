@@ -6,7 +6,7 @@ $break-iphone-x: 1024px;
         // height: calc(68vw / 1.78);
         // width: 68vw;
         height: calc(60vw / 1.78);
-        width: 60vw;
+        width: 100%;
     }
     iframe {
         position: absolute;
@@ -21,7 +21,6 @@ $break-iphone-x: 1024px;
 }
 .player_and_nav {
     display: flex;
-    margin: 0 auto;
     @media screen and (max-width: $break-iphone-x) {
         flex-direction: column;
     }

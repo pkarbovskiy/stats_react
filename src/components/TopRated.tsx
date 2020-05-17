@@ -3,7 +3,7 @@ import Table from './Table'
 
 const TopRated = ({ mediaById, mediaSorted, gaEvent }: { mediaById: any; mediaSorted: any; gaEvent?: string }) => {
     return (
-        <div className="latest_videos">
+        <div>
             {<Table mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} includeStreamerName={true} gaEvent={gaEvent} />}
         </div>
     )

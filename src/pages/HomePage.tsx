@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import TopRated from '../components/TopRated'
-import '../styles/App.scss'
 import { addMedia } from '../actions'
 import Loader from '../components/Loader'
+import '../styles/App.scss'
 import url, { mediaTypes, elementsOnLoad } from '../constants'
 import { shouldLazyLoad, gaEvents } from '../common_function'
 
@@ -95,16 +95,16 @@ const HomePage = () => {
     }
 
     return (
-        <div className="home_page">
-            <h3>Top Highlights</h3>
+        <div className="p-6 py-12 sm:p-8 lg:px-16">
+            <div className={'text-primary-500 text-2xl font-bold mb-2 pl-2'}>Top Highlights</div>
             {mediaSorted.length === 0 && <Loader />}
             {mediaSorted.length > 0 && (
                 <>
-                    <div className="home_page__filters">
+                    <div className="pl-2 home_page__filters">
                         <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Last 2 days</button>
                         <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Last Week</button>
                         <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>Last 2 Weeks</button>
-                    </div>
+                    </div> 
                     <TopRated
                         mediaSorted={mediaSorted}
                         mediaById={mediaById}

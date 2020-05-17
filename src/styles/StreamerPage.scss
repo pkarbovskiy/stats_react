@@ -12,60 +12,12 @@ $break-mid-pc: 1440px;
     &__player{
         display: flex;
         flex-direction: column;
-        width: 100vw;
-        margin: 1rem 0 0 0;
-        @media screen and (min-width: $break-ipad) {
-            margin: 1.6rem 0 0 2.6rem;
-        }
-        @media screen and (min-width: $break-mid-pc) {
-            margin: 2rem auto;
-            width: 70vw;
-        }
-        &__filters {
-            display: flex;
-            margin: 0 auto 2rem;
-            width: 95vw;
-            @media screen and (min-width: $break-ipad-min) and (max-width: $break-ipad-max) {                
-                margin: -5rem 0 1rem 19rem;
-            }
-            @media screen and (min-width: $break-pc) {
-                width: auto;
-                margin: -6rem 0 1rem 23rem;
-            }
-            @media screen and (min-width: $break-mid-pc) {
-                margin: -6rem  auto 0;
-            }
-            button {
-                cursor: pointer;
-                font-weight: bold;
-                border: none;
-                width: 11rem;
-                background-color: #666FE4;
-                padding: 1rem;                
-                border-radius: 0.5rem;
-                color: #fff;
-                &:hover {
-                    background-color:  #434190;
-                }
-                &.active {
-                    background-color:  #434190;
-                    transition: background-color .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                    transition: color .5s ease;
-                }
-                &:focus {
-                    outline: none;
-                }
-            }
-            button + button {
-                margin-left: 0.9rem;
-            }
-        }
     }
     &__avatar {
         display: flex;
+        align-items: center;
         padding-left: 0.8rem;
         img {
-            width: 5rem;
             &.avatar {
                 border-radius: 100%;
             }
@@ -102,26 +54,27 @@ $break-mid-pc: 1440px;
         align-items: center;
         border-bottom: 1px solid #E1E1E1;
         @media screen and (min-width: $break-small-pc) {
-            width: calc(100vw - 400px);
+            width: calc(100vw - 375px);
         }
         &--link {
             font-weight: bold;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
             &:hover {
                 color: #434190;
             }
             &.active {
                 color: #434190;
                 transition: color all .5s;
-                div {                    
-                    padding-top: .5rem;
-                    border-bottom:4px solid #434190;
-                }
+                border-bottom:4px solid #434190;
             }
             div {
                 padding-top: .5rem;
             }
             text-decoration: none;
-            font-size: 2rem;
+            font-size: 1rem;
             margin-right: 1.5rem;
         }
     }

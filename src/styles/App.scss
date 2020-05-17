@@ -26,7 +26,7 @@ $main-font-color: #666FE4;
 $font-color: #1E2134;
 $inactive-button-font-color: #B8BAD2;
 $break-iphone-x: 1024px;
-$font-size: 10px;
+$font-size: 16px;
 $break-large: 1200px;
 $break-ipad: 769px;
 $break-small-phone: 320px;
@@ -40,7 +40,7 @@ html, body {
     font-size: $font-size;
     overflow-x: hidden;
     height: auto;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(102, 111, 228, 0.15) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 55.73%, rgba(102, 111, 228, 0.15) 100%);    
     h3 {
         font-size: 2.0rem;
         color: $main-font-color;
@@ -65,26 +65,24 @@ button {
 }
 main {
     width: 100vw;
-    @media screen and (min-width: $break-iphone-x) {
-        width: calc(100% - 400px);
+@media screen and (min-width: $break-iphone-x) {
+        width: calc(100% - 375px);
     }
    
 }
 .header {
+    @apply bg-white;
     display: flex;
     flex-flow: row nowrap;
     flex-shrink: 1;
-    height: 10rem;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background-color: $header-background;
     z-index: 1;
     .logo_container {
         position: relative;
-        height: 100%;
-        width: 396px;
-        background: #151724;
+        width: 375px;
+        background: #1E2134;
         border-right: 4px solid #666FE4;
         .expand-collapse {
             position: absolute;
@@ -101,26 +99,22 @@ main {
         }
     }
     &__side {
-        width: 100vw;
+        width: 100%;
     }
     @media screen and (min-width: $break-iphone-x) {
         &__side {
-            width: calc(100% - 396px);
+            width: calc(100% - 375px);
             box-shadow: 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14), 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07);
         }
     }
     @media screen and (max-width: $break-iphone-x) {
-        height: 19.1rem;
         box-shadow: none;
         background: #151724;
         flex-direction: column;
         align-items: flex-start;
         .logo_container {
             border: none;
-        }
-        .other__search {
-            width: 95vw;
-            margin: 0 auto 2rem;
+            background: #151724;
         }
     }
     @media screen and (min-width: $break-ipad) {
@@ -268,10 +262,6 @@ main {
         color: $main-brand-color;
     }
 }    
-.streamer_page__avatar img {
-    height: 50px;
-    margin-right: 20px;
-}
 .small_link {
     font-size: 1.1rem;
     margin: 10px;
@@ -279,7 +269,6 @@ main {
     color: $main-brand-color;
 }
 .home_page {
-    padding: 1rem;
     h1 {
         font-size: 2rem;
         color: $main-brand-color;
@@ -313,20 +302,9 @@ main {
     &__filters {
         display: flex;
         justify-content: left;
-        margin-bottom: 2rem;
-        @media screen and (min-width: $break-ipad-min) and (max-width: $break-ipad-max) {                
-            margin: 0 0 1rem 19rem;
-        }
-        @media screen and (min-width: $break-pc) {
-            width: auto;
-            margin: 0 0 1rem 23rem;
-        }
-        @media screen and (min-width: $break-mid-pc) {
-            margin: 0 auto;
-        }
+ 
         button {
             cursor: pointer;
-            font-weight: bold;
             border: none;
             background-color: transparent;
             color: $inactive-button-font-color;
@@ -334,10 +312,11 @@ main {
                 color: $main-font-color;
             }
             &.active {
-                border-bottom: 4px solid $main-font-color;
+                border-bottom: 3px solid $main-font-color!important;
                 color: $main-font-color;
                 transition: background-color .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 transition: color .5s ease;
+                font-weight: bold;
             }
             &:focus {
                 outline: none;
@@ -360,17 +339,16 @@ h2 {
 
 .all_rights_reserved {
     color:#B8BAD2;
-    font-size: 1.4rem;
-    margin-top: 1.3rem ;
+    font-size: 0.875rem;
     display: block;
     text-align: center;
 }
 .main_footer {
     background-color: #1E2134;
-    padding:1.9rem 0 1.9rem;
+    padding:1.5rem 1.5rem;
     width: 100vw;
     @media screen and (min-width: $break-iphone-x) {
-        width: 39.1rem;
+        width: calc(375px - 4px);
         position: fixed;
         bottom: 0;
         left: 0;
@@ -381,7 +359,7 @@ h2 {
     display: flex;
     justify-content: center;
     .link +.link {
-        margin-left:2rem;
+        margin-left: 1rem;
     }
 }
 @media screen and (orientation:landscape) and (max-width: $break-iphone-x) {
@@ -393,4 +371,72 @@ h2 {
     .sidebar {
         display: none;
     }
+}
+
+
+
+/* 
+    TODO: 
+    Incorporate the following styles into the existing structure 
+*/
+
+html, body {
+    height: 100%; 
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #666FE4;
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.vod-content {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(102, 111, 228, 0.15) 100%);
+}
+
+.vod-side {
+    min-width: 375px;
+}
+
+.video-responsive{
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    width: 100%;
+}
+
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.bg-primary-900 {
+    background: #1E2134!important;
+}
+
+.bg-primary-800 {
+    background: #303354;
+}
+
+.bg-primary-500 {
+    background: #666FE4;
+}
+
+.text-primary-500 {
+    color: #666FE4;
+}
+
+.border-primary-500 {
+    border-color: #666FE4;
 }

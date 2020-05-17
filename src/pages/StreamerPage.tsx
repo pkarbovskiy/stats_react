@@ -51,10 +51,10 @@ const StreamerPage = ({ match, onData }: any) => {
                         }
                         <NavLink to={`/player/${streamer.id}/${streamer.slug}/clips`} className="streamer_page__nav--link">Reactions<div></div></NavLink>
                     </nav>
-                    <div className="streamer_page__player">
-                        <div className="streamer_page__avatar">
+                    <div className="p-6 py-12 streamer_page__player sm:p-8 lg:px-16">
+                        <div className="mb-6 streamer_page__avatar">
                             <Avatar player={streamer} />
-                            <h1>{streamer.name}</h1>
+                            <div className={'text-primary-500 text-2xl font-bold'}>{streamer.name}</div>
                         </div>
                         <Route exact path={match.path} component={StreamerPageMain} />
                         <Route path={`${match.path}/clips`} component={ClipListPage} />

@@ -45,7 +45,7 @@ $break-iphone-x: 1024px;
    &__action {
         position: absolute;
         top: -33px;
-        left: 62px;
+        left: 42px;
         width: 6.4rem;
         height: 6.4rem;
         border-radius: 100%;
@@ -57,7 +57,7 @@ $break-iphone-x: 1024px;
     }
     @media screen and (max-width: $break-iphone-x) {
         flex-direction: row;
-        width: 98vw;
+        width: 100%;
         margin: 20px 0 0 0;
         &--btn {
             width: calc(50% - 1px);
@@ -65,10 +65,10 @@ $break-iphone-x: 1024px;
         }
 
         &__action {
-            top: 7px;
-            left: -23px;
-            height: 53px;
-            width: 53px;
+            top: -4px;
+            left: -37px;
+            width: 5rem;
+            height: 5rem;
             background: #fff;
         }
         &__container {
@@ -96,7 +96,7 @@ $break-iphone-x: 1024px;
         height: calc(77vw / 1.78);
         &__action {
             top: -31px;
-            left: -29px;
+            left: -32px;
             height: 64px;
             width: 64px;
         }

@@ -16,14 +16,14 @@ const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSo
                     {videosSorted.length > 0 &&
                         <>
                             <div className="streamer_page__category">
-                                <h3>Recent Broadcasts</h3>
+                                <div className="text-lg font-bold text-indigo-800'">Recent Broadcasts</div>
                                 <Link to={videosUrl} className="small_link">View All ></Link>
                             </div>
                             <Slider classNameProp={['side', 'horisontal']} mediaSorted={videosSorted} mediaById={videosById} includeStreamerName={false} />
                         </>
                     }
-                    <div className="streamer_page__category">
-                        <h3>Reactions</h3>
+                    <div className="mt-6 streamer_page__category">
+                        <div className="text-lg font-bold text-indigo-800'">Reactions</div>
                         <Link to={clipsUrl} className="small_link">View All ></Link>
                     </div>
                     <Slider classNameProp={['side', 'horisontal']} mediaSorted={clipsSorted} mediaById={clipsById} includeStreamerName={false} />
