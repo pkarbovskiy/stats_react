@@ -25,7 +25,7 @@ $color-streamer-name: lightgrey;
 $main-font-color: #666FE4;
 $font-color: #1E2134;
 $inactive-button-font-color: #B8BAD2;
-$break-iphone-x: 1024px;
+$break-iphone-x: 1025px;
 $font-size: 16px;
 $break-large: 1200px;
 $break-ipad: 769px;
@@ -38,9 +38,9 @@ html, body {
     background-color: var(--page-background-color);
     color: $main-font-color;
     font-size: $font-size;
-    overflow-x: hidden;
-    height: auto;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 55.73%, rgba(102, 111, 228, 0.15) 100%);    
+    height: 100%;
+    // background: linear-gradient(180deg, rgba(255, 255, 255, 0) 55.73%, rgba(102, 111, 228, 0.15) 100%);
+
     h3 {
         font-size: 2.0rem;
         color: $main-font-color;
@@ -73,16 +73,10 @@ main {
 .header {
     @apply bg-white;
     display: flex;
-    flex-flow: row nowrap;
-    flex-shrink: 1;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
     z-index: 1;
     .logo_container {
         position: relative;
-        width: 375px;
-        background: #1E2134;
+        
         border-right: 4px solid #666FE4;
         .expand-collapse {
             position: absolute;
@@ -98,6 +92,11 @@ main {
             display: none;
         }
     }
+
+    @media screen and (min-width: break-iphone-x) {
+        width: 375px;
+    }
+
     &__side {
         width: 100%;
     }
@@ -114,7 +113,6 @@ main {
         align-items: flex-start;
         .logo_container {
             border: none;
-            background: #151724;
         }
     }
     @media screen and (min-width: $break-ipad) {
@@ -347,7 +345,7 @@ h2 {
     background-color: #1E2134;
     padding:1.5rem 1.5rem;
     width: 100vw;
-    @media screen and (min-width: $break-iphone-x) {
+    @media screen and (min-width: $break-large) {
         width: calc(375px - 4px);
         position: fixed;
         bottom: 0;
@@ -395,6 +393,10 @@ html, body {
 ::-webkit-scrollbar-thumb {
     background-color: #666FE4;
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+::-webkit-scrollbar-track {
+    background: #303354;
 }
 
 .vod-content {

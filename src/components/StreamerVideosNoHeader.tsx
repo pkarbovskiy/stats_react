@@ -21,7 +21,7 @@ const StreamerVideosNoHeader = ({ streamer, mediaById, mediaSorted, gaEvent }: {
                         <path d="M10.5723 1.84851e-06L12 1.42183L6 7.42183L-2.486e-07 1.42183L1.42773 2.49632e-07L6 4.57227L10.5723 1.84851e-06Z" fill="#666FE4" />
                     </svg>
                 </div>
-                <Link to={clipsUrl} className="small_link" onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `View Reactions Link` })}>View Reactions</Link>
+                <Link to={clipsUrl} className="ml-4 text-xs text-primary-500" onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `View Reactions Link` })}>View Reactions</Link>
             </div>
             {isOpened && <Slider mediaById={mediaById} mediaSorted={mediaSorted} classNameProp={['side', 'horisontal']} includeStreamerName={false} gaEvent={gaEvent} />}
         </div>

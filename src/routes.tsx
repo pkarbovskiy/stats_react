@@ -52,7 +52,7 @@ const Root = ({ store }: { store: any }) => {
                 </main>
                 <footer className="main_footer">
                     <SocialMediaLinks />
-                    <div className="flex justify-center w-full my-4 ">
+                    <div className="flex justify-center w-full my-4">
                         <PrivacyPolicyLinks />
                     </div>
                     <span className="all_rights_reserved">© {new Date().getFullYear()} VodSearchTV. All rights reserved.</span>
