@@ -62,11 +62,22 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
     return (
         <>
             <div className="streamer_page__player">
-                <div className="flex flex-wrap streamer_page__player__filters">
-                    <button className={`${currAction.current === 'all' ? 'active' : ''} block uppercase  mr-2 mb-2 shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded`} onClick={() => sortByAction('all')}>All</button>
-                    <button className={`${currAction.current === 'eliminatedby' ? 'active' : ''} block uppercase  mr-2 mb-2 shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded`} onClick={() => sortByAction('eliminatedby')}>Eliminated By</button>
-                    <button className={`${currAction.current === 'eliminated' ? 'active' : ''} block uppercase  mr-2 mb-2 shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded`} onClick={() => sortByAction('eliminated')}>Eliminated</button>
-                    <button className={`${currAction.current === 'victory' ? 'active' : ''} block uppercase  mr-2 mb-2 shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded`} onClick={() => sortByAction('victory')}>Victory</button>
+                <div className="flex flex-wrap streamer_page__player__filters lg:w-9/12 xl:w-1/2">
+                    <div className="w-1/2 p-1 sm:w-1/4">
+                        <button className={`${currAction.current === 'all' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('all')}>All</button>
+                    </div>
+                    <div className="w-1/2 p-1 sm:w-1/4">
+
+                    <button className={`${currAction.current === 'eliminatedby' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('eliminatedby')}>Eliminated By</button>
+                    </div>
+                    <div className="w-1/2 p-1 sm:w-1/4">
+                    <button className={`${currAction.current === 'eliminated' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('eliminated')}>Eliminated</button>
+
+                    </div>
+                    <div className="w-1/2 p-1 sm:w-1/4">
+                    <button className={`${currAction.current === 'victory' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('victory')}>Victory</button>
+
+                    </div>
                 </div>
                 <Table classNameProp={['side', 'horisontal', 'clips']} mediaSorted={mediaSorted} mediaById={clipsById} playersById={playersById} />
             </div>
