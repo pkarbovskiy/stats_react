@@ -48,7 +48,6 @@ $break-ipad: 769px;
     &.side {
         width: 100vw;
         @media screen and (min-width: $break-pc) {
-            margin: 2rem 0 0 0;
             width: 76vw;
         }
         .video_cart {
