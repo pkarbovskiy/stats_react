@@ -32,8 +32,8 @@ const SearchPage = ({ location, searchFromCache, onData }:
         <div className="p-6 py-12 sm:p-8 lg:px-16">
             {!loaded && <Loader />}
             {loaded && (search.playerSorted.length > 0 ?
-                <div className="mb-2 text-lg font-bold text-primary-500">We found {search.playerSorted.length} results for your query: </div> :
-                <div className="mb-2 text-lg font-bold text-primary-500"> Sorry, we couldn't find any search results for your query. Check back again soon!</div>)}
+                <div className="mb-6 text-lg font-bold text-primary-500">We found {search.playerSorted.length} results for your query: </div> :
+                <div className="mb-6 text-lg font-bold text-primary-500"> Sorry, we couldn't find any search results for your query. Check back again soon!</div>)}
             {loaded && search.playerSorted.length > 0 && search.playerSorted.map((playerId: number) => {
                 if (search.playersId[playerId].videosSorted && search.playersId[playerId].videosSorted.length > 0) {
                     return (
