@@ -32,7 +32,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
         document.body.appendChild(script)
 
         function createEmbedAddListeners() {
-            setPlayer(new window.Twitch.Player(targetElementId, { autoplay, videoId, videoTime }))
+            setPlayer(new window.Twitch.Player(targetElementId, Object.assign({ autoplay, videoTime }, { video: videoId, parent: ["vodsearch.tv"] })))
         }
     }, [])
     useEffect(() => {
