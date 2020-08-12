@@ -3,7 +3,7 @@
     flex-flow: column nowrap;
     justify-content: space-between;
     width: 375px;
-    min-height: 100vw;
+    min-height: calc(100vh - 100px);
     background: #151724;
     border-right: 4px solid #666FE4;
 }

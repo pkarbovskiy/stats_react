@@ -75,6 +75,9 @@ const Header = ({ toggleMenu, handleAuthentication }: { toggleMenu: Function, ha
 
     if (currentGame !== Games.fortnite) {
         urlToRedirect = `/${currentGame}/`
+    }
+
+    if (currentGame === Games.valorant && isItValorantHome) {
         search = <div className="other__search relative dummy"></div>
     }
 

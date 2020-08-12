@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Navigation from '../valorant/Navigation'
+import React, { useEffect, useState, MouseEvent } from 'react'
+import Navigation from '../VideoNavigation/Navigation'
 import Loader from '../../components/Loader'
+
+
+import ValorantNavCart from '../VideoNavigation/valorant/ValorantNavCart'
+import ValorantNavHeader from '../VideoNavigation/valorant/ValorantNavHeader'
+
 declare global {
     interface Window { Twitch: any; }
 }
@@ -22,6 +27,8 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, event
     const buffer = 15
     videoTime = videoTime - buffer < 0 ? 0 : videoTime - buffer
     const [player, setPlayer] = useState<any>()
+
+
     useEffect(() => {
         if (window.Twitch && window.Twitch.Player) {
             createEmbedAddListeners()
@@ -66,7 +73,17 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, event
             {/* <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} /> */}
             <div className="flex flex-col lg:flex-row">
                 <div id={targetElementId} className="player"></div>
-                <Navigation videoHandler={player} events={events} currentMatch={currentMatch} currentPlayer={currentPlayer} streamerId={video_streamer_id} />
+                <Navigation
+                    player={player}
+                    eventsInOrder={events.eventsInOrder}
+                    eventsById={events.eventsById}
+                    currentMatch={currentMatch}
+                    currentPlayer={currentPlayer}
+                    streamerId={video_streamer_id}
+                    Header={ValorantNavHeader}
+                    VideoCart={ValorantNavCart}
+                    startTimeProperty="match_start"
+                />
             </div>
         </>
     )

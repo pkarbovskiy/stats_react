@@ -1,0 +1,24 @@
+.val_nav_cart {
+    display: flex;
+    width: 100%;
+    height: 64px;
+    padding: 0 15px;
+    background: rgba(102, 111, 228, 0.1);
+    &.streamer {
+        background: rgba(102, 111, 228, 0.3);
+    }
+    justify-content: space-between;
+    margin-inline-start: 0;
+    align-items: center;
+    cursor: pointer;
+    &__player1, &__player2 {
+        border-radius: 100%;
+        width: 30px;
+        height: auto;
+    }
+    span {
+        font-size: 14px;
+        font-family: Roboto;
+        text-align: center;
+    }
+}

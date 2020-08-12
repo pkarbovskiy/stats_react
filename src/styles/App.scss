@@ -18,11 +18,13 @@
 @import 'Popup';
 @import 'LoginLogout';
 @import 'DropdownMenu';
+@import 'NavHeader';
 
 @import 'valorant/SearchPage';
 @import 'valorant/SearchPlayer';
 @import 'valorant/StreamerPage';
 @import 'valorant/Navigation';
+@import 'valorant/ValNavCart';
 @import 'valorant/StreamerList';
 @import 'valorant/VideoCart';
 @import 'valorant/HomePage';
@@ -49,6 +51,7 @@ $break-small-phone: 320px;
     scrollbar-color: #666FE4 #303354;
     scrollbar-width: thin;
 }
+
 html, body {
     --page-background-color: $main-background;
     background-color: var(--page-background-color);

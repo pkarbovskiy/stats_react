@@ -71,11 +71,13 @@ function updateInitValue(initialState: globalContext): globalContext {
 
     return copyOfState
 }
+// to prevent routes failure when reducer used
+//@todo keep an eye on can be weird
+const history = createBrowserHistory()
 
 const Root = ({ store }: { store: any }) => {
 
     const [isMenuShown, toggleMenu] = useState<boolean>(true)
-    const history = createBrowserHistory()
     const updatedInitValues = updateInitValue(INITIAL_VALUE)
     const [state, dispatchGlobStateAction] = useReducer(reducer, updatedInitValues)
 
@@ -90,9 +92,9 @@ const Root = ({ store }: { store: any }) => {
     }
 
     return (
-        <GlobalState.Provider value={{ ...state, dispatchGlobStateAction } as globalContext} >
-            <Provider store={store}>
-                <Router history={history}>
+        <Provider store={store}>
+            <Router history={history}>
+                <GlobalState.Provider value={{ ...state, dispatchGlobStateAction } as globalContext} >
                     <Header toggleMenu={toggleMenu} handleAuthentication={handleAuthentication} />
                     <aside className="sidebar">
                         {state.currentGame === Games.fortnite && <StreamerMix />}
@@ -136,9 +138,9 @@ const Root = ({ store }: { store: any }) => {
                         For more info refer to our <a href="/privacy">Privacy Policy.</a>
                         </span>
                     </CookieConsent>
-                </Router>
-            </Provider>
-        </GlobalState.Provider>
+                </GlobalState.Provider>
+            </Router>
+        </Provider>
     )
 }
 

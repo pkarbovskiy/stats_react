@@ -16,7 +16,7 @@ fs.readdir(dirCss, function (err, files) {
     files.forEach(function (file) {
         // Do whatever you want to do with the file
         if (file.match(/^main.(.*).chunk.css$/)) {
-            //console.log(`aws s3 cp ${dirCss}/${file} s3://streamsnipers/static/static/css/ --acl public-read`)
+            console.log(`aws s3 cp ${dirCss}/${file} s3://streamsnipers/static/static/css/ --acl public-read`)
             exec(`aws s3 cp ${dirCss}/${file} s3://streamsnipers/static/static/css/ --acl public-read`)
         }
     })
