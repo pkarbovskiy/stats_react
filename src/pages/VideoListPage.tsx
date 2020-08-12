@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { State } from '../reducers/reducers'
 import Table from '../components/Table'
-import { gaEvents, shouldLazyLoad } from '../common_function'
+import { shouldLazyLoad } from '../common_function'
 
 const VideoListPage = ({ streamer, videosById, videosSorted, allMediaSorted, match }: any) => {
     const [mediaSorted, setMediaSorted] = useState(videosSorted)

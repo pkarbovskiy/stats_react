@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import StreamerVideosNoHeader from '../components/StreamerVideosNoHeader'
-import TopRated from '../components/TopRated'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import { setCurrentSearch, addMedia } from '../actions'
+import { setCurrentSearch } from '../actions'
 import Loader from '../components/Loader'
-import url, { mediaTypes } from '../constants'
+import { ROOT_URL } from '../constants'
 
 const SearchPage = ({ location, searchFromCache, onData }:
     { location: any; searchFromCache: any; onData: any; }) => {
@@ -19,7 +18,7 @@ const SearchPage = ({ location, searchFromCache, onData }:
         if (searchFromCache[queryString]) {
             setSearch(searchFromCache[queryString])
         } else {
-            fetch(`${url}/api/search?q=${searchString[1]}`)
+            fetch(`${ROOT_URL}/api/search?q=${searchString[1]}`)
                 .then(data => data.json())
                 .then(data => {
                     onData(data, searchString[1])

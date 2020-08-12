@@ -3,10 +3,8 @@ import TwitchPlayer from '../components/TwitchPlayer'
 import Mixer from '../components/Mixer'
 import { State } from '../reducers/reducers'
 import { connect } from 'react-redux'
-import Loader from '../components/Loader'
-import url, { mediaTypes } from '../constants'
+import { mediaTypes, ROOT_URL } from '../constants'
 import { addMedia } from '../actions'
-import TopRated from '../components/TopRated'
 
 const VideoPage = ({ match, onData }:
     { match: any; onData: any }) => {
@@ -18,11 +16,9 @@ const VideoPage = ({ match, onData }:
     const [video, setVideo] = useState<any>()
 
     useEffect(() => {
-        const page = 1
-        const amount = 12
         setVideo(false)
         function getVideoInfo(videoId: number) {
-            fetch(`${url}/api/video/${videoId}`)
+            fetch(`${ROOT_URL}/api/video/${videoId}`)
                 .then(data => data.json())
                 .then(data => {
                     setTimeline({
@@ -33,7 +29,7 @@ const VideoPage = ({ match, onData }:
                 })
         }
         if (match.path === '/random_video') {
-            fetch(`${url}/api/video/random`)
+            fetch(`${ROOT_URL}/api/video/random`)
                 .then(data => data.json())
                 .then(data => {
                     getVideoInfo(data.video_id)

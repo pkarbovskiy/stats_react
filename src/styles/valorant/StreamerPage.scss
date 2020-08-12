@@ -1,0 +1,15 @@
+$background-color: #FBFBFE;
+$color-of-border: #E0E0E0;
+.streamer_page {
+    &_val {
+        padding-top: 1.5rem;
+        @media (min-width: 1024px) {
+            padding-top: 0;
+        }
+    }
+    &__all_matches {
+        background-color: $background-color;
+        border-top: 1px solid $color-of-border;
+        border-bottom: 1px solid $color-of-border;
+    }
+}

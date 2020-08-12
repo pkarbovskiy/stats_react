@@ -12,6 +12,13 @@ export const gaEvents = ({ eventCategory, eventAction, eventLabel }: { eventCate
     }
 }
 
+export const gaPageView = (page: string) => {
+    if (window.ga && typeof window.ga === 'function') {
+        window.ga('set', 'page', page)
+        window.ga('send', 'pageview')
+    }
+}
+
 export const getDocumentHeight = () => {
     const body = document.body
     const documentElement = document.documentElement
@@ -37,4 +44,10 @@ export const convertToFancyTime = (timestamp: number): string => {
     const minutes = (minutes_seconds - seconds) / 60
 
     return `${hours > 9 ? hours : '0' + hours}h${minutes > 9 ? minutes : '0' + minutes}m${seconds > 9 ? seconds : '0' + seconds}s`
+}
+
+export const convertToStandartTimeOutput = (time: number): string => {
+    const minutes = Math.floor(time / 60)
+
+    return `${minutes < 10 ? '0' + minutes : minutes}m`
 }

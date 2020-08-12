@@ -1,0 +1,12 @@
+.video_cart_val_outerlink {
+    margin: .5rem;
+    &:visited{
+        background-color: #e8e9fb;
+    }
+    img {
+        filter: grayscale(.5);
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+}

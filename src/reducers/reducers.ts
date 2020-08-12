@@ -69,7 +69,7 @@ const addStreamersByIdReducer = (state: State, addStreamersById: { payload: any 
 
 const addMediaReducer = (state: State, addMedia: { payload: any }): State => {
     const newState = Object.assign({}, state)
-    const { byId, media, category } = addMedia.payload
+    const { data: { byId, media }, since, category } = addMedia.payload
     newState.media[category] = {
         byId,
         media

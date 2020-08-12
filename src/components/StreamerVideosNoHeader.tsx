@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Avatar from './Avatar'
 import Slider from './Slider'
 import { gaEvents } from '../common_function'
 

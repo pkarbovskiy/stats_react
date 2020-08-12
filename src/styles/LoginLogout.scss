@@ -1,0 +1,27 @@
+$main-brand-color:  #1E2134;
+
+.login_logout--btn {
+    position: absolute;
+    top: 26px;
+    right: 0;
+    
+    @media screen and (min-width: 1024px) {
+        position: static;
+    }
+    display: inline-block;
+    width: auto;
+    height: 60px;
+    margin-right: 30px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s ease;
+    color: #fff;
+    padding: 16px 30px;
+    line-height: 1.3333333;
+    border-radius: 3px;
+}

@@ -1,24 +1,37 @@
-import React, { useState } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import React, { useState, ChangeEvent } from 'react'
+import { useHistory } from 'react-router-dom'
+import { Games } from '../constants'
 
-const Search = withRouter(({ history }) => {
-    const [isOpened, setIsOpened] = useState(true)
+const Search = ({ currentGame }: { currentGame: string }) => {
+    const history = useHistory()
     const [searchQuery, setSearchQuery] = useState('')
-    // TODO: set proper type
+
+    let searchUrl = "/search"
+
+    if (currentGame !== Games.fortnite) {
+        searchUrl = `/${currentGame}${searchUrl}`
+    }
+    //TODO: set proper type
     function submit(e: any) {
         e.preventDefault()
         if (searchQuery) {
-            history.push(`/search?q=${encodeURI(searchQuery)}`)
+            history.push(`${searchUrl}?q=${encodeURI(searchQuery)}`)
         }
     }
+
+    function setTargetValue(event: ChangeEvent<HTMLInputElement>): void {
+        const { target: { value } } = event
+        setSearchQuery(value)
+    }
+
     return (
-        <form action="/search" method="get" className="other__search relative" onSubmit={submit}>
-            <input 
-                className={`w-full h-16 px-3 rounded-full border-4 border-primary-500 focus:outline-none text-lg px-8 ${isOpened ? ' expanded' : ''}`}
-                type="search" 
+        <form action={searchUrl} method="get" className="other__search relative" onSubmit={submit}>
+            <input
+                className={`w-full h-16 px-3 rounded-full border-4 border-primary-500 focus:outline-none text-lg px-8 expanded`}
+                type="search"
                 name="query"
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Epic or Streamer Name" />
+                onChange={setTargetValue}
+                placeholder={currentGame === Games.fortnite ? "Your Epic or Streamer Name" : "Your in-game name"} />
             <button type="submit" className={'w-12 h-12 bg-primary-500 hover:bg-indigo-800 transition duration-300 ease-in-out rounded-full flex cursor-pointer justify-center items-center absolute top-0 right-0 mr-2 mt-2'}>
                 <svg className={'w-6 h-6'} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 25">
                     <defs />
@@ -27,6 +40,6 @@ const Search = withRouter(({ history }) => {
             </button>
         </form>
     )
-})
+}
 
 export default Search

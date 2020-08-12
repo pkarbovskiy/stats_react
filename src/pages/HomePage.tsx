@@ -4,10 +4,13 @@ import TopRated from '../components/TopRated'
 import { addMedia } from '../actions'
 import Loader from '../components/Loader'
 import '../styles/App.scss'
-import url, { mediaTypes, elementsOnLoad } from '../constants'
+import { mediaTypes, elementsOnLoad, ROOT_URL } from '../constants'
 import { shouldLazyLoad, gaEvents } from '../common_function'
 
 const HomePage = () => {
+
+    const currentSince = useRef<1 | 7 | 14>(7)
+
     const { mediaById, media }: { mediaById: any; media: number[] } = useSelector(
         (state: any) => ({
             mediaById: state.mainReducer.media[mediaTypes.TOP_RATED].byId,
@@ -15,7 +18,6 @@ const HomePage = () => {
         }),
         shallowEqual
     )
-    const currentSince = useRef<1 | 7 | 14>(7)
 
     /**
      * split all events by since and keep them in the same order
@@ -71,10 +73,10 @@ const HomePage = () => {
     useEffect(() => {
 
         function getMediaForThePage(page = 1, amount = 3, since = 7) {
-            fetch(`${url}/api/video/top_videos?page=${page}&amount=${amount}&since=${since}`)
+            fetch(`${ROOT_URL}/api/video/top_videos?page=${page}&amount=${amount}&since=${since}`)
                 .then(data => data.json())
                 .then(data => {
-                    dispatch(addMedia(data, mediaTypes.TOP_RATED))
+                    dispatch(addMedia({ data, since }, mediaTypes.TOP_RATED))
                 })
         }
 
@@ -95,7 +97,7 @@ const HomePage = () => {
     }
 
     return (
-        <div className="p-6 py-12 sm:p-8 lg:px-16">
+        <div className="p-6 py-12 sm:p-8 sm:py-10 lg:px-16">
             <div className={'text-primary-500 text-2xl font-bold mb-2 pl-2'}>Top Highlights</div>
             {mediaSorted.length === 0 && <Loader />}
             {mediaSorted.length > 0 && (
@@ -104,7 +106,7 @@ const HomePage = () => {
                         <button className={currentSince.current === 1 ? 'active' : ''} onClick={() => sortBySince(1)}>Last 2 days</button>
                         <button className={currentSince.current === 7 ? 'active' : ''} onClick={() => sortBySince(7)}>Last Week</button>
                         <button className={currentSince.current === 14 ? 'active' : ''} onClick={() => sortBySince(14)}>Last 2 Weeks</button>
-                    </div> 
+                    </div>
                     <TopRated
                         mediaSorted={mediaSorted}
                         mediaById={mediaById}

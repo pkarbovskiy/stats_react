@@ -1,0 +1,40 @@
+.streamer_list {
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+    ul, li {
+        display: flex;
+        align-items: center;
+    }
+    ul {
+        flex-wrap: wrap;
+    }
+    li {
+        cursor: pointer;
+        background: #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07), 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14);
+        border-radius: 12px;
+        padding: 6px 12px 6px 12px;
+        margin: 12px 6px 12px 12px;
+        transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        color: #2d3748;
+        img {
+            width: 25px;
+            height: auto;
+            filter: grayscale(1);
+            transition : filter 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        &:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            img{
+                filter: grayscale(0);
+            }
+        }
+        &.active{
+            color:#666FE4;
+            img{
+                filter: grayscale(0);
+            }
+        }
+    }
+}

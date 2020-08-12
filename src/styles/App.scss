@@ -14,6 +14,18 @@
 @import 'HighlightHelper';
 @import 'StreamerMix';
 @import 'AsideBar';
+@import 'Forms';
+@import 'Popup';
+@import 'LoginLogout';
+@import 'DropdownMenu';
+
+@import 'valorant/SearchPage';
+@import 'valorant/SearchPlayer';
+@import 'valorant/StreamerPage';
+@import 'valorant/Navigation';
+@import 'valorant/StreamerList';
+@import 'valorant/VideoCart';
+@import 'valorant/HomePage';
 
 $main-background: #fff;
 $sidebar-background: #151724;
@@ -32,6 +44,10 @@ $break-ipad: 769px;
 $break-small-phone: 320px;
 *, *:before, *:after {
     box-sizing: border-box;
+}
+* {
+    scrollbar-color: #666FE4 #303354;
+    scrollbar-width: thin;
 }
 html, body {
     --page-background-color: $main-background;
@@ -70,6 +86,12 @@ main {
     }
    
 }
+
+.dummy {
+    @media (min-width:1024px) {
+        height: 64px;       
+    }
+}
 .header {
     @apply bg-white;
     display: flex;
@@ -102,6 +124,8 @@ main {
     }
     @media screen and (min-width: $break-iphone-x) {
         &__side {
+            display: flex;
+            align-items: center;
             width: calc(100% - 375px);
             box-shadow: 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14), 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07);
         }
@@ -398,6 +422,7 @@ html, body {
 ::-webkit-scrollbar-track {
     background: #303354;
 }
+
 
 .vod-content {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(102, 111, 228, 0.15) 100%);
