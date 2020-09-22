@@ -3,8 +3,8 @@ import Navigation from '../VideoNavigation/Navigation'
 import Loader from '../../components/Loader'
 
 
-import ValorantNavCart from '../VideoNavigation/valorant/ValorantNavCart'
-import ValorantNavHeader from '../VideoNavigation/valorant/ValorantNavHeader'
+import LolNavCart from '../VideoNavigation/lol/LolNavCart'
+import LolNavHeader from '../VideoNavigation/lol/LolNavHeader'
 
 declare global {
     interface Window { Twitch: any; }
@@ -65,7 +65,7 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, event
             }
             player.removeEventListener(window.Twitch.Player.READY, seekAndPlay)
         }
-    }, [player])
+    }, [player, videoId, videoTime])
 
     return (
         <>
@@ -79,8 +79,8 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, event
                     currentMatch={currentMatch}
                     currentPlayer={currentPlayer}
                     streamerId={video_streamer_id}
-                    Header={ValorantNavHeader}
-                    VideoCart={ValorantNavCart}
+                    Header={LolNavHeader}
+                    VideoCart={LolNavCart}
                     startTimeProperty="match_start"
                 />
             </div>

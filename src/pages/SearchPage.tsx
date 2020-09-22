@@ -18,7 +18,13 @@ const SearchPage = ({ location, searchFromCache, onData }:
         if (searchFromCache[queryString]) {
             setSearch(searchFromCache[queryString])
         } else {
-            fetch(`${ROOT_URL}/api/search?q=${searchString[1]}`)
+            let url = `${ROOT_URL}/api/search?q=${searchString[1]}`
+
+            if (localStorage.getItem('search') === 'v2') {
+                url = `${ROOT_URL}/api/search_elastic?q=${searchString[1]}`
+            }
+
+            fetch(url)
                 .then(data => data.json())
                 .then(data => {
                     onData(data, searchString[1])
@@ -27,14 +33,17 @@ const SearchPage = ({ location, searchFromCache, onData }:
                 })
         }
     }, [searchString[1]])
+
     return (
         <div className="p-6 py-12 sm:p-8 lg:px-16">
             {!loaded && <Loader />}
             {loaded && (search.playerSorted.length > 0 ?
                 <div className="mb-6 text-lg font-bold text-primary-500">We found {search.playerSorted.length} results for your query: </div> :
-                <div className="mb-6 text-lg font-bold text-primary-500"> Sorry, we couldn't find any search results for your query. Check back again soon!</div>)}
+                <div className="mb-6 text-lg font-bold text-primary-500">Sorry! We couldn't find '{searchString[1]}' in any recent Twitch Broadcasts. Check back soon!</div>)}
             {loaded && search.playerSorted.length > 0 && search.playerSorted.map((playerId: number) => {
+                console.log(playerId)
                 if (search.playersId[playerId].videosSorted && search.playersId[playerId].videosSorted.length > 0) {
+                    console.log(search.playersId[playerId])
                     return (
                         <StreamerVideosNoHeader
                             key={playerId}

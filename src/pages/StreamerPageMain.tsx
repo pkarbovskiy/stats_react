@@ -6,7 +6,7 @@ import Slider from '../components/Slider'
 
 //TODO: figure out proper type
 const StreamerPageMain = ({ player, videosById, videosSorted, clipsById, clipsSorted }: any) => {
-    const playerUrl = `/player/${player.id}/${player.slug}`
+    const playerUrl = `/fortnite/player/${player.id}/${player.slug}`
     const videosUrl = `${playerUrl}/videos`
     const clipsUrl = `${playerUrl}/clips`
     return (

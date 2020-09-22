@@ -6,11 +6,8 @@ const Search = ({ currentGame }: { currentGame: string }) => {
     const history = useHistory()
     const [searchQuery, setSearchQuery] = useState('')
 
-    let searchUrl = "/search"
+    const searchUrl = `/${currentGame}/search`
 
-    if (currentGame !== Games.fortnite) {
-        searchUrl = `/${currentGame}${searchUrl}`
-    }
     //TODO: set proper type
     function submit(e: any) {
         e.preventDefault()

@@ -40,8 +40,8 @@ fs.readdir(dirJs, function (err, files) {
 })
 function callback(err) {
     if (err) throw err;
-    console.log(`${build}index.html was copied to ${path.join(__dirname, `../streamsnipers-web/common_site/templates/index.html`)}`);
+    console.log(`${build}index.html was copied to ${path.join(__dirname, `../develop/streamsnipers-web/common_site/templates/index.html`)}`);
 }
 
 
-fs.copyFile(`${build}index.html`, path.join(__dirname, `../streamsnipers-web/common_site/templates/index.html`), callback)
+fs.copyFile(`${build}index.html`, path.join(__dirname, `../develop/streamsnipers-web/common_site/templates/index.html`), callback)

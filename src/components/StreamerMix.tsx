@@ -33,7 +33,7 @@ const SreamerMix = () => {
             <div className="-mb-2 text-xs font-bold tracking-widest uppercase text-primary-500">STREAMER MIX</div>
             <div className="flex items-center justify-between">
                 <Link
-                    to={`/player/${player.id}/${player.slug}`}
+                    to={`/fortnite/player/${player.id}/${player.slug}`}
                     onClick={() => gaEvents({ eventCategory: ``, eventAction: 'click', eventLabel: `` })}
                     className="flex items-center w-12 h-12 my-4">
                     <Avatar player={player} />

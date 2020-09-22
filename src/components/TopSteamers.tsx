@@ -9,7 +9,7 @@ const TopStreamers: React.FC<{ topStreamers: topStreamers }> = (props: { topStre
             {Object.keys(topStreamers).map(streamerName =>
                 (
                     <Link
-                        to={`/player/${topStreamers[streamerName]}/${streamerName.toLowerCase()}`}
+                        to={`/fortnite/player/${topStreamers[streamerName]}/${streamerName.toLowerCase()}`}
                     >
                         <img src={`http://vodsearch.tv/static/images/streamers/${streamerName}.png`} alt="top streamer" />
                         <h3>{streamerName}</h3>

@@ -5,7 +5,7 @@ import { gaEvents } from '../common_function'
 
 const StreamerVideosNoHeader = ({ streamer, mediaById, mediaSorted, gaEvent }: { streamer: { id: number, name: string; slug: string }; mediaById: any; mediaSorted: any; gaEvent?: string }) => {
     const [isOpened, setStatus] = useState(false)
-    const clipsUrl = `/player/${streamer.id}/${streamer.slug}/clips`
+    const clipsUrl = `/fortnite/player/${streamer.id}/${streamer.slug}/clips`
     function openCloseDrawer(place: string) {
         setStatus(isOpened => !isOpened)
         gaEvents({ eventCategory: `${gaEvent}::drawer`, eventAction: 'click', eventLabel: `${place}` })

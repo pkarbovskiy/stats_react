@@ -5,7 +5,7 @@ import Avatar from '../components/Avatar'
 import { gaEvents } from '../common_function'
 
 const StreamerVideos = ({ streamer, mediaById, mediaSorted, gaEvent }: { streamer: { id: number, name: string; slug: string }; mediaById: any; mediaSorted: any; gaEvent: string; }) => {
-    const playerUrl = `/player/${streamer.id}/${streamer.slug}`
+    const playerUrl = `/fortnite/player/${streamer.id}/${streamer.slug}`
     return (
         <div className="streamer_video">
             <div className="streamer_video__info">

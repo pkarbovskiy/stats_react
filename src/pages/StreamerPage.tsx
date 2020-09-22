@@ -45,11 +45,11 @@ const StreamerPage = ({ match, onData }: any) => {
             {streamer &&
                 <>
                     <nav className="streamer_page__nav">
-                        <NavLink exact to={`/player/${streamer.id}/${streamer.slug}`} activeClassName={"active"} className="streamer_page__nav--link">Home<div></div></NavLink>
+                        <NavLink exact to={`/fortnite/player/${streamer.id}/${streamer.slug}`} activeClassName={"active"} className="streamer_page__nav--link">Home<div></div></NavLink>
                         {streamer.streamer > 0 &&
-                            <NavLink to={`/player/${streamer.id}/${streamer.slug}/videos`} className="streamer_page__nav--link">Videos<div></div></NavLink>
+                            <NavLink to={`/fortnite/player/${streamer.id}/${streamer.slug}/videos`} className="streamer_page__nav--link">Videos<div></div></NavLink>
                         }
-                        <NavLink to={`/player/${streamer.id}/${streamer.slug}/clips`} className="streamer_page__nav--link">Reactions<div></div></NavLink>
+                        <NavLink to={`/fortnite/player/${streamer.id}/${streamer.slug}/clips`} className="streamer_page__nav--link">Reactions<div></div></NavLink>
                     </nav>
                     <div className="p-6 py-12 streamer_page__player sm:p-8 lg:px-16">
                         <div className="mb-6 streamer_page__avatar">

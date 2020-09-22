@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent } from "react"
-import { isMobile } from '../../constants'
+
 //@todo make it generic
 const DropdownMenu = ({ currentlySet, list, passCurrentValue }: { currentlySet: any; list: any[]; passCurrentValue: Function }) => {
     const [isMenuOpened, setMenuOpened] = useState<boolean>(false)

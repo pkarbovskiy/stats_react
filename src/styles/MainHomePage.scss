@@ -1,0 +1,61 @@
+.main_home_page {
+    @media (min-width: 768px) {
+        padding: 1.5rem;
+    }
+    &__header {
+        padding: 1rem 0;
+        text-align: center;
+        font-size: 1.5rem;
+        @media (min-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+    &__games {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        @media (min-width: 1024px) {
+            width: 50%;
+        }
+        &__link {
+            &:hover {
+                opacity: .7;
+            }
+            &.disabled {
+                position: relative;
+                &::before {
+                    content: "Coming Soon";
+                    position: absolute;
+                    font-size: 1.2rem;
+                    @media (min-width: 768px) {
+                        font-size: 2.1rem;
+                    }
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    z-index: 5;
+                    background: #fff;
+                    top: 20px;
+                    color: #333;
+                    opacity: .9;
+                }
+                cursor: not-allowed;
+                img {
+                    filter: grayscale(1);
+                }
+            }
+            padding-top: 1rem;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            img {
+                width: 100%;
+            }
+            svg {
+                fill: #fff;
+                margin: 1rem;
+            }
+        }
+    }
+}

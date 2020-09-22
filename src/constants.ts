@@ -12,6 +12,7 @@ export const featuredStreamer8bit = `${cloudFrontUrl}/featured_streamers/::id.pn
 
 export const reactionImage = `${cloudFrontUrl}/::id.png`
 export const matchImage = `${cloudFrontUrl}/valorant/::id.png`
+export const matchImageLol = `${cloudFrontUrl}/lol/::id.png`
 
 export const defaultPic = `${cloudFrontUrl}/static/face.svg`
 
@@ -38,7 +39,8 @@ export const mediaTypes = {
 
 export enum Games {
     fortnite = 'fortnite',
-    valorant = 'valorant'
+    valorant = 'valorant',
+    lol = 'lol'
 }
 
 export enum ActionTypes {

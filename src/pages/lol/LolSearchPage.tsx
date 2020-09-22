@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SearchPlayer from '../../components/valorant/SearchPlayer'
+import SearchPlayer from '../../components/lol/SearchPlayer'
 import Loader from '../../components/Loader'
 import { ROOT_URL } from '../../constants'
 // @todo consolidate to one file
@@ -8,7 +8,7 @@ type Player = {
     player_id: number
 }
 
-const ValorantSearchPage = ({ location }:
+const LolSearchPage = ({ location }:
     { location: any; searchFromCache: any; onData: any; }) => {
     const [search, setSearch] = useState<any>()
     const [loaded, setLoaded] = useState<any>(false)
@@ -22,7 +22,7 @@ const ValorantSearchPage = ({ location }:
             setLoaded(true)
             return
         }
-        fetch(`${ROOT_URL}/api/valorant/search?q=${queryString}`)
+        fetch(`${ROOT_URL}/api/lol/search?q=${queryString}`)
             .then(data => data.json())
             .then(data => {
 
@@ -53,4 +53,4 @@ const ValorantSearchPage = ({ location }:
 }
 
 
-export default ValorantSearchPage
+export default LolSearchPage

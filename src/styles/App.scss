@@ -1,4 +1,4 @@
-@import 'Tables';
+@import 'tables';
 @import 'Slider';
 @import 'upDownVote';
 @import 'timeline';
@@ -19,6 +19,9 @@
 @import 'LoginLogout';
 @import 'DropdownMenu';
 @import 'NavHeader';
+@import 'MainHomePage';
+
+@import 'common/HomePage';
 
 @import 'valorant/SearchPage';
 @import 'valorant/SearchPlayer';
@@ -28,6 +31,8 @@
 @import 'valorant/StreamerList';
 @import 'valorant/VideoCart';
 @import 'valorant/HomePage';
+
+@import 'fortnite/HomePage';
 
 $main-background: #fff;
 $sidebar-background: #151724;

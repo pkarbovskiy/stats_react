@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent, useEffect, ReactChild, ReactType } from "react"
+import React, { useState, MouseEvent, useEffect, ElementType } from "react"
 
 type Props = {
     eventsInOrder: any,
@@ -8,8 +8,8 @@ type Props = {
     streamerId: number,
     player: any,
     startTimeProperty: string,
-    Header: ReactType<{ event: any, toggleMatch: Function, isClosed: boolean }>,
-    VideoCart: ReactType<any>
+    Header: ElementType<{ event: any, toggleMatch: Function, isClosed: boolean }>,
+    VideoCart: ElementType<any>
 }
 //TODO add type for stats
 const Navigation = ({ eventsInOrder, eventsById, player, currentMatch = 0, currentPlayer, streamerId, Header, VideoCart, startTimeProperty }: Props) => {
@@ -71,7 +71,7 @@ const Navigation = ({ eventsInOrder, eventsById, player, currentMatch = 0, curre
                                             currentPlayer === '' ||
                                             currentPlayer === stat.player_name1 ||
                                             currentPlayer === stat.player_name2 ||
-                                            currentPlayer === stat.player_name
+                                            currentPlayer === stat.player_name || stat.action_id === 13
                                         )
                                         .map((stat: any) =>
                                             <dd key={stat.stats_id}>

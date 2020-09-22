@@ -33,6 +33,7 @@ const Slider = ({ mediaSorted, mediaById, classNameProp = '', includeStreamerNam
         }
         items.current.scrollLeft += direction * item
     }
+    console.log(mediaById, includeStreamerName)
     return (
         <div className={`flex flex-wrap ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
             {mediaSortedSlice.map((value: any) =>
@@ -40,7 +41,7 @@ const Slider = ({ mediaSorted, mediaById, classNameProp = '', includeStreamerNam
             )}
         </div>
         // <div className="slider-wrapper">
-           
+
         //     <button className="slider__previous" onClick={() => scroll(-1)}>
         //         <svg viewBox="0 0 24 24">
         //             <g>

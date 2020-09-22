@@ -1,5 +1,4 @@
 import React, { useState, createContext, useReducer } from 'react'
-import HomePage from './pages/HomePage'
 import InfoPage from './pages/InfoPage'
 import HighlightHelper from './pages/HighlightHelper'
 import VideoPage from './pages/VideoPage'
@@ -7,10 +6,18 @@ import StreamerPage from './pages/StreamerPage'
 import SearchPage from './pages/SearchPage'
 import VideoListPage from './pages/VideoListPage'
 
+import FortniteHomePage from './pages/fortnite/HomePage'
+import HomePage from './pages/HomePage'
+
 import ValorantSearchPage from './pages/valorant/ValorantSearchPage'
 import ValorantPlayerPage from './pages/valorant/ValorantPlayerPage'
 import ValorantVideoPage from './pages/valorant/ValorantVideoPage'
 import ValorantHomePage from './pages/valorant/ValorantHomePage'
+
+import LolSearchPage from './pages/lol/LolSearchPage'
+import LolPlayerPage from './pages/lol/LolPlayerPage'
+import LolVideoPage from './pages/lol/LolVideoPage'
+import LolHomePage from './pages/lol/LolHomePage'
 
 import Header from './common/header'
 import StreamerMix from './components/StreamerMix'
@@ -65,7 +72,13 @@ export const GlobalState = createContext<globalContext>(INITIAL_VALUE)
 function updateInitValue(initialState: globalContext): globalContext {
     const copyOfState = Object.assign({}, initialState)
 
-    copyOfState.currentGame = window.location.pathname.indexOf('/valorant') === 0 ? Games.valorant : Games.fortnite
+    const splitLocation = window.location.pathname.split('/')
+
+    copyOfState.currentGame = Games.valorant
+
+    if (Games[splitLocation[1] as Games] != null) {
+        copyOfState.currentGame = Games[splitLocation[1] as Games]
+    }
 
     copyOfState.isAuthenticated = localStorage.getItem('token') ? true : false
 
@@ -102,20 +115,18 @@ const Root = ({ store }: { store: any }) => {
                     <main className={navigator.userAgent.toLowerCase().match(/mobile/i) ? 'mobile' : ''}>
                         <Switch>
                             <Route exact path="/" component={HomePage} />
-                            <Route exact path="/all_videos" component={VideoListPage} />
-                            <Route exact path="/random_video" render={(props) => (<VideoPage {...props} key={Math.random()} />)} />
-                            <Route exact path="/video/:videoId" component={VideoPage} />
-                            <Route exact path="/video/:videoId/timer/:timer" component={VideoPage} />
-                            <Route path="/player/:playerId/:slug" component={StreamerPage} />
-                            <Route exact path="/random_streamer" render={(props) => (<StreamerPage {...props} key={Math.random()} />)} />
-                            <Route exact path="/featured_streamers" component={StreamerPage} />
-                            <Route exact path="/search" component={SearchPage} />
-                            <Route exact path="/highlighthelper" component={HighlightHelper} />
 
+                            <Route exact path="/highlighthelper" component={HighlightHelper} />
                             <Route exact path="/about_us" component={InfoPage} />
                             <Route exact path="/info" component={InfoPage} />
                             <Route exact path="/privacy" component={InfoPage} />
                             <Route exact path="/terms_of_service" component={InfoPage} />
+
+                            <Route exact path="/fortnite/" component={FortniteHomePage} />
+                            <Route exact path="/fortnite/video/:videoId" component={VideoPage} />
+                            <Route exact path="/fortnite/video/:videoId/timer/:timer" component={VideoPage} />
+                            <Route path="/fortnite/player/:playerId/:slug" component={StreamerPage} />
+                            <Route exact path="/fortnite/search" component={SearchPage} />
 
                             <Route exact path="/valorant/" component={ValorantHomePage} />
                             <Route exact path="/valorant/video/:videoId" component={ValorantVideoPage} />
@@ -123,6 +134,14 @@ const Root = ({ store }: { store: any }) => {
                             {/* @todo add slug */}
                             <Route path="/valorant/player/:playerId" component={ValorantPlayerPage} />
                             <Route exact path="/valorant/search" component={ValorantSearchPage} />
+
+                            <Route exact path="/lol/" component={LolHomePage} />
+                            <Route exact path="/lol/video/:videoId" component={LolVideoPage} />
+                            <Route exact path="/lol/video/:videoId/match/:matchId" component={LolVideoPage} />
+                            {/* @todo add slug */}
+                            <Route path="/lol/player/:playerId" component={LolPlayerPage} />
+                            <Route exact path="/lol/search" component={LolSearchPage} />
+
                         </Switch>
                     </main>
                     <footer className="main_footer">

@@ -1,0 +1,12 @@
+.home_page {
+    &.fortnite {
+        & > svg {
+            width: 60vw;
+            margin-bottom: 1rem;
+            @media (min-width:1024px) {
+                width: 30vw;
+                margin-bottom: 3rem;
+            }
+        }
+    }
+}

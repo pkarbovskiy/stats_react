@@ -9,7 +9,7 @@ type Player = {
 //@todo add avatar
 const SearchPlayer = ({ player_name, player_id }: Player) => {
     return (
-        <Link className="search_player lg:px-16 p-6 py-8" to={`/valorant/player/${player_id}`}>
+        <Link className="search_player lg:px-16 p-6 py-8" to={`/lol/player/${player_id}`}>
             <p className="search_player__name">{player_name}</p>
         </Link>
     )
