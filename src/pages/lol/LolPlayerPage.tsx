@@ -108,8 +108,8 @@ const LolPlayerPage = ({ match }: any) => {
                     </div>
                     <StreamersList streamersList={streamersList} elementClicked={filterResults} currentlyActive={streamersFiltered.currentlySet} />
                     <p className="streamer_page__all_matches text-black py-2 sm:p-6 lg:px-16">
-                        ALL MATCHES
-                </p>
+                        Matches
+                    </p>
                     {matchesShown?.length > 0 &&
                         <Table matches={matchesShown} streamers={matches.streamers} currentPlayer={streamer.name} />
                     }

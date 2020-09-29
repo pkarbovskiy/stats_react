@@ -113,7 +113,7 @@ const ValorantPlayerPage = ({ match }: any) => {
                     </div>
                     <StreamersList streamersList={streamersList} elementClicked={filterResults} currentlyActive={streamersFiltered.currentlySet} />
                     <p className="streamer_page__all_matches text-black py-2 sm:p-6 lg:px-16">
-                        ALL MATCHES
+                        Matches
                 </p>
                     {matchesShown?.length > 0 &&
                         <ValorantTable matches={matchesShown} streamers={matches.streamers} currentPlayer={streamer.name} />
