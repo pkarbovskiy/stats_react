@@ -150,6 +150,7 @@ const Root = ({ store }: { store: any }) => {
                             <PrivacyPolicyLinks />
                         </div>
                         <span className="all_rights_reserved">© {new Date().getFullYear()} VodSearchTV. All rights reserved.</span>
+                        <span className="not_riot">VODsearch.tv isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</span>
                     </footer>
                     <CookieConsent location="bottom" style={{ opacity: 0.9 }} onAccept={() => { }}>
                         <span style={{ fontSize: "20px" }}>

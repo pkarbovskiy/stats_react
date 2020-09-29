@@ -1,0 +1,10 @@
+.home_page {
+    &.lol {
+        & > svg {
+            @media (min-width:1024px) {
+                max-width: 500px;
+
+            }
+        }
+    }
+}

@@ -5,6 +5,7 @@ import Popup from "../components/shared/Popup"
 import Registration from "../components/user/Registration"
 import Login from "../components/user/Login"
 import LoginLogoutButton from "../components/user/LoginLogoutButton"
+import RegistrationButton from "../components/user/RegistrationButton"
 import DropdownMenu from '../components/shared/DropdownMenu'
 import { Games, ActionTypes } from '../constants'
 
@@ -92,7 +93,7 @@ const Header = ({ toggleMenu, handleAuthentication }: { toggleMenu: Function, ha
     let location = useLocation()
     let history = useHistory()
 
-    const isItGameHome = location.pathname === '/valorant/' || location.pathname === '/fortnite/' || location.pathname === '/lol/'
+    const isItGameHome = ['/valorant/', '/valorant', '/fortnite/', '/fortnite', '/lol/', '/lol'].includes(location.pathname)
     let search: JSX.Element = <div className="other__search relative dummy"></div>
 
     let urlToRedirect = `/${currentGame}/`
@@ -114,7 +115,7 @@ const Header = ({ toggleMenu, handleAuthentication }: { toggleMenu: Function, ha
             break
         default:
             component = <Login setPopupType={setPopupType} togglePopup={togglePopup} setAuthenticated={handleAuthentication}>
-                <p className="text-black">Not registered? <a href="#" onClick={changePopupType.bind(null, 'registration', setPopupType)}>Signup Here!</a></p>
+                <p className="text-black">Not registered? <a href="#" onClick={changePopupType.bind(null, 'registration', setPopupType)}>Sign Up Here!</a></p>
             </Login>
     }
     function changeHistory(url: string) {
@@ -134,7 +135,7 @@ const Header = ({ toggleMenu, handleAuthentication }: { toggleMenu: Function, ha
     }
     return (
         <>
-            <header className="w-full h-48 p-6 header bg-primary-900 lg:p-0 lg:h-auto">
+            <header className={`w-full p-6 header bg-primary-900 lg:p-0 lg:h-auto${isItGameHome || location.pathname === '/' ? ' no_search_bar' : ''}`}>
                 <div className="flex-grow mb-4 md:mb-0 logo_container lg:mb-0">
                     <Link to={urlToRedirect} className="flex items-center lg:h-full lg:px-8">
                         <Logo />
@@ -148,7 +149,11 @@ const Header = ({ toggleMenu, handleAuthentication }: { toggleMenu: Function, ha
                 <div className="lg:bg-white header__side">
                     {dropdownMenu}
                     {search}
-                    <LoginLogoutButton isAuthenticated={isAuthenticated} setAuthenticated={handleAuthentication} togglePopup={togglePopup} />
+                    <div className="header__side__login_reg">
+                        {!isAuthenticated &&
+                            <RegistrationButton togglePopup={togglePopup} setPopupType={setPopupType} />}
+                        <LoginLogoutButton isAuthenticated={isAuthenticated} setAuthenticated={handleAuthentication} togglePopup={togglePopup} />
+                    </div>
                 </div>
             </header>
             {isPopupShown &&

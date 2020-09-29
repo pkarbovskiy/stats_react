@@ -2,7 +2,7 @@ $font-color-header: #342060;
 .video_nav {
     border: 1px solid #E4DFEC;    
     max-height: calc(100vh - 446px);
-    @media screen and (min-width:768px) {
+    @media screen and (min-width: 768px) {
         max-height: calc(100vh - 663px);
     }
     @media screen and (min-width:1024px) {

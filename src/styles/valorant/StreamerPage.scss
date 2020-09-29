@@ -6,8 +6,31 @@ $color-of-border: #E0E0E0;
         @media (min-width: 1024px) {
             padding-top: 0;
         }
+        & .streamer_page__avatar {
+            padding-right: 2rem;
+            flex-shrink: 0;
+        }
+    }
+    &__player {
+        &.valorant {
+            @media (min-width: 768px) {
+                flex-direction: row;
+            }
+        }
+        &__stats {
+            @media (min-width: 768px) {
+                margin-left: 45px;
+            }
+            margin-left: 19px;
+            color: #333;
+            font-size: 15px;
+            @media (min-width:1440px) {
+                line-height: 33px;
+            }
+        }
     }
     &__all_matches {
+        padding-left: 1rem;
         background-color: $background-color;
         border-top: 1px solid $color-of-border;
         border-bottom: 1px solid $color-of-border;

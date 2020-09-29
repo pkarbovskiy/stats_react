@@ -41,9 +41,7 @@ const SearchPage = ({ location, searchFromCache, onData }:
                 <div className="mb-6 text-lg font-bold text-primary-500">We found {search.playerSorted.length} results for your query: </div> :
                 <div className="mb-6 text-lg font-bold text-primary-500">Sorry! We couldn't find '{searchString[1]}' in any recent Twitch Broadcasts. Check back soon!</div>)}
             {loaded && search.playerSorted.length > 0 && search.playerSorted.map((playerId: number) => {
-                console.log(playerId)
                 if (search.playersId[playerId].videosSorted && search.playersId[playerId].videosSorted.length > 0) {
-                    console.log(search.playersId[playerId])
                     return (
                         <StreamerVideosNoHeader
                             key={playerId}

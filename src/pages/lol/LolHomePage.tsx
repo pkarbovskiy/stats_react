@@ -8,7 +8,7 @@ const LolHomePage = () => {
             <Helmet>
                 <title>League of Legends - VODsearch.tv | See which streamers you&apos;ve killed</title>
             </Helmet>
-            <div className="home_page valorant">
+            <div className="home_page lol">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 229.42">
                     <g fill="#c79b3b">
                         <path d="m566.8 164.82c-10.2-2.6-19-4.8-19-13.2 0-6.6 5-10.8 13-10.8 7.4-0.4 14.2 4.6 15.6 12l20-9.6c-5.4-13.2-18.4-21.2-35-21.2-21.6 0-36.6 13.2-36.6 32 0 23 16.6 27.4 31.4 31.2 10.4 2.6 19.2 5 19.2 13.6 0 7.2-5.8 11.8-14.6 11.8s-16.2-4.8-18.2-12l-20 9.6c5.6 13.2 19.8 21.2 37.4 21.2 23.4 0 38.4-13 38.4-33.4 0-23.2-17.6-27.6-31.6-31.2z" />

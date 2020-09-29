@@ -1,7 +1,7 @@
 import React, { useContext, MouseEvent } from "react"
 import { Link } from "react-router-dom"
 import { GlobalState } from '../routes'
-import { cloudFrontUrl, Games, ActionTypes } from '../constants'
+import { Games, ActionTypes } from '../constants'
 
 const HomePage = () => {
     const { dispatchGlobStateAction } = useContext(GlobalState)

@@ -1,3 +1,5 @@
+@import 'Header';
+
 @import 'tables';
 @import 'Slider';
 @import 'upDownVote';
@@ -33,6 +35,8 @@
 @import 'valorant/HomePage';
 
 @import 'fortnite/HomePage';
+
+@import 'lol/HomePage';
 
 $main-background: #fff;
 $sidebar-background: #151724;
@@ -95,183 +99,7 @@ main {
    
 }
 
-.dummy {
-    @media (min-width:1024px) {
-        height: 64px;       
-    }
-}
-.header {
-    @apply bg-white;
-    display: flex;
-    z-index: 1;
-    .logo_container {
-        position: relative;
-        
-        border-right: 4px solid #666FE4;
-        .expand-collapse {
-            position: absolute;
-            right: -21px;
-            top: 26px;
-            width: 36px;
-            height: 36px;
-            padding: 6px 6px 6px 3px;
-            border: 4px solid #666FE4;
-            border-radius: 100%;
-        }
-        .expand-collapse {
-            display: none;
-        }
-    }
 
-    @media screen and (min-width: break-iphone-x) {
-        width: 375px;
-    }
-
-    &__side {
-        width: 100%;
-    }
-    @media screen and (min-width: $break-iphone-x) {
-        &__side {
-            display: flex;
-            align-items: center;
-            width: calc(100% - 375px);
-            box-shadow: 0px 6.48081px 15.1219px rgba(102, 111, 228, 0.14), 0px 1.08014px 5.40068px rgba(0, 0, 0, 0.07);
-        }
-    }
-    @media screen and (max-width: $break-iphone-x) {
-        box-shadow: none;
-        background: #151724;
-        flex-direction: column;
-        align-items: flex-start;
-        .logo_container {
-            border: none;
-        }
-    }
-    @media screen and (min-width: $break-ipad) {
-        z-index: 6;
-        .holder {
-            display: flex;
-            align-items: center;
-        }
-    }
-    .main-nav__ham_menu {
-        margin: 0;
-        display:inline;
-    }
-    .site--logo {
-       svg {
-           &.sitename {
-                width: 11rem;
-                height: 6rem;        
-            }
-            &.picture {
-                width: 6.5rem;
-                height: 6.5rem; 
-                margin: 1.5rem 1.6rem 0 3.4rem;
-           }
-       } 
-    }
-    & > svg {
-        width: 2rem;
-    }
-    .logo--link {
-        line-height: 26px;
-        display: flex;
-        svg {
-            fill: $main-brand-color;
-            height: 27px;
-        }
-        img {
-            height: 30px;
-        }
-    }
-    .other {
-        display: flex;
-        justify-content: flex-end;
-        &__search {
-            display: flex;
-            position: relative;
-            @media screen and (min-width: $break-ipad) {    
-                width: 70vw;
-                max-width: 640px;
-                margin: 15px auto;
-                flex-direction: row;
-            }
-
-            &__query {
-                padding-left: 2rem;
-                padding-right: 2rem;
-                border: 4px solid $main-font-color;
-                border-radius: 9999px;
-                height: 6.4rem;
-                width: 100%;
-                font-family: Quicksand;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 16px;
-                outline: none;
-                @media screen and (min-width: $break-ipad) {
-                    width: 100%;
-                }
-            }
-        
-            &__submit {
-                cursor: pointer;
-                display: flex;
-                position: absolute;
-                top: 3px;
-                right: 4px;
-                height: 4.8rem;
-                width: 4.8rem;
-                align-items: center;
-                justify-content: center;
-                border: none;
-                margin-right: .5rem;
-                margin-top: .5rem;
-                border-radius: 9999px;
-                background: $main-font-color;
-                &:hover {
-                    background-color: #434190;
-                }
-                svg {
-                    width: 2.3rem;
-                    height: 2.3rem;
-                }
-            }
-        }
-        &__info {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            svg {
-                fill: $main-brand-color;
-                width: 2rem;
-                background: transparent;
-            }
-            @media screen and (max-width: $break-ipad) {                
-                position: relative;
-                align-items: center;
-                svg {
-                    fill: $main-brand-color;
-                    
-                }
-            }
-            @media (min-width: $break-ipad) {
-                position: absolute;
-                right: 26vw;
-            }
-            @media (min-width: 1024px) and (max-width: 1440px) {
-                position: absolute;
-                right: 9vw;
-            }
-            @media (min-width: 1441px) {
-                position: absolute;
-                right: 23vw;
-            }
-        }
-    }
-    
-}
 .info_block {
     font-size: 1.75rem;
     padding: 2rem;
@@ -412,7 +240,6 @@ h2 {
 
 html, body {
     height: 100%; 
-    font-family: 'Quicksand', sans-serif;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -474,4 +301,11 @@ html, body {
 
 .border-primary-500 {
     border-color: #666FE4;
+}
+
+.not_riot {
+    font-size: 11px;
+    line-height: 5px;
+    color: #aaa;
+    text-align: justify;
 }

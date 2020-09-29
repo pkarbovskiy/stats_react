@@ -5,6 +5,7 @@ import { shouldLazyLoad } from '../../common_function'
 import { ROOT_URL } from '../../constants'
 import ValorantTable from '../../components/valorant/Table'
 import StreamersList from '../../components/valorant/StreamersList'
+import { Helmet } from 'react-helmet'
 
 //api/valorant/player/<int:id>
 //@todo set proper type for match
@@ -100,11 +101,15 @@ const ValorantPlayerPage = ({ match }: any) => {
             {!streamer && <Loader />}
             {streamer &&
                 <>
-                    <div className="p-6 streamer_page__player lg:px-16">
+                    <Helmet>
+                        <title>{`${streamer.name} - Valorant | VODsearch.tv | See which streamers you&apos;ve killed`}</title>
+                    </Helmet>
+                    <div className="p-6 streamer_page__player valorant lg:px-16">
                         <div className="mb-6 streamer_page__avatar">
                             <Avatar player={streamer} />
                             <div className={'text-primary-500 text-2xl font-bold'}>{streamer.name}</div>
                         </div>
+                        <h1 className="streamer_page__player__stats">{matches.title}</h1>
                     </div>
                     <StreamersList streamersList={streamersList} elementClicked={filterResults} currentlyActive={streamersFiltered.currentlySet} />
                     <p className="streamer_page__all_matches text-black py-2 sm:p-6 lg:px-16">
