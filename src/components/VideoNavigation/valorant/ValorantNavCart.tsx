@@ -14,14 +14,22 @@ type StatsValorant = {
     streamerId: number;
     stat_id?: number;
 
+    event?: {
+        event: string;
+        number: number;
+    };
+
     seekTime: Function
 }
-const ValorantNavCart = ({ agent1, player_name1, agent2, player_name2, player_id2, player_id1, streamerId, timestamp, seekTime }: StatsValorant) => {
+const ValorantNavCart = ({ agent1, player_name1, agent2, player_name2, player_id2, player_id1, streamerId, timestamp, seekTime, event }: StatsValorant) => {
     return (
         <div className={`val_nav_cart ${player_id1 === streamerId || player_id2 === streamerId ? 'streamer' : ''}`} onClick={seekTime.bind(null, timestamp)}>
             <img className="val_nav_cart__player1" alt={agent1} src={`${cloudFrontUrl}/static/agents/${agent1}.png`} />
             <span >{`${player_name1} vs ${player_name2}`}</span>
             <img className="val_nav_cart__player2" alt={agent2} src={`${cloudFrontUrl}/static/agents/${agent2}.png`} />
+            {event?.event &&
+                <span className="val_nav_cart__event">{event.event} <span className="val_nav_cart__event__kill_number">{event.number}</span></span>
+            }
         </div>
     )
 }

@@ -68,14 +68,14 @@ const VideoListPage = ({ player, playersById, clipsById, clipsSorted, allMediaSo
                     </div>
                     <div className="w-1/2 p-1 sm:w-1/4">
 
-                    <button className={`${currAction.current === 'eliminatedby' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('eliminatedby')}>Eliminated By</button>
+                        <button className={`${currAction.current === 'eliminatedby' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('eliminatedby')}>Eliminated By</button>
                     </div>
                     <div className="w-1/2 p-1 sm:w-1/4">
-                    <button className={`${currAction.current === 'eliminated' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('eliminated')}>Eliminated</button>
+                        <button className={`${currAction.current === 'eliminated' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('eliminated')}>Eliminated</button>
 
                     </div>
                     <div className="w-1/2 p-1 sm:w-1/4">
-                    <button className={`${currAction.current === 'victory' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('victory')}>Victory</button>
+                        <button className={`${currAction.current === 'victory' ? 'active' : ''} block uppercase w-full shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-2 px-2 rounded`} onClick={() => sortByAction('victory')}>Victory</button>
 
                     </div>
                 </div>
