@@ -33,7 +33,6 @@ const Slider = ({ mediaSorted, mediaById, classNameProp = '', includeStreamerNam
         }
         items.current.scrollLeft += direction * item
     }
-    console.log(mediaById, includeStreamerName)
     return (
         <div className={`flex flex-wrap ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`} ref={items}>
             {mediaSortedSlice.map((value: any) =>

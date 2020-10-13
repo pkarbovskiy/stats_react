@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoCart, { videoCartProps } from '../lol/VideoCart'
+import VideoCart from '../lol/VideoCart'
 
 const Table = ({ matches, streamers, gaEvent, currentPlayer }: any) => {
 
@@ -10,7 +10,7 @@ const Table = ({ matches, streamers, gaEvent, currentPlayer }: any) => {
     return (
         <div className={`flex flex-wrap flex-col sm:flex-row my-4ss`}>
             {matches.map((match: any) =>
-                <VideoCart key={match.id} {...match} streamer={streamers[match.streamer_id]} currentPlayer={currentPlayer} gaEvent={gaEvent} />)}
+                <VideoCart key={match.match_id} {...match} streamer={streamers[match.streamer_id]} currentPlayer={currentPlayer} gaEvent={gaEvent} />)}
         </div>
     )
 }

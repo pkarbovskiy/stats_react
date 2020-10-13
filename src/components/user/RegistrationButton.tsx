@@ -1,8 +1,10 @@
 import React, { MouseEvent } from "react"
+import { gaEvents } from '../../common_function'
 
 const RegistrationButton = ({ togglePopup, setPopupType }: { togglePopup: Function, setPopupType: Function }) => {
     const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
         event.preventDefault()
+        gaEvents({ eventCategory: 'Sign Up Initial', eventAction: 'Sign Up Initial', eventLabel: 'Sign Up Initial' })
         togglePopup(true)
         setPopupType('registration')
     }

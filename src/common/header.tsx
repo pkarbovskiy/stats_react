@@ -74,7 +74,7 @@ const games: any = {
             type: Games.lol
         },
     },
-    list: [Games.fortnite, Games.valorant],
+    list: [Games.fortnite, Games.valorant, Games.lol],
 }
 function changePopupType(type: string, changeFuction: Function, event: MouseEvent<HTMLAnchorElement>): void {
     event.preventDefault()
@@ -137,7 +137,7 @@ const Header = ({ toggleMenu, handleAuthentication }: { toggleMenu: Function, ha
         <>
             <header className={`w-full p-6 header bg-primary-900 lg:p-0 lg:h-auto${isItGameHome || location.pathname === '/' ? ' no_search_bar' : ''}`}>
                 <div className="flex-grow mb-4 md:mb-0 logo_container lg:mb-0">
-                    <Link to={urlToRedirect} className="flex items-center lg:h-full lg:px-8">
+                    <Link to="/" className="flex items-center lg:h-full lg:px-8">
                         <Logo />
                     </Link>
                     <button className="expand-collapse" onClick={() => toggleMenu((showMenu: boolean) => !showMenu)}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, MouseEvent } from 'react'
 import Avatar from './Avatar'
 import Table from './Table'
 import { ROOT_URL } from '../constants'
@@ -13,8 +13,11 @@ const SreamerMix = () => {
     //const currentMediaType = useRef<'clips' | 'videos'>('videos')
     const mediaSorted = data[`${currentMediaType}Sorted`].slice(0, 3)
     const mediaById = data[`${currentMediaType}ById`]
-    function getNextStreamer() {
-
+    function getNextStreamer(event?: MouseEvent<HTMLButtonElement>) {
+        if (event != null) {
+            event.preventDefault()
+            gaEvents({ eventCategory: 'Sidebar::refresh', eventAction: 'Sidebar::refresh', eventLabel: 'Sidebar::refresh' })
+        }
         fetch(`${ROOT_URL}/api/player/random`)
             .then(data => data.json())
             .then(data => {
@@ -34,13 +37,13 @@ const SreamerMix = () => {
             <div className="flex items-center justify-between">
                 <Link
                     to={`/fortnite/player/${player.id}/${player.slug}`}
-                    onClick={() => gaEvents({ eventCategory: ``, eventAction: 'click', eventLabel: `` })}
+                    onClick={() => gaEvents({ eventCategory: `Sidebar::player`, eventAction: `player_id::${player.id}::${player.name}`, eventLabel: `player_id::${player.id}::${player.name}` })}
                     className="flex items-center w-12 h-12 my-4">
                     <Avatar player={player} />
                     <span className="ml-3 text-lg text-white">{player.name}</span>
                 </Link>
                 <button
-                    onClick={() => getNextStreamer()}
+                    onClick={getNextStreamer.bind(null)}
                     type="submit"
                     className="flex items-center justify-center w-16 h-16 transition duration-300 ease-in-out rounded-full cursor-pointer focus:border-blue-100 focus:outline-none focus:shadow-outline bg-primary-800 hover:bg-indigo-800">
                     <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -59,7 +62,7 @@ const SreamerMix = () => {
                 <div className={`text-white cursor-pointer hover:text-indigo-400 pb-2 ${currentMediaType === 'videos' ? 'text-white border-b-4 text-indigo-400 border-primary-500 border-solid pb-2 cursor-pointer' : ''}`} onClick={() => updateFilter('videos')}>Recent Broadcasts</div>
                 <div className={`text-white ml-8 cursor-pointer hover:text-indigo-400 pb-2 ${currentMediaType === 'clips' ? 'text-white border-b-4 text-indigo-400 border-primary-500 border-solid pb-2 cursor-pointer' : ''}`} onClick={() => updateFilter('clips')}>Reactions</div>
             </div>
-            <Table mediaById={mediaById} singleColumn={true} darkMode={true} mediaSorted={mediaSorted} classNameProp={['dark', 'side']} />
+            <Table mediaById={mediaById} singleColumn={true} darkMode={true} mediaSorted={mediaSorted} classNameProp={['dark', 'side']} gaEvent="Sidebar" />
         </div>
     )
 }

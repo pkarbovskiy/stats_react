@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoCart, { videoCartProps } from './VideoCart'
+import VideoCart from './VideoCart'
 
 const Table = ({ mediaSorted, mediaById, playersById, gaEvent, classNameProp = '', singleColumn, darkMode }: any) => (
     <div className={`flex flex-wrap flex-col sm:flex-row my-4 ${Array.isArray(classNameProp) ? classNameProp.join(' ') : classNameProp}`}>

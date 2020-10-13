@@ -1,8 +1,7 @@
 import React from 'react'
-import ValorantVideoCart, { videoCartProps } from '../valorant/VideoCart'
+import ValorantVideoCart from '../valorant/VideoCart'
 
 const TableValorant = ({ matches, streamers, gaEvent, currentPlayer }: any) => {
-
     if (!matches || matches.length === 0) {
         return null
     }
@@ -10,11 +9,9 @@ const TableValorant = ({ matches, streamers, gaEvent, currentPlayer }: any) => {
     return (
         <div className={`flex flex-wrap flex-col sm:flex-row my-4ss`}>
             {matches.map((match: any) =>
-                <ValorantVideoCart key={match.id} {...match} streamer={streamers[match.streamer_id]} currentPlayer={currentPlayer} gaEvent={gaEvent} />)}
+                <ValorantVideoCart key={match.match_id} {...match} streamer={streamers[match.streamer_id]} currentPlayer={currentPlayer} gaEvent={gaEvent} />)}
         </div>
     )
 }
-
-
 
 export default TableValorant

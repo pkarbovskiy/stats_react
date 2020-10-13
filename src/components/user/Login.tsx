@@ -2,6 +2,7 @@ import React, { FormEvent, MouseEvent, ReactChild } from "react"
 import { loginUrl } from '../../constants'
 import { useFormValidation } from '../form/useFormValidation'
 import { loginValidation } from '../form/loginValidation'
+import { gaEvents } from '../../common_function'
 
 const INITIAL_STATE = {
     email: "",
@@ -48,6 +49,7 @@ const Login = ({ togglePopup, setPopupType, setAuthenticated, children }: { togg
                     return Promise.reject(user)
                 }
                 setAuthenticated(user.key)
+                gaEvents({ eventCategory: 'Log In Complete', eventAction: 'Log In Complete', eventLabel: 'Log In Complete' })
                 togglePopup(false)
                 // @todo add jwt
                 //localStorage.setItem('id_token', user.id_token)

@@ -7,13 +7,12 @@ const InfoPage = ({ match }: any) => {
             text = <div className="text-sm text-gray-700 info_block__about_us">
                 <div className={'text-primary-500 text-3xl font-bold mb-4'}>About us</div>
                 VODsearch.tv was created by a team of video game enthusiasts.
-                Our mission is to build products and services that increase the number and quality of ways that streamers and fans connect.
-                We aim to make it easier for streamers to get more out of the material they put out,
-                while at the same time giving fans better ways to explore and discover.
             <br></br><br></br>
-                If you're a streamer and would be interested in collaborating, shoot us a note at <a href="mailto: collaborations@vodsearch.tv">collaborations@VODsearch.tv</a>.
+                Our mission is to increase engagement between content creators and fans.
+                We provide tournament organizers and e-sports leagues with fully automated solutions
+                for data collection, realtime highlights / replays to be used in production, and interactive historical broadcasts.
             <br></br><br></br>
-                If you're a developer with a passion for gaming and skilled in front-end design or back-end optimization contact us at <a href="mailto: work@vodsearch.tv">work@VODsearch.tv</a>.
+                If you're a tournament organizer, e-sports professional (caster, team manager) and want to hear more about how we can assist you, reach out to us at <a href="mailto: collaborations@vodsearch.tv">collaborations@VODsearch.tv</a>.
             </div>
             break
         case "/privacy":

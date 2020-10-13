@@ -116,7 +116,7 @@ const ValorantPlayerPage = ({ match }: any) => {
                         Matches
                 </p>
                     {matchesShown?.length > 0 &&
-                        <ValorantTable matches={matchesShown} streamers={matches.streamers} currentPlayer={streamer.name} />
+                        <ValorantTable matches={matchesShown} streamers={matches.streamers} currentPlayer={streamer.name} gaEvent={`Valorant::Player Page`} />
                     }
                 </>
             }

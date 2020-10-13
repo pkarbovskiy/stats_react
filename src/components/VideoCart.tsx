@@ -44,7 +44,11 @@ const VideoCart = (props: videoCartProps) => {
     return (
         <div className={`${singleColumn ? ' sm:w-full' : 'w-full sm:w-1/2 xl:w-1/4'} ${darkMode ? ' sm:w-full py-2' : 'w-full sm:w-1/2 xl:w-1/4 py-2 sm:p-2'} `}>
             <div className={`${darkMode ? 'bg-primary-900 text-indigo-300 font-bold text-xs' : 'bg-white text-gray-800'} relative shadow p-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out`}>
-                <Link className="relative block object-cover w-full h-40 mb-2 rounded-lg rounded-b-none" to={videoUrl} onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `${videoId}` })}>
+                <Link
+                    className="relative block object-cover w-full h-40 mb-2 rounded-lg rounded-b-none"
+                    to={videoUrl}
+                    onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: `video_id::${videoId}${timestamp ? `::timestamp::${timestamp}` : ''}`, eventLabel: `video_id::${videoId}${timestamp ? `::timestamp::${timestamp}` : ''}` })}
+                >
                     <img className="object-cover w-full h-40 mb-2 transition duration-700 ease-out rounded-lg rounded-b-none hover:opacity-75"
                         onError={error}
                         loading="lazy"
@@ -57,7 +61,10 @@ const VideoCart = (props: videoCartProps) => {
 
                 <div className={`flex items-center leading-tight ${darkMode ? 'h-8' : 'h-12'} `}>
                     {avatar ?
-                        <Link to={`/fortnite/player/${streamer.id}/${streamer.slug}`} onClick={() => gaEvents({ eventCategory: `${gaEvent}:avatar`, eventAction: 'click', eventLabel: `${videoId}` })}>
+                        <Link
+                            to={`/fortnite/player/${streamer.id}/${streamer.slug}`}
+                            onClick={() => gaEvents({ eventCategory: `${gaEvent}:avatar`, eventAction: 'click', eventLabel: `${videoId}` })}
+                        >
                             <Avatar player={streamer} />
                         </Link>
                         :

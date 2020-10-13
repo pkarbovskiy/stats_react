@@ -45,7 +45,9 @@ const Navigation = ({ eventsInOrder, eventsById, player, currentMatch = 0, curre
         //try to space it out, otherwise it doesn't work
         setTimeout(() => { player.seek(time) }, 50)
     }
-
+    if (Object.keys(eventsById).length === 0) {
+        return <></>
+    }
     return (
         <nav className="video_nav overflow-x-hidden">
             <dl className="video_nav__main_list w-full">

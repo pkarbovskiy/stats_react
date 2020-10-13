@@ -50,7 +50,9 @@ const LolVideoCart = (props: any) => {
     // const playerUrl = `/lol/player/${(player || {}).id}/${(player || {}).slug}`
     return (
         <Link className={`${singleColumn ? ' sm:w-full' : 'w-full sm:w-1/2 xl:w-1/4'} ${darkMode ? ' sm:w-full bg-primary-900 text-indigo-300 font-bold text-xs' : 'w-full sm:w-1/2 xl:w-1/4 bg-white text-gray-800'} video_cart_val_outerlink relative shadow p-2 mr-2 rounded-lg hover:shadow-lg transition duration-300 ease-in-out`} to={videoUrl} onClick={(e) => { e.stopPropagation() }}>
-            <div className="relative block object-cover w-full h-40 mb-2 rounded-lg rounded-b-none" onClick={() => gaEvents({ eventCategory: `${gaEvent}`, eventAction: 'click', eventLabel: `${videoId}` })}>
+            <div
+                className="relative block object-cover w-full h-40 mb-2 rounded-lg rounded-b-none"
+                onClick={() => gaEvents({ eventCategory: `${gaEvent}::Video Cart`, eventAction: `match_id::${match_id}::${streamer.name}`, eventLabel: `match_id::${match_id}::${streamer.name}` })}>
                 <img className="object-cover w-full h-40 mb-2 transition duration-700 ease-out rounded-lg rounded-b-none hover:opacity-75 bg-primary-900"
                     onError={error}
                     loading="lazy"
@@ -62,8 +64,8 @@ const LolVideoCart = (props: any) => {
 
 
             <div className={`flex items-center leading-tight ${darkMode ? 'h-8' : 'h-12'} `}>
-                <Link to={`/lol/player/${streamer.id}`}
-                    onClick={() => gaEvents({ eventCategory: `${gaEvent}:avatar:lol`, eventAction: 'click', eventLabel: `${videoId}` })}>
+                <Link to={`/lol/player/${streamer.id}/${streamer.slug}`}
+                    onClick={() => gaEvents({ eventCategory: `${gaEvent}::avatar`, eventAction: `match_id::${match_id}::${streamer.name}`, eventLabel: `match_id::${match_id}::${streamer.name}` })}>
                     <Avatar player={streamer} />
                 </Link>
 

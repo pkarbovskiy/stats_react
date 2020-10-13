@@ -3,6 +3,7 @@ import { useFormValidation } from '../form/useFormValidation'
 import { registrationValidation } from '../form/registrationValidation'
 import { Link } from 'react-router-dom'
 import { AuthUrls } from '../../constants'
+import { gaEvents } from '../../common_function'
 
 const INITIAL_STATE = {
     username: '',
@@ -44,6 +45,7 @@ const Registration = ({ togglePopup, setAuthenticated }: { togglePopup: Function
                 if (!response.ok) {
                     return Promise.reject(user)
                 }
+                gaEvents({ eventCategory: 'Sign Up Complete', eventAction: 'Sign Up Complete', eventLabel: 'Sign Up Complete' })
                 setAuthenticated(user.key)
                 togglePopup(false)
             }).catch(err => {
@@ -51,6 +53,7 @@ const Registration = ({ togglePopup, setAuthenticated }: { togglePopup: Function
                     acc[val] = acc[val].join('\n')
                     return acc
                 }, err)
+                gaEvents({ eventCategory: 'Sign Up Error', eventAction: 'Sign Up Error', eventLabel: 'Sign Up Error' })
                 setErrors(errorObject)
             })
     }

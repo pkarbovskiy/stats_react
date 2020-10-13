@@ -111,7 +111,7 @@ const LolPlayerPage = ({ match }: any) => {
                         Matches
                     </p>
                     {matchesShown?.length > 0 &&
-                        <Table matches={matchesShown} streamers={matches.streamers} currentPlayer={streamer.name} />
+                        <Table matches={matchesShown} streamers={matches.streamers} currentPlayer={streamer.name} gaEvent={`Lol::Player Page`} />
                     }
                 </>
             }

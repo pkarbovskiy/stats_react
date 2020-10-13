@@ -1,10 +1,11 @@
 import React, { MouseEvent } from "react"
 import { AuthUrls } from '../../constants'
+import { gaEvents } from '../../common_function'
 
 const LoginLogoutButton = ({ isAuthenticated, togglePopup, setAuthenticated }: { isAuthenticated: boolean; togglePopup: Function; setAuthenticated: Function; }) => {
     const handleLogout = (event: MouseEvent<HTMLButtonElement>): void => {
         event.preventDefault()
-
+        gaEvents({ eventCategory: 'Log Out', eventAction: 'Log Out', eventLabel: 'Log Out' })
         const token = localStorage.getItem('token')
 
         let config = {
@@ -30,6 +31,7 @@ const LoginLogoutButton = ({ isAuthenticated, togglePopup, setAuthenticated }: {
 
     const handleLogin = (event: MouseEvent<HTMLButtonElement>): void => {
         event.preventDefault()
+        gaEvents({ eventCategory: 'Log In Initial', eventAction: 'Log In Initial', eventLabel: 'Log In Initial' })
         togglePopup(true)
     }
 

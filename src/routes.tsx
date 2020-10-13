@@ -95,9 +95,8 @@ const Root = ({ store }: { store: any }) => {
     const [state, dispatchGlobStateAction] = useReducer(reducer, updatedInitValues)
 
     // @todo add async load of user info
-
     history.listen((location) => {
-        gaPageView(`${location.pathname}${location.search}`)
+        setTimeout(gaPageView, 0, `${location.pathname}${location.search}`)
     })
 
     function handleAuthentication(token: string | null) {
