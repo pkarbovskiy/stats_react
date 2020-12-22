@@ -17,6 +17,17 @@ $break-iphone-x: 1025px;
         width: 100%;
         height: 100%;   
         border-radius: 8px;     
+    }
+    &.include-oops-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        & .include-oops-text--text {
+            color: #fff;
+            padding: 0 30px;
+            text-align: center;
+        }
     }    
 }
 .player_and_nav {

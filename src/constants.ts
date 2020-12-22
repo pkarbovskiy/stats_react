@@ -1,6 +1,6 @@
-export default ''//'http://192.168.232.128:8000'
+export default 'http://192.168.232.128:8000'
 // @todo refactor export url
-export const ROOT_URL = ''//'http://192.168.232.128:8000'
+export const ROOT_URL = 'http://192.168.232.128:8000'
 
 export const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i)
 

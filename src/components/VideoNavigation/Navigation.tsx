@@ -53,6 +53,7 @@ const Navigation = ({ eventsInOrder, eventsById, player, currentMatch = 0, curre
             <dl className="video_nav__main_list w-full">
                 {eventsInOrder?.length > 0 &&
                     eventsInOrder.map((entityId: number, index: number) =>
+                        eventsById[entityId] &&
                         <>
                             <dt
                                 key={entityId}

@@ -10,11 +10,12 @@ export type Props = {
     videoTime: number;
     targetElementId?: string;
     autoplay?: boolean;
+    expired: boolean;
     deathKillTimers: any; //TODO: provide proper type
 }
 const EMBED_URL = 'https://player.twitch.tv/js/embed/v1.js';
 
-const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, deathKillTimers }: Props) => {
+const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, deathKillTimers, expired }: Props) => {
     const buffer = 15
     videoTime = videoTime - buffer < 0 ? 0 : videoTime - buffer
     const [player, setPlayer] = useState<any>()
@@ -32,7 +33,9 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
         document.body.appendChild(script)
 
         function createEmbedAddListeners() {
-            setPlayer(new window.Twitch.Player(targetElementId, Object.assign({ autoplay, videoTime }, { video: videoId, parent: ["vodsearch.tv"] })))
+            if (!expired) {
+                setPlayer(new window.Twitch.Player(targetElementId, Object.assign({ autoplay, videoTime }, { video: videoId, parent: ["vodsearch.tv"] })))
+            }
         }
     }, [])
     useEffect(() => {
@@ -58,11 +61,19 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, death
 
     return (
         <>
-            {!player && <Loader />}
-            <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
+            {(!player && !expired) && <Loader />}
+            {!expired &&
+                <AutoSkip videoHandler={player} deathKillTimers={deathKillTimers} />
+            }
             <div className="flex flex-col sm:flex-row">
-                <div id={targetElementId} className="player"></div>
-                <VideoNavigation videoHandler={player} deathKillTimers={deathKillTimers} />
+                <div id={targetElementId} className={`player${expired ? ' include-oops-text' : ''}`}>{
+                    expired && <p className="include-oops-text--text">
+                        Oops, it looks like this video is no longer available on Twitch. They remove videos after a few weeks so please check back often so you don't miss anything!
+                        </p>
+                }</div>
+                {!expired &&
+                    <VideoNavigation videoHandler={player} deathKillTimers={deathKillTimers} />
+                }
             </div>
         </>
     )

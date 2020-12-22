@@ -5,6 +5,7 @@ import { shouldLazyLoad } from '../../common_function'
 import { ROOT_URL } from '../../constants'
 import Table from '../../components/lol/Table'
 import StreamersList from '../../components/lol/StreamersList'
+import { Helmet } from 'react-helmet'
 
 //api/valorant/player/<int:id>
 //@todo set proper type for match
@@ -100,6 +101,9 @@ const LolPlayerPage = ({ match }: any) => {
             {!streamer && <Loader />}
             {streamer &&
                 <>
+                    <Helmet>
+                        <title>{`${streamer.name} - League of Legends | VODsearch.tv | See which streamers you&apos;ve killed`}</title>
+                    </Helmet>
                     <div className="p-6 streamer_page__player lg:px-16">
                         <div className="mb-6 streamer_page__avatar">
                             <Avatar player={streamer} />

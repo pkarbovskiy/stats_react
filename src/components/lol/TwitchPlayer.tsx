@@ -11,6 +11,7 @@ declare global {
 }
 //  @todo clean types
 export type Props = {
+    expired: boolean;
     videoId: number;
     videoTime: number;
     targetElementId?: string;
@@ -22,7 +23,7 @@ export type Props = {
 }
 const EMBED_URL = 'https://player.twitch.tv/js/embed/v1.js';
 // TODO add context for vidoe to get streamer info
-const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, events, currentMatch, currentPlayer, video_streamer_id }: Props) => {
+const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, events, currentMatch, currentPlayer, video_streamer_id, expired }: Props) => {
 
     const buffer = 15
     videoTime = videoTime - buffer < 0 ? 0 : videoTime - buffer
@@ -43,7 +44,9 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, event
         document.body.appendChild(script)
 
         function createEmbedAddListeners() {
-            setPlayer(new window.Twitch.Player(targetElementId, Object.assign({ autoplay, videoTime }, { video: videoId, parent: ['localhost'] })))
+            if (!expired) {
+                setPlayer(new window.Twitch.Player(targetElementId, Object.assign({ autoplay, videoTime }, { video: videoId, parent: ['localhost'] })))
+            }
         }
     }, [])
     useEffect(() => {
@@ -65,13 +68,18 @@ const TwitchPlayer = ({ targetElementId, autoplay, videoId, videoTime = 0, event
             }
             player.removeEventListener(window.Twitch.Player.READY, seekAndPlay)
         }
-    }, [player, videoId, videoTime])
+    }, [player])
 
     return (
         <>
-            {!player && <Loader />}
+            {(!player && !expired) && <Loader />}
             <div className="flex flex-col lg:flex-row">
-                <div id={targetElementId} className="player"></div>
+
+                <div id={targetElementId} className={`player${expired ? ' include-oops-text' : ''}`}>{
+                    expired && <p className="include-oops-text--text">
+                        Oops, it looks like this video is no longer available on Twitch. They remove videos after a few weeks so please check back often so you don't miss anything!
+                    </p>
+                }</div>
                 <Navigation
                     player={player}
                     eventsInOrder={events.eventsInOrder}
