@@ -21,12 +21,12 @@ const InfoPage = ({ match }: any) => {
             <br></br><br></br>
                 General Information
             <br></br><br></br>
-                Protecting your private information is our priority. This privacy policy ("Privacy Policy") applies to your access and use of the VodSearchTV website and its subdomains (the "Site") our products, and any information, text, graphics, photos, or other materials uploaded to, downloaded from, or appearing on the Site (collectively, the "Services"). The Services are owned, operated, and managed by 1337, Inc. (the "Company"). By using the Services, you acknowledge, agree, and consent to the data use and collection practices described in this Privacy Policy. This Privacy Policy is to be read in conjunction with the Terms of Service ("Terms"), which are incorporated herein by reference.
+                Protecting your private information is our priority. This privacy policy ("Privacy Policy") applies to your access and use of the VODSearch website and its subdomains (the "Site") our products, and any information, text, graphics, photos, or other materials uploaded to, downloaded from, or appearing on the Site (collectively, the "Services"). The Services are owned, operated, and managed by 1337, Inc. (the "Company"). By using the Services, you acknowledge, agree, and consent to the data use and collection practices described in this Privacy Policy. This Privacy Policy is to be read in conjunction with the Terms of Service ("Terms"), which are incorporated herein by reference.
             <br></br><br></br>
                 1. Information Collected
             <br></br>
                 a. User Provide Information
-                To provide VodSearchTV users ("Users") with the best possible experience when using the Services, Company may collect personally identifiable information ("Personal Information"), including, but not limited to your email address.
+                To provide VODSearch users ("Users") with the best possible experience when using the Services, Company may collect personally identifiable information ("Personal Information"), including, but not limited to your email address.
 
                 Notwithstanding Company's automated collection of information, as discussed herein, Company does not collect any Personal Information about you unless you voluntarily provide it. However, you may be required to provide certain Personal Information to us when you register for an account on the Site ("Account"). We will use your Personal Information for, but not limited to, communicating with you in relation to the Services.
             <br></br>
@@ -99,7 +99,7 @@ const InfoPage = ({ match }: any) => {
             text = <div className="text-gray-900 info_block__privacy ">
                 Terms of Service<br></br><br></br>
                 General Information<br></br><br></br>
-                Welcome to VodSearchTV an online platform that allows gamers to access highlights of their performance and replay review in-game interactions with celebrity streamers. These Terms of Service (the "Terms") govern your access and the use of the VodSearchTV website and its subdomains (the "Site") our products, and any information, text, graphics, photos, or other materials uploaded to, downloaded from, or appearing on the Site. We refer to the Site and all related services throughout these Terms as the "Services." These Terms are a legally binding agreement between you and 1337, Inc. ("Company"). Read this agreement carefully before using the Services.
+                Welcome to VODSearch an online platform that allows gamers to access highlights of their performance and replay review in-game interactions with celebrity streamers. These Terms of Service (the "Terms") govern your access and the use of the VODSearch website and its subdomains (the "Site") our products, and any information, text, graphics, photos, or other materials uploaded to, downloaded from, or appearing on the Site. We refer to the Site and all related services throughout these Terms as the "Services." These Terms are a legally binding agreement between you and 1337, Inc. ("Company"). Read this agreement carefully before using the Services.
             <br></br>
                 We may amend these Terms at any time by posting a revised version on the Site and/or sending you notice of the same to the email address associated with your Account, as defined herein. Each revised version will state its effective date, which will be on or after the date in which it is posted. Your continued use of the Services after the effective date of a revised version of these Terms constitutes your acceptance of the revised Terms.
             <br></br><br></br>
